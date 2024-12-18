@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Govind G Nair">
+<meta name="dcterms.date" content="2021-06-19">
+<meta name="description" content="Solving Tic Tac Toe with Minimax">
+
+<title>Solving Tic-Tac-Toe with Minimax</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-22381ab97ffb8a420d3841344730e94d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Solving Tic-Tac-Toe with Minimax</h1>
+                  <div>
+        <div class="description">
+          Solving Tic Tac Toe with Minimax
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Article</div>
+                <div class="quarto-category">AI</div>
+                <div class="quarto-category">Algorithms</div>
+                <div class="quarto-category">Python</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Govind G Nair </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 19, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-game" id="toc-the-game" class="nav-link" data-scroll-target="#the-game">The Game</a></li>
+  <li><a href="#the-minimax-algorithm" id="toc-the-minimax-algorithm" class="nav-link" data-scroll-target="#the-minimax-algorithm">The Minimax Algorithm</a>
+  <ul class="collapse">
+  <li><a href="#move-2" id="toc-move-2" class="nav-link" data-scroll-target="#move-2">Move 2</a></li>
+  <li><a href="#move-1" id="toc-move-1" class="nav-link" data-scroll-target="#move-1">Move 1</a></li>
+  <li><a href="#algorithm" id="toc-algorithm" class="nav-link" data-scroll-target="#algorithm">Algorithm</a></li>
+  </ul></li>
+  <li><a href="#minimax-in-limited-tic-tac-toe" id="toc-minimax-in-limited-tic-tac-toe" class="nav-link" data-scroll-target="#minimax-in-limited-tic-tac-toe">Minimax in Limited Tic Tac Toe</a></li>
+  <li><a href="#solving-tictactoe-with-minimax" id="toc-solving-tictactoe-with-minimax" class="nav-link" data-scroll-target="#solving-tictactoe-with-minimax">Solving TicTacToe with Minimax</a></li>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together">Putting it all together</a></li>
+  <li><a href="#random-x-vs-random-o" id="toc-random-x-vs-random-o" class="nav-link" data-scroll-target="#random-x-vs-random-o">Random X vs Random O</a></li>
+  <li><a href="#optimal-x-vs-random-o" id="toc-optimal-x-vs-random-o" class="nav-link" data-scroll-target="#optimal-x-vs-random-o">Optimal X vs Random O</a></li>
+  <li><a href="#random-x-vs-optimal-o" id="toc-random-x-vs-optimal-o" class="nav-link" data-scroll-target="#random-x-vs-optimal-o">Random X vs Optimal O</a></li>
+  <li><a href="#optimal-x-vs-optimal-o" id="toc-optimal-x-vs-optimal-o" class="nav-link" data-scroll-target="#optimal-x-vs-optimal-o">Optimal X vs Optimal O</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>I love Tic-Tac-Toe. Besides bringing back fond childhood memories, it offers a simple playground for a noob like me to learn more about Computer Science, Algorithms and AI. In this blog post , I will use the Mini-Max algorithm to solve the game of Tic Tac Toe.</p>
+<p>To solve the game means, we will be able to discover a strategy that ties the game against an optimal opponent and wins against any non-optimal opponent.</p>
+</section>
+<section id="the-game" class="level2">
+<h2 class="anchored" data-anchor-id="the-game">The Game</h2>
+<p>If you are from Mars, and do not know how the game works, here are the rules courtesy of Wikipedia</p>
+<blockquote class="blockquote">
+<p>“Tic-tac-toe (American English), noughts and crosses (Commonwealth English and British English), or Xs and Os/“X’y O’sies” (Ireland), is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner. ”</p>
+</blockquote>
+</section>
+<section id="the-minimax-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="the-minimax-algorithm">The Minimax Algorithm</h2>
+<p>There are already plenty of great resources to learn about the minimax algorithm like this <a href="https://towardsdatascience.com/understanding-the-minimax-algorithm-726582e4f2c6">one</a> which I will liberally borrow from. I only briefly explain the algorithm here.</p>
+<p>The Mini-Max algorithm is perfect for 2-player (X vs Y) games like Tic-Tac-Toe where player X is trying to maximize his chances of winning while player Y is trying to minimize X’s chances of winning.</p>
+<p>Consider a small imaginary game where each player can make one of two moves (Left or Right). Player X moves first followed by player Y at which point the score of the game is known.</p>
+<p><img src="./minimax_mine.JPG" class="img-fluid"></p>
+<p>The score of the game ranges from 1-4. Player X wants to maximize this score while player Y tries to minimize it.To determine what is the optimal action player X should take , we should work backward from the end of the game.</p>
+<p>A,B,C,D,E,F and G are various states of the game where the latter 4 are terminal states.</p>
+<section id="move-2" class="level3">
+<h3 class="anchored" data-anchor-id="move-2">Move 2</h3>
+<p>When making Move 2, Player Y can be in states B or C.</p>
+<p>In State B, Player Y can choose <strong>L</strong> to yield a score of 4 or <strong>R</strong> to yield score of E. Given, he wants to minimize the overall score , he will choose <strong>R</strong>.</p>
+<p>Similarly in State C, Player Y will choose <strong>R</strong> to minimize overall score.</p>
+<p>The value of States B and C are now 3 and 1 respectively.</p>
+</section>
+<section id="move-1" class="level3">
+<h3 class="anchored" data-anchor-id="move-1">Move 1</h3>
+<p>For the first move, Player X is in state A. He can choose <strong>L</strong> which lands him in state B with a score of 3 or choose <strong>R</strong> which lands him in state C with a score of 1.</p>
+<p>Given he wants to maximize the score, he chooses <strong>L</strong>.</p>
+</section>
+<section id="algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="algorithm">Algorithm</h3>
+<p>This suggests an algorithm to choose the optimal move from any given state for a maximizing player.</p>
+<p>At any given state, enumerate the possible child states. Now determine the value of these child states by invoking the minimizing player i.e.&nbsp;Ask the minimizing player what he would do in each of these states and return the value he gets. Choose the action that leads to the highest value state. This is implemented in the <code>maximize</code> function below.</p>
+<p>Similarly for for a minimizing player, enumerate the child states and determine the value of each state by invoking the maximizing player. Choose the action that leads to the lowest value state. This is implemented in the <code>minimize</code> function below.</p>
+<p>If at any stage, the child state is a terminal state, the value of the terminal state is simply returned.</p>
+<p>Let us use code to solve the simple toy problem above.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>children <span class="op">=</span> {<span class="st">'a'</span>:[<span class="st">'b'</span>,<span class="st">'c'</span>],<span class="st">'b'</span>:[<span class="st">'d'</span>,<span class="st">'e'</span>],<span class="st">'c'</span>:[<span class="st">'f'</span>,<span class="st">'g'</span>]} <span class="co">#mapping from state to child states</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>value <span class="op">=</span> {<span class="st">'d'</span>:<span class="dv">4</span>,<span class="st">'e'</span>:<span class="dv">3</span>,<span class="st">'f'</span>:<span class="dv">2</span>,<span class="st">'g'</span>:<span class="dv">1</span>} <span class="co"># value of terminal states</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>action <span class="op">=</span> {<span class="st">'d'</span>:<span class="st">'L'</span>,<span class="st">'e'</span>:<span class="st">'R'</span>,<span class="st">'f'</span>:<span class="st">'L'</span>,<span class="st">'g'</span>:<span class="st">'R'</span>,<span class="st">'b'</span>:<span class="st">'L'</span>,<span class="st">'c'</span>:<span class="st">'R'</span>} <span class="co"># mapping from state to the action that produces #that state</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We will also keep a cache of the optimal next state for both maximizing and minimizing players, to make the computation a little faster. This hardly matters for this toy problem but can help for larger problems.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>max_optimal_next_states <span class="op">=</span> {}</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>min_optimal_next_states <span class="op">=</span> {}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We define three functions defined below to implement the algorithm.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> produce_children(state):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Function to produce children of a state"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> children.get(state,<span class="va">None</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_terminal(state):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Function to check if a state is terminal and return value of the state"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> state <span class="kw">in</span> children:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span>,<span class="dv">0</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">True</span>,value[state]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(next_state,current_state<span class="op">=</span><span class="va">None</span>): </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Function to return action that moves player from current state to next state"</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>     <span class="co">#current state is redundant for this example as there is only one way to get to a state</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> action[next_state]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we define the key maximizing and minimizing functions that implements the core logic of the algorithm.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> maximize(state):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> state <span class="kw">in</span> max_optimal_next_states:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> max_optimal_next_states[state]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    terminal_status,reward <span class="op">=</span> is_terminal(state)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> terminal_status:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> state,reward <span class="co"># No further state so return same state</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    max_state, max_score <span class="op">=</span> <span class="va">None</span>,<span class="op">-</span>np.Inf</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    max_states <span class="op">=</span> []</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> produce_children(state)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> child <span class="kw">in</span> children:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        _,score <span class="op">=</span> minimize(child)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> score <span class="op">&gt;</span> max_score:</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            max_state,max_score <span class="op">=</span> child,score</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            max_states <span class="op">=</span> [max_state]</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> score <span class="op">==</span> max_score: </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            max_states.append(child)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If multiple actions are optimal, break ties randomly</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    max_state <span class="op">=</span> random.choice(max_states)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    max_optimal_next_states[state] <span class="op">=</span> (max_state,max_score)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> max_state,max_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> minimize(state):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> state <span class="kw">in</span> min_optimal_next_states:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> min_optimal_next_states[state]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    terminal_status,reward <span class="op">=</span> is_terminal(state)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> terminal_status:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> state,reward <span class="co"># No further state so return same state</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    min_state, min_score <span class="op">=</span> <span class="va">None</span>,np.Inf</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    min_states <span class="op">=</span> []</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> produce_children(state)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> child <span class="kw">in</span> children:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        _,score <span class="op">=</span> maximize(child)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> score <span class="op">&lt;</span> min_score:</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            min_state,min_score <span class="op">=</span> child,score</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>            min_states <span class="op">=</span> [min_state]</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> score <span class="op">==</span> min_score: </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            min_states.append(child)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    min_state <span class="op">=</span> random.choice(min_states)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    min_optimal_next_states[state] <span class="op">=</span>  (min_state,min_score)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> min_state,min_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> optimal_decision(state,player <span class="op">=</span> <span class="st">'Maximizer'</span>):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> player <span class="op">==</span> <span class="st">'Maximizer'</span>:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        max_state,_ <span class="op">=</span> maximize(state)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> get_action(max_state,state)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        min_state,_ <span class="op">=</span> minimize(state)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> get_action(min_state,state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let us confirm this returns the expected decisions in the image above.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>optimal_decision(<span class="st">'a'</span>,player <span class="op">=</span> <span class="st">'Maximizer'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## 'L'</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>optimal_decision(<span class="st">'b'</span>,player <span class="op">=</span> <span class="st">'Minimizer'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## 'R'</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>optimal_decision(<span class="st">'c'</span>,player <span class="op">=</span> <span class="st">'Minimizer'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## 'R'</code></pre>
+<p>Now what if the roles were reverse with Player X being a minimizer and Player Y being a maximizer. We expect the decisions to flip.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>optimal_decision(<span class="st">'a'</span>,player <span class="op">=</span> <span class="st">'Minimizer'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## 'R'</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>optimal_decision(<span class="st">'b'</span>,player <span class="op">=</span> <span class="st">'Maximizer'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## 'L'</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>optimal_decision(<span class="st">'c'</span>,player <span class="op">=</span> <span class="st">'Maximizer'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## 'L'</code></pre>
+</section>
+</section>
+<section id="minimax-in-limited-tic-tac-toe" class="level2">
+<h2 class="anchored" data-anchor-id="minimax-in-limited-tic-tac-toe">Minimax in Limited Tic Tac Toe</h2>
+<p>The toy problem above can be easily mapped to a limited tic-tac-toe game as shown in the image below.</p>
+<p><img src="./minimax_ttt.JPG" class="img-fluid"></p>
+<p>Here, of the three possible moves available to player X in the starting state, the move to place ‘X’ in the center square is the only action that leads to a winning outcome. This can be figured out by recursively applying the minimax algorithm as illustrated above.</p>
+<p>Note that Player X makes Move 1, Player Y makes Move 2 and Player X makes Move 3. This mini-game can end as early as after Move 1.</p>
+</section>
+<section id="solving-tictactoe-with-minimax" class="level2">
+<h2 class="anchored" data-anchor-id="solving-tictactoe-with-minimax">Solving TicTacToe with Minimax</h2>
+<p>Let us denote player ‘X’ who plays first using 1 and player ‘O’ who plays second using 2. An empty square will be represented with 0.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>s_to_b <span class="op">=</span> {<span class="dv">0</span>:<span class="st">'__'</span>,<span class="dv">1</span>:<span class="st">'X'</span>,<span class="dv">2</span>:<span class="st">'O'</span>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We will denote the state of a game using a tuple of length 9.For example:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>state <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The state can be converted to a board using the below function.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> state_to_board(state):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Function to convert a a state(tuple) to a board(numpy array)"</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    board <span class="op">=</span> np.array([s_to_b[position] <span class="cf">for</span> position <span class="kw">in</span> state])</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> board.reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>state_to_board((<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## array([['X', '__', '__'],
+##        ['O', '__', '__'],
+##        ['__', '__', '__']], dtype='&lt;U2')</code></pre>
+<p>A player wins if he or she gets a sequence of 3 ’X’s or 3 ’O’s.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>max_player_wins <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>min_player_wins <span class="op">=</span> (<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now all we have to do is redefine the functions <code>is_terminal</code> , <code>produce_children</code> and <code>get_action</code> for the new tic-tac-toe problem</p>
+<p>A terminal state is reached if one of the players wins or if the board is fully occupied in which case the game is tied.<br> We will set the score of the game as follows: <br> X wins: + 10 <br> O wins: -10 <br> Draw: 0</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_terminal(state):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>  state[<span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">3</span>)] <span class="op">==</span> max_player_wins:</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="dv">10</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">3</span>)] <span class="op">==</span> min_player_wins:</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="op">-</span><span class="dv">10</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">3</span>,<span class="dv">6</span>)] <span class="op">==</span> max_player_wins:</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="dv">10</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">3</span>,<span class="dv">6</span>)] <span class="op">==</span> min_player_wins:</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="op">-</span><span class="dv">10</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">6</span>,<span class="dv">9</span>)] <span class="op">==</span> max_player_wins:</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="dv">10</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">6</span>,<span class="dv">9</span>)] <span class="op">==</span> min_player_wins:</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="op">-</span><span class="dv">10</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">7</span>,<span class="dv">3</span>)] <span class="op">==</span> max_player_wins:</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="dv">10</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">7</span>,<span class="dv">3</span>)] <span class="op">==</span> min_player_wins:</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="op">-</span><span class="dv">10</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">3</span>)] <span class="op">==</span> max_player_wins:</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="dv">10</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">3</span>)] <span class="op">==</span> min_player_wins:</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="op">-</span><span class="dv">10</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">2</span>,<span class="dv">9</span>,<span class="dv">3</span>)] <span class="op">==</span> max_player_wins:</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="dv">10</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">2</span>,<span class="dv">9</span>,<span class="dv">3</span>)] <span class="op">==</span> min_player_wins:</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="op">-</span><span class="dv">10</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)] <span class="op">==</span> max_player_wins:</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="dv">10</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)] <span class="op">==</span> min_player_wins:</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="op">-</span><span class="dv">10</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">2</span>)] <span class="op">==</span> max_player_wins:</span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="dv">10</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state[<span class="bu">slice</span>(<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">2</span>)] <span class="op">==</span> min_player_wins:</span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="op">-</span><span class="dv">10</span></span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state.count(<span class="dv">0</span>) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>,<span class="dv">0</span></span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span>,<span class="dv">0</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> copy <span class="im">import</span> deepcopy</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> produce_children(state):</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    l <span class="op">=</span> <span class="bu">list</span>(state)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> []</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    vacant_slots <span class="op">=</span> [i <span class="cf">for</span> i,v <span class="kw">in</span> <span class="bu">enumerate</span>(state) <span class="cf">if</span> v <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> state.count(<span class="dv">0</span>) <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>: <span class="co">#If number of vacant spaces is odd , then it is max_player's turn</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> slot <span class="kw">in</span> vacant_slots:</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>            child <span class="op">=</span> deepcopy(l)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>            child[slot] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>            children.append(<span class="bu">tuple</span>(child))</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: <span class="co">#if number of vacant spaces is even then it is min_player's turn.</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> slot <span class="kw">in</span> vacant_slots:</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>            child <span class="op">=</span> deepcopy(l)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>            child[slot] <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>            children.append(<span class="bu">tuple</span>(child))</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> children</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>children <span class="op">=</span> produce_children(state)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>children</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [(1, 1, 0, 2, 0, 0, 0, 0, 0), (1, 0, 1, 2, 0, 0, 0, 0, 0), (1, 0, 0, 2, 1, 0, 0, 0, 0), (1, 0, 0, 2, 0, 1, 0, 0, 0), (1, 0, 0, 2, 0, 0, 1, 0, 0), (1, 0, 0, 2, 0, 0, 0, 1, 0), (1, 0, 0, 2, 0, 0, 0, 0, 1)]</code></pre>
+<p>These correspond to the following states.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> child <span class="kw">in</span> children:</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(state_to_board(child),<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [['X' 'X' '__']
+##  ['O' '__' '__']
+##  ['__' '__' '__']] 
+## 
+## [['X' '__' 'X']
+##  ['O' '__' '__']
+##  ['__' '__' '__']] 
+## 
+## [['X' '__' '__']
+##  ['O' 'X' '__']
+##  ['__' '__' '__']] 
+## 
+## [['X' '__' '__']
+##  ['O' '__' 'X']
+##  ['__' '__' '__']] 
+## 
+## [['X' '__' '__']
+##  ['O' '__' '__']
+##  ['X' '__' '__']] 
+## 
+## [['X' '__' '__']
+##  ['O' '__' '__']
+##  ['__' 'X' '__']] 
+## 
+## [['X' '__' '__']
+##  ['O' '__' '__']
+##  ['__' '__' 'X']]</code></pre>
+<p>Finally we define a function to return the action that leads from the current state to the next state.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> difference(tuple1,tuple2):</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Helper function to get the index where first difference between two tuples is observed"</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">len</span>(tuple1) <span class="op">==</span> <span class="bu">len</span>(tuple2)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i,value <span class="kw">in</span> <span class="bu">enumerate</span>(tuple1):</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> value <span class="op">!=</span> tuple2[i]:</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> i</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(next_state,current_state):</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Function to return action that moves player from current state to next state"</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> difference(next_state,current_state),next_state</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can now evaluate whether we can solve the mini tic-tac-toe problem above with the tools at hand.The starting state of the game is given by</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>state <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>state_to_board(state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## array([['X', 'O', 'X'],
+##        ['__', '__', 'O'],
+##        ['__', 'O', 'X']], dtype='&lt;U2')</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>optimal_action,optimal_next_state <span class="op">=</span> optimal_decision(state,player <span class="op">=</span> <span class="st">'Maximizer'</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>optimal_action,state_to_board(optimal_next_state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## (4, array([['X', 'O', 'X'],
+##        ['__', 'X', 'O'],
+##        ['__', 'O', 'X']], dtype='&lt;U2'))</code></pre>
+<p>As expected , the algorithm determines the optimal action for player ‘X’ is to occupy the central square in the board.</p>
+<p>Let us consider one more path in the game where player X plays a non-optimal move resulting in the following state.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>state <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>state_to_board(state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## array([['X', 'O', 'X'],
+##        ['X', '__', 'O'],
+##        ['__', 'O', 'X']], dtype='&lt;U2')</code></pre>
+<p>The optimal state of the minimizing player is given by</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>optimal_action,optimal_next_state <span class="op">=</span> optimal_decision(state,player <span class="op">=</span> <span class="st">'Minimizer'</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>optimal_action,state_to_board(optimal_next_state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## (4, array([['X', 'O', 'X'],
+##        ['X', 'O', 'O'],
+##        ['__', 'O', 'X']], dtype='&lt;U2'))</code></pre>
+<p>The minimizing player also picks the optimal action as expected.</p>
+</section>
+<section id="putting-it-all-together" class="level2">
+<h2 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h2>
+<p>Now we will analyze the following games</p>
+<ol type="1">
+<li>Random <strong>X</strong> vs Random <strong>O</strong> <br></li>
+<li>Optimal <strong>X</strong> vs Random <strong>O</strong> <br></li>
+<li>Random <strong>X</strong> vs Optimal <strong>O</strong> <br></li>
+<li>Optimal <strong>X</strong> vs Optimal <strong>O</strong></li>
+</ol>
+<p>The following function represents a random player who chooses an available slot at random. The maximizer is player <strong>X</strong> while the minimizer is player <strong>O</strong></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> random_decision(state,player <span class="op">=</span> <span class="st">'Maximizer'</span>):</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    vacant_slots <span class="op">=</span> [i <span class="cf">for</span> i,v <span class="kw">in</span> <span class="bu">enumerate</span>(state) <span class="cf">if</span> v <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> random.choice(vacant_slots)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    state_as_list <span class="op">=</span> <span class="bu">list</span>(state)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Update state</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> player <span class="op">==</span> <span class="st">'Maximizer'</span>:</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>        state_as_list[action] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>        state_as_list[action] <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> action,<span class="bu">tuple</span>(state_as_list)</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we will define a function to play N games and record the results for analysis</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> play_games(n_games:<span class="bu">int</span>,X_strategy,O_strategy):</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">    n_games: Number of games to be player</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">    X_strategy: function describing decision making strategy for player X</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">    O_strategy: function describing decision making strategy for player Y</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    win_stats <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Dictionary for holding no of wins for games started with a particular move</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    move_wins_X <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    move_wins_O <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Dictionary for holding no of games started with a particular move</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    move_X <span class="op">=</span> defaultdict(<span class="kw">lambda</span>:<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>    move_O <span class="op">=</span> defaultdict(<span class="kw">lambda</span>:<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(n_games)):</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>        random.seed(i)</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>        state <span class="op">=</span> (<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>        terminal_status <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>        first_move_flag_X <span class="op">=</span> <span class="va">True</span> <span class="co"># Flag identifying first move of player X</span></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>        first_move_flag_O <span class="op">=</span> <span class="va">True</span> <span class="co"># Flag identifying first move of player O</span></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="kw">not</span> terminal_status:</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>            <span class="co">#Player X plays;  </span></span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>            player_x_action,next_state <span class="op">=</span> X_strategy(state,player<span class="op">=</span><span class="st">'Maximizer'</span>)</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>            terminal_status,score <span class="op">=</span> is_terminal(next_state)</span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> first_move_flag_X:</span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>                first_move_X <span class="op">=</span> player_x_action</span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>                move_X[first_move_X] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>                first_move_flag_X <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>            <span class="co">#If player X plays last move</span></span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> terminal_status:</span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> score <span class="op">==</span> <span class="dv">10</span>: <span class="co">#player X wins</span></span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>                    win_stats[<span class="st">'X_win'</span>] <span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>                    move_wins_X[first_move_X] <span class="op">+=</span> <span class="dv">1</span> <span class="co">#record player's first move</span></span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>                    win_stats[<span class="st">'Draw'</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>            state <span class="op">=</span> next_state</span>
+<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a>            <span class="co">#Player O plays next</span></span>
+<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb42-46"><a href="#cb42-46" aria-hidden="true" tabindex="-1"></a>            player_o_action,next_state <span class="op">=</span> O_strategy(state,player<span class="op">=</span><span class="st">'Minimizer'</span>)</span>
+<span id="cb42-47"><a href="#cb42-47" aria-hidden="true" tabindex="-1"></a>            terminal_status,score <span class="op">=</span> is_terminal(next_state)</span>
+<span id="cb42-48"><a href="#cb42-48" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb42-49"><a href="#cb42-49" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> first_move_flag_O:</span>
+<span id="cb42-50"><a href="#cb42-50" aria-hidden="true" tabindex="-1"></a>                first_move_O <span class="op">=</span> player_o_action</span>
+<span id="cb42-51"><a href="#cb42-51" aria-hidden="true" tabindex="-1"></a>                move_O[first_move_O] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb42-52"><a href="#cb42-52" aria-hidden="true" tabindex="-1"></a>                first_move_flag_O <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb42-53"><a href="#cb42-53" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb42-54"><a href="#cb42-54" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb42-55"><a href="#cb42-55" aria-hidden="true" tabindex="-1"></a>            <span class="co">#If player O plays last move</span></span>
+<span id="cb42-56"><a href="#cb42-56" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> terminal_status:</span>
+<span id="cb42-57"><a href="#cb42-57" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> score <span class="op">==</span> <span class="op">-</span><span class="dv">10</span>: <span class="co">#player O wins</span></span>
+<span id="cb42-58"><a href="#cb42-58" aria-hidden="true" tabindex="-1"></a>                    win_stats[<span class="st">'O_win'</span>] <span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb42-59"><a href="#cb42-59" aria-hidden="true" tabindex="-1"></a>                    move_wins_O[first_move_O] <span class="op">+=</span> <span class="dv">1</span> <span class="co">#record player's first move</span></span>
+<span id="cb42-60"><a href="#cb42-60" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb42-61"><a href="#cb42-61" aria-hidden="true" tabindex="-1"></a>                    win_stats[<span class="st">'Draw'</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb42-62"><a href="#cb42-62" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb42-63"><a href="#cb42-63" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb42-64"><a href="#cb42-64" aria-hidden="true" tabindex="-1"></a>            state <span class="op">=</span> next_state    </span>
+<span id="cb42-65"><a href="#cb42-65" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb42-66"><a href="#cb42-66" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> win_stats,move_wins_X,move_wins_O,move_X,move_O</span>
+<span id="cb42-67"><a href="#cb42-67" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We also create a helper function to visualize the results.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_results(results):</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    win_stats,move_wins_X,move_wins_O,move_X,move_O <span class="op">=</span> results</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    win_stats_df <span class="op">=</span> pd.DataFrame({<span class="st">'Category'</span>:<span class="bu">list</span>(win_stats.keys()),<span class="st">'Count'</span>:<span class="bu">list</span>(win_stats.values())})</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    move_X_win_rate <span class="op">=</span> {i:move_wins_X[i]<span class="op">/</span>move_X[i]  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>)}</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    move_O_win_rate <span class="op">=</span> {i:move_wins_O[i]<span class="op">/</span>move_O[i]  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>)}</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    move_X_win_rate_array <span class="op">=</span> np.array([move_X_win_rate[x] <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>)]).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    move_O_win_rate_array <span class="op">=</span> np.array([move_O_win_rate[x] <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>)]).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>    sns.<span class="bu">set</span>(font_scale<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>    fig, axs <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">30</span>,<span class="dv">10</span>))</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>    splot <span class="op">=</span> sns.barplot(x<span class="op">=</span><span class="st">"Category"</span>,y<span class="op">=</span><span class="st">"Count"</span>,data<span class="op">=</span>win_stats_df,ax<span class="op">=</span>axs[<span class="dv">0</span>])</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> splot.patches:</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>        splot.annotate(<span class="bu">format</span>(p.get_height(), <span class="st">'.0f'</span>), </span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>                       (p.get_x() <span class="op">+</span> p.get_width() <span class="op">/</span> <span class="fl">2.</span>, p.get_height()), </span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>                       ha <span class="op">=</span> <span class="st">'center'</span>, va <span class="op">=</span> <span class="st">'center'</span>, </span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>                       xytext <span class="op">=</span> (<span class="dv">0</span>, <span class="op">-</span><span class="dv">12</span>), </span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>                       textcoords <span class="op">=</span> <span class="st">'offset points'</span>)</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>    splot.set_title(<span class="st">'Distribution of Wins,Losses and Ties'</span>)</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>    sns.heatmap(move_X_win_rate_array,annot<span class="op">=</span><span class="va">True</span>,ax <span class="op">=</span> axs[<span class="dv">1</span>]).set_title(<span class="st">'Player X:</span><span class="sc">% o</span><span class="st">f wins for first move'</span>)</span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>    sns.heatmap(move_O_win_rate_array,annot<span class="op">=</span><span class="va">True</span>,ax <span class="op">=</span> axs[<span class="dv">2</span>]).set_title(<span class="st">'Player Y:</span><span class="sc">% o</span><span class="st">f wins for first move'</span>)</span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="random-x-vs-random-o" class="level2">
+<h2 class="anchored" data-anchor-id="random-x-vs-random-o">Random X vs Random O</h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>results1 <span class="op">=</span> play_games(<span class="dv">1000</span>,X_strategy<span class="op">=</span>random_decision,O_strategy<span class="op">=</span>random_decision)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## 
+  0%|          | 0/1000 [00:00&lt;?, ?it/s]
+100%|##########| 1000/1000 [00:00&lt;00:00, 20874.97it/s]</code></pre>
+<p>When both players follow a random strategy, player X has a first mover advantage and wins the majority of the games.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>plot_results(results1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-2-1.png" width="2880"></p>
+<p>We also see that given both players use random strategies: player X can play the first move in any of the squares without it affecting the win rate significantly.</p>
+<p>For player O on the other hand, playing the first move in the center or corner square results in a significantly higher win rate.</p>
+</section>
+<section id="optimal-x-vs-random-o" class="level2">
+<h2 class="anchored" data-anchor-id="optimal-x-vs-random-o">Optimal X vs Random O</h2>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>results2 <span class="op">=</span> play_games(<span class="dv">1000</span>,X_strategy<span class="op">=</span>optimal_decision,O_strategy<span class="op">=</span>random_decision)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## 
+  0%|          | 0/1000 [00:00&lt;?, ?it/s]
+  0%|          | 1/1000 [00:00&lt;02:18,  7.21it/s]
+100%|##########| 1000/1000 [00:00&lt;00:00, 5633.05it/s]</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plot_results(results2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-2-3.png" width="2880"></p>
+<p>When player X uses the optimal minimax strategy,it wins almost all the games.</p>
+<p>It consistently picks the bottom right hand corner in the first move in every game.</p>
+</section>
+<section id="random-x-vs-optimal-o" class="level2">
+<h2 class="anchored" data-anchor-id="random-x-vs-optimal-o">Random X vs Optimal O</h2>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>results3 <span class="op">=</span> play_games(<span class="dv">1000</span>,X_strategy<span class="op">=</span>random_decision,O_strategy<span class="op">=</span>optimal_decision)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## 
+  0%|          | 0/1000 [00:00&lt;?, ?it/s]
+100%|##########| 1000/1000 [00:00&lt;00:00, 22279.67it/s]</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>plot_results(results3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-2-5.png" width="2880"> In this case, O has a lower win rate given it does not have a fist mover advantage.</p>
+<p>The win rate is highest when Player O gets to occupy the central square in the first move.</p>
+</section>
+<section id="optimal-x-vs-optimal-o" class="level2">
+<h2 class="anchored" data-anchor-id="optimal-x-vs-optimal-o">Optimal X vs Optimal O</h2>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>results4 <span class="op">=</span> play_games(<span class="dv">100</span>,X_strategy<span class="op">=</span>optimal_decision,O_strategy<span class="op">=</span>optimal_decision)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## 
+  0%|          | 0/100 [00:00&lt;?, ?it/s]
+100%|##########| 100/100 [00:00&lt;00:00, 20218.39it/s]</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>plot_results(results4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-2-7.png" width="2880"></p>
+<p>When both players play the optimal strategy, all games end in ties.</p>
+<p>You can find the jupyter notebook for the blog post <a href="https://github.com/govindgnair23/Algorithms_and_Data_Structures/blob/master/Solving%20Tic%20Tac%20Toe%20with%20Minimax%20-%20Blog.ipynb">here</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

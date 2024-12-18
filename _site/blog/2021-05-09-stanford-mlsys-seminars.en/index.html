@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="">
+<meta name="dcterms.date" content="2021-05-09">
+<meta name="description" content="Notes from Stanford ML Sys Seminar series">
+
+<title>Stanford MLSys Seminar Series</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-22381ab97ffb8a420d3841344730e94d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Stanford MLSys Seminar Series</h1>
+                  <div>
+        <div class="description">
+          Notes from Stanford ML Sys Seminar series
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Conferences</div>
+                <div class="quarto-category">Machine Learning</div>
+                <div class="quarto-category">AI</div>
+                <div class="quarto-category">Software Engineering</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 9, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#deep-learning-at-scale-with-horovod-travis-addair" id="toc-deep-learning-at-scale-with-horovod-travis-addair" class="nav-link active" data-scroll-target="#deep-learning-at-scale-with-horovod-travis-addair">1) Deep Learning at Scale with Horovod | Travis Addair</a>
+  <ul class="collapse">
+  <li><a href="#horovod" id="toc-horovod" class="nav-link" data-scroll-target="#horovod">Horovod</a></li>
+  <li><a href="#api-and-architecture" id="toc-api-and-architecture" class="nav-link" data-scroll-target="#api-and-architecture">API and Architecture</a></li>
+  <li><a href="#horovod-on-spark" id="toc-horovod-on-spark" class="nav-link" data-scroll-target="#horovod-on-spark">Horovod on Spark</a></li>
+  <li><a href="#deep-learning-in-spark-with-horovod-and-petastorm" id="toc-deep-learning-in-spark-with-horovod-and-petastorm" class="nav-link" data-scroll-target="#deep-learning-in-spark-with-horovod-and-petastorm">Deep Learning in Spark with Horovod and Petastorm</a></li>
+  <li><a href="#horovod-on-ray" id="toc-horovod-on-ray" class="nav-link" data-scroll-target="#horovod-on-ray">Horovod on Ray</a></li>
+  <li><a href="#elastic-horovod" id="toc-elastic-horovod" class="nav-link" data-scroll-target="#elastic-horovod">Elastic Horovod</a></li>
+  <li><a href="#future-of-horovod" id="toc-future-of-horovod" class="nav-link" data-scroll-target="#future-of-horovod">Future of Horovod</a></li>
+  <li><a href="#advice-when-using-horovod" id="toc-advice-when-using-horovod" class="nav-link" data-scroll-target="#advice-when-using-horovod">Advice when using Horovod</a></li>
+  </ul></li>
+  <li><a href="#reinforcement-learning-for-hardware-design-anna-goldie" id="toc-reinforcement-learning-for-hardware-design-anna-goldie" class="nav-link" data-scroll-target="#reinforcement-learning-for-hardware-design-anna-goldie">2) Reinforcement Learning for Hardware Design | Anna Goldie</a>
+  <ul class="collapse">
+  <li><a href="#chip-floor-planning-problem" id="toc-chip-floor-planning-problem" class="nav-link" data-scroll-target="#chip-floor-planning-problem">Chip Floor Planning Problem</a></li>
+  <li><a href="#chip-floor-planning-with-rl" id="toc-chip-floor-planning-with-rl" class="nav-link" data-scroll-target="#chip-floor-planning-with-rl">Chip Floor Planning with RL</a>
+  <ul class="collapse">
+  <li><a href="#objective-function" id="toc-objective-function" class="nav-link" data-scroll-target="#objective-function">Objective Function</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  </ul></li>
+  <li><a href="#reward-model-architecture" id="toc-reward-model-architecture" class="nav-link" data-scroll-target="#reward-model-architecture">Reward Model Architecture</a>
+  <ul class="collapse">
+  <li><a href="#edge-based-convolutions" id="toc-edge-based-convolutions" class="nav-link" data-scroll-target="#edge-based-convolutions">Edge Based Convolutions</a></li>
+  </ul></li>
+  <li><a href="#policyvalue-model-architecture" id="toc-policyvalue-model-architecture" class="nav-link" data-scroll-target="#policyvalue-model-architecture">Policy/Value Model Architecture</a></li>
+  <li><a href="#other-points" id="toc-other-points" class="nav-link" data-scroll-target="#other-points">Other Points</a></li>
+  </ul></li>
+  <li><a href="#on-hetrogeneity-in-federated-settings-virginia-smith" id="toc-on-hetrogeneity-in-federated-settings-virginia-smith" class="nav-link" data-scroll-target="#on-hetrogeneity-in-federated-settings-virginia-smith">3) On Hetrogeneity in Federated Settings | Virginia Smith</a>
+  <ul class="collapse">
+  <li><a href="#workflow-and-setup" id="toc-workflow-and-setup" class="nav-link" data-scroll-target="#workflow-and-setup">Workflow and SetUp</a></li>
+  <li><a href="#heterogeneity-considerations" id="toc-heterogeneity-considerations" class="nav-link" data-scroll-target="#heterogeneity-considerations">Heterogeneity Considerations</a></li>
+  <li><a href="#federated-averaging" id="toc-federated-averaging" class="nav-link" data-scroll-target="#federated-averaging">Federated Averaging</a></li>
+  <li><a href="#fedprox" id="toc-fedprox" class="nav-link" data-scroll-target="#fedprox">FedProx</a></li>
+  <li><a href="#fairness" id="toc-fairness" class="nav-link" data-scroll-target="#fairness">Fairness</a></li>
+  <li><a href="#personalization" id="toc-personalization" class="nav-link" data-scroll-target="#personalization">Personalization</a></li>
+  </ul></li>
+  <li><a href="#bridging-models-and-data-with-feature-stores-willem-pienaar" id="toc-bridging-models-and-data-with-feature-stores-willem-pienaar" class="nav-link" data-scroll-target="#bridging-models-and-data-with-feature-stores-willem-pienaar">4) Bridging Models and Data with Feature Stores | Willem Pienaar</a>
+  <ul class="collapse">
+  <li><a href="#current-state" id="toc-current-state" class="nav-link" data-scroll-target="#current-state">Current State</a></li>
+  <li><a href="#ml-data-challenges" id="toc-ml-data-challenges" class="nav-link" data-scroll-target="#ml-data-challenges">ML Data Challenges</a></li>
+  <li><a href="#solution-with-feature-stores" id="toc-solution-with-feature-stores" class="nav-link" data-scroll-target="#solution-with-feature-stores">Solution with Feature Stores</a></li>
+  <li><a href="#deployment-patterns" id="toc-deployment-patterns" class="nav-link" data-scroll-target="#deployment-patterns">Deployment Patterns</a></li>
+  <li><a href="#feature-stores-in-a-modern-data-stack" id="toc-feature-stores-in-a-modern-data-stack" class="nav-link" data-scroll-target="#feature-stores-in-a-modern-data-stack">Feature Stores in A Modern Data Stack</a></li>
+  <li><a href="#other-points-1" id="toc-other-points-1" class="nav-link" data-scroll-target="#other-points-1">Other Points</a></li>
+  </ul></li>
+  <li><a href="#data-selection-for-data-centric-ai-cody-coleman" id="toc-data-selection-for-data-centric-ai-cody-coleman" class="nav-link" data-scroll-target="#data-selection-for-data-centric-ai-cody-coleman">5) Data Selection for Data Centric AI | Cody Coleman</a>
+  <ul class="collapse">
+  <li><a href="#active-learning" id="toc-active-learning" class="nav-link" data-scroll-target="#active-learning">Active Learning</a></li>
+  <li><a href="#core-set-selection" id="toc-core-set-selection" class="nav-link" data-scroll-target="#core-set-selection">Core Set Selection</a></li>
+  <li><a href="#active-search" id="toc-active-search" class="nav-link" data-scroll-target="#active-search">Active Search</a>
+  <ul class="collapse">
+  <li><a href="#similarity-search-for-efficient-active-learning-and-search-seals" id="toc-similarity-search-for-efficient-active-learning-and-search-seals" class="nav-link" data-scroll-target="#similarity-search-for-efficient-active-learning-and-search-seals">Similarity Search for Efficient Active Learning and Search (SEALS)</a></li>
+  <li><a href="#selection-criteria-for-samples" id="toc-selection-criteria-for-samples" class="nav-link" data-scroll-target="#selection-criteria-for-samples">Selection Criteria for Samples</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>I will progressively summarize talks I find illuminating from the <a href="https://mlsys.stanford.edu/">Stanford MLSys</a> Seminar Series here.</p>
+<section id="deep-learning-at-scale-with-horovod-travis-addair" class="level1">
+<h1>1) Deep Learning at Scale with Horovod | Travis Addair</h1>
+<p>Talk Link: https://www.youtube.com/watch?v=DB7oOZ5hyrE</p>
+<ul>
+<li>There are two types of distributed deep learning:</li>
+</ul>
+<ol type="1">
+<li>Model Parallelism : This is used when a model is too large to fit into a single GPU. Here the model is distributed across multiple machines.<br></li>
+<li>Data Parallelism: This is used when the data is too large to fit into a single GPU. Here the data is distributed across multiple machines, but the model is instantiated in each machine.</li>
+</ol>
+<p>Horovod is a system for data parallelism.</p>
+<p><img src="./horovod1.png" class="img-fluid"></p>
+<ul>
+<li>The pre-Horovod approach to data parallelism pioneered by Google used parameter servers.</li>
+</ul>
+<p><img src="./horovod2.png" class="img-fluid"></p>
+<p>In this approach,weights are updated synchronously by a parameter server using gradients shared by workers. The weights are then returned to the workers for the next round of gradient descent.</p>
+<p><strong>Pros</strong> <br></p>
+<ul>
+<li>Asynchronous SGD is possible <br></li>
+<li>Fault tolerant</li>
+</ul>
+<p><strong>Cons</strong> <br> - Usability: - There is a tight coupling between model and parameters. - A system admin has to determine and allocate resources for the server and client.</p>
+<ul>
+<li>Scalability:
+<ul>
+<li>Parameter server is an intermediary through which messages have to be relayed to clients leading to increased message passing.</li>
+<li>Increased bandwidth utilization.</li>
+</ul></li>
+<li>Convergence challenges with asynchronous SGD
+<ul>
+<li>When SGD is done asynchronously, there is often the stale gradient problem where a straggler worker reports a gradient several iterations late.</li>
+</ul></li>
+<li>Horovod uses a technique called Ring Allreduce developed by Baidu. This algorithm has been proven to be the bandwidth optimal way of doing gradient aggregation.</li>
+</ul>
+<p><img src="./horovod3.png" class="img-fluid"></p>
+<section id="horovod" class="level3">
+<h3 class="anchored" data-anchor-id="horovod">Horovod</h3>
+<p>Data parallel framework for distributed deep learning.</p>
+<ul>
+<li>Framework agnostic
+<ul>
+<li>Supports TF, MXNet, TF and Keras</li>
+</ul></li>
+<li>High Performance features
+<ul>
+<li>NVIDIA’s NCCL allows direct GPU access which obviates the need to move data between GPU and CPU or sending it across the network</li>
+<li>tensor fusion: Can fetch multiple gradients using a single network call</li>
+</ul></li>
+<li>Easy to use and install.</li>
+</ul>
+</section>
+<section id="api-and-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="api-and-architecture">API and Architecture</h3>
+<section id="gpu-pinning" class="level4">
+<h4 class="anchored" data-anchor-id="gpu-pinning">GPU Pinning</h4>
+<ul>
+<li>Uses a driver application like MPI Run</li>
+<li>Each horovod worker affinitize themselves to a specific GPU</li>
+<li>No of workers = No of GPUs to prevent any contention in terms of resource consumption</li>
+</ul>
+<p><img src="./horovod4.png" class="img-fluid"> #### State Synchronization - All model replicas on all workers should have same parameters at any given point in time. - API call available to synchronize all workers at start of training</p>
+<p><code>callbacks = [hvd.callbacks.BroadcastGlobalVariablesCallback(0)]</code></p>
+</section>
+<section id="learning-rate-scaling" class="level4">
+<h4 class="anchored" data-anchor-id="learning-rate-scaling">Learning Rate Scaling</h4>
+<ul>
+<li>Data parallel means bigger batch size
+<ul>
+<li>Total batch size = local batch size x N</li>
+</ul></li>
+<li>Learning rate should also be scaled up
+<ul>
+<li><span class="math display">\[ LR_N = LR_1 \times N \]</span></li>
+</ul></li>
+<li>APIs available for smooth learning rate warm up and decay
+<ul>
+<li><code>opt = keras.optimizers.Adadelta(lr=0.01 * hvd.size())</code></li>
+<li><code>opt = hvd.DistributedoOptimizer(opt)</code></li>
+</ul></li>
+</ul>
+<p>Distributed training can be accomplished with some minor augmentations to existing Keras script</p>
+<p><img src="./horovod5.png" class="img-fluid"></p>
+</section>
+<section id="horovod-architecture" class="level4">
+<h4 class="anchored" data-anchor-id="horovod-architecture">Horovod Architecture</h4>
+<p><img src="./horovod6.png" class="img-fluid"></p>
+<ul>
+<li>Custom operations are implemented for each supported framework</li>
+<li>When you install Horovod, C++ code linked against native libraries are compiled</li>
+<li>When a framework gets an operation like ‘allreduce’ , it is submitted to a queue internally within Horovod</li>
+<li>Control plane checks the queue and performs a negotiation step to figure out which workers have which tensors ready, given frameworks like TF are asynchronous</li>
+<li>Tensors are then fused together into a single buffer</li>
+<li>An arbitrarily chosen worker broadcasts lists of operations to other workers and submits to Data plane</li>
+<li>A simple<a href="https://www.tutorialspoint.com/c_standard_library/c_function_memcpy.htm">memcopy</a> is done to the fusion buffer.</li>
+<li>It is scaled to prevent underflow and overflow</li>
+<li>All-reduce algorithm is then run.</li>
+<li>Optimizations have been added to the Negotiate,Broadcast and allreduce steps</li>
+</ul>
+</section>
+</section>
+<section id="horovod-on-spark" class="level3">
+<h3 class="anchored" data-anchor-id="horovod-on-spark">Horovod on Spark</h3>
+<pre><code>## Warning: package 'knitr' was built under R version 4.0.5</code></pre>
+<div class="figure">
+<p><img src="./horovod9.png" alt="A Typical Deep Learning pipeline"></p>
+<p class="caption">
+</p><p>Figure 1: A Typical Deep Learning pipeline</p>
+<p></p>
+</div>
+<ul>
+<li>End to End Training in Spark was one of the first integrations</li>
+<li>Horovod available on Spark for doing distributed deep learning : https://horovod.readthedocs.io/en/stable/api.html#module-horovod.spark</li>
+<li>Horovod spark estimators allow you to define define a spark ml pipeline where model fitting using keras is one of several pre-processing/post-processing steps</li>
+</ul>
+<pre><code>from tensorflow import keras
+import tensorflow as tf
+import horovod.spark.keras as hvd
+
+
+model = keras.models.Sequential()
+        .add(keras.layers.Dense(8,input_dim=2))
+        .add(keras.layers.Activation('tanh'))
+        .add(keras.layers.Dense(1))
+        .add(keras.layers.Activation('sigmoid'))
+ 
+optimizer = keras.optimizers.SGD(lr=0.1)
+loss = 'binary_crossentropy'
+
+keras_estimator = hvd.KerasEstimator(model,optimizer,loss)
+
+pipeline = Pipeline(stages=[...,keras_estimator,...])
+trained_pipeline = pipeline.fit(train_df)
+pred_df = trained_pipeline.transform(test_df)</code></pre>
+<div class="figure">
+<p><img src="./horovod10.png" alt="Deep Learning in Spark 3.0 Cluster"></p>
+<p class="caption">
+</p><p>Figure 2: Deep Learning in Spark 3.0 Cluster</p>
+<p></p>
+</div>
+<ul>
+<li>Allows you to transition between using CPUs for feature engineering and GPUs for training.</li>
+<li>Materializes spark data frame into a parquet file on HDFS which is then used for training.</li>
+<li>RDD(Resilient Distributed Dataset) available in Spark is not used as deep learning requires shuffling of data.</li>
+<li>Spark and RDD was designed to solve data problems whereas the problem here is one of compute</li>
+</ul>
+</section>
+<section id="deep-learning-in-spark-with-horovod-and-petastorm" class="level3">
+<h3 class="anchored" data-anchor-id="deep-learning-in-spark-with-horovod-and-petastorm">Deep Learning in Spark with Horovod and Petastorm</h3>
+<p><img src="./horovod11.png" class="img-fluid"></p>
+<ul>
+<li><a href="https://github.com/uber/petastorm">Petastorm</a> reads row groups from HDFS.</li>
+<li>Petastorm worker then unbatches row group into elements , inserts them into a buffer which then gets the shuffled.</li>
+<li>Downstream worker can then sample from this to get batches.</li>
+<li>Petastorm optimizes a lot of the data reading process including caching and buffering</li>
+</ul>
+</section>
+<section id="horovod-on-ray" class="level3">
+<h3 class="anchored" data-anchor-id="horovod-on-ray">Horovod on Ray</h3>
+<p><img src="./horovod12.png" class="img-fluid"></p>
+<ul>
+<li>More similar to doing deep learning on a desktop. Typically everything has to be done in Spark with heterogeneous infrastructure (Spark/Parquet/Horovod)that is challenging for any data scientist.</li>
+<li>Ray brings all this heterogeneous compute into a single infrastructure layer which is abstracted from the user</li>
+<li>Pre-processing can be done in Dask which exposes the same APIs as Pandas</li>
+<li>Training can then be done using Horovod with Ray in a distributed manner.</li>
+<li>Horovod has also been integrated with Ray tune for hyperparameter tuning.</li>
+<li>Horovod on Ray has a stateful API as Ray actors can be stateful. It has a caching layer which can store things in between invocations.</li>
+<li>This allows you to multiple training runs on a remote worker without communicating with the server.</li>
+</ul>
+</section>
+<section id="elastic-horovod" class="level3">
+<h3 class="anchored" data-anchor-id="elastic-horovod">Elastic Horovod</h3>
+<ul>
+<li>In a cloud setting with pre-emptible instances, a worker might come online late or might fail, so you need to switch between workers.
+<ul>
+<li>Fault Tolerance: Continue training if a single worker fails</li>
+<li>Cost reduction: Using <a href="https://cloud.google.com/compute/docs/instances/preemptible">pre-emptible</a> instances is cheaper vs dedicated instances</li>
+<li>Cluster Utilization on prem: Scale workers up and down based on demand.</li>
+</ul></li>
+</ul>
+<p><img src="./horovod13.png" class="img-fluid"></p>
+<ul>
+<li>Driver sits on top of Ray head node</li>
+<li>If you get advance notice that a worker is going to be removed, you can remove it from the Horovod job at a point when all the workers are in sync. If this is not available , you have to roll back the workers to a previous state using an expensive commit operation</li>
+<li>The workers synchronize , train and check for host operations. Since host removal event was sent to the driver, workers are notified that a worker is going to be removed.</li>
+<li>This prompts all workers to stop and wait until the worker in question is removed by cluster orchestrator before training resumes.</li>
+</ul>
+</section>
+<section id="future-of-horovod" class="level3">
+<h3 class="anchored" data-anchor-id="future-of-horovod">Future of Horovod</h3>
+<section id="hybrid-parallelism" class="level4">
+<h4 class="anchored" data-anchor-id="hybrid-parallelism">Hybrid Parallelism</h4>
+<ul>
+<li>Large models use embeddings tables that are really big . Each embedding table is hosted on a different GPU</li>
+<li>An <strong>All to All</strong> operation is then used to combine these different embeddings in a data parallel fashion. Each worker operates on a subset of the data in the second stage.</li>
+<li>Integrating Deep Learning accelerators like SambaNova, Cerebras, Graphcore</li>
+</ul>
+</section>
+<section id="distributed-hyper-parameter-search" class="level4">
+<h4 class="anchored" data-anchor-id="distributed-hyper-parameter-search">Distributed Hyper parameter search</h4>
+<p><img src="./horovod14.png" class="img-fluid"></p>
+<ul>
+<li>Let every number be a GPU and every color be a trial</li>
+<li>After every 10 epochs, remove a low performing trial and allocate the GPU to a higher performing trial.</li>
+<li>Do this successively and finally deploy all resources on highest performing trials</li>
+</ul>
+</section>
+<section id="unified-end-to-end-infrastructure" class="level4">
+<h4 class="anchored" data-anchor-id="unified-end-to-end-infrastructure">Unified End to End Infrastructure</h4>
+<p><img src="./horovod15.png" class="img-fluid"></p>
+<ul>
+<li>Currently the feature engineering and training steps are distinct with data being dumped to a disk in between</li>
+<li>These steps are slowly converging.</li>
+<li>In the future, training and pre-processing nodes will be co-located. Data will be accessible in both steps through a shared memory rather than dumping to disk.</li>
+<li>This will speed up the end to end workflow.</li>
+</ul>
+</section>
+</section>
+<section id="advice-when-using-horovod" class="level3">
+<h3 class="anchored" data-anchor-id="advice-when-using-horovod">Advice when using Horovod</h3>
+<ul>
+<li>Horovod caveat: Manage learning rates carefully in a distributed setting.</li>
+<li>Partitioning and shuffling is also very important. If shuffling is not done properly, there can be correlation between data for a worker.</li>
+<li>Horovod can be slower than using a single GPU, it might be because of the I/O rather than issues with your model forward/backward pass.</li>
+<li>Use Horovod only when single GPU has full utilization.</li>
+</ul>
+</section>
+</section>
+<section id="reinforcement-learning-for-hardware-design-anna-goldie" class="level1">
+<h1>2) Reinforcement Learning for Hardware Design | Anna Goldie</h1>
+<p>Talk Link: https://www.youtube.com/watch?v=Y4fcSwsNqoE</p>
+<section id="chip-floor-planning-problem" class="level2">
+<h2 class="anchored" data-anchor-id="chip-floor-planning-problem">Chip Floor Planning Problem</h2>
+<ul>
+<li>Task of designing the physical layout of a computer chip</li>
+<li>Solution is a form of graph resource optimization</li>
+<li>Place the chip components such as macros(memory components) and standard cells(logic gates such as NAND and NOR) on a canvas to minimize the latency of computation, power consumption etc. while adhering to constraints such as congestion, cell utilization, heat profile etc.</li>
+<li>No of states: <span class="math display">\[ 10^{9000} \]</span></li>
+<li>Prior approaches include partitioning based methods(e.g.&nbsp;MinCut), stochastic methods (e.g.&nbsp;simulated annealing) and analytic solvers (e.g.&nbsp;RePlAce)</li>
+</ul>
+</section>
+<section id="chip-floor-planning-with-rl" class="level2">
+<h2 class="anchored" data-anchor-id="chip-floor-planning-with-rl">Chip Floor Planning with RL</h2>
+<ul>
+<li>Train an agent to place the components on the canvas. Reward signal is used to update the parameters of the RL Policy</li>
+<li>Algorithm used: PPO</li>
+</ul>
+<p><img src="./chipRL1.png" class="img-fluid"></p>
+<ul>
+<li><strong>State</strong>: Graph embedding of a chip <a href="https://en.wikipedia.org/wiki/Netlist">netlist</a> or the graph, embedding of the node being placed next, and the canvas on which the graph is placed.</li>
+<li><strong>Action</strong>: Where to place the node on the canvas</li>
+<li><strong>Reward</strong>: After placing every node, take the Negative Weighted average of total wire length, density and congestion</li>
+</ul>
+<section id="objective-function" class="level3">
+<h3 class="anchored" data-anchor-id="objective-function">Objective Function</h3>
+<p><span class="math display">\[ J(\theta,G) = \frac{1}{K} \sum\limits_{g \sim G} E_{g,p \sim \pi_{\theta}} [R_{p,g}]  \]</span></p>
+<p>where:</p>
+<p><span class="math inline">\(G\)</span> : Set of training graphs <br> <span class="math inline">\(K\)</span> : Size of training set <br> <span class="math inline">\(\pi*{*\theta}\)</span> : RL policy parameterized by <span class="math inline">\(\theta\)</span> <span class="math inline">\(R{p,g}\)</span>: Reward corresponding to placement of node p on graph g</p>
+<p><span class="math display">\[ R_{p,g} = -Wirelength(p,g) - \lambda Congestion(p,g) - \gamma Denisty(p,g) \]</span></p>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<ul>
+<li><p>Smoother , rounder palcements</p></li>
+<li><p>Reduces total wirelength by 2.9% and takes only 24 hrs vs 6-8 weeks for humans</p></li>
+<li><p>Using a pre-trained policy, no of iterations required to place a chip on a canvas was reduced from 10,000’s to 100’s</p></li>
+<li><p>Supervised learning was used to learn generalizable representations of the problem</p></li>
+<li><p>Value network was doing poorly in predicting the quality of placements when trained on placements generated by a single policy. Problem was decomposed by training models capable of accurately predicting reward from off-policy data.</p>
+<ul>
+<li>This model was trained by extracting samples from various stages of the RL training process. In the earlier stages, placements are poor and later stages, placements are really good. Wirelengths and costs were also estimated.</li>
+</ul></li>
+<li><p>This model was then used as an encoder for the RL Agent</p></li>
+</ul>
+</section>
+</section>
+<section id="reward-model-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="reward-model-architecture">Reward Model Architecture</h2>
+<p>Edge property focused Graph CNNs were used.</p>
+<ul>
+<li>Node features include x and y co-ordinates, width and heights, type of macros etc.</li>
+<li>Two fully connected layers used, one the predicts wire length and another that predicts congestion.</li>
+<li>Key metrics like wire_length are edge properties,so edge focused CNN makes more sense</li>
+</ul>
+<section id="edge-based-convolutions" class="level3">
+<h3 class="anchored" data-anchor-id="edge-based-convolutions">Edge Based Convolutions</h3>
+<ol type="1">
+<li>Get node embeddings by passing node properties through a fully connected layer</li>
+</ol>
+<p><img src="./chipRL3.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li>Get edge features by concatenating the embeddings of the nodes of the edge.</li>
+</ol>
+<p><img src="./chipRL4.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>Get edge embeddings by passing the edge feature through a fully connected layer</li>
+</ol>
+<p><img src="./chipRL4_5.png" class="img-fluid"></p>
+<ol start="4" type="1">
+<li>Propagate: Get new representation of the node by taking the mean of the edge embeddings the node participates in</li>
+</ol>
+<p><img src="./chipRL5.png" class="img-fluid"></p>
+<ol start="5" type="1">
+<li><p>Rinse and repeat Steps 2 - 4.7 iterations give good results. Each node is influenced by its 7-hop neighborhood</p></li>
+<li><p>Take a mean over all edges in the graph to get a representation of the entire graph.</p></li>
+</ol>
+</section>
+</section>
+<section id="policyvalue-model-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="policyvalue-model-architecture">Policy/Value Model Architecture</h2>
+<p><img src="./chipRL6.png" class="img-fluid"> - Embeddings are passed into the policy network that predicts the probability distribution for placement of nodes on the canvas - Valuenet predicts quality of placements so far. - A “Mask” is used to prevent invalid placements</p>
+</section>
+<section id="other-points" class="level2">
+<h2 class="anchored" data-anchor-id="other-points">Other Points</h2>
+<ul>
+<li>No incremental rewards were used, only a final reward at the end.</li>
+<li>Reduced chip placement times from weeks to 24 hours, allowing faster experimentation. SIll takes 72 hours to fabricate and test the chip and retrieve relevant metrics.</li>
+</ul>
+<p>Paper: https://arxiv.org/pdf/2004.10746.pdf</p>
+</section>
+</section>
+<section id="on-hetrogeneity-in-federated-settings-virginia-smith" class="level1">
+<h1>3) On Hetrogeneity in Federated Settings | Virginia Smith</h1>
+<section id="workflow-and-setup" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-and-setup">Workflow and SetUp</h2>
+<p>Goal is to train an ML model across multiple remote devices.</p>
+<p><img src="./federated1.png" class="img-fluid"></p>
+<ul>
+<li>Objective is to minimize sum of losses across k devices</li>
+<li>At every training iteration, the central server sends current version of the model to a subset of the devices, the devices perform local training and return model updates to central server.</li>
+<li>Challenges
+<ul>
+<li>Expensive communications
+<ul>
+<li>massive, slow networks across thousands of devices e.g.&nbsp;cell phones</li>
+</ul></li>
+<li>Privacy concerns - user privacy constraints</li>
+<li>statistical heterogeneity - unbalanced, non -IID data</li>
+<li>systems heterogeneity - variable hardware, connectivity etc</li>
+</ul></li>
+</ul>
+</section>
+<section id="heterogeneity-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="heterogeneity-considerations">Heterogeneity Considerations</h2>
+<ul>
+<li>Impact of heterogeneity on federated optimization methods</li>
+<li>Model might perform well on subset of devices and poorly on other devices. How to equalize performance across diverse networks ?</li>
+<li>Personalizing models for specific devices</li>
+</ul>
+</section>
+<section id="federated-averaging" class="level2">
+<h2 class="anchored" data-anchor-id="federated-averaging">Federated Averaging</h2>
+<p><img src="./federated2.png" class="img-fluid"></p>
+<p>Train models on a device, share trained model with central server which averages the models ,sends it back to devices for additional local training.</p>
+<ul>
+<li>Federated averaging can diverge in heterogeneous settings.</li>
+<li>As the amount of local work increases, performance can deteriorate</li>
+</ul>
+<p><img src="./federated3.png" class="img-fluid"></p>
+<ul>
+<li>X axis: No of communication rounds</li>
+<li>In the presence of statistical heterogeneity, As the amount of local work increases, performance can deteriorate</li>
+<li>Behavior can be even worse in the presence of systems heterogeneity e.g.&nbsp;some devices are stragglers and cannot complete training in time. Such stragglers may have to be dropped from the training update which exacerbates convergence issues</li>
+</ul>
+</section>
+<section id="fedprox" class="level2">
+<h2 class="anchored" data-anchor-id="fedprox">FedProx</h2>
+<ul>
+<li>Algorithm for heterogeneous optimization.</li>
+<li>Modifies the local sub problem for device k.</li>
+</ul>
+<p><span class="math display">\[ \min\limits_{w_k} F_k(w_k) + \frac{\mu}{2} \Vert w_k - w^t \Vert^2 \]</span> The first term is a loss function on the local weights on device k.</p>
+<p>The second term is the <strong>proximal term</strong>. It limits the impact of local heterogeneous updates by ensuring that local update is not too different from global weights.</p>
+<p>This approach also incorporates partial work completed by stragglers.</p>
+<p>This approach converges despite <em>non-IID data, local updating and partial participation</em></p>
+<p><strong>Key result</strong>: Fed prox with the proximal term leads to a 22% test accuracy improvement on average.</p>
+</section>
+<section id="fairness" class="level2">
+<h2 class="anchored" data-anchor-id="fairness">Fairness</h2>
+<ul>
+<li>Most approaches use some form of empirical risk minimization approach that attempts to reduce the weighted loss across all devices, this does not ensure uniformly good performance across devices.</li>
+<li>Solution inspired by fair resource allocation problems e.g.&nbsp;fairly allocating bandwidth: <span class="math inline">\(\alpha\)</span> fairness</li>
+</ul>
+<p>A modified objective (qFFL) is given below</p>
+<p><span class="math display">\[qFFL = \min\limits_{w} \frac{1}{q+1} \big( p_1 F_1^{q+1} + p_2 F_2^{q+1} + ... + p_N F_N^{q+1} \big)  \]</span> If <span class="math inline">\(q \rightarrow 0\)</span>, you get the traditional risk minimization objective.</p>
+<p>If <span class="math inline">\(q \rightarrow \infty\)</span>, you get minimax fairness.</p>
+<p>Increasing <span class="math inline">\(q\)</span> reduces variance of accuracy distribution and increases fairness. This approach can cut variance in half while maintaining the overall average accuracy.</p>
+</section>
+<section id="personalization" class="level2">
+<h2 class="anchored" data-anchor-id="personalization">Personalization</h2>
+<ul>
+<li><p>In the absence of data for a specific, might want to learn from peers.</p></li>
+<li><p>Learning one model across the network means we have non-personalized models.</p></li>
+<li><p>Can you deliver personalized models that learn from peers ?</p></li>
+<li><p>Use the multi task learning framework.</p>
+<ul>
+<li>Learn separate model for each device.</li>
+<li>Learn relationship that exists between the devices</li>
+</ul></li>
+</ul>
+<p><img src="./federated4.png" class="img-fluid"></p>
+<ul>
+<li><p><span class="math inline">\(w_t\)</span> represents models on device <span class="math inline">\(t\)</span></p></li>
+<li><p><span class="math inline">\(W\)</span> represents a relationship matrix between devices and <span class="math inline">\(\Omega\)</span> represents a task relationship matrix</p></li>
+<li><p><span class="math inline">\(W\)</span> and <span class="math inline">\(\Omega\)</span> can be learn various possible relationships between devices and tasks ranging from a scenario where all tasks are related across devices to a scenario where 1 device asymmetrically impacts all other devices</p></li>
+<li><p>Not scalable to very deep neural nets</p>
+<ul>
+<li>Device metadata can be included in the regularization factor</li>
+</ul></li>
+</ul>
+<p>Benchmark dataset for federated learning: <a href="https://leaf.cmu.edu/">LEAF</a></p>
+</section>
+</section>
+<section id="bridging-models-and-data-with-feature-stores-willem-pienaar" class="level1">
+<h1>4) Bridging Models and Data with Feature Stores | Willem Pienaar</h1>
+<section id="current-state" class="level2">
+<h2 class="anchored" data-anchor-id="current-state">Current State</h2>
+<ul>
+<li>Pipelines can be used to process data inside a model as in sklearn or TF</li>
+<li>Typically there are ETL or ELT pipelines that populate a table</li>
+<li>Models have to see data twice - during training and inference
+<ul>
+<li>These needs to be consistent</li>
+</ul></li>
+<li>Typically pipelines are developed by data scientists for model training and then re-developed and maintained by data engineers for model serving</li>
+</ul>
+</section>
+<section id="ml-data-challenges" class="level2">
+<h2 class="anchored" data-anchor-id="ml-data-challenges">ML Data Challenges</h2>
+<ol type="1">
+<li>Building feature pipelines
+<ul>
+<li>Feature engineering is time consuming</li>
+<li>Requires different technologies for different production requirements (distributed compute , stream processing , low latency transformation)</li>
+<li>Reliable computation and backfilling of features requires a large investment</li>
+</ul></li>
+<li>Consistent data access
+<ul>
+<li>Redevelopment of pipelines leads to inconsistencies in data</li>
+<li>Training-serving skew degrades model performance</li>
+<li>Models needs point-in-time correct view of data to avoid label leakage (especially for time series)</li>
+</ul></li>
+<li>Duplication of effort - Siloed development - No means of collaboration or sharing feature pipelines - Lack of governance and standardization
+<ol start="4" type="1">
+<li>Ensuring data quality
+<ul>
+<li>Is the model receiving right data and still operating correctly ?</li>
+<li>Are features fresh ?</li>
+<li>Has there been drift in data over time ?</li>
+</ul></li>
+</ol></li>
+</ol>
+</section>
+<section id="solution-with-feature-stores" class="level2">
+<h2 class="anchored" data-anchor-id="solution-with-feature-stores">Solution with Feature Stores</h2>
+<ol type="1">
+<li>Easy pipeline creation
+<ul>
+<li>Write feature definitions in SQL</li>
+<li>Register in feature store specifying online or offline computation</li>
+<li>Feature is computed and populated at required schedule</li>
+</ul></li>
+<li>Consistent data acess
+<ul>
+<li>Common serving API to access data for both training and serving</li>
+<li><img src="./FS1.png" class="img-fluid"></li>
+</ul></li>
+<li>Cataloging and Discovery
+<ul>
+<li>Can browse through library of features , how many teams use it , documentation etc.</li>
+</ul></li>
+<li>Data quality monitoring
+<ul>
+<li>Can produce statistics of data over time</li>
+<li>Integrates with packages like <a href="https://greatexpectations.io/">great expectations</a></li>
+<li>Supports Feature as code, including version control and CI/CD integration.</li>
+</ul></li>
+</ol>
+</section>
+<section id="deployment-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-patterns">Deployment Patterns</h2>
+<ol type="1">
+<li>Offline feature serving
+<ul>
+<li><img src="./FS2.PNG" class="img-fluid"></li>
+<li>Suitable for use cases like Pricing, Risk, Churn prediction where jobs are run periodically or in an ad-hoc fashion</li>
+</ul></li>
+<li>Online feature serving
+<ul>
+<li><img src="./FS3.PNG" class="img-fluid"></li>
+<li>Suitable for low latency use cases like recommendations and personalization</li>
+</ul></li>
+<li>Online feature computation
+<ul>
+<li><img src="./FS4.PNG" class="img-fluid"></li>
+<li>Real time / on demand feature transformations are supported</li>
+<li>Model is triggered when a transaction event occurs</li>
+<li>The metadata within the transaction is often required to derive features synchronously rather than fetch something that has been pre-computed.</li>
+<li>Models serving layer will send trxn metadata to the feature store . Feature store will use pre-computed streaming data , batch data , trxn metadata; call vendor apis; combine these, produce new features and return to mode serving layer.</li>
+<li>Call vendor API from feature store, so all this data can be logged.</li>
+</ul></li>
+</ol>
+</section>
+<section id="feature-stores-in-a-modern-data-stack" class="level2">
+<h2 class="anchored" data-anchor-id="feature-stores-in-a-modern-data-stack">Feature Stores in A Modern Data Stack</h2>
+<ol type="1">
+<li>Greater abstraction meaning we don’t need a separate modules for an online store, offline store and data processing
+<ul>
+<li><img src="./FS5.PNG" class="img-fluid"></li>
+<li>dbt allows you to write ELT type queries</li>
+</ul></li>
+<li>ML engineers create basic model and Data scientists can optimize the model further. This is opposed to the traditional approach of DS developing models locally and ML engineers rewriting and deploying them.</li>
+</ol>
+</section>
+<section id="other-points-1" class="level2">
+<h2 class="anchored" data-anchor-id="other-points-1">Other Points</h2>
+<ul>
+<li>Feature stores work better with structured rather than unstructured data</li>
+<li>The performance of the code you use to write transformations will affect whether you can use a feature in both batch and real time use cases. Writing a transformation in pandas means it could be slower than writing it as a JVM process.</li>
+</ul>
+</section>
+</section>
+<section id="data-selection-for-data-centric-ai-cody-coleman" class="level1">
+<h1>5) Data Selection for Data Centric AI | Cody Coleman</h1>
+<section id="active-learning" class="level2">
+<h2 class="anchored" data-anchor-id="active-learning">Active Learning</h2>
+<ul>
+<li>Train model on available subset of data.</li>
+<li>Apply this trained model to all available unlabeled data.</li>
+<li>Select highest value data points(highest uncertainty ?) , label them add to training data set.</li>
+<li>Repeat until budget is exhausted.</li>
+<li>Smaller deep learning models that can trained much faster are good approximations of larger models.</li>
+<li>Early epochs make biggest difference in model performance</li>
+</ul>
+<p><img src="./data1.png" class="img-fluid"></p>
+<ul>
+<li>Train a smaller proxy model to help with data selection and use final model only to train the full dataset for the final downstream task</li>
+</ul>
+<p><img src="./data2.png" class="img-fluid"></p>
+</section>
+<section id="core-set-selection" class="level2">
+<h2 class="anchored" data-anchor-id="core-set-selection">Core Set Selection</h2>
+<ul>
+<li>When large amounts of labelled data are available, select a small subset of data that accurately approximates the full dataset.</li>
+<li>Train a proxy model that can be used to identify most useful subset and train full model on this data.</li>
+</ul>
+</section>
+<section id="active-search" class="level2">
+<h2 class="anchored" data-anchor-id="active-search">Active Search</h2>
+<ul>
+<li>https://arxiv.org/abs/2007.00077 #Paper</li>
+<li>Variation on Active Learning: Goal is to select as many positive examples as possible from billions of unlabeled examples.</li>
+<li>Pre trained deep learning models tightly cluster unseen concepts forming well connected components</li>
+<li>Look at local neighborhood of positive examples rather than the entire unlabelled dataset.</li>
+</ul>
+<p><img src="./data3.png" class="img-fluid"></p>
+<section id="similarity-search-for-efficient-active-learning-and-search-seals" class="level3">
+<h3 class="anchored" data-anchor-id="similarity-search-for-efficient-active-learning-and-search-seals">Similarity Search for Efficient Active Learning and Search (SEALS)</h3>
+<ul>
+<li>Only take examples that lie in the neighborhood of known positive examples</li>
+</ul>
+<p><img src="./data4.png" class="img-fluid"></p>
+<ul>
+<li>In each iteration, take the newly labeled examples and find their neighbors.</li>
+</ul>
+</section>
+<section id="selection-criteria-for-samples" class="level3">
+<h3 class="anchored" data-anchor-id="selection-criteria-for-samples">Selection Criteria for Samples</h3>
+<ul>
+<li>Most Likely Positive</li>
+<li>Max Entropy : Select points with highest entropy based on predicted class probabilities</li>
+<li>Information density: Select points in regions of high density and high uncertainty</li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

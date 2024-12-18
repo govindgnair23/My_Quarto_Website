@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Govind G Nair">
+<meta name="dcterms.date" content="2019-08-11">
+<meta name="description" content="An Introduction to Gaussian Processes for Beginners">
+
+<title>Introduction to Gaussian Processes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-22381ab97ffb8a420d3841344730e94d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction to Gaussian Processes</h1>
+                  <div>
+        <div class="description">
+          An Introduction to Gaussian Processes for Beginners
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Article</div>
+                <div class="quarto-category">Machine Learning</div>
+                <div class="quarto-category">R</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Govind G Nair </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 11, 2019</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#gaussian-distributions" id="toc-gaussian-distributions" class="nav-link active" data-scroll-target="#gaussian-distributions">Gaussian Distributions</a></li>
+  <li><a href="#marginal-distributions-and-conditional-distributions" id="toc-marginal-distributions-and-conditional-distributions" class="nav-link" data-scroll-target="#marginal-distributions-and-conditional-distributions">Marginal Distributions and Conditional Distributions</a></li>
+  <li><a href="#gaussian-process-regression." id="toc-gaussian-process-regression." class="nav-link" data-scroll-target="#gaussian-process-regression.">Gaussian Process Regression.</a></li>
+  <li><a href="#gaussian-processes" id="toc-gaussian-processes" class="nav-link" data-scroll-target="#gaussian-processes">Gaussian Processes</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references-and-additional-resources" id="toc-references-and-additional-resources" class="nav-link" data-scroll-target="#references-and-additional-resources">References and Additional Resources</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="gaussian-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="gaussian-distributions">Gaussian Distributions</h2>
+<p>Fundamental to understanding a Gaussian process is a Gaussian distribution.The 1 dimensional version of the Gaussian distribution is the Normal distribution or the Bell Curve.</p>
+<p>The plot of a standard normal distribution with mean 0 and variance 1 is shown below. Note that the curve doesn’t look like a perfect bell as the data has been simulated</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">rnorm</span>(<span class="dv">100000</span>)),<span class="at">main =</span> <span class="fu">bquote</span>(<span class="st">"N("</span><span class="sc">~</span>mu<span class="sc">~</span><span class="st">"=0,"</span><span class="sc">~</span>sigma<span class="sc">^</span><span class="dv">2</span><span class="sc">~</span><span class="st">"=1)"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-1-1.png" width="672"></p>
+<p>A bi-variate Gaussian distribution is simply a Gaussian distribution in 2 dimensions. Whereas a uni-variate Gaussian distribution is parameterized by two scalar quantities (i.e.&nbsp;the mean and variance),the bi-variate Gaussian distribution and its higher dimensional counterparts are parameterized by a vector( the mean) and a matrix (the covariance matrix)</p>
+<p><span class="math display">\[ \begin{bmatrix} x_1 \\\\ x_2 \end{bmatrix} = N\Big( \begin{bmatrix} \mu_1 \\\\ \mu_2 \end{bmatrix},\begin{bmatrix} \Sigma_{11} &amp; \Sigma_{12} \\\\ \Sigma_{21} &amp; \Sigma_{22} \end{bmatrix} \Big) \]</span></p>
+<p>A bi-variate Gaussian can be represented using a simple scatter plot as shown below.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>),<span class="at">y =</span><span class="fu">rnorm</span>(<span class="dv">10000</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df,<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_density_2d</span>()<span class="sc">+</span><span class="fu">labs</span>(<span class="at">x=</span><span class="st">'x1'</span>,<span class="at">y=</span><span class="st">'x2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-2-1.png" width="672"></p>
+<p>Note that the bi-variate Gaussian above is constructed using two independent 1D Gaussians, meaning the two variables being plotted here are independent i.e.&nbsp;information about one doesn’t tell us anything about the other. This is further evidenced by the circular, symmetrical distribution of the points.</p>
+<p>Such a standard normal bi-variate Gaussian has mean <span class="math inline">\(\mu = \begin{bmatrix} 0 \\\\ 0 \end{bmatrix}\)</span> and a covariance matrix <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 \\\\ 0 &amp; 1 \end{bmatrix}\)</span></p>
+<p>Note the off-diagonal elements of the covariance matrix are 0.</p>
+<p>The plot below shows a bi-variate Gaussian with <span class="math inline">\(\mu = \begin{bmatrix} 0 \\\\ 0 \end{bmatrix}\)</span> and a covariance matrix <span class="math inline">\(\begin{bmatrix} 1 &amp; 0.7 \\\\ 0.7 &amp; 1 \end{bmatrix}\)</span>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mvtnorm)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>gaussian_2d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">rmvnorm</span>(<span class="dv">10000</span>,<span class="at">mean=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="at">sigma =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">0.7</span>,<span class="fl">0.7</span>,<span class="dv">1</span>),<span class="at">ncol=</span><span class="dv">2</span>)))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gaussian_2d,<span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_density_2d</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-3-1.png" width="672"></p>
+<p>Here the two random variables are positively correlated and are not independent,because if one is positive, we know that the second is also far more likely to be positive rather than negative</p>
+<p>Similarly,the plot below shows a bi-variate Gaussian with <span class="math inline">\(\mu = \begin{bmatrix} 0 \\\\ 0 \end{bmatrix}\)</span> and a covariance matrix <span class="math inline">\(\begin{bmatrix} 1 &amp; -0.7 \\\\ -0.7 &amp; 1 \end{bmatrix}\)</span></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gaussian_2d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">rmvnorm</span>(<span class="dv">10000</span>,<span class="at">mean=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="at">sigma =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="fl">0.7</span>,<span class="sc">-</span><span class="fl">0.7</span>,<span class="dv">1</span>),<span class="at">ncol=</span><span class="dv">2</span>)))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gaussian_2d,<span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_density_2d</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-4-1.png" width="672"></p>
+<p>Here the two variables are negatively correlated.</p>
+<p>Now consider a different visualization of the same data in the figure above.Only 10 of the 10,000 points plotted above is visualized here.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Select top 10 rows for visualization</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>viz_data <span class="ot">&lt;-</span> <span class="fu">head</span>(gaussian_2d,<span class="dv">10</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>viz_data<span class="sc">$</span>set <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert to long format</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>viz_data_long <span class="ot">&lt;-</span> <span class="fu">gather</span>(viz_data,<span class="at">key=</span><span class="st">'datapoint'</span>,<span class="at">value=</span><span class="st">'y'</span>,<span class="sc">-</span>set) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(set) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">select</span>(<span class="sc">-</span>datapoint) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">length</span>(<span class="fu">unique</span>(viz_data<span class="sc">$</span>set)))) <span class="sc">%&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">select</span>(set,x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(viz_data_long,<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">group=</span>set)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'cornflowerblue'</span>)<span class="sc">+</span> <span class="fu">transition_time</span>(set)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## Warning: No renderer available. Please install the gifski, av, or magick package
+## to create animated output</code></pre>
+<pre><code>## NULL</code></pre>
+<p>The 2D Gaussian distribution can be used to model a line between two given points. A Gaussian distribution with N dimensions can be used to model a line through N different points as shown below.</p>
+<p>A 10 D Gaussian with a covariance matrix shown below can be constructed.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>N  <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># dimension of required cov matrix</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cov_mat <span class="ot">&lt;-</span> <span class="fu">diag</span>(N)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="fl">0.1</span>,<span class="at">by =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>N)[<span class="dv">2</span><span class="sc">:</span>N]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(N<span class="dv">-1</span>)){</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  cov_mat[i,(i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>N] <span class="ot">&lt;-</span> cov_mat[(i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>N,i] <span class="ot">&lt;-</span> vec[<span class="dv">1</span><span class="sc">:</span>(N<span class="sc">-</span>i)]</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(cov_mat) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(cov_mat)<span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">'X'</span>,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cov_mat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##      X1  X2  X3  X4  X5  X6  X7  X8  X9 X10
+## X1  1.0 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1
+## X2  0.9 1.0 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2
+## X3  0.8 0.9 1.0 0.9 0.8 0.7 0.6 0.5 0.4 0.3
+## X4  0.7 0.8 0.9 1.0 0.9 0.8 0.7 0.6 0.5 0.4
+## X5  0.6 0.7 0.8 0.9 1.0 0.9 0.8 0.7 0.6 0.5
+## X6  0.5 0.6 0.7 0.8 0.9 1.0 0.9 0.8 0.7 0.6
+## X7  0.4 0.5 0.6 0.7 0.8 0.9 1.0 0.9 0.8 0.7
+## X8  0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 0.9 0.8
+## X9  0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 0.9
+## X10 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+<p>The plot below shows a gaussian distribution in 10 dimensions, which can potentially be used to model a line passing through 10 points.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(viz_data_long,<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">group=</span>set)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'cornflowerblue'</span>)<span class="sc">+</span> <span class="fu">transition_time</span>(set)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## Warning: No renderer available. Please install the gifski, av, or magick package
+## to create animated output</code></pre>
+<pre><code>## NULL</code></pre>
+<p>This should give you the intuition that using an N - dimensional Gaussian can be used to model a line through N number of points and an infinite dimensional Gaussian can model a continuous curve. This leads to the idea for Gaussian process regression.</p>
+<p>Also compare the covariance between any two points in the covariance matrix above and how it manifests in the graph. X1 and X2 have a high covariance, hence the points at 1 and 2 on the x-axis are close to each other along the y-axis. X1 and X10 on the other hand have a low covariance,hence the points 1 and 10 on the x-axis can vary widely.</p>
+<p>Conversely if two points lie close to each other on the y-axis, they are likely to have a high covariance whereas if 2 points lie far apart from each other on the y-axis, they are likely to have a low covariance.</p>
+</section>
+<section id="marginal-distributions-and-conditional-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="marginal-distributions-and-conditional-distributions">Marginal Distributions and Conditional Distributions</h2>
+<p>Given a jointly Gaussian distribution</p>
+<p><span class="math display">\[ \begin{bmatrix} x_1 \\\\ x_2 \end{bmatrix} = N\Big( \begin{bmatrix} \mu_1 \\\\ \mu_2 \end{bmatrix},\begin{bmatrix} \Sigma_{11} &amp; \Sigma_{12}\\\\ \Sigma_{21} &amp; \Sigma_{22} \end{bmatrix} \Big) \]</span></p>
+<p>according to the <strong>Multivariate Gaussian Theorem</strong>, the marginal distributions of the two component variables are given by.</p>
+<p><span class="math display">\[ p(x_1) = N (x_1 | \mu_1.\Sigma_{12}) \]</span></p>
+<p><span class="math display">\[ p(x_2) = N (x_2 | \mu_2.\Sigma_{22}) \]</span></p>
+<p>The conditional posterior distribution is given by:</p>
+<p><span class="math display">\[ p(x_2|x_1) = N (x_2 | \mu_{2|1},\Sigma_{2|1}) \]</span> where:</p>
+<p><span class="math display">\[ \mu_{2|1} = \mu_2 + \Sigma_{21}\Sigma_{11}^{-1} (x_1 - \mu_1) \]</span></p>
+<p>and</p>
+<p><span class="math display">\[ \Sigma_{2|1} = \Sigma_{22} - \Sigma_{21}\Sigma_{11}^{-1}\Sigma_{12} \]</span></p>
+<p>These expression are critical to do inference with Gaussian Process Regression.</p>
+</section>
+<section id="gaussian-process-regression." class="level2">
+<h2 class="anchored" data-anchor-id="gaussian-process-regression.">Gaussian Process Regression.</h2>
+<p>Consider three points shown below which you want to model using a Gaussian distribution.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">1.5</span>,<span class="dv">3</span>) , <span class="at">f =</span> <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.25</span>,<span class="fl">0.8</span>)),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>),<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">1.5</span>,<span class="dv">3</span>),<span class="at">y =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.3</span>,<span class="fl">0.85</span>),<span class="at">labels=</span><span class="fu">c</span>(<span class="st">'(x1,f1)'</span>,<span class="st">'(x2,f2)'</span>,<span class="st">'(x3,f3)'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-10-1.png" width="672"></p>
+<p>The three points above can be modeled using a Gaussian distribution of the form below. Note that a zero vector can be used for the mean after standardizing the data.</p>
+<p><span class="math display">\[ \begin{bmatrix}
+    f_1 \\\\
+    f_2 \\\\
+    f_3 \end{bmatrix} = N\Bigg( \begin{bmatrix} 0 \\\\ 0 \\\\ 0 \end{bmatrix},\begin{bmatrix} K_{11} &amp; K_{12} &amp; K_{13} \\\\ K_{21} &amp; K_{22} &amp; K_{23} \\\\ K_{31} &amp; K_{32} &amp; K_{33} \end{bmatrix} \Bigg) = N(\textbf{0},\textbf{K}) \]</span></p>
+<p>To model these data points using a Gaussian distribution , we need to construct a covariance matrix such that the terms <span class="math inline">\(K_{ij}\)</span> captures the similarity or covariance between points i and j.</p>
+<p>The similarity between two points can be captured using kernel functions.Consider a squared exponential kernel(also referred to as a radial basis function kernel) that captures the similarity between two points <span class="math inline">\(X_i\)</span> and <span class="math inline">\(X_j\)</span></p>
+<p><span class="math display">\[ K_{ij} =  e^{ -\sigma || X_i - X_j ||^2} \]</span></p>
+<p><span class="math display">\[ K_{ij} = \begin{cases}
+                     0, \text{if}\ ||X_i -X_j|| \to \infty \\
+                     1, \text{if}\ X_i = X_j
+          \end{cases} \]</span></p>
+<p>The covariance matrix for the three points can be calculated as shown below</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kernlab)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>rbfkernel <span class="ot">&lt;-</span> <span class="fu">rbfdot</span>(<span class="at">sigma =</span> <span class="fl">0.1</span>) <span class="co"># Set value of hyperparameter</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>point1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>point2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.5</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>point3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>K12 <span class="ot">&lt;-</span> K21 <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point1,point2)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>K23 <span class="ot">&lt;-</span> K32 <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point2,point3)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>K13 <span class="ot">&lt;-</span> K31 <span class="ot">&lt;-</span><span class="fu">rbfkernel</span>(point1,point3)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>K11 <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point1,point1)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>K22 <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point2,point2)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>K33 <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point3,point3)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(K11,K12,K13,K21,K22,K23,K31,K32,K33),<span class="at">byrow=</span><span class="cn">TRUE</span>,<span class="at">nr=</span><span class="dv">3</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(K)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##           [,1]      [,2]      [,3]
+## [1,] 1.0000000 0.9753099 0.6703200
+## [2,] 0.9753099 1.0000000 0.7985162
+## [3,] 0.6703200 0.7985162 1.0000000</code></pre>
+<p>Now that we have learned a model to fit the three points, we want to predict the value of a fourth point <span class="math inline">\(x^*\)</span>, the predicted value for this point <span class="math inline">\(f^*\)</span> can lie anywhere along the red vertical lines.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">1.5</span>,<span class="dv">3</span>) , <span class="at">f =</span> <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.25</span>,<span class="fl">0.8</span>)),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>),<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span> <span class="fl">2.5</span>,<span class="at">col=</span><span class="st">'red'</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">1.5</span>,<span class="dv">3</span>,<span class="fl">2.15</span>),<span class="at">y =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.3</span>,<span class="fl">0.85</span>,<span class="fl">0.5</span>),<span class="at">labels=</span><span class="fu">c</span>(<span class="st">'(x1,f1)'</span>,<span class="st">'(x2,f2)'</span>,<span class="st">'(x3,f3)'</span>,<span class="st">'(x*=2.5,f*)'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-12-1.png" width="672"></p>
+<p>In order to capture the relationship between the four points, the four points can be modeled as a 4D Gaussian defined as follows:</p>
+<p><span class="math display">\[ \begin{bmatrix} \textbf{f} \\\\ f^* \end{bmatrix} = N\Bigg( \begin{bmatrix} \textbf{0} \\\\ 0 \end{bmatrix},\begin{bmatrix} \textbf{K} &amp; \textbf{K}_* \\\\ \textbf{K}_*^T &amp; K_{**} \end{bmatrix} \Bigg) \]</span></p>
+<p>where:</p>
+<p><span class="math display">\[ \textbf{f} = \begin{bmatrix} f_1 \\\\ f_2 \\\\ f_3 \end{bmatrix} \]</span> <span class="math display">\[ \textbf{0} = \begin{bmatrix} 0 \\\\ 0 \\\\ 0 \end{bmatrix} \]</span> <span class="math display">\[ \textbf{K} =\begin{bmatrix} K_{11} &amp; K_{12} &amp; K_{13} \\\\
+                               K_{21} &amp; K_{22} &amp; K_{23} \\\\
+                               K_{31} &amp; K_{32} &amp; K_{33}
+                \end{bmatrix} \]</span> <span class="math display">\[ \textbf{K}_* = \begin{bmatrix} K_{1*} \\\\ K_{2*} \\\\ K_{3*} \end{bmatrix} \]</span></p>
+<p>This is a joint distribution over <span class="math inline">\(\textbf{f}\)</span> and <span class="math inline">\(f^*\)</span>. Given <span class="math inline">\(\textbf{f}\)</span> which we already know from the three available data points, we can use the <strong>Multivariate Gaussian Theorem</strong> to estimate the distribution over <span class="math inline">\(f_*\)</span>. The mean and variance of this distribution is given by:</p>
+<p><span class="math display">\[ \mu^* = \textbf{K}_*^{T}\textbf{K}^{-1}f \]</span></p>
+<p><span class="math display">\[ \sigma^* = K_{**} - \textbf{K}_*^{T} \textbf{K}^{-1} \textbf{K}_* \]</span></p>
+<p>We can get mean and variance of the distribution over the unknown value at x = 2.5 as follows</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.25</span>,<span class="fl">0.8</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>point_star <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.5</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>K1star <span class="ot">&lt;-</span> Kstar1 <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point1,point_star)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>K2star <span class="ot">&lt;-</span> Kstar2 <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point2,point_star)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>K3star <span class="ot">&lt;-</span> Kstar3 <span class="ot">&lt;-</span><span class="fu">rbfkernel</span>(point3,point_star)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>Kstarstar <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point_star,point_star)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>Kstar <span class="ot">=</span> <span class="fu">c</span>(K1star,K2star,K3star)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>Kstar_t <span class="ot">=</span> <span class="fu">t</span>(Kstar)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>K_inv <span class="ot">=</span> <span class="fu">solve</span>(K)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="do">##The mean##</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>mu_star <span class="ot">=</span> Kstar_t<span class="sc">%*%</span>K_inv<span class="sc">%*%</span>f</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="do">##The  standard deviation##</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>sigma_star <span class="ot">=</span> <span class="fu">sqrt</span>(Kstarstar <span class="sc">-</span> Kstar_t<span class="sc">%*%</span>K_inv<span class="sc">%*%</span>Kstar)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">'Mean of f* = '</span>,mu_star))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] "Mean of f* = 0.575736376567534"</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">'Standard deviation of f* = '</span>,sigma_star))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] "Standard deviation of f* = 0.0264409370474204"</code></pre>
+<p>The prediction is shown below in green using an error bar.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">1.5</span>,<span class="dv">3</span>,point_star) , <span class="at">f =</span> <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.25</span>,<span class="fl">0.8</span>,mu_star)),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>),<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">'black'</span>,<span class="dv">3</span>),<span class="st">'green'</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(point_star,mu_star <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>sigma_star,point_star,mu_star <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>sigma_star,<span class="at">length =</span> <span class="fl">0.05</span>,<span class="at">angle=</span><span class="dv">90</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">code=</span><span class="dv">3</span>,<span class="at">col=</span><span class="st">'green'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-14-1.png" width="672"></p>
+<p>Similarly the prediction of any point along the x-axis can be found. Below the predictions for a sequence of points along the x-axis have been generated and plotted along with the their 95% confidence intervals.</p>
+<p>For any input value, the Gaussian process model gives us a mean and a variance for the prediction.It is in effect a function.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>predict <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  point_star <span class="ot">&lt;-</span> input</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  K1star <span class="ot">&lt;-</span> Kstar1 <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point1,point_star)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  K2star <span class="ot">&lt;-</span> Kstar2 <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point2,point_star)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  K3star <span class="ot">&lt;-</span> Kstar3 <span class="ot">&lt;-</span><span class="fu">rbfkernel</span>(point3,point_star)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  Kstarstar <span class="ot">&lt;-</span> <span class="fu">rbfkernel</span>(point_star,point_star)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  Kstar <span class="ot">=</span> <span class="fu">c</span>(K1star,K2star,K3star)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  Kstar_t <span class="ot">=</span> <span class="fu">t</span>(Kstar)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  K_inv <span class="ot">=</span> <span class="fu">solve</span>(K)</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="do">##The mean##</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  mu_star <span class="ot">=</span> Kstar_t<span class="sc">%*%</span>K_inv<span class="sc">%*%</span>f</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="do">##The standard deviation##</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  sigma_star <span class="ot">=</span> <span class="fu">tryCatch</span>(<span class="fu">sqrt</span>(Kstarstar <span class="sc">-</span> Kstar_t<span class="sc">%*%</span>K_inv<span class="sc">%*%</span>Kstar),</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">warning =</span> <span class="cf">function</span>(e){<span class="dv">0</span>})</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(mu_star,sigma_star))</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="do">##Vector of points to generate predictions on</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">sapply</span>(x,predict)</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>mean <span class="ot">&lt;-</span> predictions[<span class="dv">1</span>,]</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a><span class="co">#lower bound</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>lb <span class="ot">&lt;-</span> predictions[<span class="dv">1</span>,] <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>predictions[<span class="dv">2</span>,]</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="co">#upper bound</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>ub <span class="ot">&lt;-</span>predictions[<span class="dv">1</span>,] <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>predictions[<span class="dv">2</span>,]</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a><span class="co">#Bind together in a dataframe</span></span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(x,mean,lb,ub))</span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a><span class="co">#Inputs</span></span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>inputs <span class="ot">&lt;-</span>  <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(point1,point2,point3),<span class="at">f=</span>f)</span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(preds,<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>mean)) <span class="sc">+</span> </span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">ymin=</span>lb,<span class="at">ymax=</span>ub),<span class="at">fill=</span><span class="st">'grey70'</span>)<span class="sc">+</span></span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'green'</span>)<span class="sc">+</span></span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>inputs,<span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>f))<span class="sc">+</span><span class="fu">labs</span>(<span class="at">y=</span><span class="st">'y'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-15-1.png" width="672"></p>
+<p>We can clearly see that the uncertainty near the training data points is low, as we move away from the training data points, the level of uncertainty increases. This aligns very well with our intuition.</p>
+</section>
+<section id="gaussian-processes" class="level2">
+<h2 class="anchored" data-anchor-id="gaussian-processes">Gaussian Processes</h2>
+<p>The Gaussian process is thus the generalization of a multi-variate normal distribution to infinitely many variables.It can be thought of as a Gaussian distribution over functions( thinking of functions as infinitely long vectors containing the value of the function at every input)</p>
+<p>The choice of a kernel function encodes a prior belief that the data points that lie close to each other should result in similar function outputs.The value of the hyper parameter sigma encodes how smooth the functions are.</p>
+<p>Consider a sequence of test points from -5 to 5. The GP prior, or the distribution over the possible space of functions when no training data is available is as follows. Only three functions have been sampled here.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x_vec <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>rbfkernel <span class="ot">&lt;-</span> <span class="fu">rbfdot</span>(<span class="at">sigma =</span> <span class="dv">1</span>) <span class="co"># Set value of hyperparameter</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>cov_mat <span class="ot">&lt;-</span> <span class="fu">kernelMatrix</span>(rbfkernel,x_vec,x_vec)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>gp_prior <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(<span class="fu">rmvnorm</span>(<span class="dv">5</span>,<span class="at">mean=</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="fu">length</span>(x_vec)),<span class="at">sigma =</span> cov_mat)))</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(<span class="at">x=</span>x_vec,<span class="at">y =</span> gp_prior,<span class="at">lty=</span><span class="dv">1</span>,<span class="at">type=</span><span class="st">'l'</span>,<span class="at">xlab =</span><span class="st">'x'</span>,<span class="at">ylab =</span> <span class="st">'y'</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-16-1.png" width="672"></p>
+<p>Assume the data generating process is a sine function, and the value of the sine function at three points 1,1.5 and 3 were observed as shown below.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>x_vec,<span class="at">y=</span><span class="fu">sin</span>(x_vec),<span class="at">type=</span><span class="st">'l'</span>,<span class="at">xlab=</span><span class="st">'x'</span>,<span class="at">ylab=</span><span class="st">'y'</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="at">y=</span><span class="fu">sin</span>(<span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">2</span>,<span class="dv">3</span>)),<span class="at">pch =</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-17-1.png" width="672"></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>train_x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>test_x <span class="ot">&lt;-</span> x_vec</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">sin</span>(train_x)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="fu">kernelMatrix</span>(rbfkernel,train_x,train_x)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>K_star <span class="ot">&lt;-</span> <span class="fu">kernelMatrix</span>(rbfkernel,train_x,test_x)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>K_starstar <span class="ot">&lt;-</span> <span class="fu">kernelMatrix</span>(rbfkernel,test_x,test_x)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>K_inv <span class="ot">&lt;-</span> <span class="fu">solve</span>(K)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The mean and variance of the test points are calculated as follows. Note that there are more efficient ways of doing the linear algebra calculations shown below, specifically be reducing the matrix inverse to linear system of equations. References for doing this have been provided in the appendix.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mu_star <span class="ot">&lt;-</span> <span class="fu">t</span>(K_star)<span class="sc">%*%</span>K_inv<span class="sc">%*%</span>f</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>Sigma_star <span class="ot">&lt;-</span> K_starstar <span class="sc">-</span> <span class="fu">t</span>(K_star)<span class="sc">%*%</span>K_inv<span class="sc">%*%</span>K_star</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Sampling from this GP posterior produces the following posterior distribution of functions.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>gp_posterior <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(<span class="fu">rmvnorm</span>(<span class="dv">5</span>,<span class="at">mean=</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="fu">length</span>(mu_star)),<span class="at">sigma =</span> Sigma_star)) <span class="sc">+</span> <span class="fu">as.vector</span>(mu_star))</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(<span class="at">x=</span>test_x,<span class="at">y =</span> gp_posterior,<span class="at">lty=</span><span class="dv">1</span>,<span class="at">type=</span><span class="st">'l'</span>,<span class="at">xlab =</span><span class="st">'x'</span>,<span class="at">ylab =</span> <span class="st">'y'</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span>x_vec,<span class="at">y=</span><span class="fu">sin</span>(x_vec),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x=</span>train_x,<span class="at">y=</span>f,<span class="at">pch=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-20-1.png" width="672"></p>
+<p>It can be seen that the presence of data squishes all three functions to a single point.The variance across the three functions goes to 0 at these points and increases with distance from these points.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Gaussian Processes provide an interesting alternative to generalized linear models. It comes with a minimal set of assumptions and provides a quantitative estimate of uncertainty in predictions. This also makes it applicable in areas like active learning.</p>
+<p>Gaussian Process are very computationally intensive and it’s application to large data sets have therefore been limited. Research in Gaussian Processes have been focused on making these computations more tractable.</p>
+</section>
+<section id="references-and-additional-resources" class="level2">
+<h2 class="anchored" data-anchor-id="references-and-additional-resources">References and Additional Resources</h2>
+<ol type="1">
+<li><p>Almost all the content in this write up comes from Nando de Freitas’ <a href="https://www.youtube.com/watch?v=4vGiHC35j9s">UBC lecture</a></p></li>
+<li><p>A second lecture I referenced is available <a href="../../www.youtube.com/watch?v=92-98SYOdlY&amp;t=2216s">here</a></p></li>
+<li><p><a href="https://gpytorch.ai/">GPyTorch</a>: An open source project leveraging GPs for machine learning using PyTorch.</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/kernlab/vignettes/kernlab.pdf">kernlab</a>: A package in R for Kernel Methods</p></li>
+<li><p>A high quality intro to GPs from <a href="https://distill.pub/2019/visual-exploration-gaussian-processes/">distill.pub</a></p></li>
+<li><p>Largely the same content in <a href="http://katbailey.github.io/post/gaussian-processes-for-dummies/">python</a></p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

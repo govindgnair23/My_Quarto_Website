@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Govind G Nair">
+<meta name="dcterms.date" content="2020-06-06">
+<meta name="description" content="Notes from the 2019 Oreilly AI Conference">
+
+<title>2019 Oreilly AI Conference</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-22381ab97ffb8a420d3841344730e94d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">2019 Oreilly AI Conference</h1>
+                  <div>
+        <div class="description">
+          Notes from the 2019 Oreilly AI Conference
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Conferences</div>
+                <div class="quarto-category">Machine Learning</div>
+                <div class="quarto-category">Strategy</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Govind G Nair </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 6, 2020</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#facebook-keynote---going-beyond-supervised-learning" id="toc-facebook-keynote---going-beyond-supervised-learning" class="nav-link active" data-scroll-target="#facebook-keynote---going-beyond-supervised-learning">1) Facebook Keynote - Going beyond supervised learning</a></li>
+  <li><a href="#operationalizing-ai-at-scale-from-drift-detection-to-monitoring-business-impact-ibm-watson" id="toc-operationalizing-ai-at-scale-from-drift-detection-to-monitoring-business-impact-ibm-watson" class="nav-link" data-scroll-target="#operationalizing-ai-at-scale-from-drift-detection-to-monitoring-business-impact-ibm-watson">2) Operationalizing AI at Scale: From drift detection to monitoring business impact | IBM Watson</a></li>
+  <li><a href="#applying-ai-to-secure-the-payments-ecosystem-visa-research" id="toc-applying-ai-to-secure-the-payments-ecosystem-visa-research" class="nav-link" data-scroll-target="#applying-ai-to-secure-the-payments-ecosystem-visa-research">3) Applying AI to secure the Payments Ecosystem | Visa Research</a>
+  <ul class="collapse">
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  </ul></li>
+  <li><a href="#recommendation-system-challenges-at-twitter-scale-twitter" id="toc-recommendation-system-challenges-at-twitter-scale-twitter" class="nav-link" data-scroll-target="#recommendation-system-challenges-at-twitter-scale-twitter">4) Recommendation system challenges at Twitter scale | Twitter</a>
+  <ul class="collapse">
+  <li><a href="#challenges-in-user---item-recommendations" id="toc-challenges-in-user---item-recommendations" class="nav-link" data-scroll-target="#challenges-in-user---item-recommendations">Challenges in User - Item Recommendations</a></li>
+  <li><a href="#using-deep-learning-model-to-extract-the-most-value-from-360-degree-images-trulia" id="toc-using-deep-learning-model-to-extract-the-most-value-from-360-degree-images-trulia" class="nav-link" data-scroll-target="#using-deep-learning-model-to-extract-the-most-value-from-360-degree-images-trulia">5) Using Deep Learning model to extract the most value from 360-degree images | Trulia</a>
+  <ul class="collapse">
+  <li><a href="#selecting-hero-images-for-real-estate-listings" id="toc-selecting-hero-images-for-real-estate-listings" class="nav-link" data-scroll-target="#selecting-hero-images-for-real-estate-listings">Selecting Hero Images for Real Estate Listings</a></li>
+  <li><a href="#turning-3d-panoramas-into-thumbnails" id="toc-turning-3d-panoramas-into-thumbnails" class="nav-link" data-scroll-target="#turning-3d-panoramas-into-thumbnails">Turning 3D panoramas into thumbnails</a></li>
+  </ul></li>
+  <li><a href="#computing-sailency-scores" id="toc-computing-sailency-scores" class="nav-link" data-scroll-target="#computing-sailency-scores">Computing Sailency Scores</a></li>
+  <li><a href="#training-sailency-models" id="toc-training-sailency-models" class="nav-link" data-scroll-target="#training-sailency-models">Training Sailency Models</a></li>
+  <li><a href="#estimating-image-attractiveness" id="toc-estimating-image-attractiveness" class="nav-link" data-scroll-target="#estimating-image-attractiveness">Estimating Image Attractiveness</a></li>
+  <li><a href="#a-framework-to-bootstrap-and-scale-a-machine-learning-function-workday" id="toc-a-framework-to-bootstrap-and-scale-a-machine-learning-function-workday" class="nav-link" data-scroll-target="#a-framework-to-bootstrap-and-scale-a-machine-learning-function-workday">6) A framework to bootstrap and scale a machine learning function | Workday</a></li>
+  <li><a href="#artifical-and-human-intelligence-in-healthcare-google-brain-cornell-university" id="toc-artifical-and-human-intelligence-in-healthcare-google-brain-cornell-university" class="nav-link" data-scroll-target="#artifical-and-human-intelligence-in-healthcare-google-brain-cornell-university">7) Artifical and Human Intelligence in Healthcare | Google Brain &amp; Cornell University</a>
+  <ul class="collapse">
+  <li><a href="#transfer-learning" id="toc-transfer-learning" class="nav-link" data-scroll-target="#transfer-learning">Transfer Learning</a></li>
+  <li><a href="#transfer-learning-in-medical-imaging" id="toc-transfer-learning-in-medical-imaging" class="nav-link" data-scroll-target="#transfer-learning-in-medical-imaging">Transfer Learning in Medical Imaging</a></li>
+  <li><a href="#ai-for-health-in-practice" id="toc-ai-for-health-in-practice" class="nav-link" data-scroll-target="#ai-for-health-in-practice">AI for Health in Practice</a></li>
+  </ul></li>
+  <li><a href="#deep-reinforcement-learning-to-improvise-input-datasets-infilect-technologies" id="toc-deep-reinforcement-learning-to-improvise-input-datasets-infilect-technologies" class="nav-link" data-scroll-target="#deep-reinforcement-learning-to-improvise-input-datasets-infilect-technologies">8) Deep Reinforcement Learning to improvise input datasets | Infilect Technologies</a>
+  <ul class="collapse">
+  <li><a href="#formulation-of-strategy" id="toc-formulation-of-strategy" class="nav-link" data-scroll-target="#formulation-of-strategy">Formulation of Strategy</a></li>
+  <li><a href="#controller" id="toc-controller" class="nav-link" data-scroll-target="#controller">Controller</a></li>
+  </ul></li>
+  <li><a href="#defragmenting-the-deep-learning-ecosystem-determined-ai" id="toc-defragmenting-the-deep-learning-ecosystem-determined-ai" class="nav-link" data-scroll-target="#defragmenting-the-deep-learning-ecosystem-determined-ai">9) Defragmenting the Deep Learning Ecosystem | Determined AI</a>
+  <ul class="collapse">
+  <li><a href="#challenges-in-ai-infrastructure" id="toc-challenges-in-ai-infrastructure" class="nav-link" data-scroll-target="#challenges-in-ai-infrastructure">Challenges in AI Infrastructure</a></li>
+  <li><a href="#ideal-ai-infrastructure" id="toc-ideal-ai-infrastructure" class="nav-link" data-scroll-target="#ideal-ai-infrastructure">Ideal AI Infrastructure</a></li>
+  </ul></li>
+  <li><a href="#industrialized-capsule-networks-for-text-analytics-walmart-labs-publicis-sapient" id="toc-industrialized-capsule-networks-for-text-analytics-walmart-labs-publicis-sapient" class="nav-link" data-scroll-target="#industrialized-capsule-networks-for-text-analytics-walmart-labs-publicis-sapient">10) Industrialized Capsule networks for text analytics| Walmart Labs &amp; Publicis Sapient</a>
+  <ul class="collapse">
+  <li><a href="#overview-of-capsule-networks" id="toc-overview-of-capsule-networks" class="nav-link" data-scroll-target="#overview-of-capsule-networks">Overview of Capsule Networks</a></li>
+  <li><a href="#industrialization-of-capsule-networks" id="toc-industrialization-of-capsule-networks" class="nav-link" data-scroll-target="#industrialization-of-capsule-networks">Industrialization of Capsule Networks</a></li>
+  </ul></li>
+  <li><a href="#building-facebooks-visual-cortex-facebook" id="toc-building-facebooks-visual-cortex-facebook" class="nav-link" data-scroll-target="#building-facebooks-visual-cortex-facebook">11) Building Facebook’s visual cortex | Facebook</a>
+  <ul class="collapse">
+  <li><a href="#reducing-dependency-on-supervision" id="toc-reducing-dependency-on-supervision" class="nav-link" data-scroll-target="#reducing-dependency-on-supervision">Reducing Dependency on Supervision</a></li>
+  <li><a href="#efficiency" id="toc-efficiency" class="nav-link" data-scroll-target="#efficiency">Efficiency</a></li>
+  <li><a href="#continuous-improvement" id="toc-continuous-improvement" class="nav-link" data-scroll-target="#continuous-improvement">Continuous Improvement</a></li>
+  <li><a href="#dynamic-demands" id="toc-dynamic-demands" class="nav-link" data-scroll-target="#dynamic-demands">Dynamic Demands</a></li>
+  </ul></li>
+  <li><a href="#deep-learning-in-the-tire-industry-american-tire-distributors-atrd" id="toc-deep-learning-in-the-tire-industry-american-tire-distributors-atrd" class="nav-link" data-scroll-target="#deep-learning-in-the-tire-industry-american-tire-distributors-atrd">12) Deep Learning in the Tire Industry | American Tire Distributors (ATRD)</a>
+  <ul class="collapse">
+  <li><a href="#forecasting-staffing-requirements" id="toc-forecasting-staffing-requirements" class="nav-link" data-scroll-target="#forecasting-staffing-requirements">Forecasting Staffing requirements</a></li>
+  <li><a href="#pricing-product-demand-model" id="toc-pricing-product-demand-model" class="nav-link" data-scroll-target="#pricing-product-demand-model">Pricing Product Demand Model</a></li>
+  </ul></li>
+  <li><a href="#a-framework-for-human-ai-integration-in-the-enterprise-rakuten" id="toc-a-framework-for-human-ai-integration-in-the-enterprise-rakuten" class="nav-link" data-scroll-target="#a-framework-for-human-ai-integration-in-the-enterprise-rakuten">13) A framework for Human AI Integration in the enterprise | Rakuten</a>
+  <ul class="collapse">
+  <li><a href="#external-factors" id="toc-external-factors" class="nav-link" data-scroll-target="#external-factors">External Factors</a></li>
+  <li><a href="#competitive-advantage" id="toc-competitive-advantage" class="nav-link" data-scroll-target="#competitive-advantage">Competitive Advantage</a></li>
+  <li><a href="#dialog" id="toc-dialog" class="nav-link" data-scroll-target="#dialog">Dialog</a></li>
+  <li><a href="#ai-understanding-humans" id="toc-ai-understanding-humans" class="nav-link" data-scroll-target="#ai-understanding-humans">AI Understanding Humans</a></li>
+  <li><a href="#human-understanding-ai---explainability" id="toc-human-understanding-ai---explainability" class="nav-link" data-scroll-target="#human-understanding-ai---explainability">Human Understanding AI - Explainability</a></li>
+  <li><a href="#system-design-with-human--ai-integration" id="toc-system-design-with-human--ai-integration" class="nav-link" data-scroll-target="#system-design-with-human--ai-integration">System Design with Human- AI Integration</a></li>
+  </ul></li>
+  <li><a href="#data-science-without-seeing-the-data-advanced-encryption-to-the-rescue-intuit" id="toc-data-science-without-seeing-the-data-advanced-encryption-to-the-rescue-intuit" class="nav-link" data-scroll-target="#data-science-without-seeing-the-data-advanced-encryption-to-the-rescue-intuit">14) Data Science without seeing the data: Advanced encryption to the rescue | Intuit</a>
+  <ul class="collapse">
+  <li><a href="#decision-tree-training" id="toc-decision-tree-training" class="nav-link" data-scroll-target="#decision-tree-training">Decision Tree Training</a></li>
+  </ul></li>
+  <li><a href="#mozart-in-the-box-interacting-with-ai-tools-for-music-creation-midas" id="toc-mozart-in-the-box-interacting-with-ai-tools-for-music-creation-midas" class="nav-link" data-scroll-target="#mozart-in-the-box-interacting-with-ai-tools-for-music-creation-midas">15) Mozart in the Box: Interacting with AI Tools for Music Creation | Midas</a>
+  <ul class="collapse">
+  <li><a href="#types-of-automation" id="toc-types-of-automation" class="nav-link" data-scroll-target="#types-of-automation">Types of Automation</a></li>
+  <li><a href="#levels-of-automation" id="toc-levels-of-automation" class="nav-link" data-scroll-target="#levels-of-automation">Levels of Automation</a></li>
+  </ul></li>
+  <li><a href="#ai-for-cell-shaping-in-mobile-networks-ericsson" id="toc-ai-for-cell-shaping-in-mobile-networks-ericsson" class="nav-link" data-scroll-target="#ai-for-cell-shaping-in-mobile-networks-ericsson">16) AI for Cell Shaping in Mobile Networks | Ericsson</a>
+  <ul class="collapse">
+  <li><a href="#rl-formulation" id="toc-rl-formulation" class="nav-link" data-scroll-target="#rl-formulation">RL Formulation</a></li>
+  <li><a href="#training-set-up" id="toc-training-set-up" class="nav-link" data-scroll-target="#training-set-up">Training Set up</a></li>
+  <li><a href="#rl-algorithms" id="toc-rl-algorithms" class="nav-link" data-scroll-target="#rl-algorithms">RL Algorithms</a></li>
+  <li><a href="#using-historical-data" id="toc-using-historical-data" class="nav-link" data-scroll-target="#using-historical-data">Using Historical Data</a></li>
+  <li><a href="#transferring-from-simulated-to-real-environment" id="toc-transferring-from-simulated-to-real-environment" class="nav-link" data-scroll-target="#transferring-from-simulated-to-real-environment">Transferring from Simulated to Real Environment</a></li>
+  </ul></li>
+  <li><a href="#improving-ocr-quality-of-documents-using-gans-exl" id="toc-improving-ocr-quality-of-documents-using-gans-exl" class="nav-link" data-scroll-target="#improving-ocr-quality-of-documents-using-gans-exl">17) Improving OCR quality of documents using GANs | EXL</a></li>
+  <li><a href="#resolution-enhancement" id="toc-resolution-enhancement" class="nav-link" data-scroll-target="#resolution-enhancement">Resolution Enhancement</a>
+  <ul class="collapse">
+  <li><a href="#data-creation" id="toc-data-creation" class="nav-link" data-scroll-target="#data-creation">Data Creation</a></li>
+  <li><a href="#training" id="toc-training" class="nav-link" data-scroll-target="#training">Training</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
+  </ul></li>
+  <li><a href="#document-de-noising" id="toc-document-de-noising" class="nav-link" data-scroll-target="#document-de-noising">Document De-noising</a>
+  <ul class="collapse">
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#training-1" id="toc-training-1" class="nav-link" data-scroll-target="#training-1">Training</a></li>
+  </ul></li>
+  <li><a href="#fighting-crime-with-graphs-mit-ibm" id="toc-fighting-crime-with-graphs-mit-ibm" class="nav-link" data-scroll-target="#fighting-crime-with-graphs-mit-ibm">18) Fighting Crime with Graphs | (MIT + IBM)</a></li>
+  <li><a href="#data-science-design-thinking---a-perfect-blend-to-achieve-the-best-user-experience-intuit" id="toc-data-science-design-thinking---a-perfect-blend-to-achieve-the-best-user-experience-intuit" class="nav-link" data-scroll-target="#data-science-design-thinking---a-perfect-blend-to-achieve-the-best-user-experience-intuit">19) Data Science + Design Thinking - A Perfect blend to achieve the best user experience | Intuit</a></li>
+  <li><a href="#explaining-machine-learning-models-fiddler-labs" id="toc-explaining-machine-learning-models-fiddler-labs" class="nav-link" data-scroll-target="#explaining-machine-learning-models-fiddler-labs">20) Explaining Machine Learning Models | Fiddler Labs</a></li>
+  <li><a href="#snorkel" id="toc-snorkel" class="nav-link" data-scroll-target="#snorkel">21) Snorkel</a></li>
+  <li><a href="#managing-ai-products-salesforce" id="toc-managing-ai-products-salesforce" class="nav-link" data-scroll-target="#managing-ai-products-salesforce">22) Managing AI Products | Salesforce</a></li>
+  <li><a href="#explainability-and-bias-in-ai-and-ml-institute-for-ethical-ai-and-ml" id="toc-explainability-and-bias-in-ai-and-ml-institute-for-ethical-ai-and-ml" class="nav-link" data-scroll-target="#explainability-and-bias-in-ai-and-ml-institute-for-ethical-ai-and-ml">23) Explainability and Bias in AI and ML| Institute for Ethical AI and ML</a></li>
+  <li><a href="#usable-machine-learning---lessons-from-stanford-and-beyond-stanford-university" id="toc-usable-machine-learning---lessons-from-stanford-and-beyond-stanford-university" class="nav-link" data-scroll-target="#usable-machine-learning---lessons-from-stanford-and-beyond-stanford-university">24) Usable Machine Learning - Lessons from Stanford and beyond | Stanford University</a></li>
+  <li><a href="#human-centered-machine-learning-h2o.ai" id="toc-human-centered-machine-learning-h2o.ai" class="nav-link" data-scroll-target="#human-centered-machine-learning-h2o.ai">25) Human Centered Machine Learning | H2O.ai</a></li>
+  <li><a href="#monitoring-production-ml-systems-datavisor" id="toc-monitoring-production-ml-systems-datavisor" class="nav-link" data-scroll-target="#monitoring-production-ml-systems-datavisor">26) Monitoring production ML Systems | DataVisor</a></li>
+  <li><a href="#reference-architectures-for-ai-and-machine-learning-microsoft" id="toc-reference-architectures-for-ai-and-machine-learning-microsoft" class="nav-link" data-scroll-target="#reference-architectures-for-ai-and-machine-learning-microsoft">27) Reference Architectures for AI and Machine Learning | Microsoft</a>
+  <ul class="collapse">
+  <li><a href="#reference-architecture-for-distributed-training" id="toc-reference-architecture-for-distributed-training" class="nav-link" data-scroll-target="#reference-architecture-for-distributed-training">Reference Architecture for Distributed Training</a></li>
+  <li><a href="#architecture-for-real-time-scoring-with-dl-models" id="toc-architecture-for-real-time-scoring-with-dl-models" class="nav-link" data-scroll-target="#architecture-for-real-time-scoring-with-dl-models">Architecture for Real Time Scoring with DL Models</a></li>
+  <li><a href="#architecture-for-batch-scoring-with-dl-models" id="toc-architecture-for-batch-scoring-with-dl-models" class="nav-link" data-scroll-target="#architecture-for-batch-scoring-with-dl-models">Architecture for Batch Scoring with DL Models</a></li>
+  </ul></li>
+  <li><a href="#semi-supervised-learning-for-ml-rocket-ml" id="toc-semi-supervised-learning-for-ml-rocket-ml" class="nav-link" data-scroll-target="#semi-supervised-learning-for-ml-rocket-ml">28) Semi Supervised Learning for ML | Rocket ML</a>
+  <ul class="collapse">
+  <li><a href="#anomaly-detection-problem" id="toc-anomaly-detection-problem" class="nav-link" data-scroll-target="#anomaly-detection-problem">Anomaly Detection Problem</a></li>
+  </ul></li>
+  <li><a href="#sequence-to-sequence-learning-for-time-series-forecasting-anodot" id="toc-sequence-to-sequence-learning-for-time-series-forecasting-anodot" class="nav-link" data-scroll-target="#sequence-to-sequence-learning-for-time-series-forecasting-anodot">29) Sequence to Sequence Learning for Time Series Forecasting | Anodot</a></li>
+  <li><a href="#transfer-learning-nlp-machine-reading-comprehension-for-question-answering-microsoft" id="toc-transfer-learning-nlp-machine-reading-comprehension-for-question-answering-microsoft" class="nav-link" data-scroll-target="#transfer-learning-nlp-machine-reading-comprehension-for-question-answering-microsoft">30) Transfer Learning NLP: Machine Reading comprehension for question answering | Microsoft</a></li>
+  <li><a href="#generative-models-for-fixing-image-defects-adobe" id="toc-generative-models-for-fixing-image-defects-adobe" class="nav-link" data-scroll-target="#generative-models-for-fixing-image-defects-adobe">31) Generative Models for fixing image defects| Adobe</a>
+  <ul class="collapse">
+  <li><a href="#popular-gans" id="toc-popular-gans" class="nav-link" data-scroll-target="#popular-gans">Popular GANS</a></li>
+  <li><a href="#gan-based-image-enhancer" id="toc-gan-based-image-enhancer" class="nav-link" data-scroll-target="#gan-based-image-enhancer">GAN based Image Enhancer</a></li>
+  <li><a href="#challenges" id="toc-challenges" class="nav-link" data-scroll-target="#challenges">Challenges</a></li>
+  <li><a href="#gan-model-evaluation" id="toc-gan-model-evaluation" class="nav-link" data-scroll-target="#gan-model-evaluation">GAN Model Evaluation</a></li>
+  </ul></li>
+  <li><a href="#supercharging-business-decisions-with-ai-uber" id="toc-supercharging-business-decisions-with-ai-uber" class="nav-link" data-scroll-target="#supercharging-business-decisions-with-ai-uber">32) Supercharging business decisions with AI | Uber</a>
+  <ul class="collapse">
+  <li><a href="#planning" id="toc-planning" class="nav-link" data-scroll-target="#planning">Planning</a></li>
+  <li><a href="#forecasting-models" id="toc-forecasting-models" class="nav-link" data-scroll-target="#forecasting-models">Forecasting Models</a></li>
+  <li><a href="#modelling-seasonality" id="toc-modelling-seasonality" class="nav-link" data-scroll-target="#modelling-seasonality">Modelling Seasonality</a></li>
+  </ul></li>
+  <li><a href="#an-age-of-embeddings-usc-information-sciences-institute" id="toc-an-age-of-embeddings-usc-information-sciences-institute" class="nav-link" data-scroll-target="#an-age-of-embeddings-usc-information-sciences-institute">33) An age of embeddings| USC Information Sciences Institute</a>
+  <ul class="collapse">
+  <li><a href="#word-embeddings" id="toc-word-embeddings" class="nav-link" data-scroll-target="#word-embeddings">Word embeddings</a></li>
+  <li><a href="#image-embeddings" id="toc-image-embeddings" class="nav-link" data-scroll-target="#image-embeddings">Image Embeddings</a></li>
+  <li><a href="#document-embeddings" id="toc-document-embeddings" class="nav-link" data-scroll-target="#document-embeddings">Document Embeddings</a></li>
+  <li><a href="#graph-and-network-embedding" id="toc-graph-and-network-embedding" class="nav-link" data-scroll-target="#graph-and-network-embedding">Graph and Network Embedding</a></li>
+  </ul></li>
+  <li><a href="#pytorch-at-scale-for-translation-and-nlp-facebook" id="toc-pytorch-at-scale-for-translation-and-nlp-facebook" class="nav-link" data-scroll-target="#pytorch-at-scale-for-translation-and-nlp-facebook">34) PyTorch at Scale for translation and NLP | Facebook</a>
+  <ul class="collapse">
+  <li><a href="#inference" id="toc-inference" class="nav-link" data-scroll-target="#inference">Inference</a></li>
+  <li><a href="#training-2" id="toc-training-2" class="nav-link" data-scroll-target="#training-2">Training</a></li>
+  </ul></li>
+  <li><a href="#turning-ai-research-into-a-revenue-engine-verta.ai" id="toc-turning-ai-research-into-a-revenue-engine-verta.ai" class="nav-link" data-scroll-target="#turning-ai-research-into-a-revenue-engine-verta.ai">35) Turning AI research into a revenue engine | Verta.ai</a></li>
+  <li><a href="#deep-learning-applications-in-nlp-and-conversational-ai-uber" id="toc-deep-learning-applications-in-nlp-and-conversational-ai-uber" class="nav-link" data-scroll-target="#deep-learning-applications-in-nlp-and-conversational-ai-uber">36) Deep Learning Applications in NLP and Conversational AI | Uber</a></li>
+  <li><a href="#named-entity-recognition-at-scale-with-dl-twitter" id="toc-named-entity-recognition-at-scale-with-dl-twitter" class="nav-link" data-scroll-target="#named-entity-recognition-at-scale-with-dl-twitter">37) Named Entity Recognition at Scale with DL | Twitter</a>
+  <ul class="collapse">
+  <li><a href="#generating-training-data" id="toc-generating-training-data" class="nav-link" data-scroll-target="#generating-training-data">Generating Training Data</a></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model">Model</a></li>
+  <li><a href="#confidence-estimation" id="toc-confidence-estimation" class="nav-link" data-scroll-target="#confidence-estimation">Confidence Estimation</a></li>
+  </ul></li>
+  <li><a href="#behavior-analytics-for-enterprise-security-using-nlp-approaches-aruba-networks" id="toc-behavior-analytics-for-enterprise-security-using-nlp-approaches-aruba-networks" class="nav-link" data-scroll-target="#behavior-analytics-for-enterprise-security-using-nlp-approaches-aruba-networks">38) Behavior Analytics for Enterprise Security using NLP Approaches | Aruba Networks</a></li>
+  <li><a href="#interpreting-millions-of-patient-stories-with-deep-learned-ocr-and-nlp-selectdara-john-snow-labs" id="toc-interpreting-millions-of-patient-stories-with-deep-learned-ocr-and-nlp-selectdara-john-snow-labs" class="nav-link" data-scroll-target="#interpreting-millions-of-patient-stories-with-deep-learned-ocr-and-nlp-selectdara-john-snow-labs">39) Interpreting millions of patient stories with deep learned OCR and NLP | SelectDara &amp; John Snow Labs</a></li>
+  <li><a href="#building-autonomous-network-operation-using-deep-learning-and-ai-mist" id="toc-building-autonomous-network-operation-using-deep-learning-and-ai-mist" class="nav-link" data-scroll-target="#building-autonomous-network-operation-using-deep-learning-and-ai-mist">40) Building autonomous network operation using deep learning and AI | Mist</a>
+  <ul class="collapse">
+  <li><a href="#challenges-facing-enterprise-it-teams" id="toc-challenges-facing-enterprise-it-teams" class="nav-link" data-scroll-target="#challenges-facing-enterprise-it-teams">Challenges facing Enterprise IT Teams</a></li>
+  </ul></li>
+  <li><a href="#unlocking-the-next-stage-in-computer-vision-with-deep-nn-zillow" id="toc-unlocking-the-next-stage-in-computer-vision-with-deep-nn-zillow" class="nav-link" data-scroll-target="#unlocking-the-next-stage-in-computer-vision-with-deep-nn-zillow">41) Unlocking the next stage in computer vision with Deep NN | Zillow</a>
+  <ul class="collapse">
+  <li><a href="#building-better-models" id="toc-building-better-models" class="nav-link" data-scroll-target="#building-better-models">Building Better models</a></li>
+  </ul></li>
+  <li><a href="#introducing-kubeflow-google-ibm" id="toc-introducing-kubeflow-google-ibm" class="nav-link" data-scroll-target="#introducing-kubeflow-google-ibm">42) Introducing Kubeflow| Google &amp; IBM</a></li>
+  <li><a href="#personalization-at-scale-facebook" id="toc-personalization-at-scale-facebook" class="nav-link" data-scroll-target="#personalization-at-scale-facebook">43) Personalization at Scale | Facebook</a>
+  <ul class="collapse">
+  <li><a href="#practical-techniques-for-personalization" id="toc-practical-techniques-for-personalization" class="nav-link" data-scroll-target="#practical-techniques-for-personalization">Practical Techniques for Personalization:</a></li>
+  </ul></li>
+  <li><a href="#os-for-ai-serverless-productionized-ml" id="toc-os-for-ai-serverless-productionized-ml" class="nav-link" data-scroll-target="#os-for-ai-serverless-productionized-ml">44) OS for AI: Serverless, Productionized ML</a></li>
+  <li><a href="#towards-universal-semantic-understanding-of-natural-languages-ibm-research" id="toc-towards-universal-semantic-understanding-of-natural-languages-ibm-research" class="nav-link" data-scroll-target="#towards-universal-semantic-understanding-of-natural-languages-ibm-research">45) Towards universal semantic understanding of natural languages | IBM Research</a>
+  <ul class="collapse">
+  <li><a href="#creating-cross-lingual-training-data" id="toc-creating-cross-lingual-training-data" class="nav-link" data-scroll-target="#creating-cross-lingual-training-data">Creating cross lingual training data</a></li>
+  <li><a href="#crowd-in-the-loop-learning" id="toc-crowd-in-the-loop-learning" class="nav-link" data-scroll-target="#crowd-in-the-loop-learning">Crowd in the Loop Learning</a></li>
+  <li><a href="#developing-models-for-semantic-annotation" id="toc-developing-models-for-semantic-annotation" class="nav-link" data-scroll-target="#developing-models-for-semantic-annotation">Developing Models for Semantic Annotation</a></li>
+  </ul></li>
+  <li><a href="#the-holy-grail-of-data-science-rapid-model-development-and-deployment-zepl" id="toc-the-holy-grail-of-data-science-rapid-model-development-and-deployment-zepl" class="nav-link" data-scroll-target="#the-holy-grail-of-data-science-rapid-model-development-and-deployment-zepl">46) The holy grail of data science : Rapid model development and deployment | Zepl</a>
+  <ul class="collapse">
+  <li><a href="#data-dependencies" id="toc-data-dependencies" class="nav-link" data-scroll-target="#data-dependencies">Data Dependencies</a></li>
+  <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">Reproducibility</a></li>
+  <li><a href="#prototyping-vs-production" id="toc-prototyping-vs-production" class="nav-link" data-scroll-target="#prototyping-vs-production">Prototyping vs Production</a></li>
+  <li><a href="#monitoring" id="toc-monitoring" class="nav-link" data-scroll-target="#monitoring">Monitoring</a></li>
+  <li><a href="#model-ownership-in-production" id="toc-model-ownership-in-production" class="nav-link" data-scroll-target="#model-ownership-in-production">Model Ownership in Production</a></li>
+  <li><a href="#testing-deploying" id="toc-testing-deploying" class="nav-link" data-scroll-target="#testing-deploying">Testing &amp; Deploying</a></li>
+  </ul></li>
+  <li><a href="#deep-reinforcement-learning-for-industrial-robotics-osaro" id="toc-deep-reinforcement-learning-for-industrial-robotics-osaro" class="nav-link" data-scroll-target="#deep-reinforcement-learning-for-industrial-robotics-osaro">47) Deep reinforcement learning for industrial robotics | OSARO</a></li>
+  <li><a href="#imitation-learning" id="toc-imitation-learning" class="nav-link" data-scroll-target="#imitation-learning">Imitation Learning</a></li>
+  <li><a href="#meta-learning" id="toc-meta-learning" class="nav-link" data-scroll-target="#meta-learning">Meta Learning</a></li>
+  <li><a href="#challenges-and-future-directions-in-deploying-nlp-in-commercial-environments-intel" id="toc-challenges-and-future-directions-in-deploying-nlp-in-commercial-environments-intel" class="nav-link" data-scroll-target="#challenges-and-future-directions-in-deploying-nlp-in-commercial-environments-intel">48) Challenges and future directions in deploying NLP in commercial environments | Intel</a>
+  <ul class="collapse">
+  <li><a href="#model-distillation" id="toc-model-distillation" class="nav-link" data-scroll-target="#model-distillation">Model Distillation</a></li>
+  </ul></li>
+  <li><a href="#what-you-must-know-to-build-ai-systems-that-understand-natural-language-pacific-ai" id="toc-what-you-must-know-to-build-ai-systems-that-understand-natural-language-pacific-ai" class="nav-link" data-scroll-target="#what-you-must-know-to-build-ai-systems-that-understand-natural-language-pacific-ai">49) What you must know to build AI systems that understand natural language | Pacific AI</a></li>
+  <li><a href="#many-languages-spoken." id="toc-many-languages-spoken." class="nav-link" data-scroll-target="#many-languages-spoken.">Many languages spoken.</a></li>
+  <li><a href="#domain-specificity" id="toc-domain-specificity" class="nav-link" data-scroll-target="#domain-specificity">Domain specificity</a>
+  <ul class="collapse">
+  <li><a href="#use-both-structured-and-unstructured-data" id="toc-use-both-structured-and-unstructured-data" class="nav-link" data-scroll-target="#use-both-structured-and-unstructured-data">Use both structured and unstructured data</a></li>
+  </ul></li>
+  <li><a href="#language-inference-in-medicine-ibm-research" id="toc-language-inference-in-medicine-ibm-research" class="nav-link" data-scroll-target="#language-inference-in-medicine-ibm-research">50) Language Inference in medicine | IBM Research</a></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>These are the notes covering my learning from the talks at the O’Reilly Artificial Intelligence Conference held in San Jose in 2019.</p>
+<section id="facebook-keynote---going-beyond-supervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="facebook-keynote---going-beyond-supervised-learning">1) Facebook Keynote - Going beyond supervised learning</h2>
+<p>Broad classes of Machine Learning outside the classical supervised approaches used at Facebook:</p>
+<ol type="a">
+<li>Weak Supervision: Use labels are already available in the data e.g.&nbsp;hashtags in Instagram photos. Facebook built the world’s best image recognition system using the 3.5 billion images shared on Instagram using the hashtags.</li>
+</ol>
+<p>A state of the art model was also created on 65 million videos to recognize 10,000 actions using the available hash tags.</p>
+<ol start="2" type="a">
+<li><p>Semi Supervised Learning: Use a small amount of labelled data to train a teacher model model and use this model to generate predictions on unlabeled data. Now pre-train a student model on this larger data set and fine tune on the original labelled data.</p></li>
+<li><p>Self Supervised Learning: The best example is Language modelling where you can take a sentence of length N and use the first N-1 words to predict the Nth word or predict a word in the middle using the surrounding words.</p></li>
+</ol>
+<p>At facebook, self supervised learning based on Generative Adversarial Networks is used to create more robust models that can be used to detect images that have been manipulated by overlaying patterns to get around restrictions such as nudity.</p>
+<p>This is done by training a GAN to recover the original image from a manipulated image.</p>
+<p><img src="./fb_self_supervised_GAN.PNG" class="img-fluid"></p>
+<p>FB takes images, overlays it with random patterns. The generator tries to recreated the original while the discriminator tries to discriminate between the originals and the image generated by the generator. The model minimizes the adversarial loss which captures how well the system can fool the discriminator as well as the perceptual loss which captures how well the generator is able to recreate the original.</p>
+<p>After training, just the generator can be used to remove patterns from images.</p>
+<p>Another interesting application of this technique at Facebook is <strong>machine translation without labels</strong>.</p>
+<p>This relies on creating automatic word dictionaries. First,you create vector representations for vocabularies in each languages and leverage the fact that the vector representations of the same word in different languages share structure to learn a <em>rotation matrix</em> to align them and produce a word by word translation.</p>
+<p>Then you build a language model in each language to learn the sentence structure in each language. This language model can then be used to reorder the word by word translation produced in the previous step. This gives you an initial model to translate between the two languages (L1 to L2 and L2 to L1).</p>
+<p><img src="./Language_Model0.PNG" class="img-fluid"></p>
+<p>Now a technique called <strong>back translation</strong> can be used to iteratively improve the model. In this method, you take the original sentence in Language 1 and translate this to Language 2 using the initial <em>L1 to L2</em> model. Now you translate this back to language 1 using the <em>L2 to L1</em> model with the original sentence in Language 1 being the target. This will allow you to improve the <em>L2 to L1</em> model. By flipping the order of the translations, you can also improve the <em>L1 to L2</em> model</p>
+<p><img src="./Language_Model1.PNG" class="img-fluid"></p>
+<ol start="4" type="a">
+<li>Reinforcement Learning:</li>
+</ol>
+<p>Facebook uses RL to recommend notifications to users on Instagram.</p>
+<p>FB also has created a platform called <a href="https://aihabitat.org/">Habitat</a> ‘a research platform for embodied AI agents to operate in real world-like environments and solve tasks like navigation, question-answering, et cetera’.</p>
+</section>
+<section id="operationalizing-ai-at-scale-from-drift-detection-to-monitoring-business-impact-ibm-watson" class="level2">
+<h2 class="anchored" data-anchor-id="operationalizing-ai-at-scale-from-drift-detection-to-monitoring-business-impact-ibm-watson">2) Operationalizing AI at Scale: From drift detection to monitoring business impact | IBM Watson</h2>
+<p>Note: See my post on <a href="https://www.govindgnair.com/post/detecting-concept-drift/">concept drift</a> for a general understanding of the problem.</p>
+<ul>
+<li>Fair Credit Act requires a sample of model decisions to be explained to the regulator. Same with GDPR.</li>
+</ul>
+<p>Watson Openscale provides the following capabilities:</p>
+<p><img src="./Watson.PNG" class="img-fluid"></p>
+<p>Important to realize high model performance doesn’t always correlate to high business performance. Need to correlate model KPIs and Business KPIs. IBM openscale will automatically correlate model metrics in run time with business event data to inform impact on business KPIs.</p>
+<p>Types of concept drift:</p>
+<ol type="1">
+<li>Class Imbalance. e.g.&nbsp;The imbalance ratio shifts.</li>
+<li>Novel Class Emergence e.g.&nbsp;A new category of chats in a chatbot</li>
+<li>Existing Class Fusion e.g.&nbsp;A bank wants to merge the loan approved class with the loan partially approved class</li>
+</ol>
+<p>Accuracy Drift: Has model accuracy changes because of changing business dynamics? This is what businesses really care about. This could happen due to:</p>
+<ol type="a">
+<li>Drop in Accuracy: Model accuracy could drop if there is an increase in transactions similar to those which the model was unable to evaluate correctly in training data</li>
+</ol>
+<ul>
+<li>Use training and test data to learn what kind of data the model is making accurate prediction on and where it is not. You can build a secondary model to predict the model accuracy of your primary model and see if the accuracy falls</li>
+</ul>
+<ol start="2" type="a">
+<li>Drop in data consistency: Drop in consistency of data at runtime compared to characteristics at running time.</li>
+</ol>
+<p>E.g. % of married people applying for your loan has increased from 15% to 80%. These are the kind of explanations that are accessible to a business user.</p>
+<ul>
+<li>Open scale can map a drop in business KPI to the model responsible for the drop and identify the samples of data that has changed.</li>
+</ul>
+</section>
+<section id="applying-ai-to-secure-the-payments-ecosystem-visa-research" class="level2">
+<h2 class="anchored" data-anchor-id="applying-ai-to-secure-the-payments-ecosystem-visa-research">3) Applying AI to secure the Payments Ecosystem | Visa Research</h2>
+<p>Data Exfiltration: Unauthorized copying, transfer or retrieval of data</p>
+<p>Merchant Data Breach: Occurs when an unauthorized part accesses a merchant’s network and steals cardholder data. Cardholder data is later used to commit fraud.</p>
+<p>Once a breach occurs, the criminals may enrich the data they have collected and then bundle and resell it on the dark web.</p>
+<p>Visa’s goal is create an AI based solution to detect such breaches as early as possible with high accuracy and recall.</p>
+<section id="solution" class="level3">
+<h3 class="anchored" data-anchor-id="solution">Solution</h3>
+<p>Visa uses a semi supervised CNN for label augmentation given incidences of data breaches are extremely rare. For detection or classification of breaches a supervised CNN + a Deep Neural Net is used.</p>
+<p>For each merchant, a table is created recording the first instance a card is used at a merchant along with subsequent transactions at the same merchant with any incidence of fraud( the fraud may have happened at the same or different merchant). This table is transformed into an image which captures the same information.</p>
+<p><img src="./visa1.PNG" class="img-fluid"></p>
+<p>In instances where no breach occurred, the image would show authorizations(green) and fraud(red) being distributed across the image whereas for instances where breach occurred, there would be a clear separation between the two.</p>
+<p>A CNN is trained on the available labelled data to extract features that are indicative of a data breach. This model is used as a ‘feature classifier’ (in image below) to label the unlabeled data. The enriched data with labels is then used to train a second classifier to actually detect fraud.</p>
+<p><img src="./visa1_5.png" class="img-fluid"></p>
+<p>The second classifier uses more near time features to enable early detection of breaches.Time series features are prominently used. Multi channel time series that combine multiple time series are created and this is fed into a CNN, The features extracted by the CNN along with more static features such as type of merchant or location of merchant are fed into a deep neural network with the labels being those generated by the first CNN.</p>
+<p><img src="./visa2.PNG" class="img-fluid"></p>
+<p>The final solution looks as follows</p>
+<p><img src="./visa3.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="recommendation-system-challenges-at-twitter-scale-twitter" class="level1">
+<h1>4) Recommendation system challenges at Twitter scale | Twitter</h1>
+<p>Recommendation systems can be content based, collaborative filtering driven or a hybrid of the two.</p>
+<ul>
+<li>Given twitter has user follows as a signal, collaborative filtering is a more natural approach</li>
+<li>Content based approaches are more challenging given short document length, multi lingual content and multiple languages within the same tweet.</li>
+<li>Recommendations served include
+<ul>
+<li>user-user: Who to follow</li>
+<li>user-item: Home timeline with tweets. Which tweet to follow</li>
+<li>item-item : Recommend new trends/tweets etc.</li>
+</ul></li>
+</ul>
+<p>An item at twitter can be tweets,events,trends,moments or live video/broadcast.</p>
+<p>Twitter faces a unique challenge that the shelf life of a tweet is typically only a few hours unlike movies or e-commerce products that have a shelf life of months or years. People use twitter to keep up with the most current information.</p>
+<p>This figure provides a framework for thinking about recommender systems.</p>
+<p><img src="./twitter1.PNG" class="img-fluid"></p>
+<ol type="1">
+<li>Small Number of items + Long Shelf Life: Ideal spot to be in</li>
+<li>Small Number of items + Short Shelf Life: Can’t have a cold start problem because items disappear quickly</li>
+<li>Large Number of items + Long Shelf Life: A doable problem</li>
+<li>Large Number of items + Short Shelf Life : The hardest problem</li>
+</ol>
+<p>Question: What to optimize recommendations for? Can be retweets, likes, CTR, DAU/MAU etc. Optimizing too hard any of these may not be appropriate. Optimizing for clicks promotes click baity content, while optimizing for engagement may reduce diversity.</p>
+<ul>
+<li>Recommendations at twitter do not assign higher weights to a tweet from a verified user</li>
+</ul>
+<section id="challenges-in-user---item-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="challenges-in-user---item-recommendations">Challenges in User - Item Recommendations</h3>
+<ul>
+<li><p>Distribution of content and user interests keep changing over time so the recommender system is always predicting out of distribution.</p></li>
+<li><p>Content keeps changing and user’s interests keep changing.</p></li>
+<li><p>Interests can be long term, short term (e.g.&nbsp;elections) or geographic</p></li>
+</ul>
+<p>Twitter is trying to map users and items into more stable spaces where learning can happen.</p>
+<p>Co-occurrence of entities yields information about topics. e.g.&nbsp;LeCun + CNN vs White House + CNN</p>
+</section>
+<section id="using-deep-learning-model-to-extract-the-most-value-from-360-degree-images-trulia" class="level2">
+<h2 class="anchored" data-anchor-id="using-deep-learning-model-to-extract-the-most-value-from-360-degree-images-trulia">5) Using Deep Learning model to extract the most value from 360-degree images | Trulia</h2>
+<p>Trulia needs to rank candidate images based on an objective which can be quality, relevance, informativeness, engagement, diversity or personalization. If there are multiple images, a few need to be selected to be displayed to the user.</p>
+<p>Image selection can be based on behavioral data or through content understanding.</p>
+<section id="selecting-hero-images-for-real-estate-listings" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-hero-images-for-real-estate-listings">Selecting Hero Images for Real Estate Listings</h3>
+<p>Real Estate images can vary widely in quality and content. Zillow needs to select a primary image(hero image) to display along with the listing.Typically, exterior images are selected as the primary image which may not be appropriate.</p>
+<p>A good hero image must be: * Attractive * Relevant - Informative of the listing * Appropriate - No irrelevant advertisements</p>
+</section>
+<section id="turning-3d-panoramas-into-thumbnails" class="level3">
+<h3 class="anchored" data-anchor-id="turning-3d-panoramas-into-thumbnails">Turning 3D panoramas into thumbnails</h3>
+<p>The goal is to select an appropriate thumbnail shown on the upper half of the image from the panorama image below it.</p>
+<p><img src="./trulia1.PNG" class="img-fluid"></p>
+<p>This can be done by using an equiangular projection as a thumbnail or by selecting a thumbnail from possible rectilinear projections.</p>
+<p>The first approach is to present the entire equiangular projection.</p>
+<p><img src="./trulia2.PNG" class="img-fluid"></p>
+<p>Clearly this results in some distortions</p>
+<p>The second approach is shown below. Here you project a selected portion of the panorama into the 2D domain.</p>
+<p><img src="./trulia3.PNG" class="img-fluid"></p>
+<p>Here you need to select the most salient thumbnail from multiple possibilities. A salient thumbnail must be informative, representative, attractive and diverse.</p>
+<p>For example. Image C below is the most salient thumbnail.</p>
+<p><img src="./trulia4.PNG" class="img-fluid"></p>
+<p>The <strong>Thumbnail Extraction Pipeline</strong> is as follows</p>
+<ol type="1">
+<li>Optimal Field of View (FOV) Estimation</li>
+</ol>
+<p>This has to be done because different cameras has different vertical <a href="https://www.brickhousesecurity.com/field-of-view-explained/">FOV</a>. For e.g.&nbsp;an I-phone has a sixty degree field of view and has to be padded with zero pixels while more professional cameras have an 180 degree vertical field of view .</p>
+<ol start="2" type="1">
+<li>Extracting 2D viewpoints from 360 degree panoramas</li>
+<li>Extract saliency attributes and compute saliency scores</li>
+<li>Rank candidate viewpoints by sailency scores</li>
+<li>Apply diversity filter and return top N candidates</li>
+</ol>
+</section>
+</section>
+<section id="computing-sailency-scores" class="level2">
+<h2 class="anchored" data-anchor-id="computing-sailency-scores">Computing Sailency Scores</h2>
+<p>Trulia developed 3 different CNN models for - Image Attractiveness - Image Appropriateness - Image Scene Understanding</p>
+<p>Also, gaussian kernel smoothing is used to account for the fact the models are trained on 2d images while the test data are 360 degree panorama images.</p>
+<p>The aggregate score from the 3 models is used to compute overall salience score per viewpoint.</p>
+</section>
+<section id="training-sailency-models" class="level2">
+<h2 class="anchored" data-anchor-id="training-sailency-models">Training Sailency Models</h2>
+<ul>
+<li>Resent/Inception architectures pretrained on Imagenet/Places365 are fine tuned on internal Scenes60 data set.</li>
+<li>This model is then fine tuned on Trulia’s Appropriateness and Attractiveness data sets.</li>
+<li>Binary Cross Entropy loss is used for the Appropriateness and Attractiveness data sets while a 60 way categorical cross entropy loss is used for the scene understanding model.</li>
+</ul>
+</section>
+<section id="estimating-image-attractiveness" class="level2">
+<h2 class="anchored" data-anchor-id="estimating-image-attractiveness">Estimating Image Attractiveness</h2>
+<p>This is set up as a supervised problem and requires labels that can be quality ratings on some scale or pairwise comparisons. However this is highly subjective and human labels are expensive to acquire.</p>
+<p>So a weakly supervised approach using the meta data available from the listings is used. Home price is used as an alias for attractiveness as luxury homes have professionally taken ,well staged photos while low price homes typically have low quality images.</p>
+<p>The Grad CAM approach is used to visualize saliency to ensure the model is learning the right concepts from these weak labels.</p>
+<p><img src="./trulia5.PNG" class="img-fluid"></p>
+<p>To ensure diversity in top N recommendation, maximal marginal relevance - <a href="https://medium.com/tech-that-works/maximal-marginal-relevance-to-rerank-results-in-unsupervised-keyphrase-extraction-22d95015c7c5#:~:text=Maximal%20Marginal%20Relevance%20a.k.a.%20MMR,already%20ranked%20documents%2Fphrases%20etc.">MMR</a> is used</p>
+</section>
+<section id="a-framework-to-bootstrap-and-scale-a-machine-learning-function-workday" class="level2">
+<h2 class="anchored" data-anchor-id="a-framework-to-bootstrap-and-scale-a-machine-learning-function-workday">6) A framework to bootstrap and scale a machine learning function | Workday</h2>
+<p>Workday uses a single platform on top of which all applications such as payroll, HCM live. The platform simply exposes API for the application teams to use.</p>
+<p><img src="./workday1.PNG" class="img-fluid"></p>
+<p>Workday is used by 40% of Fortune 500 and 50% of Fortune 50 giving them vast amounts of clean data to train ML models.</p>
+<p><strong>Challenge</strong>: ML service to scan receipts and auto populate an expense report. Ship in 6 months.</p>
+<p>Very import to <strong>Define the Win</strong> and define success metrics: For this project goal was to create an ML Service that scans receipts with 80% accuracy that is delivered in private and public clouds for all customers in 6 months.</p>
+<p>Off the shelf OCR solutions work best for traditional text and not for receipts.</p>
+<p>Simulating data was not sufficient to get to the expected level of accuracy. Workday did a receipt contest to get employees to upload receipts. 50,000 receipts were invested. Labeling was done by a data labeling team.</p>
+<p>Deep learning framework chosen was MXNet for its Scala and Python support.</p>
+<p><strong>Step 1: Bounding Box Detection</strong></p>
+<ul>
+<li>A deep learning model based on residual networks outputs center of the box, height,width ,angle of title and confidence.</li>
+</ul>
+<p><strong>Step 2: Text Recognition</strong></p>
+<ul>
+<li>A deep learning model based on residual networks outputs text</li>
+</ul>
+<p><strong>Step 3: Mapping</strong></p>
+<ul>
+<li>An assortment of models(rule based + deep learning ensembles) that maps a value to a field. E.g. 63.87 is a ‘Total’ and 1/27/2018 is a ‘Date’</li>
+</ul>
+<p>All components were built using microservices architecture.</p>
+<p>The Production architecture at Workday consists of an ML platform that supports CI/CD deployment,ML as a Service is built on top of this ML Platform which is consumed by Non ML Services and a UI.</p>
+<p>When going from 0 to 1 in a new area such as deploying first ML Application, follow the START framework.</p>
+<p>S: Select One Win (Unambiguous Value). Get alignment on success criteria <br> T: Team. Smaller teams work best.(&lt; 1 pizza pie) Time bound (3 - 6 months). Focus on Learning <br> A: Articulate(Win and Gameplan) and Align(stakeholders) <br> R: Rally and Support - Protect team from external noise <br> T: Take Shortcuts (tech debt -accrue it). Speedy learning is the focus so this is ok. Target release for only one or two customers.</p>
+<p>Finally - GET</p>
+<p>G: Get Credit for the win and Gather Capital <br> E: Establish repeatable processes and platform <br> T: Transfer learnings to scale to 10</p>
+</section>
+<section id="artifical-and-human-intelligence-in-healthcare-google-brain-cornell-university" class="level2">
+<h2 class="anchored" data-anchor-id="artifical-and-human-intelligence-in-healthcare-google-brain-cornell-university">7) Artifical and Human Intelligence in Healthcare | Google Brain &amp; Cornell University</h2>
+<section id="transfer-learning" class="level3">
+<h3 class="anchored" data-anchor-id="transfer-learning">Transfer Learning</h3>
+<ul>
+<li><p>Tranfer learning is widely used today. More pretraining data is not necessarily better data. Pre-training on curated data is often better. <a href="https://arxiv.org/abs/1811.07056">Paper</a></p></li>
+<li><p>Better performance on imagenet does not always mean better performance on the target task. It depends on factors such as regularization and dataset.</p></li>
+</ul>
+</section>
+<section id="transfer-learning-in-medical-imaging" class="level3">
+<h3 class="anchored" data-anchor-id="transfer-learning-in-medical-imaging">Transfer Learning in Medical Imaging</h3>
+<p>Tasks: Chest X -rays and diagnosing diabetic retinopathy <br> Models: Resent 50 and Inception v3. Also considered smaller lightweight architectries which consisted of sets of CBR (convolution+batchnorm_relu+maxpool) layers</p>
+<section id="takeways" class="level4">
+<h4 class="anchored" data-anchor-id="takeways">Takeways</h4>
+<ul>
+<li>Transfer learning and Random initialization performed comparably in many settings</li>
+<li>CBRs perform as well as the big imagenet models</li>
+<li>Imagenet performance is not indicative of medical performance</li>
+<li>In medical applications, you typically have much smaller datasets for fine tuning. On a smaller dataset of 5,000 images the results are as follows. The lift from transfer learning is not signficant.</li>
+</ul>
+<p><img src="./googlebrain1.PNG" class="img-fluid"></p>
+<p>This suggests that the typical imagenet models might be overparameterised for tasks of interest.</p>
+</section>
+<section id="representational-analysis-of-transfer" class="level4">
+<h4 class="anchored" data-anchor-id="representational-analysis-of-transfer">Representational Analysis of Transfer</h4>
+<ul>
+<li><p>The goal is to learn whether irrespective of initialization , pretrained and randomly intialized networks learn the same concepts in the latent layers. However this is difficult as comparing two networks is challenging due to the distributed alignment problem. Features learned by one network don’t align with those learned by another network. E.g. one network might learn to recognize a dog using a single neuron ,while another network uses concepts learned by three different neurons to identify a dog.</p></li>
+<li><p>Was carried out using <a href="https://github.com/google/svcca">CCA</a></p></li>
+</ul>
+<p>Results of comparing representations shown below show that networks trained with random intialization are more similar to each other than those trained with pretrained initializations.</p>
+<ul>
+<li>Even though performance is comparable, the latent representations learned are different.</li>
+<li>It was also observed large overparametrized models change less through training.</li>
+</ul>
+<p><strong>Takeaway: Use pretrained weights for lower layers. Redesign and streamline higher layers of the architecture</strong></p>
+<ul>
+<li>Having pre-trained weights converges much faster than random initialization. To speed up convergence of random weights, it is shown that keeping the scaling of the pretrained features,i.e.draw iid weights with same mean and variance as pretrained features, really helps.</li>
+</ul>
+</section>
+</section>
+<section id="ai-for-health-in-practice" class="level3">
+<h3 class="anchored" data-anchor-id="ai-for-health-in-practice">AI for Health in Practice</h3>
+<ul>
+<li><p>Need to think about how AI systems work with human experts</p></li>
+<li><p>Doctor disagreements occur often. AI can be used to predict doctor disagreements → Direct uncertainty prediction(DUP)</p></li>
+<li><p>This is not far from predicting doctor error($ P_{herr} $). Uncertainty in prediction also gives a sense of AI error $ P_{AIerr} $</p></li>
+<li><p>Can rank cases according to the difference between AI error and doctor error. On one end you have cases where AI error is very high and doctor error is low while on the other end you have cases where AI error is low and doctor error is high. For cases at the latter end, you can deploy an AI system, available human doctor budget can be deployed on other cases.</p></li>
+<li><p>In practice you have some fraction of cases being looked at by the AI system, by doctors or by both. Typically a combination of both works best</p></li>
+</ul>
+</section>
+</section>
+<section id="deep-reinforcement-learning-to-improvise-input-datasets-infilect-technologies" class="level2">
+<h2 class="anchored" data-anchor-id="deep-reinforcement-learning-to-improvise-input-datasets-infilect-technologies">8) Deep Reinforcement Learning to improvise input datasets | Infilect Technologies</h2>
+<ul>
+<li><p>Data augmentation is used widely in for training computer vision models. This talk addresses how to optimally prepare data sets using data augmentation.</p></li>
+<li><p>Synthesizing images using GANs is also an option, but GANS are difficult to train and reproduce.</p></li>
+<li><p>In the objection detection task being addressed here, there are certain minority classes which might need different types of data augmentation.</p></li>
+<li><p>Types of augmentation typically used are:</p></li>
+</ul>
+<ol type="1">
+<li>Color augmentations - Change pixel intensity</li>
+<li>Geometric Augmentations - Shear ,Crop, Translation etc,</li>
+<li>Bounding Box augmentations - Change a specific object in an image.</li>
+</ol>
+<p>You can also encounter situations where certain types of augmentations should be strictly avoided. E.g. flipping images of digits, or contrasting traffic light images.</p>
+<p>The goal is to create an automated data augmentation system so that you don’t have to manually try different types of augmentations and iterate to find the best model as shown below.</p>
+<p><img src="./RL1.png" class="img-fluid"></p>
+<p>The proposed solution is 1) To learn a set of augmentation policies for the tagged dataset 2) Apply these augmentations to the dataset to create an augmented dataset for training</p>
+<p><strong>Policy</strong>: Apply N augmentations where each augmentation is applied with a magnitude and probability</p>
+<p><strong>Strategy</strong>: A set of policies</p>
+<p>At training time, for an image, you sample a policy and apply the policy. Applying two different policies to the same images will result in 2 different augmented images.</p>
+<section id="formulation-of-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="formulation-of-strategy">Formulation of Strategy</h3>
+<p>A: Universe of augmentations</p>
+<p>C: Classes in the dataset</p>
+<p>$ V_{a,c} $: Magnitude of augmentation a for class c</p>
+<p>$ P_{a,c} $: Probability of augmentation a for class c</p>
+<p>These are two parameters we want to learn for each possible augmentation.</p>
+<p>The solution is as follows:</p>
+<p>A controller will generate a sample of a strategy.The environment trains the model using the strategy. The accuracy of the model is the reward based on which the controller is tuned.</p>
+<p><a href="https://arxiv.org/abs/1512.02325">SSD</a>: Single Shot Detector</p>
+<p><img src="./RL2.png" class="img-fluid"></p>
+</section>
+<section id="controller" class="level3">
+<h3 class="anchored" data-anchor-id="controller">Controller</h3>
+<p>This uses an LSTM architecture which each outputs three softmaxes corresponding to 1) C classes 2) A augmentations 3) B buckets indicating magnitude of transformation</p>
+<p>There are four LSTMs where the first proposes the class, the second proposes the augmentation for this class, the third proposed a magnitude for this augmentation while the fourth proposes a probability.</p>
+<p>Together it says, for class c, apply augmentation a with magnitude b with a proposed probability. For each additional policy you want to learn, you have to add 4 more LSTMs.</p>
+<p><img src="./RL3.PNG" class="img-fluid"></p>
+<p>Training is carried out using proximal policy optimization</p>
+<p>Based on the accuracy of the model, positive or negative reinforcement can be carried out to tune up or tune down the probability of a certain augmentation scheme.</p>
+<p>The final results are as follows:</p>
+<p><img src="./RL4.png" class="img-fluid"></p>
+<ul>
+<li><p>The system learned to carry out augmentations like contrast,edge augmentations, image crops and bounding box flips rather than rotation,blur or shear that are typically used.</p></li>
+<li><p>Based on <a href="https://research.google/pubs/pub47890/">auto augment</a> by Google</p></li>
+</ul>
+</section>
+</section>
+<section id="defragmenting-the-deep-learning-ecosystem-determined-ai" class="level2">
+<h2 class="anchored" data-anchor-id="defragmenting-the-deep-learning-ecosystem-determined-ai">9) Defragmenting the Deep Learning Ecosystem | Determined AI</h2>
+<section id="challenges-in-ai-infrastructure" class="level3">
+<h3 class="anchored" data-anchor-id="challenges-in-ai-infrastructure">Challenges in AI Infrastructure</h3>
+<ol type="1">
+<li>Might take days to recover from faults. Training has to start all over again if a session fails</li>
+</ol>
+<ul>
+<li>This is particularly a challenge when training models like GANs that can take a couple of days</li>
+<li>There are options to save and reload models intermittently e.g.&nbsp;using tf.saved_model.simple_save and tf.saved_model.loader.load in TF.</li>
+<li>These might be inadequate as TF only saves weights and the optimizer state when the user also needs to save the TF version, random seeds, model definitions and input read positions which requires custom code. In summary your Deep Learning engineer has to spend a lot of time writing boiler plate code.</li>
+</ul>
+<ol start="2" type="1">
+<li>Reproducibility</li>
+</ol>
+<ul>
+<li>Core tenet of science</li>
+<li>Important for collaboration so that models can be handed off to a colleague</li>
+</ul>
+<p>Reproducibility is a challenge in DL because of</p>
+<ul>
+<li>Architecture</li>
+<li>Data - New data could be added</li>
+<li>Initializations e.g for hyper parameters</li>
+<li>Stochastic nature of optimization techniques</li>
+<li>Non deterministic GPU operations</li>
+<li>CPU multi-threading meaning operations could be carried out in different orders</li>
+</ul>
+<p>Addressing this requires significant engineering expertise and use of containerization to pin versions of all underlying libraries.</p>
+<p>Imperfect solutions are available in PyTorch and TF</p>
+<ol start="3" type="1">
+<li>Hand implemented and slow tuning methods</li>
+</ol>
+<ul>
+<li>Needs cluster management to parallelize testing of multiple combinations of hyper parameters but there is no support for mete data management, fault tolerance or efficient allocation.</li>
+</ul>
+<ol start="4" type="1">
+<li>Systems are not designed for multi-tenancy and sharing of resources</li>
+</ol>
+<ul>
+<li><p>Clusters today don’t understand the semantics of deep learning</p></li>
+<li><p>DL frameworks are built to train a single model for a single user on a single machine</p></li>
+<li><p>Companies often use a calendar schedule to allocate resources between team members or go for fixed assignment.This can lead to low utilization and low scalability.</p></li>
+<li><p>Can use tools like kubernetes, Yarn or Mesos but these solutions do not offer job migration or auto scaling and is not much better than a queue</p></li>
+</ul>
+<p>Only FAMG companies have the necessary infrastructure</p>
+<p>Most tools like PyTorch and TF are focused on just the model training component of the modeling life cycle shown below</p>
+<p><img src="./determined1.PNG" class="img-fluid"></p>
+<p>Determined AI is focused on holistic and specialized AI software infrastructure.</p>
+</section>
+<section id="ideal-ai-infrastructure" class="level3">
+<h3 class="anchored" data-anchor-id="ideal-ai-infrastructure">Ideal AI Infrastructure</h3>
+<p>Ideal AI infrastructure will address these challenges by offering the following</p>
+<ol type="1">
+<li></li>
+</ol>
+<ul>
+<li>Check pointing would be taken care of OTB</li>
+<li>Infrastructure would monitor and retry failed jobs automatically from the latest checkpoints automatically</li>
+<li>Infrastructure would manage its own checkpoint storage according to user defined rules (e.g.&nbsp;keep models with n best validation errors)</li>
+<li>Infrastructure could leverage checkpoints to enable reproducibility or distributed training</li>
+<li>All of this would be transparent</li>
+</ul>
+<ol start="2" type="1">
+<li>Reproducibility should be addressed by providing the following features</li>
+</ol>
+<p><img src="./determined3.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<ul>
+<li>Hyper band is a resource optimized hyper parameter tuning technique that uses active learning and early stopping.It performs far better than conventional techniques</li>
+</ul>
+<p><img src="./determined2.png" class="img-fluid"></p>
+<ul>
+<li>On average, it is 50x faster than Random search, 10x faster than Bayesian optimization</li>
+<li>Also works really well for Neural Architecture Search. Outperforms Google’s internal system by 3x</li>
+</ul>
+<p>A holistic and specialized AI infrastructure that Determined AI has built looks like this:</p>
+<p><img src="./determined4.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="industrialized-capsule-networks-for-text-analytics-walmart-labs-publicis-sapient" class="level2">
+<h2 class="anchored" data-anchor-id="industrialized-capsule-networks-for-text-analytics-walmart-labs-publicis-sapient">10) Industrialized Capsule networks for text analytics| Walmart Labs &amp; Publicis Sapient</h2>
+<p>Broad overview of NLP and Text Analytics</p>
+<p><img src="./capsule1.png" class="img-fluid"></p>
+<ul>
+<li>LSTMs outperforms CNNs for text classification as there are long term dependencies in text and outputs are not driven by just one or two key words or phrases.LSTMs also care about ordering of features whereas CNNs do not.</li>
+</ul>
+<p>To make CNNs work, kernels with large dimensions have to be used meaning number of parameters increase exponentially. Pooling also leads to loss of information.</p>
+<ul>
+<li>CNNs are invariant, so input perturbations do not change output . It is unable to recognize transformations</li>
+<li>Capsules are equivariant. Outputs change when input changes due to perturbations and hence they are able to recognize transformations of input.</li>
+</ul>
+<section id="overview-of-capsule-networks" class="level3">
+<h3 class="anchored" data-anchor-id="overview-of-capsule-networks">Overview of Capsule Networks</h3>
+<p><strong>1) Moving from Scalar to Vector. Pooling produces a scalar in CNNs. In a capsule network, the output is a vector instead.</strong></p>
+<p><img src="./capsule2.png" class="img-fluid"></p>
+<ul>
+<li>The output vector is able to encode multiple properties of the input region such as color, thickness etc.</li>
+<li>Vector length also encodes the probability of the output class.</li>
+</ul>
+<p><strong>2) Capsule Output Calculation - Forward Pass</strong></p>
+<p><img src="./capsule4.png" class="img-fluid"></p>
+<ul>
+<li><p>Apply an affine transformation (matrix multiplication that preserves lines and parallelism). This is supposed to capture the relationship between various components (e.g.&nbsp;face, nose, ear) to the image (face) in the higher layer. Or how ordering of words affect sentiment</p></li>
+<li><p>Coupling coefficient learns the strength of the relationship between two layers</p></li>
+<li><p>Squashing function changes the length of the vector so that it is between 0 and 1 so that it encodes a probability</p></li>
+</ul>
+<p><strong>3) Dynamic Routing - Backward Pass</strong></p>
+<p><img src="./capsule5.png" class="img-fluid"></p>
+<p>Assume there is one lower level capsule and two higher level capsules as shown above. If more lower level capsules are in agreement, assign higher coefficients whereas if lower level capsules disagree(e.g.&nbsp;eyes are spatially co-located), assign lower coefficients.</p>
+<p>The Capsule network architecture is shown below. <img src="./capsule3.png" class="img-fluid"></p>
+<p>Paper on application of capsule networks to text classification: https://arxiv.org/abs/1804.00538</p>
+<ul>
+<li>Capsule networks outperforms other networks for multi-label classification with little additional data</li>
+</ul>
+</section>
+<section id="industrialization-of-capsule-networks" class="level3">
+<h3 class="anchored" data-anchor-id="industrialization-of-capsule-networks">Industrialization of Capsule Networks</h3>
+<ul>
+<li>Kubeflow has been used to productionize capsule networks</li>
+</ul>
+</section>
+</section>
+<section id="building-facebooks-visual-cortex-facebook" class="level2">
+<h2 class="anchored" data-anchor-id="building-facebooks-visual-cortex-facebook">11) Building Facebook’s visual cortex | Facebook</h2>
+<p>Facebook platform has evolved from being a text heavy platform to a photo and video heavy platform including AR/VR.</p>
+<p>Some applications of applications of visual cortex</p>
+<ol type="1">
+<li>Automatic Alternative Text:</li>
+</ol>
+<p>Over 200 million visually impaired people use screen readers to navigate websites. These usually directly reads sentences tied to the images that are usually manually hand curated by the person uploading the images.</p>
+<p>These sentence descriptions are automatically generated by taking the outputs from FB’s OCR and Image classification system (that categorizes images into various categories)</p>
+<ol start="2" type="1">
+<li>Instagram explore ranking.</li>
+</ol>
+<p>Create a personalized news feed based on type of photos you upload.</p>
+<ol start="3" type="1">
+<li>Violating Content Classifiers</li>
+</ol>
+<p>Vision signals are used as features in multi-modal fusion classifiers that can identify policy violating content.</p>
+<ol start="4" type="1">
+<li>Visual similarity</li>
+</ol>
+<p>Use identified violations (e.g.&nbsp;Marijuana advertisements) to identify similar violations</p>
+<p><strong>Visual Cortex</strong> is a system that operates on a stream of uploaded images and videos. It runs models on these and stores results. It uses the same backbone model across all the above tasks.</p>
+<p>Some examples:</p>
+<ol type="1">
+<li><p>Model using MLP + Softmax to identify policy violating content</p></li>
+<li><p>Model that works as a feature extractor that produces embeddings for downstream models</p></li>
+<li><p>Model to produce embeddings, compress it and use it in a KNN model</p></li>
+</ol>
+<p>Major considerations while building Visual Cortex given FB’s immense scale:</p>
+<ol type="1">
+<li><p>Data annotation is costly</p></li>
+<li><p>Dynamic demands and trends . e.g.&nbsp;Identify ice bucket challenge. This is a long tailed problem</p></li>
+<li><p>Dependencies due to downstream models. Continuously improving visual cortex is challenging given these dependencies</p></li>
+<li><p>Efficiency. To run 1 billion images(1 day of data) on 1 machine sequentially through RexNeXt 101 takes 1,736 days.</p></li>
+</ol>
+<section id="reducing-dependency-on-supervision" class="level3">
+<h3 class="anchored" data-anchor-id="reducing-dependency-on-supervision">Reducing Dependency on Supervision</h3>
+<ol type="a">
+<li><strong>Weakly supervised Learning</strong>: Noisy Labels</li>
+</ol>
+<p>Consider using Instagram hashtags. This could have issues such as non-visual tags, missing tags or wrong tags.</p>
+<p><strong>Proposed Approach</strong>: Pre-train a model to predict hashtags and then transfer this to an image classification model</p>
+<p>Details are shown below.</p>
+<p><img src="./fb1.png" class="img-fluid"></p>
+<p><strong>Findings</strong>:</p>
+<ul>
+<li><p>As size of data used for pre-trained model increases, the performance on the target task increases.</p></li>
+<li><p>Initially used 17,000 hash tags, then reduced to 1000 hash tags to match Imagenet classification task. Accuracy improved as the labels space for both are now similar.</p></li>
+<li><p>As model capability grows in a weakly supervised setting, final accuracy improves. This does not hold for fully supervised models.</p></li>
+</ul>
+<p>b)<strong>Semi Supervised Learning</strong>: Small amount of labelled data + Large volume of unlabeled data</p>
+<p>This was considered as</p>
+<ol type="1">
+<li>Hash tag data is not accessible outside Instagram</li>
+<li>Not utilizing large amounts of unlabeled data</li>
+<li>Hard to deploy very large models</li>
+</ol>
+<p><strong>Proposed Approach</strong>:</p>
+<ol type="1">
+<li><p>Train teacher model(e.g.&nbsp;RexNeXt 101) on labelled data (e.g.&nbsp;Imagenet)</p></li>
+<li><p>Run teacher model on unlabeled data</p></li>
+<li><p>Take top-k images per each concept/class</p></li>
+<li><p>Train a smaller student model (e.g.&nbsp;ResNet - 50) and fine tune on original image net dataset</p></li>
+<li><p>Use student model as a pre-trained network.</p></li>
+</ol>
+<p><strong>Findings</strong>: As volume of unlabeled data used increases, accuracy of student model on target task also increases.</p>
+<ol start="3" type="a">
+<li><strong>Self Supervision</strong>: No labels</li>
+</ol>
+<ul>
+<li>E.g. Create a model to reassemble an image from scrambled pieces like solving a jigsaw puzzle.</li>
+</ul>
+<p>Such a model will have enough semantic information to transfer to a different task.</p>
+<p>Greater the data used for this <em>pre-text task</em>, greater the accuracy of the transfer learned model on the final task.</p>
+<p>On Imagenet 1K, performance of self supervised methods falls well short of semi supervised techniques.</p>
+<p><img src="./fb2.png" class="img-fluid"></p>
+<p>Human labelled data is still a critical component of ML systems.</p>
+</section>
+<section id="efficiency" class="level3">
+<h3 class="anchored" data-anchor-id="efficiency">Efficiency</h3>
+<ul>
+<li>Model Size - Quantization can decrease accuracy</li>
+</ul>
+<p><strong>Idea 1</strong>: Share same pre-trained network across multiple tasks; run all images only once through this trunk. The common trunk will have multiple heads fine tuned for various tasks</p>
+<p><strong>Idea 2</strong>: Invest in efficient backbone architectures.</p>
+<p><strong>Idea 3</strong>: Invest in efficient operations such as octave convolutions. This has reduced processing power required by 40% and forward pass latency drops by 50% for a ResNet 50</p>
+</section>
+<section id="continuous-improvement" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-improvement">Continuous Improvement</h3>
+<ul>
+<li><p>Define good model APIs to influence the architecture of upstream systems</p></li>
+<li><p>Contract with downstream systems for compatibility support.</p>
+<ul>
+<li>Predictably push new backbone every N months with N -1 backwards compatibility.</li>
+</ul></li>
+</ul>
+<p>Example: If a new backbone(V2) has been developed to generate better embeddings. Instead of running v1 and v2, only v2 will be run to emit both v1 and v2 embeddings. This old embedding is backwards compatible and is realized using knowledge distillation. - List of concepts in v2 will be a super set of v1 and impersonate old calibrated scores using a look up table</p>
+</section>
+<section id="dynamic-demands" class="level3">
+<h3 class="anchored" data-anchor-id="dynamic-demands">Dynamic Demands</h3>
+<ul>
+<li>Created platform to quickly train linear classifiers</li>
+<li>use active learning to quickly get high quality labels from annotators</li>
+<li>Concept drift measured programatically and unit tests to ensure outputs are consistent from day to day.</li>
+</ul>
+<p><img src="./fb3.png" class="img-fluid"></p>
+<p>Slide deck available <a href="https://docs.google.com/presentation/d/1F_1EzNhkME-qADI71r1UB4F_e8hIPdYZ8p4d5_eUVJs/edit#slide=id.p">here</a></p>
+</section>
+</section>
+<section id="deep-learning-in-the-tire-industry-american-tire-distributors-atrd" class="level2">
+<h2 class="anchored" data-anchor-id="deep-learning-in-the-tire-industry-american-tire-distributors-atrd">12) Deep Learning in the Tire Industry | American Tire Distributors (ATRD)</h2>
+<p><strong>Characteristic of the Tire industry</strong>: - Purchases are rare and so data is sparse - Tires are manufactured by certain companies and distributed by ATD to retailers such as Walmart or Costco</p>
+<p><strong>Business Problems in Pricing</strong>: - Price performance monitoring - Pricing opportunity identification - Dynamic pricing recommendations</p>
+<ul>
+<li>Addressed using Anomaly detection, time series decomposition, demand modelling(discounts), pricing recommendations</li>
+</ul>
+<p><strong>Business Problems in Operation</strong> - Warehouse staffing efficiency - How many people required at a given location and at a given point in time?</p>
+<ul>
+<li>Addressed using Labor demand forecasting and labor optimization</li>
+</ul>
+<section id="forecasting-staffing-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="forecasting-staffing-requirements">Forecasting Staffing requirements</h3>
+<p><img src="./tire1.png" class="img-fluid"></p>
+<p>Data collected include each staff associate’s activity, number and type of tires being handled. The approach uses dynamic weighting of a Prophet model(Traditional time series) and an LSTM model.Forecasts are made for each distribution center.</p>
+<p><img src="./tire3.png" class="img-fluid"></p>
+<p>Saved 5-10% in labor costs with this approach.</p>
+</section>
+<section id="pricing-product-demand-model" class="level3">
+<h3 class="anchored" data-anchor-id="pricing-product-demand-model">Pricing Product Demand Model</h3>
+<p>Combination of a market demand model and MIP optimization to simulate pricing strategies for different products.</p>
+<p><img src="./tire2.png" class="img-fluid"></p>
+<p>The two green blocks show modules where Deep Learning is used. Given data is sparse, sales were aggregated at a week and distribution center level. An embedding for the time series is generated by an auto encoder which is then clustered. The clustering identifies product buckets such as snow tires and more commonly bought tires with different profiles.</p>
+<p>A new model is built for each identified cluster.The final model is obtained by stacking a Random Forest Model, an XG Boost model and a DNN model. The second level stacking model is also a DNN.</p>
+<p>Model stacking helped with overfitting and accounting for anomalous behavior.A single model is unable to account for such anomalous behavior. It was also observed that different models perform best for different clusters,so stacking helps avoid manually selecting models for different clusters. DNNs perform best when lots of data are available, tree based models perform better for sparse data.</p>
+<p>Data drift is not a concern as tire demand is largely predictable apart from expected seasonality.</p>
+<p><img src="./tire4.PNG" class="img-fluid"></p>
+</section>
+</section>
+<section id="a-framework-for-human-ai-integration-in-the-enterprise-rakuten" class="level2">
+<h2 class="anchored" data-anchor-id="a-framework-for-human-ai-integration-in-the-enterprise-rakuten">13) A framework for Human AI Integration in the enterprise | Rakuten</h2>
+<p><strong>Moaravec’s paradox</strong>: What is easy for humans is difficult for machines and what is easy for machines is difficult for humans</p>
+<ul>
+<li>AI can perform well on the head of the distribution while humans work better on the tail.</li>
+<li>Machines are susceptible to adversarial attacks</li>
+</ul>
+<section id="external-factors" class="level3">
+<h3 class="anchored" data-anchor-id="external-factors">External Factors</h3>
+<ul>
+<li><p>Regulations sometimes point to AI-human integration. E.g. Article 22 of EU GDPR requires a human in the loop for providing explanations.</p></li>
+<li><p>High risk applications like medical diagnosis often require human in the loop to mitigate risk</p></li>
+</ul>
+</section>
+<section id="competitive-advantage" class="level3">
+<h3 class="anchored" data-anchor-id="competitive-advantage">Competitive Advantage</h3>
+<p>Humans in the loop can reduce the need for:</p>
+<ol type="1">
+<li><p>Huge volumes of labeled training data</p></li>
+<li><p>Massive amounts of computing resources</p></li>
+<li><p>Armies of data scientists</p></li>
+</ol>
+<p>Human in the loop can overcome limitations in an algorithm’s accuracy</p>
+</section>
+<section id="dialog" class="level3">
+<h3 class="anchored" data-anchor-id="dialog">Dialog</h3>
+<p>Human - AI integration requires a dialogue between AI and humans</p>
+<ul>
+<li>The human participant can be the end user in cases where the risk is low. e.g A/B Testing , Multi armed bandits</li>
+<li>If the risk is medium, crowd sourcing can be used . E.g. product categorization</li>
+<li>If the risk is high, use your own workforce. E.g. data scientists or legal teams to comply with regulations</li>
+</ul>
+<p>Designing a dialogue interface requires an understanding of human psychology, design thinking and paradox of automation. i.e.&nbsp;as automation increases, human skills erode and human intervention cannot be relied upon.</p>
+</section>
+<section id="ai-understanding-humans" class="level3">
+<h3 class="anchored" data-anchor-id="ai-understanding-humans">AI Understanding Humans</h3>
+<ul>
+<li>Supervised Learning with training labels is the best example of this.</li>
+<li>Active learning allows AI to ask questions of humans when it is not confident in it’s predictions. This also reduces redundancy and reduces manual labeling effort.</li>
+</ul>
+</section>
+<section id="human-understanding-ai---explainability" class="level3">
+<h3 class="anchored" data-anchor-id="human-understanding-ai---explainability">Human Understanding AI - Explainability</h3>
+<p>Explainability algorithms can be classified along the following dimensions:</p>
+<ol type="1">
+<li>Model agnostic vs Model specific</li>
+<li>Local vs Global</li>
+<li>Features vs Instances vs Surrogates</li>
+</ol>
+<p>E.g. If a bank tells you a loan was rejected because your income was low: It is a local, feature based explanation. If the explanation for a diagnosis is that the patient is similar to other patients which were diagnosed: it is a local, instance based explanation.</p>
+<p>Rakuten has a hierarchical product classifications system that classifies products based on a description. E.g. Electronics → Cell Phone → Smart Phone. The model provides explanations for the classification. E.g. Electronics because it found ‘256 GB’ in the description. Smartphone because it found ‘I phone’ in the description.</p>
+<p>Some of the explanation algorithms provide justifications rather than explanations.</p>
+<p><strong>Explainability</strong>: Optimize interpretability given a model <br> <strong>Modifiability</strong>: Optimize a model given interpretability. Make interpretability a constraint that needs to be satisfied,and optimize the model.</p>
+<p>Define an abstraction layer that humans can understand and modify. <br> E.g. A steering wheel, gear shaft and gas pedal. How this affects the engine is abstracted.</p>
+<p>E.g. You can develop a black box model to extract order number form a receipt but this can be hard to debug. Instead, Rakuten build a model that generates a template; a piece of code that can be run to extract the order number. Human operator can modify this template.</p>
+<p>Benefits of modifiability: * Mitigate accuracy - interpretability tradeoff * Enable debugging even by non-AI specialists * Maintain high quality of end results. Human has to intervene if model is not performing well.</p>
+<p>Other example: Stitch fix algorithms that recommends clothes but is modified by stylists. The selection of clothes acts as an abstraction layer.</p>
+</section>
+<section id="system-design-with-human--ai-integration" class="level3">
+<h3 class="anchored" data-anchor-id="system-design-with-human--ai-integration">System Design with Human- AI Integration</h3>
+<p><img src="./rakuten1.png" class="img-fluid"></p>
+<p>Think of humans and AI as components in a system.</p>
+<p>The layer of abstraction is the knowledge graphs which has products and entities and two types of relations. A product can belong to a category and categories are related to each other. The system recommends products from a complementary category to the user.</p>
+<p>Product categorization has to be monitored. Manually identifying misclassifications is not possible. This can be reduced to an anomaly detection problem. e.g.&nbsp;identify a wine product being misclassified in the tire category.</p>
+<p>Humans can thus focus on anomalies and label just those.</p>
+<ul>
+<li>Rakuten has moved folks who work as humans in the loop to more AI centric roles.</li>
+</ul>
+</section>
+</section>
+<section id="data-science-without-seeing-the-data-advanced-encryption-to-the-rescue-intuit" class="level2">
+<h2 class="anchored" data-anchor-id="data-science-without-seeing-the-data-advanced-encryption-to-the-rescue-intuit">14) Data Science without seeing the data: Advanced encryption to the rescue | Intuit</h2>
+<ul>
+<li><p>Explosion in data and number of people accessing it poses information security risks.</p></li>
+<li><p>Goal is to do ML without seeing the underlying data.</p></li>
+</ul>
+<p><em>Fully Homomorphic Encryption(FHE)</em>: Encrypts for security without losing the information necessary for computation.</p>
+<p>Microsoft’s <a href="https://www.microsoft.com/en-us/research/project/microsoft-seal/">SEAL</a> is a popular open source toolkit used for FHE. It abstracts the advanced mathematics for encryption for software engineers.</p>
+<p>Also see <a href="https://homomorphicencryption.org/introduction/">here</a> for a more thorough introduction.</p>
+<p>All computations cannot be done using FHE</p>
+<p><img src="./intuit1.png" class="img-fluid"></p>
+<p>Not possible to do IF statements i.e.&nbsp;threshold functions.</p>
+<p>Use case in Medicine:A gives B encrypted medical data. B runs proprietary algorithm and gets an encrypted diagnosis.A accepts this and decrypts it to get diagnosis.</p>
+<ul>
+<li>Intuit wants to encrypt all customer data on AWS and still use the data to run ML.</li>
+<li>Tree based models are most widely used at Intuit, but you actually need to do branching which is hard with FHE.</li>
+<li>Thresholding functions required to split decision trees can be approximated using a polynomial function. <img src="./intuit2.PNG" class="img-fluid"></li>
+</ul>
+<section id="decision-tree-training" class="level3">
+<h3 class="anchored" data-anchor-id="decision-tree-training">Decision Tree Training</h3>
+<p>Unlike regular decision tree where the data is split and only a partition of the data is handed down to subsequent nodes of the tree,with FHE, the entire data has to be passed down through each layer as the data is encrypted. Only when you decrypt the full expression is an observation assigned to a leaf.</p>
+<p>This can be intractable if the trees are very deep.</p>
+<p>Inference with FHE is still very slow. In 2009, the slowdown was $ 10^7 $, in 2019 it is $ 10^4 $</p>
+<ul>
+<li>Batch training and inference can be done on encrypted data.Not suitable in an online setting.</li>
+</ul>
+</section>
+</section>
+<section id="mozart-in-the-box-interacting-with-ai-tools-for-music-creation-midas" class="level2">
+<h2 class="anchored" data-anchor-id="mozart-in-the-box-interacting-with-ai-tools-for-music-creation-midas">15) Mozart in the Box: Interacting with AI Tools for Music Creation | Midas</h2>
+<ul>
+<li>Fear of automation is real: Even for an autonomous car, people would like to see the speedometer reading.</li>
+</ul>
+<p>Complex systems are hard to innovate on, the airplane pilot’s complex is still extremely complex despite all the innovation</p>
+<ol type="1">
+<li>Designed by experts for experts</li>
+<li>Have many critical parameters ad controls</li>
+<li>Require intense training and learning effort</li>
+<li>Mistakes and failures must be avoided at all costs</li>
+<li>The users are extremely conservative</li>
+</ol>
+<p>Complex systems are also liable to the Active User paradox which reduces user motivation to spend any time just learning about the system. This can manifest in a few ways</p>
+<ol type="1">
+<li><p>Production Bias: When situation appear the could be more effectively handled by new procedures,they are likely to stick with procedures they already know regardless of efficacy. You want to start using something without reading the user manual</p></li>
+<li><p>Assimilation Bias: People apply what they already know to new situations. Irrelevant and misleading similarities between new and old information can blind learners to what they are actually experiencing, leading them to draw erroneous comparisons and conclusions.</p></li>
+</ol>
+<p>Midas launched the world’s first AI and cloud based mixing console platform in Aug 2019.Predictably, this triggered a fear of automation from several sound engineers.</p>
+<p>To market automation using AI:</p>
+<ol type="1">
+<li>Explain the purpose of automation</li>
+<li>Make clear what the system and do and how well it can do it.</li>
+</ol>
+<section id="types-of-automation" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-automation">Types of Automation</h3>
+<p>We can choose to automate along any of these dimensions</p>
+<ol type="1">
+<li>Information acquisition</li>
+<li>Information analysis</li>
+<li>Decision selection E.g. Breathing us automated but we can control it to a certain extent</li>
+<li>Action implementation E.g. The heartbeat is completely automated</li>
+</ol>
+</section>
+<section id="levels-of-automation" class="level3">
+<h3 class="anchored" data-anchor-id="levels-of-automation">Levels of Automation</h3>
+<p>0: No Automation <br> 1: Assistance <br> 2: Partial Automation <br> 3: Conditional Automation <br> 4: High Automation <br> 5: Total Automation <br></p>
+<p>Refer to this <a href="https://www.researchgate.net/publication/11596569_A_model_for_types_and_levels_of_human_interaction_with_automation_IEEE_Trans_Syst_Man_Cybern_Part_A_Syst_Hum_303_286-297">paper</a> for more details.</p>
+<p>We can build systems with various levels of automation(manual to fully automated) across the candidate stages for automation as shown below.</p>
+<p><img src="./music1.PNG" class="img-fluid"></p>
+<p>You can also build adaptable systems by allowing ranges of automation for each type of automation, a human in the loop can then interact with the system specifying the right level of automation as shown below.</p>
+<p>How the system gives feedback to the user can also be of the following types</p>
+<ol type="1">
+<li>Optimistic: Show everything as if it were correct</li>
+<li>Pessimistic: Show only what is known to be correct</li>
+<li>Cautious: Show the uncertainty of the system</li>
+<li>Opportunistic: Exploit uncertainty to improve the system (Active learning)</li>
+</ol>
+<p>The following principles relating to purpose should be kept in mind while designing the system</p>
+<ol type="1">
+<li>Explain the purpose of the AI</li>
+<li>Make clear what the system can do and how well it can do it</li>
+<li>Show the performance of the system choosing appropriate feedback strategies</li>
+<li>Show when the system is not confident</li>
+<li>Design for appropriate trust, not for higher trust.</li>
+</ol>
+<p>The following principles relating to interaction should be kept in mind while designing the system</p>
+<ol type="1">
+<li>Minimize the impact on the existing workflow</li>
+<li>Support efficient invocation(of AI system)</li>
+<li>Support efficient correction</li>
+<li>Support efficient dismissal</li>
+<li>Make the level of automation adaptable</li>
+<li>Design clear transitions between the different levels of automation</li>
+<li>Focus on UX from the early stages of algorithmic research</li>
+</ol>
+<p>The following canvas can be used for such system design.</p>
+<p><img src="./music3.png" class="img-fluid"></p>
+<p>The following image shows how the AI Music system was designed</p>
+</section>
+</section>
+<section id="ai-for-cell-shaping-in-mobile-networks-ericsson" class="level2">
+<h2 class="anchored" data-anchor-id="ai-for-cell-shaping-in-mobile-networks-ericsson">16) AI for Cell Shaping in Mobile Networks | Ericsson</h2>
+<p>Mobile networks present an optimization problem where the network has to provide optimum coverage for a large number of mobile customers using a limited spectrum. Some parameters of an antenna such as power, vertical tilt can be adjusted to modify coverage as shown below.</p>
+<p><img src="./ericsson1.PNG" class="img-fluid"></p>
+<p>You may also wan to control antenna tilt deceptively as special events like a football game and a political rally can cause a sudden increase in the density of people in a location. This is typically done manually by setting rules.</p>
+<p>Reinforcement learning can be used to do this.</p>
+<p><img src="./ericsson2.PNG" class="img-fluid"></p>
+<p>Policies were trained on simulated environments.</p>
+<p>Lot of domain knowledge from tuning these antennas over the years are also available that need to be utilized by the AI system.</p>
+<p><a href="https://docs.ray.io/en/master/rllib.html">RLLib</a> framework provided by UC Berkeley’s Rise lab was used. The algorithm used for training was <a href="https://openreview.net/pdf?id=H1Dy---0Z">A-pex</a></p>
+<section id="rl-formulation" class="level3">
+<h3 class="anchored" data-anchor-id="rl-formulation">RL Formulation</h3>
+<p>A simulated environment was used . The simulator was plugged in through Open AI gym environment.</p>
+<p>The agent was a CNN that takes a state as input and output an action vector.</p>
+<p>State is the parameter of antennas,topology of buildings and user hotspots.</p>
+<p>Actions determine increase or decrease of tilt of an antenna.</p>
+<p>Reward is average increase in throughput for subscribers.</p>
+<p><img src="./ericsson3.PNG" class="img-fluid"></p>
+<p>The image below shows the setup.</p>
+<p>The image on the right shows the typology of the city grid being served by the antenna.</p>
+<p>The image on the left shows distributions of subscribers with warmer colors showing better coverage.</p>
+<p>The image in the middle shows the position of the antenna and tilt with warmer colors again indicating better coverage.</p>
+<p><img src="./ericsson4.PNG" class="img-fluid"></p>
+<p>As the RL algorithm learns, you can the the image on the left becoming warmer as their coverage improves.</p>
+<p><img src="./ericsson5.PNG" class="img-fluid"></p>
+</section>
+<section id="training-set-up" class="level3">
+<h3 class="anchored" data-anchor-id="training-set-up">Training Set up</h3>
+<p><img src="./ericsson6.PNG" class="img-fluid"></p>
+</section>
+<section id="rl-algorithms" class="level3">
+<h3 class="anchored" data-anchor-id="rl-algorithms">RL Algorithms</h3>
+<p><img src="./ericsson7.PNG" class="img-fluid"></p>
+<p>The A-pex algorithm used is an extension of the Deep Q Learning algorithm and was found to perform better.</p>
+<p><img src="./ericsson8.PNG" class="img-fluid"></p>
+</section>
+<section id="using-historical-data" class="level3">
+<h3 class="anchored" data-anchor-id="using-historical-data">Using Historical Data</h3>
+<p>Given historical records of state of the system and action taken by experts are available, a supervised model or recommender system can be built on this data.You can also extend the historical data to include a reward corresponding to the state,action pair.</p>
+<p>This can again be used for RL. Without a simulator you can’t do a lot of exploration.</p>
+</section>
+<section id="transferring-from-simulated-to-real-environment" class="level3">
+<h3 class="anchored" data-anchor-id="transferring-from-simulated-to-real-environment">Transferring from Simulated to Real Environment</h3>
+<p>Add noise to the simulations to make learning more robust.</p>
+</section>
+</section>
+<section id="improving-ocr-quality-of-documents-using-gans-exl" class="level2">
+<h2 class="anchored" data-anchor-id="improving-ocr-quality-of-documents-using-gans-exl">17) Improving OCR quality of documents using GANs | EXL</h2>
+<p>The modern OCR pipeline is as follows.</p>
+<ol type="1">
+<li>Input documents are fed into an OCR engine which converts the documents into machine understandable format</li>
+<li>Automated processing using ML/NLP</li>
+<li>Manual validation to ensure 100 % accuracy</li>
+</ol>
+<ul>
+<li>This may not work well if the input documents are highly unstructured i.e.&nbsp;have incorrect layouts, low resolutions or is very noisy with wrinkles,watermarks etc. This can be addressed either by improving the OCR engine or by improving the input documents fed into the OCR engine.</li>
+</ul>
+<p>The enhanced pipeline is as follows:</p>
+<p><img src="./exl1.PNG" class="img-fluid"></p>
+<p>Although traditional image enhancement techniques are effective in addressing some problems, GAN based enhancements can improve the quality of input documents even further,</p>
+<p>Below is an overview of a GAN. It consists of a generator and a discriminator acting in an adversarial fashion, one trying make real and fake images indistinguishable while the other trying to distinguish between the two.</p>
+<p><img src="./exl2.PNG" class="img-fluid"></p>
+</section>
+<section id="resolution-enhancement" class="level2">
+<h2 class="anchored" data-anchor-id="resolution-enhancement">Resolution Enhancement</h2>
+<section id="data-creation" class="level3">
+<h3 class="anchored" data-anchor-id="data-creation">Data Creation</h3>
+<ul>
+<li><p>High resolution English documents with different font-types, sizes and spacing were first converted to standard resolution(300 dots per inch (DPI)) using standard image processing tools and then converted to low resolution images at 75 DPU using random subsampling and bicubic Downsampling. The high-resolution and low-resolution image pairs are used for training the GANs</p></li>
+<li><p>Data sets were also created by scanning high resolution English documents at high (300 DPI) and (low) resolution.</p></li>
+</ul>
+</section>
+<section id="training" class="level3">
+<h3 class="anchored" data-anchor-id="training">Training</h3>
+<p><img src="./exl3.PNG" class="img-fluid"></p>
+<ul>
+<li><p>The generator will not have a max-pooling layer as max-pooling layers lower the resolution of an image.Upsampling layers such as un-pooling (reverse of max-pooling) or de-convolution layers are used.</p></li>
+<li><p>Custom loss with two terms are used</p>
+<ul>
+<li><p>Adversarial loss looks just at the performance of the discriminator</p></li>
+<li><p>Content loss captures the performance of the generator which again has two terms</p>
+<ol type="1">
+<li>MSE between generated image and ground truth image</li>
+<li>MSE between the ground truth image and image generated using a VGG network</li>
+</ol>
+<p>Although some use cases would require only the first of these two terms, for the OCR use case, this was found to perform better.</p></li>
+</ul></li>
+</ul>
+<p>Given the generator is very sensitive to initialization, the model is trained on imagenet and the weights are transferred.</p>
+</section>
+<section id="evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation">Evaluation</h3>
+<p>In terms of character level accuracy, the GAN enhanced images resulted in an improvement of 7 percentage points for enterprise grade OCR systems and an improvement of 80 percentage points for open source OCR systems.</p>
+<p>In terms of word level accuracy, the GAN enhanced images resulted in an improvement of 9 percentage points for enterprise grade OCR systems and an improvement of 79 percentage points for open source OCR systems.</p>
+</section>
+</section>
+<section id="document-de-noising" class="level2">
+<h2 class="anchored" data-anchor-id="document-de-noising">Document De-noising</h2>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">Data</h3>
+<ul>
+<li><p>Clean documents with different font types, sizes and spacing were collected. Noise( Random noise, Gaussian noise, pattern noise) were added to these documents to create noisy documents</p></li>
+<li><p>Clean datasets from kaggle were taken and synthetic noise was added to this to create noisy documents.</p></li>
+</ul>
+</section>
+<section id="training-1" class="level3">
+<h3 class="anchored" data-anchor-id="training-1">Training</h3>
+<p>The training process was identical to the one above and as seen below, the documents were de-noised effectively over successive epochs.</p>
+<p><img src="./exl4.PNG" class="img-fluid"></p>
+<p>In other use cases, a Mask-RCNN was used to identify parts of documents that had address like texts,these regions were then enhanced using a GAN.</p>
+</section>
+</section>
+<section id="fighting-crime-with-graphs-mit-ibm" class="level2">
+<h2 class="anchored" data-anchor-id="fighting-crime-with-graphs-mit-ibm">18) Fighting Crime with Graphs | (MIT + IBM)</h2>
+<p>Use of graphs to fight financial crime has been getting a lot of traction recently. This talk emphasized the use of Graph Convolutional Networks to create node embeddings that can be consumed by traditional machine learning models or standard neural nets.</p>
+<p>Algorithms like node2vec and deepwalk have been used to create embeddings that capture the topology of a network, but these algorithms cannot capture the node attributes that might have rich information.</p>
+<p>GraphSage is a Graph convolutional network algorithm that allows you to capture both the topology of a network as well as useful node attributes.Besides this is an <strong>inductive</strong> algorithm meaning that it does not need to be trained on whole graphs and can be used for inference on unseen nodes and graphs.</p>
+<p>More useful information is available <a href="http://snap.stanford.edu/graphsage/">here</a> and <a href="https://blogs.oracle.com/datascience/graphwise-graph-convolutional-networks-in-pgx">here</a></p>
+</section>
+<section id="data-science-design-thinking---a-perfect-blend-to-achieve-the-best-user-experience-intuit" class="level2">
+<h2 class="anchored" data-anchor-id="data-science-design-thinking---a-perfect-blend-to-achieve-the-best-user-experience-intuit">19) Data Science + Design Thinking - A Perfect blend to achieve the best user experience | Intuit</h2>
+<p>Design for delight by 1) Demonstrating deep customer empathy - Know customers deeply by observing them and define problems in human centric terms 2) Go broad to go narrow - Generate lots of ideas before winnowing them. Quantity first then focus on quality. 3) Perform rapid experiments with customers - Rapid prototyping and AB testing</p>
+</section>
+<section id="explaining-machine-learning-models-fiddler-labs" class="level2">
+<h2 class="anchored" data-anchor-id="explaining-machine-learning-models-fiddler-labs">20) Explaining Machine Learning Models | Fiddler Labs</h2>
+<p>Attribution problem : Attribute a prediction to input features. Solving this is the key goals of Explaining ML Models</p>
+<p>Naive approaches to do this include:</p>
+<ol type="1">
+<li>Ablation: Drop each feature and note the change in prediction</li>
+<li>Feature Gradient: $ x_i \frac {dy}{dx_i}$ where $ x_i $ is feature and $ y $ is the output</li>
+</ol>
+<p><strong>Integrated Gradients</strong> - This is a technique for attributing a differentiable model’s prediction to the input features</p>
+<p>A popular method for non-differentiable models is Shapley values.</p>
+<p>Both Integrated Gradients and Shapley Values come with some axiomatic guaranteed.The former uniquely satisfies 6 axioms while the latter uniquely satisfies 4. Side note: <a href="https://christophm.github.io/interpretable-ml-book/">This</a> is my go to reference for interpretability techniques.</p>
+<p>Example of an axiom is the sensitivity axiom:</p>
+<blockquote class="blockquote">
+<p>All else being equal, if changing a feature changes the output, then that feature should get an attribution. Similarly if changing a feature does not change the output, it should not get an attribution.</p>
+</blockquote>
+<p>Integrated Gradients is the unique path integral method that satisfies: Sensitivity, Insensitivity, Linearity preservation, Implementation invariance, Completeness and Symmetry</p>
+<p>Another problem related to interpretability that remains an open problem for many classes of black box models is <strong>Influence</strong> - i.e.&nbsp;Which data points in the training data influenced the model the most.</p>
+</section>
+<section id="snorkel" class="level2">
+<h2 class="anchored" data-anchor-id="snorkel">21) Snorkel</h2>
+<p>Snorkel is a weak supervised learning approach that came out of Stanford. More information available <a href="https://www.snorkel.org/">here</a></p>
+<p>The key operations in the Snorkel workflow include:</p>
+<ol type="1">
+<li>Labeling Functions: Heuristics to label data provided by experts</li>
+<li>Transformation Functions: Data Augmentations</li>
+<li>Slicing Functions: Partition the data specifying critical subsets where model performance needs to be high</li>
+</ol>
+<p>For this approach to work at least 50% of the labeling functions need to be better than random.</p>
+</section>
+<section id="managing-ai-products-salesforce" class="level2">
+<h2 class="anchored" data-anchor-id="managing-ai-products-salesforce">22) Managing AI Products | Salesforce</h2>
+<p>To demonstrate value to business stakeholders, which is the ultimate goal of anyone who works in a corporation, it is essential to tie business metrics to model metrics. This should ultimately inform what kind of ML we decide to use.</p>
+<p><img src="./acceptance_criteria.PNG" class="img-fluid"></p>
+<p>The figure above demonstrates the accuracy of the model(x-axis) required to provide a material lift in the business metric(y-axis) e.g.&nbsp;conversion rate. If the base line improvement rate in conversion that we need to deliver is only 2%, a model that has accuracy in the range 50 - 75% is sufficient. This means we could rule out sophisticated models like Neural Nets that are harder to deploy and maintain and focus on simpler models that are easier to build or maintain.</p>
+</section>
+<section id="explainability-and-bias-in-ai-and-ml-institute-for-ethical-ai-and-ml" class="level2">
+<h2 class="anchored" data-anchor-id="explainability-and-bias-in-ai-and-ml-institute-for-ethical-ai-and-ml">23) Explainability and Bias in AI and ML| Institute for Ethical AI and ML</h2>
+<p>Undesired bias can be split into two conceptual pieces</p>
+<p><strong>1) Statistical Bias (Project Bias)</strong> : The error between where you ARE and where you could get caused by modeling/project decisions</p>
+<ul>
+<li>Sub optimal choices of accuracy metrics/cost functions</li>
+<li>Sub optimal choices of ML models chosen for the task</li>
+<li>Lack of infrastructure required to monitor model performance in production</li>
+<li>Lack of human in the loop where necessary</li>
+</ul>
+<p><strong>2) A-priori bias (Societal Bias)</strong> : The error between the best you can practically get, and the idealistic best possible scenario - caused by a-priori constraints</p>
+<ul>
+<li>Sub optimal business objectives</li>
+<li>Lack of understanding of the project</li>
+<li>Incomplete resources (data, domain experts etc)</li>
+<li>Incorrectly labelled data (accident or otherwise)</li>
+<li>Lack of relevant skill sets</li>
+<li>Societal shifts in perception</li>
+</ul>
+<p>Explainability is key to:</p>
+<ol type="a">
+<li><p>Identify and evaluate undesirable biases</p></li>
+<li><p>To meet regulatory requirements such as GDPR</p></li>
+<li><p>For compliance of processes</p></li>
+<li><p>To identify and reduce risks (FP vs FN)</p></li>
+</ol>
+<p><strong>Interpretability != Explainability</strong></p>
+<ul>
+<li>Having a model that can be interpreted doesn’t mean in can be explained</li>
+<li>Explainability requires us to go beyond algorithms</li>
+<li>Undesired bias cannot be tackled without explainability</li>
+</ul>
+<p>Library for Explainable AI: <a href="https://github.com/EthicalML/XAI">xAI</a> <a href="https://github.com/SeldonIO/alibi">alibi</a></p>
+<p>Anchor points: What are features that influenced a specific prediction for a data instance? This can be evaluated by roughly by pulling out a feature and estimating its impact on the model prediction.</p>
+<p>Counterfactual: How would the input/features have to change for the prediction to change?</p>
+</section>
+<section id="usable-machine-learning---lessons-from-stanford-and-beyond-stanford-university" class="level2">
+<h2 class="anchored" data-anchor-id="usable-machine-learning---lessons-from-stanford-and-beyond-stanford-university">24) Usable Machine Learning - Lessons from Stanford and beyond | Stanford University</h2>
+<ul>
+<li>For deep learning, improvement in performance requires exponential increase in data</li>
+<li>Deep learning still doesn’t work very well with structured data</li>
+<li>Don’t look for a perfect model right out of the gate, instead iterate towards higher quality models</li>
+<li>Measure implicit signals where possible. e.g.&nbsp;Is a user spending time on a page or closing a window</li>
+</ul>
+</section>
+<section id="human-centered-machine-learning-h2o.ai" class="level2">
+<h2 class="anchored" data-anchor-id="human-centered-machine-learning-h2o.ai">25) Human Centered Machine Learning | H2O.ai</h2>
+<ul>
+<li><p>Establish a benchmark using a simple model from which to gauge improvements in accuracy, fairness, interpretability or privacy</p></li>
+<li><p>Overly complicated features are hard to explain. Features should provide business intuition.(More relevant for regulated industries)</p></li>
+<li><p>For fairness, it is important to evaluate if different sub groups of people are being treated differently by your ML model (Disparate Impact). Need to do appropriate data processing. OSS: <a href="https://github.com/IBM/AIF360">AIF360</a>, <a href="https://github.com/dssg/aequitas">aequitas</a></p></li>
+<li><p>Model Debugging for Accuracy, Privacy or Security: This involves eliminating errors in model predictions by testing using adversarial examples, explaining residuals, random attacks and what if analysis. Useful OSS: <a href="https://github.com/tensorflow/cleverhans">cleverhans</a>, <a href="https://github.com/SauceCat/PDPbox">pdpbox</a>, <a href="https://github.com/pair-code/what-if-tool">what-if-tool</a></p></li>
+</ul>
+</section>
+<section id="monitoring-production-ml-systems-datavisor" class="level2">
+<h2 class="anchored" data-anchor-id="monitoring-production-ml-systems-datavisor">26) Monitoring production ML Systems | DataVisor</h2>
+<p>Datavizor is a company that specializes in unsupervised ML for fraud detection.</p>
+<p>There are potentially several issues that can occur in a production ML systems as shown below. Robust monitoring systems are required to be able to detect and resolve these issues in a timely fashion.</p>
+<p><img src="./DataVizor.PNG" class="img-fluid"></p>
+<p>You can react to these issues by having the ability to roll back your system to the previous stable build or by auto scaling to a bigger cluster but it is more cost effective to be able to detect and prevent these issues.</p>
+<p>Some approaches to monitoring model quality:</p>
+<ol type="1">
+<li>Build a surrogate model(offline) to monitor the performance of the deployed model(online)</li>
+<li>Track model drift</li>
+<li>Carry out anomaly detection on model outputs and metadata</li>
+</ol>
+<p>Anomaly detection using Time series decomposition is a suitable approach.</p>
+<p>Additive decomposition of a time series:</p>
+<p><span class="math display">\[ Y_t = T_t + S_t + R_t \]</span></p>
+<p>where $ T_t $ is the trend component, $ S_t $ is the seasonal component and $ R_t $ is the residual component.</p>
+<p>Subtract the trend and seasonal components from the signal to get the residual component.You should be able to use the residual component to track anomalies.</p>
+<p><span class="math display">\[ R_t = Y_t - T_t - S_t \]</span></p>
+<p>This approach can create unexpected drops in the residual component as shown in red in the image below.</p>
+<p><img src="./anomdetection2.PNG" class="img-fluid"></p>
+<p>To resolve this, obtain the residual component by subtracting the median instead of the trend.</p>
+<p>The mean absolute deviation (MAD) can then be used to identify anomalies.</p>
+<p><span class="math display">\[ If\ Distance\ to\ Median &gt; x \times MAD : anomaly \]</span></p>
+</section>
+<section id="reference-architectures-for-ai-and-machine-learning-microsoft" class="level2">
+<h2 class="anchored" data-anchor-id="reference-architectures-for-ai-and-machine-learning-microsoft">27) Reference Architectures for AI and Machine Learning | Microsoft</h2>
+<p>Distributed training of models can be implemented via data parallelism or model parallelism.</p>
+<p>In data parallelism, the entire model is copied to each worker that processes a subset of the total data. The batch size can hence be scaled up to the number of workers you have. Very large batch sizes can cause issues with convergence of the network.</p>
+<p>In model parallelism, the model is split across workers and there has to be communication of gradients between the nodes during the forward and backward pass.</p>
+<p>Data parallelism is more fault tolerant and common.</p>
+<ul>
+<li>When to use distributed training?
+<ul>
+<li>Your model us too big to fit a sufficiently large batch size</li>
+<li>Your data is large</li>
+<li>Your model requires significant GPU computation</li>
+</ul></li>
+</ul>
+<p>You do not need distributed training if: - You want to run hyperparameter tuning - Your model is small</p>
+<section id="reference-architecture-for-distributed-training" class="level3">
+<h3 class="anchored" data-anchor-id="reference-architecture-for-distributed-training">Reference Architecture for Distributed Training</h3>
+<p><img src="./distributed_training.PNG" class="img-fluid"></p>
+<p>Azure ML supports distributed training for TF, Pytorch and Keras. The dependencies are placed in a docker container that runs on the host machine. The storage can be mounted to each of the nodes where training happens.</p>
+<p>Azure ML will create the appropriate docker containers and configure the Message Passing interface (MPI) which is essential for distributed training. Azure ML will run the script on the nodes and push the results to blob storage.</p>
+</section>
+<section id="architecture-for-real-time-scoring-with-dl-models" class="level3">
+<h3 class="anchored" data-anchor-id="architecture-for-real-time-scoring-with-dl-models">Architecture for Real Time Scoring with DL Models</h3>
+<p><img src="./realtimescoring.PNG" class="img-fluid"></p>
+<ul>
+<li>Model served as a REST endpoint</li>
+<li>Should handle requests from multiple clients and respond near instantaneously</li>
+<li>Timing of requests are unknown</li>
+<li>Solution should have low latency, scalable and elastic to seasonal variations</li>
+</ul>
+<p>Best practices for deploying an image classification system:</p>
+<ul>
+<li>Use GPU for efficient inferencing (faster than CPU)</li>
+<li>Send multiple images with a single request (GPUs process batches more efficiently)</li>
+<li>Use HTTP 2.0 (allows you to accept multiple request)</li>
+<li>Send image as file within HTTP request</li>
+</ul>
+</section>
+<section id="architecture-for-batch-scoring-with-dl-models" class="level3">
+<h3 class="anchored" data-anchor-id="architecture-for-batch-scoring-with-dl-models">Architecture for Batch Scoring with DL Models</h3>
+<p><img src="./Batchscoring.PNG" class="img-fluid"></p>
+<ul>
+<li>Scoring can be triggered (by appearance of new data) or scheduled (at recurring intervals)</li>
+<li>Large scale jobs that run asynchronously</li>
+<li>Optimize for cost, wall clock time and scalability</li>
+</ul>
+<p>The way Azure implements this is given <a href="https://github.com/Azure/batch-scoring-for-dl-model">here</a></p>
+</section>
+</section>
+<section id="semi-supervised-learning-for-ml-rocket-ml" class="level2">
+<h2 class="anchored" data-anchor-id="semi-supervised-learning-for-ml-rocket-ml">28) Semi Supervised Learning for ML | Rocket ML</h2>
+<p>Three important considerations:</p>
+<ol type="1">
+<li>Total cost - May not be possible to acquire the volume of labels needed to build a good model</li>
+<li>Social Accountability - Interpretability, Explainability, Traceability</li>
+<li>Robustness - Should not be vulnerable to to easy adversarial attacks</li>
+</ol>
+<p><img src="./rocketml1.PNG" class="img-fluid"></p>
+<section id="anomaly-detection-problem" class="level3">
+<h3 class="anchored" data-anchor-id="anomaly-detection-problem">Anomaly Detection Problem</h3>
+<ul>
+<li>Labels are rare and expensive to acquire</li>
+</ul>
+<p>Types of Anomalies:</p>
+<ol type="1">
+<li>Point Anomalies : E.g. a point In a time series</li>
+<li>Contextual Anomalies : Anomalous in a given context but not in another</li>
+<li>Collective Anomalies: Group of points constitute and anomaly</li>
+</ol>
+<ul>
+<li><p>KNN is parameterized by the no of neighbors(K) and the distance metric.</p></li>
+<li><p>In an unsupervised setting, use the <a href="https://en.wikipedia.org/wiki/Local_outlier_factor">Local outlier Factor</a> to identify outliers.</p></li>
+</ul>
+<section id="anomaly-detection-performance" class="level4">
+<h4 class="anchored" data-anchor-id="anomaly-detection-performance">Anomaly detection performance</h4>
+<ul>
+<li><p>Build KNN for different values of K</p></li>
+<li><p>Compute LOF for the neighboring k points</p></li>
+<li><p>Use threshold on LOF to determine anomaly vs normal</p></li>
+<li><p>As k increases the performance of the model increases. This is because for small k, by looking at really close neighbors, density is not too different and hence anomalies are not found. i.e.&nbsp;you miss the forest for the trees. For larger k, by looking beyond the clusters into normal areas, density differences stand out.</p></li>
+<li><p>Possible methods to generate better features: Matrix Factorization, Pre-trained models, Auto Encoders.</p></li>
+<li><p>Reducing dimensionality using SVD can improve accuracy by addressing the curse of dimensionality problem</p></li>
+<li><p>KNN is computationally intensive so need highly efficient, parallelized implementations for this approach to work.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="sequence-to-sequence-learning-for-time-series-forecasting-anodot" class="level2">
+<h2 class="anchored" data-anchor-id="sequence-to-sequence-learning-for-time-series-forecasting-anodot">29) Sequence to Sequence Learning for Time Series Forecasting | Anodot</h2>
+<p>Structural Characteristics that affect the choice and performance of your Time Series forecasting algorithm:</p>
+<p><img src="./TimeSeries1.PNG" class="img-fluid"></p>
+<p>Existing techniques are unable to address situations when many of these structural characteristics co-occur.</p>
+<p>Key development that allowed the application of Neural Nets to time Series: Recurrent Neural Nets and Back Propagation Through Time</p>
+<p>RNNs can be memory based (GRU and LSTM) or attention based (Transformers).</p>
+<p><strong>Considerations for getting accurate TS forecasts:</strong> 1. Discovering influencing metrics and events - Look at correlations between target and time series features</p>
+<ol start="2" type="1">
+<li><p>Ensemble of models - Usually require multiple algorithms</p></li>
+<li><p>Identify and account for unexplainable data anomalies</p>
+<ul>
+<li>Identify anomalies and use this to create new features</li>
+<li>Enhance anomalies that can be explained by external factors</li>
+<li>Weight down anomalies that can’t be explained by external factors</li>
+</ul></li>
+<li><p>Identify and account for different time series behaviors</p>
+<ul>
+<li>Training a single model for multiple time series does not work if each series shows a different seasonality. Difference can be in frequency or strength.</li>
+<li>Mixing stationary and non stationary time series also does not work</li>
+</ul></li>
+</ol>
+</section>
+<section id="transfer-learning-nlp-machine-reading-comprehension-for-question-answering-microsoft" class="level2">
+<h2 class="anchored" data-anchor-id="transfer-learning-nlp-machine-reading-comprehension-for-question-answering-microsoft">30) Transfer Learning NLP: Machine Reading comprehension for question answering | Microsoft</h2>
+<p>Attention can be content based or location based. Question Answering requires content based attention.</p>
+<p>Machine Reading Comprehension systems should be capable of summarizing key points in a piece of texts, it can answer questions and also do reply (e.g Gmail auto suggestion)and comment.</p>
+<p>Machine reading comprises (in increasing order of complexity) Extraction, Synthesis &amp; Generation and Reasoning &amp; Inference.</p>
+<p>Open Source datasets available: SQUAD (Stanford) and Marco (Microsoft)</p>
+<p>Best performing algorithms:</p>
+<p>For extraction: BIDAF(for small paragraphs) , DOCQA(large documents), S-NET (small multiple paragraphs)</p>
+<p>For reasoning and inference: SynNet ( multiple small paragraphs) and Open NMT (multiple small or large paragraphs)</p>
+<p>BIDAF: Bi Direction Attention Flow for Machine Comprehension</p>
+</section>
+<section id="generative-models-for-fixing-image-defects-adobe" class="level2">
+<h2 class="anchored" data-anchor-id="generative-models-for-fixing-image-defects-adobe">31) Generative Models for fixing image defects| Adobe</h2>
+<p>Traditional approach is to manually retouch the image. Auto tune functions exist that can enhance global features such as exposure, saturation and lighting but not local features (e.g.&nbsp;color of specific objects in an image.)</p>
+<section id="popular-gans" class="level3">
+<h3 class="anchored" data-anchor-id="popular-gans">Popular GANS</h3>
+<ol type="1">
+<li>Style GAN for Face generation at NVIDIA</li>
+<li>Cycle GAN for Style Transfer at UC Berkeley</li>
+<li>Dual GAN</li>
+<li>Disco GAN</li>
+</ol>
+<p>Neural Style Transfer: Transform a given image in the style of a reference(domain) image.This uses only two images.It does not require paired image - a single image of the domain e.g.&nbsp;an art piece is required.</p>
+<p>Style Transfer (with GAN): Uses a collection of images. E.g. 500 image in domain A and 500 images in domain B. This again does not require paired data.</p>
+<p>The benefit of this approach is that it does not require paired data i.e.&nbsp;the pre and post image of the same object.</p>
+<p><img src="./adobe1.PNG" class="img-fluid"></p>
+</section>
+<section id="gan-based-image-enhancer" class="level3">
+<h3 class="anchored" data-anchor-id="gan-based-image-enhancer">GAN based Image Enhancer</h3>
+<p><img src="./adobe2.PNG" class="img-fluid"></p>
+<p>There are two generators and discriminators, hence the name DUAL GAN. Learning to create a superior image G2(Defective) is difficult, hence the system is trained to optimize G1(G2(defective)) - this is the cycle in Cycle GAN.</p>
+<p>The UNET segmentation model helps to learn which part of the image is a tree, sky or some specific object. The regions identified by the UNET model are then locally enhanced.</p>
+</section>
+<section id="challenges" class="level3">
+<h3 class="anchored" data-anchor-id="challenges">Challenges</h3>
+<ul>
+<li>Weak features</li>
+<li>Subjective, Noisy, Mislabeled Data - Humans determine whether an image is good or not</li>
+<li>Small Dataset</li>
+<li>Batch size used is smaller given there are four models to train, hence harder for models to converge</li>
+<li>Training GANs is hard and time consuming</li>
+<li>GAN inference is time consuming and does not scale</li>
+</ul>
+</section>
+<section id="gan-model-evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="gan-model-evaluation">GAN Model Evaluation</h3>
+<p>Creating ground truth labels is a manual process requiring an artists to retouch the images, this is not feasible. In the absence of ground truth labels:</p>
+<ul>
+<li>Train Discriminative models (VGG or Resnet) on good and bad images. Score of the model is the metric.</li>
+</ul>
+</section>
+</section>
+<section id="supercharging-business-decisions-with-ai-uber" class="level2">
+<h2 class="anchored" data-anchor-id="supercharging-business-decisions-with-ai-uber">32) Supercharging business decisions with AI | Uber</h2>
+<p>The finance planning department at Uber carries out rolling 12 month forecasts for Uber trips. Some of the challenges involved here are:</p>
+<ul>
+<li>Time series of trips vary considerably across cities based on economy, geography, quality of public transport etc.</li>
+<li>Shape of time series can change over time. It can grow rapidly initially but then flatten</li>
+<li>Affected by holidays,e vents, weather etc.</li>
+<li>Newly launched cities have little or no data</li>
+</ul>
+<section id="planning" class="level3">
+<h3 class="anchored" data-anchor-id="planning">Planning</h3>
+<p>Below is a planning model used by Uber. The goals of the first part of the system here is to generate cost curves that track the relationship between money spent on driver and rider promotions and no of sign ups. the goals is to find the optimal point maximizing ROI.</p>
+<p>The levers available are:</p>
+<p>$ \$<em>{Ref}</em> $ Dollars spent on Referrals <br> $ \${DPaid} $ Dollars paid to drivers <br> $ \$_{Promo} $ Dollars paid in promotions to riders <br> $ SU_D $ Sign Ups from drivers <br> $ SU_R $ Sign Ups from riders</p>
+<p><img src="./Uber0.PNG" class="img-fluid"></p>
+<p>The second part of the system is the <strong>trips models</strong></p>
+<p><img src="./Uber1.PNG" class="img-fluid"></p>
+<p>$ FT_D $ First trip per rider <br> $ FT_R $ First trip per driver <br> $ RR_D $ Retention Rate pf drivers <br> $ RR_R $ Retentions rate of riders <br> $ TPA_D $ Trips per active driver <br> $ TPA_R $ Trips per active rider <br> $ RES_D $ Resurrected drivers <br> $ RESR_R $ Resurrected Riders</p>
+<p>Active drivers are those that are active at least once per month.</p>
+<p>This a classic funnel. Promotions lead to sign ups and first rides, but many churn at this point looking for new promotions.</p>
+<p>This variables are used to calculate the no of trips, active riders, active drivers, resurrected drivers, resurrected riders and per trip metrics.</p>
+<p>Resurrected riders /drivers are those who haven’t been active in the previous three months.</p>
+</section>
+<section id="forecasting-models" class="level3">
+<h3 class="anchored" data-anchor-id="forecasting-models">Forecasting Models</h3>
+<p>Riders and Drivers are cohorted based on month of joining for each city.</p>
+<p>For each cohort, three models as shown below are used. A black box model ensembles these three models by assigning weights to the predictions of each. Evaluation Metric is MAPE and SMAPE.</p>
+<p><img src="./Uber2.PNG" class="img-fluid"></p>
+<p>Models used include ETS, ARIMA and TBATS.</p>
+<p>Model averaging is done at different training end points to correct for misleading volatility in recent data points.</p>
+</section>
+<section id="modelling-seasonality" class="level3">
+<h3 class="anchored" data-anchor-id="modelling-seasonality">Modelling Seasonality</h3>
+<p>Seasonal holidays can shift from year to year that can cause problems. Uber uses Prophet’s Day to Month(DTM) forecast model and python holiday library to account for this.</p>
+<p>The sophistication of the systems used by Uber’s financial planning team is truly remarkable. There was a lot more content in this talk that I didn’t fully follow given my familiarity with this domain is limited.</p>
+</section>
+</section>
+<section id="an-age-of-embeddings-usc-information-sciences-institute" class="level2">
+<h2 class="anchored" data-anchor-id="an-age-of-embeddings-usc-information-sciences-institute">33) An age of embeddings| USC Information Sciences Institute</h2>
+<blockquote class="blockquote">
+<p>‘You shall know a word by the company it keeps’ - JR Firth(1957)</p>
+</blockquote>
+<section id="word-embeddings" class="level3">
+<h3 class="anchored" data-anchor-id="word-embeddings">Word embeddings</h3>
+<p>Skip Gram: Take a word and predict the surrounding words <br> CBOW: Take surrounding words and predict the target word</p>
+<p>Glove word embeddings are based on matrix factorization of a matrix with entries corresponding to frequency of their co-occurence.</p>
+<p><img src="./embeddings1.PNG" class="img-fluid"></p>
+<p>TFIDF is a simple type of an embedding, but they are sparse and high dimensional.</p>
+</section>
+<section id="image-embeddings" class="level3">
+<h3 class="anchored" data-anchor-id="image-embeddings">Image Embeddings</h3>
+<p>Can use fully connected layers before the softmax layer of a CNN built for classification. Auto encoders are also a popular choice to create embeddings.</p>
+</section>
+<section id="document-embeddings" class="level3">
+<h3 class="anchored" data-anchor-id="document-embeddings">Document Embeddings</h3>
+<p>Topic models give lower dimensional embeddings of documents.</p>
+<p>Below is a way to get document embeddings from a word embeddings.<br> <code>\(d_{test}\)</code> in the image below is the id for a document inserted as a word into the document.</p>
+<p><img src="./embeddings2.PNG" class="img-fluid"></p>
+</section>
+<section id="graph-and-network-embedding" class="level3">
+<h3 class="anchored" data-anchor-id="graph-and-network-embedding">Graph and Network Embedding</h3>
+<p>Graph CNNs can be used to create embeddings.</p>
+</section>
+</section>
+<section id="pytorch-at-scale-for-translation-and-nlp-facebook" class="level2">
+<h2 class="anchored" data-anchor-id="pytorch-at-scale-for-translation-and-nlp-facebook">34) PyTorch at Scale for translation and NLP | Facebook</h2>
+<p>Common NLP Tasks:</p>
+<ul>
+<li>Classification</li>
+<li>Word Tagging E.g. Part of Speech</li>
+<li>Sequence Classification</li>
+<li>Sequence to Sequence E.g. Translation</li>
+</ul>
+<p>Model should be able to take additional input features such as relevant metadata</p>
+<section id="inference" class="level3">
+<h3 class="anchored" data-anchor-id="inference">Inference</h3>
+<ul>
+<li><p>Python is not good for inference. Scaling up to multiple CPUs is often necessary for inference which is challenging in Python due to the <a href="https://docs.python.org/3/c-api/init.html#thread-state-and-the-global-interpreter-lock">global interpreter lock</a></p></li>
+<li><p>Saving models by saving the weights as in TF or PyTorch is not very resilient as you need to reconstruct the model and reload the weights for for inference. Small changes such as change in internal variable names can break the model. ONNX and TorchScript are resilient model formats for PyTorch.</p></li>
+<li><p>If models are of reasonable size, they can be duplicated in multiple replicas and scaled up according to traffic needs.</p></li>
+<li><p>If models are very large, you need intra model parallelism or sharding. This might be necessary if vocabularies are very large.</p></li>
+</ul>
+<p><img src="./pytext1.PNG" class="img-fluid"></p>
+<p>An alternative to sharding is BPE (Byte Pair Encoding). You look over a corpus of text and learn sub word units and tokenize into these sub word units. This reduces the vocabulary size and can work across languages and hence is a good choice for large multilingual models.</p>
+</section>
+<section id="training-2" class="level3">
+<h3 class="anchored" data-anchor-id="training-2">Training</h3>
+<p>A training framework needs: * Data * Model * Metrics * Trainer - Might make sense to fold this into the model in some cases. e.g.&nbsp;PyTorch ignite</p>
+<p><img src="./pytext2.PNG" class="img-fluid"></p>
+<p>Training a Classifier in Pytext comprises the following steps</p>
+<ol type="1">
+<li>Get data</li>
+<li>Tokenize and Numericalize</li>
+<li>Convert to Tensor and pad to equalize lengths</li>
+<li>Get Model outputs</li>
+<li>Compute Loss and Optimize using Backprop</li>
+</ol>
+</section>
+</section>
+<section id="turning-ai-research-into-a-revenue-engine-verta.ai" class="level2">
+<h2 class="anchored" data-anchor-id="turning-ai-research-into-a-revenue-engine-verta.ai">35) Turning AI research into a revenue engine | Verta.ai</h2>
+<p>ModelDB: Model Life Cycle Management System built at MIT. Tracks hyperparameters, metrics and other model metadata</p>
+<p>You need to be agile with ML/AI for it to make a revenue impact with ML. The new model lifecyle is</p>
+<p><img src="./vertaai1.PNG" class="img-fluid"></p>
+<p>Agile principles for ML:</p>
+<ol type="1">
+<li>Good enough vs best models</li>
+<li>Constant iteration: Build, deploy, repeat</li>
+<li>Monitoring: gather feedback and repeat</li>
+</ol>
+<p>The challenges Verta focuses on tackling are in the lower half of the model lifecycle:</p>
+<p>1)How do you run and manage ML Experiments? Need a git equivalent for ML models <br> 2)Deploying Models in Production <br> 3)Monitoring Model Performance</p>
+<ul>
+<li><p>Model versioning requires code versioning, data versioning, config versioning and environment versioning</p></li>
+<li><p>Automated Model deployment for models equivalent to Jenkins is missing. Automated Monitoring and Collaboration are also required</p></li>
+</ul>
+<p>Verta’s solution includes:</p>
+<p><img src="./vertaai2.PNG" class="img-fluid"></p>
+<p>Auto scaling is accomplished through containers and Kubernetes</p>
+<p>For a sales engineering client, it resulted in the following improvements.</p>
+<p><img src="./vertaai3.PNG" class="img-fluid"></p>
+</section>
+<section id="deep-learning-applications-in-nlp-and-conversational-ai-uber" class="level2">
+<h2 class="anchored" data-anchor-id="deep-learning-applications-in-nlp-and-conversational-ai-uber">36) Deep Learning Applications in NLP and Conversational AI | Uber</h2>
+<p>The right problem to tackle with AI * Involves decision making under uncertainty * Within reach of AI Tech * Touches customer pain point * Delivers business value</p>
+<p>The best model depends on data available and the data required depends on task complexity.</p>
+<p><img src="./ubernlp1.PNG" class="img-fluid"></p>
+<p>Uber has deployed ML systems for their customer support platform. Based on the customer questions,the system recommends templates to the customer service agent for replies.</p>
+<p>Uber also has developed one click chat reply templates for drivers.This is similar to Gmail’s auto reply features. The major challenge here is that the chats are often informal and have lots of typos. However, the task complexity is lower compared to Gmail as the variety of conversations is lower.</p>
+<p>To solve this Uber has used a two step algorithm.</p>
+<p><img src="./ubernlp2.PNG" class="img-fluid"></p>
+<p>Given the types of responses are limited depending on the intent of the question, intent detection is the primary focus.</p>
+<p>Intent detection is carried out as follows</p>
+<ol type="1">
+<li>Train Doc2vec model to get dense embedding for each message (Self Supervised Learning)</li>
+<li>Map labelled data to embedding space (You should have labelled data giving intent of various messages)</li>
+<li>Calculate centroid of each intent cluster</li>
+<li>Calculate distance between incoming message and intent cluster centroid</li>
+<li>Classify into Nearest Neighbor Intent Cluster.</li>
+</ol>
+<p>Another use case allows Uber drivers to converse with the Uber App without touching their phones.</p>
+<p>Conversational AI can be done with two approaches as shown below. The first one uses a modular approach with different modules carrying out specific sub tasks while the second uses an end to end model.</p>
+<p><img src="./ubernlp3.PNG" class="img-fluid"></p>
+<p>For task oriented conversations, the first is preferred.</p>
+<p>Uber also has created a system that combines the strengths of Spark which is CPU driven and Deep Learning frameworks such as Tensorflow that rely on GPUs.</p>
+<p>The pre-processing of data is done on Spark Clusters and are transferred to GPU clusters where the models are trained.</p>
+<p>For inference - Apache Spark and Java are used for both batch and real time requests. The tensorflow model is converted into a spark transformer in a Spark pipeline.</p>
+</section>
+<section id="named-entity-recognition-at-scale-with-dl-twitter" class="level2">
+<h2 class="anchored" data-anchor-id="named-entity-recognition-at-scale-with-dl-twitter">37) Named Entity Recognition at Scale with DL | Twitter</h2>
+<p>Applications of NER at Twitter include Trends which have to be meaningful words , Event detection, Recommending User Interests.</p>
+<p>Twitter has opted for in-house NER due to the unique linguistic features of Twitter besides other reasons.</p>
+<section id="generating-training-data" class="level3">
+<h3 class="anchored" data-anchor-id="generating-training-data">Generating Training Data</h3>
+<ul>
+<li>Tweets were sampled based on tweet engagement</li>
+<li>Sampling has to carried out over a longer time span to capture temporal signals. e.g.&nbsp;A soccer game lasts 90 minutes</li>
+<li>Normalization has to be carried out based on countries and spoken language</li>
+<li>Character based Labeling is carried out on a crowd sourcing platform</li>
+<li>Character labels have then to be processed into token labels to train the model</li>
+<li>Deleted tweets have to expunged to comply with GDPR</li>
+</ul>
+</section>
+<section id="model" class="level3">
+<h3 class="anchored" data-anchor-id="model">Model</h3>
+<p><img src="./twitterNER1.PNG" class="img-fluid"></p>
+<p>Historically, Conditional Random Fields were used for NER. Deep Learning and Language models are now the most popular approaches.</p>
+<p>The Deep Learning approach uses a multi layered approach as shown below.</p>
+<p><img src="./twitterNER2.PNG" class="img-fluid"></p>
+<p>The architecture used by Twitter is a Char - BiLSTM -CRF.</p>
+<p><img src="./twitterNER3.PNG" class="img-fluid"></p>
+<p>A character representation is used to supplement the word representation if a token is unknown.Other features indicate if the token was a hashtag or other twitter specific characteristics.</p>
+<p>Twitter chose not to use the Language Model approach because of the size of the model and latency demands in production.</p>
+</section>
+<section id="confidence-estimation" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-estimation">Confidence Estimation</h3>
+<p>The output of the NER model is typically consumed by other models so confidence estimates are also provided along with NER tags. Some downstream applications might require high precision in the NER tags.</p>
+<p>This confidence estimation also has to be at the entity level rather than token level. Simple softmax decoder gives confidence at the token level i.e.&nbsp;confidence in “San” and “Jose” separately rather than the single entity “San Jose”.</p>
+<p>Using a CRF based approach proposed in a 2004 <a href="https://people.cs.umass.edu/~mccallum/papers/crfcp-hlt04.pdf">paper</a>, the correct confidence can be computed.</p>
+<p><img src="./twitterNER4.PNG" class="img-fluid"></p>
+</section>
+</section>
+<section id="behavior-analytics-for-enterprise-security-using-nlp-approaches-aruba-networks" class="level2">
+<h2 class="anchored" data-anchor-id="behavior-analytics-for-enterprise-security-using-nlp-approaches-aruba-networks">38) Behavior Analytics for Enterprise Security using NLP Approaches | Aruba Networks</h2>
+<ul>
+<li><p>Need to identify relevant anomalies in a network. Malware more of a threat than adware</p></li>
+<li><p>For supervised learning to work, you need a list of all possible access to the network tagged as safe or anomalous. However what is available are large volumes of diverse unlabeled data</p></li>
+<li><p>Need to explain to an admin why something has been identified as an anomaly</p></li>
+<li><p>Most anomalies tend to be multi-dimensional</p></li>
+<li><p>Different employees in the network go about differently using network resources in different sequences. A seasoned employee and a first timer also go about accessing network resources in different sequences.</p></li>
+<li><p>Capture embeddings capturing the ‘semantic meaning’ of a server. Can you create embeddings for servers hosting Perforce and Git (code repositories) and Jira and Bugzilla (Bug repositories) such that</p></li>
+</ul>
+<p><span class="math display">\[ Perforce - Git + Jira = Bugzilla \]</span></p>
+<p>Capture the likelihood of using a second server given you use first server.</p>
+<ul>
+<li>Label servers as QA/Finance/Dev based on workflows or departments used by them.Evaluating whether servers belonging to a specific group or workflow is being used by someone outside of it can reveal anomalies or breaches.</li>
+</ul>
+<p><strong>Corpus Used</strong>: Access sequences of servers</p>
+</section>
+<section id="interpreting-millions-of-patient-stories-with-deep-learned-ocr-and-nlp-selectdara-john-snow-labs" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-millions-of-patient-stories-with-deep-learned-ocr-and-nlp-selectdara-john-snow-labs">39) Interpreting millions of patient stories with deep learned OCR and NLP | SelectDara &amp; John Snow Labs</h2>
+<p><strong>Home Health</strong>: Healthcare delivered at home primarily to elderly or those with multiple chronic conditions. Industry expected to grow by 6.7% each year as more baby boomers retire. However this is reducing the workforce available to the industry. Most payments to the industry comes from Medicare which is under pressure and reducing amounts of payments.</p>
+<p>Given the workforce is inexperienced, the goal of the project is to be able to identify assessments (health assessments documents of patients) as Hard,Medium or Easy based on degree of effort and perceived level of difficulty so that a manager can delegate the assessments appropriately.</p>
+<p>Feedback on difficulty was gathered subjectively from workers, while effort was quantified in terms of time spent within a record (which also validates the subjective assessment.)</p>
+<p><strong>Challenges</strong>: <em>Different layouts, scales , fonts etc</em> High number of records and pages *Need processing in clusters</p>
+<p>Spark OCR and Spark NLP were used.</p>
+<p><img src="./sparkOCR.PNG" class="img-fluid"></p>
+<p>Spark NLP is built on Spark ML APIs.Apache project being actively developed. Proven to be better than spacy in accuracy and training time.</p>
+<p>Spark NLP also scales to large clusters of machines and can process many documents in parallel.</p>
+<p><img src="./samplepipeline1.PNG" class="img-fluid"></p>
+<p>The document assembler (part of Spark NLP) takes the text from the OCR and creates an annotation that represents a document.</p>
+<p><img src="./samplepipeline2.PNG" class="img-fluid"></p>
+<p>Layout Analysis: Identify related regions of text that belong together in the image.<br> Annotations of a document: Contains the text extracted from the image and relevant metadata.</p>
+</section>
+<section id="building-autonomous-network-operation-using-deep-learning-and-ai-mist" class="level2">
+<h2 class="anchored" data-anchor-id="building-autonomous-network-operation-using-deep-learning-and-ai-mist">40) Building autonomous network operation using deep learning and AI | Mist</h2>
+<section id="challenges-facing-enterprise-it-teams" class="level3">
+<h3 class="anchored" data-anchor-id="challenges-facing-enterprise-it-teams">Challenges facing Enterprise IT Teams</h3>
+<ul>
+<li>Growing number of devices with 5G and IOT</li>
+<li>Cloud driven dynamic and flexible environments</li>
+<li>Workload and complexity resulting from public/private/hybrid clouds</li>
+</ul>
+<p>In today’s enterprises, employees and customers want to access resources in company’s data centers/public cloud and private cloud though home offices, branch offices or even from coffee shops.Ideally they should be able to access what they need from wherever or whenever.</p>
+<p>However, accessing these resources means navigating a system with several failure points as shown below.The goal is to automatically detect and fix issues with any of these components before someone has to report the issue.</p>
+<p><img src="./mist1.PNG" class="img-fluid"></p>
+<p>In an eCommerce company’s warehouse, robots operate through WiFi, a failure in the WiFi system and delays in addressing it can have serious financial repercussions.</p>
+<p>Mist developed a self driving network with the following components.</p>
+<p><img src="./mist2.png" class="img-fluid"></p>
+<p>At the Data stage, data is collected. Each device can send stats and logs to the cloud. User activity is also monitored using stream processing</p>
+<p>At the event stage, user impacting events and responsible entities are identified.</p>
+<p>At diagnosis stage, events are correlated to diagnose the problem. E.g. a problem with the I-phone OS or WiFi port. Then you need to identify what changes caused the issue e.g.&nbsp;a config change on i-OS (Temporal event correlation)or a change in an upstream device such as a router (Cross entity correlation)</p>
+<p>Finally you take actions using automated actions if corrective action can be taken within a device controlled by the cloud network or provide information for manual correction.</p>
+<p>Mist also has a system to automatically identify issues in firmware. A four step process is used:</p>
+<ol type="1">
+<li>Collect logs</li>
+<li>Use NLP to encode these into embeddings</li>
+<li>Cluster these and find important issues</li>
+<li>Automatically open JIRA tickets so that these can be addressed by engineers</li>
+</ol>
+<p>Suggestions for building Enterprise AI Solutions:</p>
+<ol type="1">
+<li>Start with real business problems</li>
+<li>Build a step by step process for continuous improvement</li>
+<li>Keep human in the loop</li>
+</ol>
+</section>
+</section>
+<section id="unlocking-the-next-stage-in-computer-vision-with-deep-nn-zillow" class="level2">
+<h2 class="anchored" data-anchor-id="unlocking-the-next-stage-in-computer-vision-with-deep-nn-zillow">41) Unlocking the next stage in computer vision with Deep NN | Zillow</h2>
+<ul>
+<li>New Zestimate model will factor in home photos to produce a price estimate</li>
+<li>Typical features such as sq. ft, no of bedrooms don’t say anything about a home being renovated or remodeled</li>
+<li>New Zestimate understands a home’s unique interiors, high end features and how they impact a home’s overall value</li>
+<li>Curated or retouched photos can bias the model</li>
+<li>View of water increase value but view may not be always relevant e.g.&nbsp;view is accessible only from the order of the balcony</li>
+<li>Photos may not accurately or comprehensively represent a home</li>
+</ul>
+<section id="building-better-models" class="level3">
+<h3 class="anchored" data-anchor-id="building-better-models">Building Better models</h3>
+<ol type="1">
+<li>Better training and evaluation data</li>
+</ol>
+<ul>
+<li>Introduced new app(Zillow 3D Home) to do a 3D scan/tour of the home</li>
+<li>Photos cannot be retouched or be taken on drones</li>
+</ul>
+<ol start="2" type="1">
+<li>Data annotation at scale</li>
+</ol>
+<ul>
+<li>App captures 3D images when most models are trained on 2D images</li>
+<li>Build annotation tool to annotate in 3D space but people generally don’t do this well on 3D data. Video gamers have a better sense of this and were contracted to do the annotation</li>
+</ul>
+<ol start="3" type="1">
+<li>Ground truth data</li>
+</ol>
+<ul>
+<li>Zillow Offers buys and sellers home directly</li>
+<li>Use LIDAR to get detailed scans of homes</li>
+</ul>
+<ol start="4" type="1">
+<li>New techniques</li>
+</ol>
+<ul>
+<li>Attribute recognition: Identify real estate attributes in listing images using list descriptions as weak supervision</li>
+</ul>
+<ol start="5" type="1">
+<li>Respect people’s privacy</li>
+</ol>
+<ul>
+<li>Transparency around data collection and sharing</li>
+<li>Home owner can claim or remove photos</li>
+</ul>
+</section>
+</section>
+<section id="introducing-kubeflow-google-ibm" class="level2">
+<h2 class="anchored" data-anchor-id="introducing-kubeflow-google-ibm">42) Introducing Kubeflow| Google &amp; IBM</h2>
+<p>Kubeflow has a bunch of components including:</p>
+<ul>
+<li>argo: For building pipelines</li>
+<li>katib: For parallelized hyper parameter tuning</li>
+<li>pytorch-job, mxnet-job, tf-serving</li>
+</ul>
+<p>Model training on along all frameworks is supported</p>
+<p>Easiest way to deploy: https://www.kubeflow.org/docs/gke/deploy/deploy-ui/</p>
+<ul>
+<li>Kubeflow Pipelines is a platform for building and deploying portable scalable ML workflows based on Docker containers. They are a directed acyclic graph(DAG) of pipeline components(docker containers) each performing a function.</li>
+</ul>
+<p>E.g.:</p>
+<p><img src="./kubeflow1.png" class="img-fluid"></p>
+</section>
+<section id="personalization-at-scale-facebook" class="level2">
+<h2 class="anchored" data-anchor-id="personalization-at-scale-facebook">43) Personalization at Scale | Facebook</h2>
+<p>Personalization using AI is used across Facebook Feed, Instagram Explore, Groups and Marketplace</p>
+<p>FB’s scale is massive. 1.5 Billion daily users sharing billions of posts shared per day, 100 billion + posts seen per day and trillions of posts ranked every day.</p>
+<section id="practical-techniques-for-personalization" class="level3">
+<h3 class="anchored" data-anchor-id="practical-techniques-for-personalization">Practical Techniques for Personalization:</h3>
+<p><strong>1) System Design</strong></p>
+<p>A large scale recommender system typically looks like:</p>
+<p><img src="./fbpers1.png" class="img-fluid"></p>
+<p>Items to be recommended are very large, so a retrieval state is going to recommend a subset of items with a focus on recall and latency.</p>
+<p>In the ranking stage a sophisticated model predicts the relevant of an item to the user. Feature store contains features such as no of posts liked or videos shared/viewed by a user.</p>
+<p>Finally some business rules are used so as not to show something in a user’s disliked list or something that is more than a week old.</p>
+<p>Finally the results of the recommender systems are recorded in an impression log. User actions are recorded and fed back to train the model.</p>
+<p>The whole process needs to complete in less than 1 second.</p>
+<p><strong>2) Candidate Generation</strong></p>
+<p>The challenge here is identifying $ O(10^2) $ items out of $ O(10^6) $ items quickly. A candidate generator is used which:</p>
+<ul>
+<li>Optimized for recall</li>
+<li>Latency bound</li>
+<li>Does not optimize for accurate rank (which is addressed later)</li>
+</ul>
+<p>A two tower neural net architecture is used to create embeddings and calculate similarities for recommendation.</p>
+<p><img src="./fbpers2.png" class="img-fluid"></p>
+<p>*KNN Offline Indexing**: All item embeddings are populated into a KNN index for fast lookup When a query item comes in, most similar items are looked up using a KNN service look up.</p>
+<p><img src="./fbpers3.png" class="img-fluid"></p>
+<p><strong>3) Learning from Sparse Data</strong></p>
+<p><strong>Challenge</strong>: how to learn from categorical/sparse features and combine with continuous/dense features.</p>
+<p>For categorical features, an embeddings table is used to convert each category into a dense vector. For some features that include multiple IDs, some kind of pooling(average or max) is used. Finally pairwise dot products are taken and concatenated.</p>
+<p><img src="./fbpers4.png" class="img-fluid"></p>
+<p>The complete architecture for this Deep Learning Recommendation Model <a href="https://github.com/facebookresearch/dlrm?fbclid=IwAR3_MUcW27zweshZYmOwMBITm6H2iMOeIp5K1zuxY-Vw6heUNXU1AXHICBU">DLRM</a> is as follows:</p>
+<p><img src="./fbpers5.png" class="img-fluid"></p>
+<ul>
+<li>Feature interaction in simplest from can be concatenating the two vectors.</li>
+<li>Embeddings tables get really large and may not fit into GPU memory. So data parallelism does not work and requires model parallelism.</li>
+</ul>
+<p><strong>4) Keeping Models Fresh</strong></p>
+<ul>
+<li><p>Data distributions keep changing as items(videos,posts etc.) change continuously.</p></li>
+<li><p><strong>Online training</strong>: Update model every few minutes after training batches of data collected every few minutes. Fine tune from previous baseline given you don’t have to train from scratch</p></li>
+<li><p><strong>Recurring Training</strong>: Deploy updated model every few weeks or days.</p></li>
+</ul>
+</section>
+</section>
+<section id="os-for-ai-serverless-productionized-ml" class="level2">
+<h2 class="anchored" data-anchor-id="os-for-ai-serverless-productionized-ml">44) OS for AI: Serverless, Productionized ML</h2>
+<p>See full presentation <a href="https://docs.google.com/presentation/d/1ztrrJ0i8vQlQCpxoRaqsCDTobXYJ9B-XThJ2IGd9VRY/edit#slide=id.g3974aef880_0_0">here</a></p>
+<ul>
+<li>Algorithmia has 9,5000 algorithms on multiple frameworks developed by over 100,000 developers The main challenges of deploying ML models in enterprise are as follows</li>
+</ul>
+<p><img src="./algo1.png" class="img-fluid"></p>
+<ul>
+<li>Machine Learning != Production Machine Learning</li>
+</ul>
+<p>An <strong>Operating System</strong> :</p>
+<ul>
+<li>provides common functionality needed by many programs</li>
+<li>Standardizes conventions to make systems easier to work with</li>
+<li>Presents a higher level of abstraction of the underlying hardware.</li>
+</ul>
+<p>Operating systems evolved from punch cards that was suitable for only one job to to Unix that supported multi-tenancy and composability to DOS that allowed hardware abstraction i.e.&nbsp;you could access the hard disk or floppy disk through the same set of commands. Windows and Mac allowed GUI that democratized computing. Finally we have app stores made available through IOS and Android that made software installation extremely easily.</p>
+<p>This is where we want ML to ultimately be - a user should be able to search for an algorithm and use it without having to do cumbersome installations and devops.</p>
+<p><img src="./algo2.png" class="img-fluid"></p>
+<p>The most standard way of building and deploying a model involves building a model and putting it on a server while exposing a REST endpoint that can be accessed from any device,building such a system from scratch can be quite laborious involving the following steps:</p>
+<ol type="1">
+<li>Set Up Server</li>
+</ol>
+<p>This requires properly balancing CPU,GPU,memory and cost.</p>
+<ol start="2" type="1">
+<li>Create microservice</li>
+</ol>
+<p>You can write an API wrapper using Flask but securing, metering and disseminating this can be challenging.</p>
+<ol start="3" type="1">
+<li>Add scaling</li>
+</ol>
+<p>You have to do automation to predict increase in loads and automatically configure a cloud VM to scale to meet the increased loads</p>
+<ol start="4" type="1">
+<li>Repeat for each unique environment</li>
+</ol>
+<p>This can be challenging if you are using multiple languages and frameworks.</p>
+<p>Deploying models using serverless functions help resolve these challenges to a certain extent as shown below.</p>
+<p><img src="./algo3.png" class="img-fluid"></p>
+<p>Even so, all dependencies are supported and you often have to build a container with the dependencies locally and then move it to the cloud service provider.</p>
+<p>An ideal OS for AI should do the following:</p>
+<p><img src="./algo4.png" class="img-fluid"></p>
+<p>Algorithmia has built a solution that seeks to do all this. Refer to the deck linked to earlier for more details.</p>
+</section>
+<section id="towards-universal-semantic-understanding-of-natural-languages-ibm-research" class="level2">
+<h2 class="anchored" data-anchor-id="towards-universal-semantic-understanding-of-natural-languages-ibm-research">45) Towards universal semantic understanding of natural languages | IBM Research</h2>
+<p>Typically, each language needs separate parsers and separate text analytics to be developed. This means work has to be replicated in each language.</p>
+<p>The goal is to come with a unified representation applicable across all languages, so this work does not have to be replicated.</p>
+<p>The major challenges being faced here include:</p>
+<ol type="1">
+<li>Annotation: Different annotation schemes are used for different languages and sometimes for the same language.</li>
+<li>Training Data: High quality labeled data is required</li>
+<li>Models are built for one task at a time</li>
+</ol>
+<p>IBM is addressing these challenges by creating an automated annotation scheme combined with smart crowdsourcing coupled with programmable abstractions so that work does not have to be repeated.</p>
+<p>With semantic parsing we want to identify the key semantic parts of a sentence no matter in which way it is written, these semantic labels are largely stable.</p>
+<p><img src="./semantics1.png" class="img-fluid"></p>
+<p><a href="https://framenet.icsi.berkeley.edu/fndrupal/about">Framenet</a> and <a href="https://propbank.github.io/">PropBank</a> are commonly used resources for Semantic Role Labeling in English.</p>
+<p>The challenge is that labels across languages typically do not match even if it conveys the same meaning. For example the same subject in a given sentence can be labelled as an ‘orderer’ in English and ‘buyer’ in Chinese.</p>
+<p>We want sentences across languages to share the semantic labels as shown below.</p>
+<p><img src="./semantics2.png" class="img-fluid"></p>
+<section id="creating-cross-lingual-training-data" class="level3">
+<h3 class="anchored" data-anchor-id="creating-cross-lingual-training-data">Creating cross lingual training data</h3>
+<p>Typically you find annotators to annotate corpora in each language separately that takes months. The proposed solution is to do annotation in parallel corpora on datasets that are readily available across multiple languages e.g.&nbsp;subtitles of movies, the Bible etc.</p>
+<p><img src="./semantics3.png" class="img-fluid"></p>
+<p>However these projections are not always accurate due to translation shifts or error in the source languages that get magnified by projecting it.</p>
+<p>One way to solve this is the below method where only selected sentences where the projections from the source language (EN) to the target language (TL) are complete and correct. This training data is used to train the SRL model which is then used to bootstrap more labelled data and train iteratively.</p>
+<p><img src="./semantics4.PNG" class="img-fluid"></p>
+<p>There still can be cases where there is a one to many mapping between a single label in one language to multiple labels in another or cases where no mapping exists. Human intervention is required in this case.</p>
+</section>
+<section id="crowd-in-the-loop-learning" class="level3">
+<h3 class="anchored" data-anchor-id="crowd-in-the-loop-learning">Crowd in the Loop Learning</h3>
+<p>Labeling tasks are classified as hard and easy by a routing model and assigned to a crowd or an expert accordingly.</p>
+<p><img src="./semantics5.PNG" class="img-fluid"></p>
+<p>A query strategy model can also be used to determine if the labels predicted by an SRL model are correct or not. If this model is not confident that the labels are correct, it can be assigned to a human.</p>
+<p><img src="./semantics6.PNG" class="img-fluid"></p>
+<p>These techniques were used to create a <a href="https://github.com/System-T/UniversalPropositions">universal propostion banks</a> for 8 languages.</p>
+</section>
+<section id="developing-models-for-semantic-annotation" class="level3">
+<h3 class="anchored" data-anchor-id="developing-models-for-semantic-annotation">Developing Models for Semantic Annotation</h3>
+<p>The data is characterized by a heavy tail of labels that occur very infrequently. So instance based learning with KNN is used in conjunction with deep learning.</p>
+<p>A demo of the final model is available <a href="https://vimeo.com/180382223">here</a></p>
+</section>
+</section>
+<section id="the-holy-grail-of-data-science-rapid-model-development-and-deployment-zepl" class="level2">
+<h2 class="anchored" data-anchor-id="the-holy-grail-of-data-science-rapid-model-development-and-deployment-zepl">46) The holy grail of data science : Rapid model development and deployment | Zepl</h2>
+<ul>
+<li><p>87% of ML projects don’t make it into production</p></li>
+<li><p>Zepl data science and analytics platform makes Apache Zepplin enterprise grade</p></li>
+</ul>
+<section id="data-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="data-dependencies">Data Dependencies</h3>
+<ul>
+<li><p>Model consumes different data sources as well as outputs of other models. Data is subject to input distribution changes, data label mapping changes etc. So keeping a versioned copy of the data is important.</p></li>
+<li><p>Creating a data catalog which is searchable, accessible and annotatable is important. It can capture basic information such as location of data, schema and additional notes. This can be accomplished in a data science notebook.</p></li>
+</ul>
+</section>
+<section id="reproducibility" class="level3">
+<h3 class="anchored" data-anchor-id="reproducibility">Reproducibility</h3>
+<p><img src="./zepl1.PNG" class="img-fluid"></p>
+<p>Containers deployed on the server side so that every one can access the same resources can help solve reproducibility issues.</p>
+</section>
+<section id="prototyping-vs-production" class="level3">
+<h3 class="anchored" data-anchor-id="prototyping-vs-production">Prototyping vs Production</h3>
+<p>Replicating a model in a different language as is typically required in corporate settings is challenging.</p>
+</section>
+<section id="monitoring" class="level3">
+<h3 class="anchored" data-anchor-id="monitoring">Monitoring</h3>
+<p><strong>Prediction Bias</strong>:</p>
+<p>Distributions of predicted labels should be equal to distribution of observed labels. E.g. if only 1% of e-mails are spam, only 1 % of e-mails should be predicted as spam</p>
+<p><strong>Action Limits</strong>:</p>
+<p>Trigger alarms when model performance deteriorates/drifts significantly</p>
+</section>
+<section id="model-ownership-in-production" class="level3">
+<h3 class="anchored" data-anchor-id="model-ownership-in-production">Model Ownership in Production</h3>
+<p>Developer != Owner</p>
+<p>Hand offs between departments tend to result in loss of information. Need thorough documentation to prevent this.</p>
+</section>
+<section id="testing-deploying" class="level3">
+<h3 class="anchored" data-anchor-id="testing-deploying">Testing &amp; Deploying</h3>
+<p>Use pipelines with Kubeflow or on Sagemaker.</p>
+<p>Zepl allows you run tests on developed models. Clicking a test button, it packages a notebook and spins up a container where there tests are carried out.</p>
+</section>
+</section>
+<section id="deep-reinforcement-learning-for-industrial-robotics-osaro" class="level2">
+<h2 class="anchored" data-anchor-id="deep-reinforcement-learning-for-industrial-robotics-osaro">47) Deep reinforcement learning for industrial robotics | OSARO</h2>
+<ul>
+<li>OSARO builds edge deployed perception and control software for robots.</li>
+</ul>
+<p>Levels of Autonomy:</p>
+<p><img src="./osaro1.png" class="img-fluid"></p>
+<p>Most robots used in warehouses are at Level 1, do not take sensory feedback and cannot react to the environment.</p>
+<p>Partial autonomy: At this level, robots can take sensory feedback and react to the environment but cannot react to surprises or new objects.</p>
+<p><strong>Deep RL</strong> enables level 4 and level 5 automation. It allows:</p>
+<ol type="1">
+<li>Moving away from programming robots - from static to dynamic robotic systems</li>
+<li>Addressing questions that are “hard to describe to computers”</li>
+<li>Handling variabilities and react to changes</li>
+<li>Learning at scale</li>
+</ol>
+<p>This is necessary as warehouse robots often have to pick objects that are transparent or reflective which poses challenge to computer vision systems as well as objects with deformable surfaces.</p>
+<p>This can also be important in countries like Japan with a shrinking labor force.</p>
+<p>OSARO has built ‘object picking’ robots with level 4 automation to staff e-commerce warehouses.</p>
+<ul>
+<li>In robotics industry , each vendor has a proprietary platform and Domain Specific programming language, industry is thus highly fragmented.</li>
+</ul>
+</section>
+<section id="imitation-learning" class="level2">
+<h2 class="anchored" data-anchor-id="imitation-learning">Imitation Learning</h2>
+<p>Learning from an expert’s demonstration.</p>
+<ul>
+<li>Copies behavior, does not necessarily learn problem objective.</li>
+<li>Trained policy only as good as the demonstration.</li>
+</ul>
+</section>
+<section id="meta-learning" class="level2">
+<h2 class="anchored" data-anchor-id="meta-learning">Meta Learning</h2>
+<ul>
+<li>Models that can learn new skills or adapt to new environments with few training examples</li>
+</ul>
+<p>A meta learner(agent) will train a Learner(model) on a data set with a large number of tasks, and learn common representations across these tasks. The Learner can now adapt to new tasks with very little</p>
+</section>
+<section id="challenges-and-future-directions-in-deploying-nlp-in-commercial-environments-intel" class="level2">
+<h2 class="anchored" data-anchor-id="challenges-and-future-directions-in-deploying-nlp-in-commercial-environments-intel">48) Challenges and future directions in deploying NLP in commercial environments | Intel</h2>
+<p>Implications of latest developments in NLP include:</p>
+<ol type="1">
+<li>Pre-training of large Language models is very costly</li>
+<li>Shift of focus from lower level training to more application specific tweaking</li>
+<li>Loading very large model and heavy fast forward computing during inference</li>
+</ol>
+<p><a href="https://github.com/NervanaSystems/nlp-architect">NLP Architect</a> is Intel’s NLP Library for developing DL based NLP applications. It also produces optimized NLP models ready for inference deployment.</p>
+<ul>
+<li>Knowledge distillation from BERT/XLNet to small models is supported</li>
+<li>Q8BERT - Produced by quantization aware training. Quantized 8 bit version of Bert(int) as against 32 bit(floating point). Leads to 4x memory compression. This can be done in just the fine tuning step.</li>
+<li>Sparse version of Google’s NMT model is also available</li>
+</ul>
+<section id="model-distillation" class="level3">
+<h3 class="anchored" data-anchor-id="model-distillation">Model Distillation</h3>
+<p>Train a small network using the output of a larger model. See details <a href="https://arxiv.org/abs/1503.02531">here</a></p>
+<p>Using this approach, BERT models with 300 million parameters can be distilled to an LSTM+CRF model with only 3 million parameters.</p>
+<p>As seen in the figure below, the performance of these distilled models is on par with the original BERT model.</p>
+<p><img src="./intel1.PNG" class="img-fluid"></p>
+<p>Quantized BERT’s performance on various tasks is comparable to that of BERT.</p>
+<p><img src="./intel2.png" class="img-fluid"></p>
+<p>NLP Architect also supports Aspect based sentiment analysis which identifies the target word a sentiment term qualifies.</p>
+<p>E.g. for the sentence: ‘service is poor but pizza was great’. ‘poor’ is a sentiment term which qualifies the target word ‘service’ while ‘great’ qualifies the word ‘pizza’. There are also semi supervised techniques that can learn domain specific terms or lexicon e.g.&nbsp;movie reviews vs food reviews</p>
+<p>NER models that can learn to tag words from any domain when seeded with a few examples is also supported. Example, if seeded with grape fruit and lemon as examples of citrus fruits, the model will recommend a list of words to the user who can modify/accept it.</p>
+<p><img src="./intel3.PNG" class="img-fluid"></p>
+</section>
+</section>
+<section id="what-you-must-know-to-build-ai-systems-that-understand-natural-language-pacific-ai" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-must-know-to-build-ai-systems-that-understand-natural-language-pacific-ai">49) What you must know to build AI systems that understand natural language | Pacific AI</h2>
+<p>Solving Natural Language Understanding would effectively lead to solving hard AGI.</p>
+</section>
+<section id="many-languages-spoken." class="level2">
+<h2 class="anchored" data-anchor-id="many-languages-spoken.">Many languages spoken.</h2>
+<p>Even the type of language spoken at home or in an academic paper are very different. Different domains have different jargon.</p>
+<p>SMS Language will have emojis and use a lot of slang or profanities. Auto correct can often be a problem with informal language.</p>
+<p>Legal transcriptions follow a strict procedure that needs to be understood to make sense of it. SEC filings will have a lot of boiler plate that can be ignored.</p>
+<p>Given the varieties of languages, NLP models have to be tailored to the type of language.</p>
+</section>
+<section id="domain-specificity" class="level2">
+<h2 class="anchored" data-anchor-id="domain-specificity">Domain specificity</h2>
+<p>Off the shelf models cannot work on all domains as they are typically trained on content like Wikipedia articles.This problem is particularly acute in health care.</p>
+<p>E.g. “states started last night, upper abd, took alka seltzer approx 0500, no relief. nausea no vomiting”</p>
+<p>In finance, the sentiment towards a stock is not quite the same as sentiment towards a restaurant in a Yelp review.</p>
+<p>It is important to train domain specific models. You might have to pair your NLP data scientist with a domain expert who is an expert in the language the model has to understand.</p>
+<section id="use-both-structured-and-unstructured-data" class="level3">
+<h3 class="anchored" data-anchor-id="use-both-structured-and-unstructured-data">Use both structured and unstructured data</h3>
+<p>In a hospital demand forecasting problem, you need to look at medical notes from doctors and nurses as well as available structured data such as age, reason for visit, wait time etc.</p>
+<p><strong>Best practice</strong>: Unify NLP and ML pipeline as enabled by Spark NLP and Spark ML</p>
+<p>What is good first NLP project?</p>
+<p>Start with an existing model based on structured data that human domain experts usually solve with free text data</p>
+<blockquote class="blockquote">
+<p>It is interesting to note that with the advent of advanced language models such as GPT3, we may not need to build domain specific models from scratch but only fine tune a language model. Even so, given GPT3 has been licensed exclusively to Microsoft, it may be out fo reach for most organizations in the world.</p>
+</blockquote>
+</section>
+</section>
+<section id="language-inference-in-medicine-ibm-research" class="level2">
+<h2 class="anchored" data-anchor-id="language-inference-in-medicine-ibm-research">50) Language Inference in medicine | IBM Research</h2>
+<ul>
+<li>Need to determine if a patient meets eligibility criteria for clinical trials by comparing against doctor and nurse notes.</li>
+</ul>
+<p>An example of clinical trial eligibility criteria is shown below</p>
+<p><img src="./clinic1.PNG" class="img-fluid"></p>
+<ul>
+<li><p>Need to compare text between medical records and guidelines definitions</p></li>
+<li><p>Natural Language Inference is a three way classification problem</p></li>
+</ul>
+<p>Given a premise and a hypothesis, classify the latter as</p>
+<ol type="a">
+<li>Definitely true (entailment) <br></li>
+<li>Definitely false (contradiction) <br></li>
+<li>Might be true, might be false (neutral) <br></li>
+</ol>
+<p>E.g.</p>
+<p><strong>Premise</strong>: A person on a horse jumps over a broken down airplane</p>
+<p><strong>Hypothesis 1</strong>: A person is outdoors, on a horse</p>
+<p>This hypothesis is true(hence an entailment)</p>
+<p><strong>Hypothesis 2</strong>: A person is at a diner, ordering an omelet</p>
+<p>This hypothesis is a contradiction.</p>
+<p><strong>Hypothesis 3</strong>: A person is training his horse for a competition</p>
+<p>This hypothesis is neutral.</p>
+<p>This can be more complicated in the following example.</p>
+<p><strong>Premise</strong>: The campaigns seem to reach a new pool of contributors.</p>
+<p><strong>Hypothesis</strong>: The campaign drew a new crowd of funders.</p>
+<p>An understanding of the meaning of words (pool = crowd, campaigns is a plural of campaign, funders = contributors) is necessary here.</p>
+<p>In medicine this can be even more complicated.</p>
+<p><strong>Premise</strong>: During the admission he had a paracentesis for ~ 5 liters and started on spironolactone, lasix and protonix</p>
+<p><strong>Hypothesis 1</strong>: The patient has cirrhosis(Entailment)</p>
+<p><strong>Hypothesis 2</strong>: The patient does not have fluid in the abdomen (Contradiction)</p>
+<p><strong>Hypothesis 3</strong>: The patient would benefit from a liver transplant (Neutral)</p>
+</section>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
+<ul>
+<li><p>Stanford Natural Language Inference Dataset (SNLI). Premise here are captions from Flicker photographs, and humans were asked to write a statement that is definitely true, definitely false and might be true/false.</p></li>
+<li><p>About 500,000 training pairs</p></li>
+<li><p>MultiNLI from NYU: Covers more variety of genres beyond photographs.</p></li>
+<li><p>Clinical NLI Corpus was created by IBM Research. Premise is a sentence from a patient’s history. Clinicians were then asked to write sentences for each of the three classes.</p></li>
+</ul>
+</section>
+<section id="models" class="level2">
+<h2 class="anchored" data-anchor-id="models">Models</h2>
+<ul>
+<li><p>GBM classifier performance was limited.</p></li>
+<li><p>A stronger deep learning baseline using Bag of Words was created. Embeddings vectors for premise and hypothesis were created by summing the word embeddings for the constituent words.These were concatenated and passed through a fully connected Neural Net.</p></li>
+<li><p>Other models considered include:</p>
+<ul>
+<li>Enhanced Sequential Inference Model<a href="https://github.com/coetaur0/ESIM">ESIM</a></li>
+<li><a href="https://github.com/facebookresearch/InferSent">InferSent</a></li>
+</ul></li>
+<li><p>Following variations of transfer learning were also explored</p>
+<ul>
+<li>Sequential Transfer: Pre train on SNLI and then train on Medical NLI, followed by testing on Medical NLI</li>
+<li>Multi target transfer:Some layers were shared between open and medical domains, while other layers were trained exclusively on the open domain data. Testing was carried out on the medical domain.</li>
+</ul></li>
+<li><p>Approach was also designed to leverage existing knowledge graph compiled by domain experts. This relied on developing a matrix which captured the shortest path distance between concepts in the knowledge graph which mirrored the attention matrix developed by the ESIM model from data.</p></li>
+</ul>
+<p><img src="./clinic2.PNG" class="img-fluid"></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

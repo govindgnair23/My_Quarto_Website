@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Govind G Nair">
+<meta name="dcterms.date" content="2021-01-30">
+<meta name="description" content="Overview of Covid and Covid vaccines">
+
+<title>Understanding the Biology of Covid and Covid vaccines</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-22381ab97ffb8a420d3841344730e94d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Understanding the Biology of Covid and Covid vaccines</h1>
+                  <div>
+        <div class="description">
+          Overview of Covid and Covid vaccines
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Article</div>
+                <div class="quarto-category">Biology</div>
+                <div class="quarto-category">COVID</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Govind G Nair </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 30, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#central-dogma-of-life" id="toc-central-dogma-of-life" class="nav-link" data-scroll-target="#central-dogma-of-life">Central Dogma of Life</a>
+  <ul class="collapse">
+  <li><a href="#dna" id="toc-dna" class="nav-link" data-scroll-target="#dna">DNA</a></li>
+  <li><a href="#rna" id="toc-rna" class="nav-link" data-scroll-target="#rna">RNA</a></li>
+  <li><a href="#amino-acids" id="toc-amino-acids" class="nav-link" data-scroll-target="#amino-acids">Amino Acids</a></li>
+  <li><a href="#proteins" id="toc-proteins" class="nav-link" data-scroll-target="#proteins">Proteins</a></li>
+  </ul></li>
+  <li><a href="#sars-cov-2-virus" id="toc-sars-cov-2-virus" class="nav-link" data-scroll-target="#sars-cov-2-virus">SARS-Cov-2 virus</a></li>
+  <li><a href="#vaccines" id="toc-vaccines" class="nav-link" data-scroll-target="#vaccines">Vaccines</a>
+  <ul class="collapse">
+  <li><a href="#types-of-vaccines" id="toc-types-of-vaccines" class="nav-link" data-scroll-target="#types-of-vaccines">Types of Vaccines</a></li>
+  <li><a href="#protein-expression" id="toc-protein-expression" class="nav-link" data-scroll-target="#protein-expression">Protein Expression</a></li>
+  <li><a href="#vaccine-efficacy-and-effectiveness" id="toc-vaccine-efficacy-and-effectiveness" class="nav-link" data-scroll-target="#vaccine-efficacy-and-effectiveness">Vaccine Efficacy and Effectiveness</a></li>
+  </ul></li>
+  <li><a href="#variants" id="toc-variants" class="nav-link" data-scroll-target="#variants">Variants</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this article, I provide an overview of the biology of Covid and how Covid vaccines work; atleast as best as someone with no formal training in Biology can 😊.</p>
+<p>All the content in this post comes from fantastic resources I found online. All of these have been listed in the references section.</p>
+</section>
+<section id="central-dogma-of-life" class="level2">
+<h2 class="anchored" data-anchor-id="central-dogma-of-life">Central Dogma of Life</h2>
+<p>To understand how the vaccines work, it is best to briefly understand how life works.</p>
+<p>One of the major breakthroughs in molecular biology was the discovery of the following mechanism - also known as the central dogma of molecular biology,</p>
+<p><span class="math display">\[ DNA \rightarrow RNA \rightarrow Amino\ Acids \rightarrow Protein \]</span></p>
+<section id="dna" class="level3">
+<h3 class="anchored" data-anchor-id="dna">DNA</h3>
+<p>As you may know, DNA contains the recipe for creating and running a living organism. Just like all computer programs are ultimately sequences of bits(0 or 1). DNA is a sequence of <a href="https://en.wikipedia.org/wiki/Nucleotide">nucleotides</a> (A-Adenine,C-Cytosine,T-Thymine and G-Guanine) stored in the nucleus of the cell.</p>
+<p>DNA is equivalent to Read only Memory(ROM) that permanently stores instructions on your computer.</p>
+</section>
+<section id="rna" class="level3">
+<h3 class="anchored" data-anchor-id="rna">RNA</h3>
+<p>To carry out a specific task you need to read the instructions from the ROM. This is where RNA comes in.</p>
+<p>Our cells have molecular machines that can read snippets of DNA and convert them into RNA molecules. The RNA molecule typically contains a subset of the information stored in the DNA. It is equivalent to reading something essential from a computer’s ROM to its RAM (Random Access Memory). The information in the RAM is meant to carry out a specific task and is quickly discarded. Similarly RNA are created for a specific task : to instruct the cell how to create amino acids and proteins. They are quickly discarded after the task is complete. <strong>RNA molecules are therefore fragile and short lived.</strong></p>
+<p>Just like DNA, the RNA is also a sequence of four nucleotides - A-Adenine,C-Cytosine,U - Uracil and G-Guanine.</p>
+<p>The messenger RNA or mRNA is an RNA molecule that carries information about a gene (a sequence of nucleotides in the DNA) from the nucleus into the cytoplasm (outside the nucleus) where amino acids are made. <strong>Given mRNA are generated inside the nucleus, the body is primed to quickly identify any mRNA that does not originate in the nucleus and destroy it.</strong></p>
+</section>
+<section id="amino-acids" class="level3">
+<h3 class="anchored" data-anchor-id="amino-acids">Amino Acids</h3>
+<p>DNA encodes for Amino Acids using combinations of 3 nucleotides - called codons. There are 64 possible codons (4x4x4). AAA is a codon so is CTG.</p>
+<p>There are 20 different amino acids encoded by these 64 codons, some codons encode the same amino acid. E.g. CTT and CTC encode for the same amino acid - Leucine as shown below.</p>
+<div class="figure">
+<p><img src="./codon_table.PNG" alt="DNA/Codon Table from Wikipedia"></p>
+<p class="caption">
+</p><p>Figure 1: DNA/Codon Table from Wikipedia</p>
+<p></p>
+</div>
+</section>
+<section id="proteins" class="level3">
+<h3 class="anchored" data-anchor-id="proteins">Proteins</h3>
+<p>All proteins are created using some combination of amino acids.The genes in our body - through a sequence of codons - encode the amino acids that are to be used to create a protein.</p>
+<p>For example the smallest protein discovered so far is TRP-Cage. It comprises 20 amino acids derived from the saliva of Gila monsters!</p>
+<blockquote class="blockquote">
+<p>Asn Leu Tyr Ile Gln Trp Leu Lys Asp Gly<br>
+Gly Pro Ser Ser Gly Arg Pro Pro Pro Ser</p>
+</blockquote>
+<p>Proteins are created by a molecular machine in the cell called the ribosome. The ribosomes reads a strand of RNA and produces a sequence of amino acids called a polypeptide.The polypeptide is then folded into a 3D structure - the protein. The 3D structure of the protein is a key determinant of the function of a protein.</p>
+</section>
+</section>
+<section id="sars-cov-2-virus" class="level2">
+<h2 class="anchored" data-anchor-id="sars-cov-2-virus">SARS-Cov-2 virus</h2>
+<p>The SARS-Cov-2 virus is a single-stranded RNA enveloped virus. The image below shows two types of enveloped viruses.</p>
+<div class="figure">
+<p><img src="./enveloped_virus.PNG" alt="Image from amboss.com"></p>
+<p class="caption">
+</p><p>Figure 2: Image from amboss.com</p>
+<p></p>
+</div>
+<p>SARS-COV-2 resembles the one on the right. It has a Linear single strand RNA(rather than DNA as shown in the image on the left), a helical capsid (a protein shell enclosing the RNA) , a lipid bi-layer and “spike” proteins.</p>
+<p>The lipid bi-layer that envelopes the virus is extremely vulnerable to organic solvents (e.g.&nbsp;alcohol),detergents and dry heat.</p>
+<p>This is why scientists have been encouraging us to wash our hands and wipe down groceries with alcoholic wipes.</p>
+<p>The spike protein is critical to the life cycle of the virus. It binds to the ACE2 protein in human cells, creating a hook to attach to human cells. The ACE2 protein in our cells thus acts as a cellular doorway or receptor for the SARS COV2 virus.</p>
+<div class="figure">
+<p><img src="./spike_protein.jpg" alt="Covid-19 coronavirus binding to ACE2 receptors: Source: Juan Gaertner/Science Photo Library"></p>
+<p class="caption">
+</p><p>Figure 3: Covid-19 coronavirus binding to ACE2 receptors: Source: Juan Gaertner/Science Photo Library</p>
+<p></p>
+</div>
+<p>Once the virus binds to a target cell, activation of the spike protein allows the virus to enter the cell.</p>
+<p>The ACE2(Angiotensin-converting enzyme 2) protein in our bodies is vital in modulating the activities of another protein called angiotensin II(ANG II).ANG II increases blood pressure and inflammation causing damage to blood vessel lining and other types of tissue injury. Most critically, ANG II can increase inflammation and the death of cells in the alveoli in the lungs; alveoli are critical for absorbing oxygen into the body.</p>
+<p>When the SARS-Cov2 virus binds to ACE2, it prevents ACE2 from performing its normal function of cutting up ANG-II . Without ACE2 to regulate it, ANG II can wreak havoc - injuring cells in the lungs and the heart.</p>
+</section>
+<section id="vaccines" class="level2">
+<h2 class="anchored" data-anchor-id="vaccines">Vaccines</h2>
+<p>All major vaccines attempt to trigger the human body into producing anti bodies to identify and destroy the spike protein along with the virus that carries it.</p>
+<section id="types-of-vaccines" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-vaccines">Types of Vaccines</h3>
+<ol type="1">
+<li>mRNA <br></li>
+<li>viral vector <br></li>
+<li>protein subunit <br></li>
+<li>attenuated or inactivated virus <br></li>
+</ol>
+<section id="mrna" class="level4">
+<h4 class="anchored" data-anchor-id="mrna">mRNA</h4>
+<p>The <strong>mRNA</strong>vaccines effectively deceive the cells in the human body to produce the spike protein. This triggers our immune system into a response against the protein and any virus anchoring it.</p>
+<p><a href="https://berthub.eu/articles/posts/reverse-engineering-source-code-of-the-biontech-pfizer-vaccine/">This</a> article explains how the Pfizer-BioNtech vaccine is engineered.</p>
+<p>Here are the key takeaways</p>
+<ul>
+<li><p>As described in the RNA section, RNA are fragile. For this reason these vaccines have to be stored at very low temperatures.</p></li>
+<li><p>mRNA vaccines are synthetically generated RNA that can induce our cells to produce the spike proteins. They have been intelligently engineered in ways to deceive our immune system from destroying it.</p></li>
+<li><p>Our body usually identifies and destroys any foreign RNA. To evade the immune system, the Pfizer-BioNTech vaccine replaces the U nucleotide in RNA with a different molecule $ $. With this replacement, the immune system loses interest in the RNA and does not destroy it.</p></li>
+<li><p>A stretch of the mRNA vaccine encodes the actual spike protein with some minor modifications as shown below:</p></li>
+</ul>
+<div class="figure">
+<p><img src="./virus_vaccine.PNG" alt="Spike protein encoding in vaccine and virus"></p>
+<p class="caption">
+</p><p>Figure 4: Spike protein encoding in vaccine and virus</p>
+<p></p>
+</div>
+<ol type="a">
+<li>In the first codon (CUU), the U nucleotide is flipped to G, this enhances protein production in the cell <br></li>
+<li>The spike proteins are stable when mounted on the virus, but can quickly collapse into an unrelated structure if it stands alone. Replacing two amino acids K(AAA) and V(GUU) with Proline (CCU) - a very rigid amino acid prevents this and ensures the spike proteins produced by our cells are stable.</li>
+</ol>
+<p>The original virus mRNA has thus been modified in this vaccine.Further the protein being expressed has also been modified to give it more stability.</p>
+<p>This mRNA has to be carried into the cell. mRNA vaccines use mRNA carriers for this purpose. All the mRNA vaccines use lipid nano particles as carriers.</p>
+<p>Carriers molecules should have lots of positive charges on them. Given RNA has lot of negatively charged phosphate groups,the two match up to create stable combinations. Lipid nano particles have been found to be very effective in protecting the mRNA as it travels through the bloodstream and also helps it cross through the cell membrane into the cell.</p>
+<p>The Pfizer vaccine uses lipid nano particles developed by the Canadian company Acuitas.</p>
+<p>mRNA vaccines also have the added advantage they only need to get into the cell and not the nucleus. A DNA based vaccine on the other hand will have to get into the nucleus of the cell where it could be accidentally incorporated into the genome.</p>
+</section>
+<section id="viral-vector" class="level4">
+<h4 class="anchored" data-anchor-id="viral-vector">Viral Vector</h4>
+<p>This category of vaccines uses an actual harmless virus - typically modified adenoviruses from humans or apes as vectors - which is equipped with a strand of DNA that contains instructions to make the spike protein.</p>
+<p>Unlike mRNA vaccines, viral vectors have to deliver the DNA payload directly into the nucleus. Once the DNA has been delivered to the nucleus, it is read by the machinery in the human cell nucleus and translated into mRNA. The mRNA is then read by the cell and translated into spike proteins.</p>
+<div class="figure">
+<p><img src="./adenovirus.PNG" alt="How viral vector vaccines work; source- NY Times"></p>
+<p class="caption">
+</p><p>Figure 5: How viral vector vaccines work; source- NY Times</p>
+<p></p>
+</div>
+<p>The viral vectors have been modified enough not to trigger our immune system against the carrier virus itself. They also do not reproduce. However, given they are a foreign virus, they can raise an alarm and trigger the immune system into a stronger reaction to the spike proteins.</p>
+<p>Adeno viruses are sturdy double stranded DNA viruses and more robust than RNA. They do not need special cooling unlike the mRNA vaccines.</p>
+</section>
+<section id="protein-sub-unit" class="level4">
+<h4 class="anchored" data-anchor-id="protein-sub-unit">Protein Sub Unit</h4>
+<p>This type of vaccine works by directly injecting the spike protein into the body. The spike protein is formulated to trigger the body into producing an immune response.</p>
+</section>
+<section id="attenuated-virus" class="level4">
+<h4 class="anchored" data-anchor-id="attenuated-virus">Attenuated Virus</h4>
+<p>This type of vaccine uses a dead or harmless version of the SARS-COV-2 virus. Given the virus has been attenuated, it will not trigger an immune response on its own. Therefore, this vaccine type uses an <em>adjuvant</em> to trigger an immune response from the body.</p>
+<p>Such adjuvanted vaccines can cause more local reactions (such as redness,pain or swelling at the injection site) as well as systematic reactions (such as fever,chills and body aches) compared to non-adjuvanted vaccines.</p>
+<p>On the plus side, such vaccines do not need to express a modified protein as they are hosted on the weakened virus.</p>
+</section>
+</section>
+<section id="protein-expression" class="level3">
+<h3 class="anchored" data-anchor-id="protein-expression">Protein Expression</h3>
+<p>A key determinant of the efficacy of vaccines is how well the proteins are expressed or produced and how stable the proteins produced are.</p>
+<p><strong>Research has indicated that modified mRNA is two orders of magnitude (100x) better at expressing proteins than unmodified mRNA</strong>. We have also seen that modified spike proteins are more stable than unmodified spike proteins.</p>
+<p>The following table captures the difference between the major vaccine types.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Vaccine</th>
+<th>Company</th>
+<th>Type</th>
+<th>Delivery Vehicle</th>
+<th>Spike Protein Expression</th>
+<th>Efficacy % (95% CI)</th>
+<th>Doses</th>
+<th>Cost per dose</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BNT162b2/Tozinemeran/Comirnaty</td>
+<td>Pfizer-BioNTech</td>
+<td>modified mRNA</td>
+<td>Lipid-nanoparticle</td>
+<td>modified</td>
+<td>94.8 (89.8 -97.6)</td>
+<td>x2</td>
+<td>$20</td>
+<td>-70 C</td>
+</tr>
+<tr class="even">
+<td>mRNA-1273</td>
+<td>Moderna</td>
+<td>modified mRNA</td>
+<td>Lipid-nanorparticle</td>
+<td>modified</td>
+<td>94.1 (89.3 - 96.8)</td>
+<td>2</td>
+<td>$33</td>
+<td>-20C</td>
+</tr>
+<tr class="odd">
+<td>CVnCoV</td>
+<td>Curevac</td>
+<td>Unmodified mRNA</td>
+<td>Lipid-nanoparticle</td>
+<td>modified</td>
+<td>Not Available</td>
+<td>2</td>
+<td>$12</td>
+<td>4 C</td>
+</tr>
+<tr class="even">
+<td>AZD1222/Covishield</td>
+<td>Oxford-AstraZeneca</td>
+<td>viral vector</td>
+<td>NA</td>
+<td>un-modified</td>
+<td>70.4 (54.8 to 80.6)</td>
+<td>2</td>
+<td>$4</td>
+<td>4 C</td>
+</tr>
+<tr class="odd">
+<td>Ad26.COV2-S</td>
+<td>Johnson&amp; Johnson</td>
+<td>viral vector</td>
+<td>NA</td>
+<td>modified</td>
+<td>66</td>
+<td>1</td>
+<td>$10</td>
+<td>4 C</td>
+</tr>
+<tr class="even">
+<td>Sputnik V</td>
+<td>Gamaleya Research Institute of Epidemology and Microbiology</td>
+<td>viral vector</td>
+<td>NA</td>
+<td>NA</td>
+<td>91.6 (85.6-95.2)</td>
+<td>2</td>
+<td>$10</td>
+<td>4 C</td>
+</tr>
+<tr class="odd">
+<td>NVX-CoV2373</td>
+<td>Novavax</td>
+<td>protein-subunit with adjuvant</td>
+<td>NA</td>
+<td>doubly modified</td>
+<td>89.3 (75.2 - 95.4)</td>
+<td>2</td>
+<td>$ 16</td>
+<td>4 C</td>
+</tr>
+<tr class="even">
+<td>Covaxin</td>
+<td>Bharat Biotech</td>
+<td>attenuated virus with adjuvant</td>
+<td>NA</td>
+<td>NA</td>
+<td>81</td>
+<td>2</td>
+<td>$ 4</td>
+<td>4 C</td>
+</tr>
+<tr class="odd">
+<td>Ad5 vectored vaccine</td>
+<td>CanSino Biological Inc and Beijing Institute of BioTechnology</td>
+<td>viral vector</td>
+<td>NA</td>
+<td>NA</td>
+<td>65.7</td>
+<td>1</td>
+<td>$ 30.62</td>
+<td>4 C</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vaccine-efficacy-and-effectiveness" class="level3">
+<h3 class="anchored" data-anchor-id="vaccine-efficacy-and-effectiveness">Vaccine Efficacy and Effectiveness</h3>
+<p><strong>Efficacy</strong> is the degree to which a vaccine prevents disease and possibly also transmission under ideal and controlled circumstances. This is measured only in Phase 3 of a vaccine’s clinical trial.The numbers in the table above measure vaccine efficacy</p>
+<p>Phase 3 Vaccine clinical trials are Randomized Controlled trials where a subset of the population is selected based on factors such as age . This population is divided into a test group that receives the vaccine and a placebo group that receives a placebo.</p>
+<p>Efficacy of 90% means a 90% reduction in cases of the diseases in the test group compared to the Vaccine group.<br> E.g. Assume there are 1000 people in either group. After administration of the vaccine or placebo, the number of people in each group are monitored for the disease. If 900 people in the placebo group contract the disease but only 100 people in the test group contract the disease, the efficacy is given by.</p>
+<p><span class="math display">\[ \frac{900 -100}{900} \times 100 =  88.9 \%\]</span></p>
+<p><strong>Effectiveness</strong> is how well the vaccine performs in the real world in typical field conditions. Any factor that was not controlled for in the clinical trial such as gender, illness or quality of vaccine storage can reduce the actual effectiveness of the vaccine.</p>
+<p>A <a href="https://www.reuters.com/article/health-coronavirus-israel-vaccine-int/israeli-studies-find-pfizer-covid-19-vaccine-reduces-transmission-idUSKBN2AJ08J">study</a> in Israel where over half a million people were vaccinated with the Pfizer - BioNtech vaccine indicates this vaccine has an effectiveness of 90.3% for asymptomatic cases and 93.7% for symptomatic cases.</p>
+<p>It is clear that the Pfizer-BioNTech and Moderna vaccines are the most efficacious. Even with a single shot these two vaccines have efficacy of 92.6% and 91.6% respectively.</p>
+<p>However, we need to keep in mind that most of these vaccines will be very effective in preventing severe cases of Covid that may result in hospitalizations - this is extremely critical.</p>
+<p>For.e.g the J&amp;J vaccine was <a href="https://www.clinicaltrialsarena.com/comment/covid-19-vaccine-protection/">85% effective</a> in preventing severe disease and offered complete protection against Covid related hospitalization and death 28 days after vaccination.</p>
+<p>Many of the other vaccines also poses fewer logistical challenges and will still be very effective in breaking the transmission of the disease and ending the pandemic.</p>
+</section>
+</section>
+<section id="variants" class="level2">
+<h2 class="anchored" data-anchor-id="variants">Variants</h2>
+<p>Viruses mutate all the time due to errors in the DNA/RNA replication mechanism. Any one of the four nucleotides in the SARS-COV-2 virus RNA genome can get switched.</p>
+<p>Although the rate at which the SARS-Cov-2 virus mutates is much slower than that of others such as influenza or HIV, the scale of the pandemic means that variants of the virus that are more transmissible or resistant to vaccines may emerge due to natural selection.</p>
+<p>Three variants that have emerged recently include</p>
+<p>1)<strong>B.1.17</strong></p>
+<p>This was first detected in the UK in September 2020. This variant has incurred 23 mutations that differentiate it from it’s ancestor in the wild. Studies indicate that it is 35% - 45 % more transmissible than it’s predecessor.It has not been confirmed it is any more lethal than it’s predecessor.</p>
+<ol start="2" type="1">
+<li><strong>B.1.351</strong></li>
+</ol>
+<p>This was identified in South Africa in Dec 2020. This variant likely poses the biggest concern in the long run.</p>
+<ol start="3" type="1">
+<li><strong>P.1</strong></li>
+</ol>
+<p>This was identified in Brazil.</p>
+<p>All these variants change the way the critical spike protein is expressed by the virus.The mutations in B.1.351 and P.1 seem to make it more difficult for the body’s antibodies to bind to the spike protein on the virus.</p>
+<p>Studies have indicated that anitbodies from individuals vaccinated with the Moderna and Pfizer-BioNTech vaccines work well against the B.1.17 variant but less so against the B.1.351 variant. In fact, no vaccine has reported greater than 60% efficacy in preventing symptoms for the B.1.351 variant of Covid</p>
+<p>The Novavax and Johnson&amp;Johnson vaccines also appear to be less effective against these variants but should still be effective in preventing severe disease and hospitalizations.</p>
+<p>Scientists and researchers are hard at work developing vaccines that are more effective against these variants. Moderna has in fact submitted a <a href="https://www.businesswire.com/news/home/20210224006083/en/">vaccine candidate</a> designed specifically for the B.1.351 variant.This would be administered as a booster shot.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>At a personal level, if the pandemic has a silver lining, it is that I have developed a greater appreciation for the biological sciences. I hope this blog does the same for you.</p>
+<p>Also,I want to extend my gratitude to the thousands of health care workers who have been putting their lives on the line to keep us safe and the brilliant scientists who have made pandemic busting vaccines a reality in just over a year.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://berthub.eu/articles/posts/reverse-engineering-source-code-of-the-biontech-pfizer-vaccine/">Reverse Engineering the source code of the BioNTech/Pfizer Vaccine</a></li>
+<li><a href="https://berthub.eu/articles/posts/genetic-code-of-covid-19-vaccines/">The Genetic Code and Proteins of Other Covid-19 vaccines</a></li>
+<li><a href="https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/Book%3A_Introductory_Biology_(CK-12)/04%3A_Molecular_Biology/4.01%3A_Central_Dogma_of_Molecular_Biology#:~:text=The%20central%20dogma%20of%20molecular%20biology%20states%20that%20DNA%20contains,DNA%20to%20RNA%20to%20Protein.">Central Dogma of Molecular Biology</a></li>
+<li>https://www.genome.gov/genetics-glossary/messenger-rna</li>
+<li><a href="https://bmrb.io/data_library/summary/index.php?bmrbId=5292">Tc5b</a></li>
+<li>https://www.amboss.com/us/knowledge/General_virology</li>
+<li>https://www.nature.com/articles/s41401-020-0485-4#Sec2</li>
+<li>https://theconversation.com/what-is-the-ace2-receptor-how-is-it-connected-to-coronavirus-and-why-might-it-be-key-to-treating-covid-19-the-experts-explain-136928</li>
+<li>https://csvoss.com/a-mechanists-guide-to-the-coronavirus-genome</li>
+<li>https://twitter.com/profshanecrotty/status/1367179841217306626</li>
+<li>https://www.quantamagazine.org/how-to-understand-covid-19-variants-and-their-effects-on-vaccines-20210225/</li>
+<li>https://www.bloomberg.com/news/articles/2021-02-08/pakistan-says-cansino-s-covid-vaccine-shows-65-7-efficacy</li>
+<li>https://www.globaltimes.cn/content/1210093.shtml</li>
+<li>https://www.nejm.org/doi/full/10.1056/NEJMc2036242</li>
+<li>https://www.nejm.org/doi/full/10.1056/NEJMoa2035389</li>
+<li>https://www.clinicaltrialsarena.com/comment/covid-19-vaccine-protection/</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

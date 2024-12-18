@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+#Ignore renv library folder
+renv/library/
+# Ignore renv cache (if it appears locally)
+renv/cache/
+/.quarto/

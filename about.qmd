@@ -1,0 +1,37 @@
+---
+title: "Govind G Nair"
+about:
+  template: trestles
+  image: self.jpg
+  links:
+    - icon: linkedin
+      text: linkedin
+      href: https://linkedin.com/in/govindgnair/
+    - icon: github
+      text: Github
+      href: https://github.com/govindgnair23
+    - icon: goodreads
+      text: Goodreads
+      href: https://goodreads.com/govindgnair
+---
+
+I am a Senior Product Manager at Oracle, where I lead the development of AI and ML-powered products designed to help Financial Institutions prevent and detect financial crime, making our financial system safer and more secure.
+
+I am a data scientist turned product manager and an infinite learner constantly seeking to become a little wiser every single day.
+
+> **Wisdom is not the product of schooling but the lifelong attempt to acquire it** - Albert Einstein
+
+
+## Education
+
+-   MS in Computational Finance and Risk Management, University of Washington, Seattle
+
+-   B.Tech in Industrial Engineering and Management, College of Engineering, Trivandrum
+
+## Interests
+
+-   Machine Learning and AI
+
+-   Data Science
+
+-   Product Management

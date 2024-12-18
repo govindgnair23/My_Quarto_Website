@@ -1,0 +1,74 @@
+---
+title: "Is the Commoditization of AI inevitable ?"
+date: "2024-12-06"
+description: "An analysis of the economic and societal forces that could shape the industry"
+categories: [Musings, AI]
+---
+
+# Introduction
+
+The race for AI dominance has sparked both innovation and intense competition among technology leaders. Foundation model providers like OpenAI, Google DeepMind, and Anthropic are at the forefront, offering groundbreaking models that power everything from chatbots to enterprise automation. However, as the AI market matures, a fundamental question arises: Is AI destined to become a commodity?
+
+The pressures driving this commoditization are not just technological but also economic and societal. Market forces, such as competition, open-source alternatives, and growing buyer power, are already reshaping the industry. At the same time, broader social forces demand equitable access to AI's transformative capabilities, which could push governments to intervene.
+
+# Market Forces
+
+Consider Porter's Five Forces.
+
+## 1) Threat of New Entrants:
+
+Given the high barriers to entry due to the significant computational and data resources required to train foundation models, there will only be a handful of players operating in this space.
+
+Established providers like OpenAI, Google, and Anthropic benefit from strong brand recognition and technical expertise, making it challenging for new players to compete.
+
+## 2) Bargaining Power of Suppliers:
+
+Suppliers of compute resources (e.g., NVIDIA, AMD, cloud providers) hold substantial power since foundation models rely heavily on GPU and TPU infrastructure.
+
+Data suppliers (organizations owning proprietary datasets) can also exert influence if unique datasets are necessary for training.
+
+Open AI exploring options to create their own chips perhaps speaks to their desire to be more in control of their destiny in this regard.
+
+## 3) Bargaining Power of Buyers:
+
+Buyers, such as cloud providers, enterprises and developers, have increasing choices as multiple players offer competitive solutions.
+
+Major cloud providers like Amazon and Microsoft emphasize that foundation models will become pluggable components, similar to compute, storage, or databases, for application development. These companies have a strong incentive to reduce dependency on major AI labs, as demonstrated by Microsoft's acquisition of Inflection, Amazon's acquisition of Adept, and Amazon's own development of language models.
+
+Large enterprises may also exert significant bargaining power. A good example of this is Apple who by virtue of owning the customer relationship seems to be able to dictate terms to foundation model providers like Open AI.
+
+## 4) Threat of Substitutes:
+
+Open-source and Open Weight Models from the likes of AI2, Meta and the Chinese internet giants offer a substitute to proprietary models. Meta in particular has the resources and personnel to create cutting edge frontier models as evidenced by the Llama family of models. If they continue to open source them through cloud providers, it will represent a very viable alternative to proprietary models. Meta already offers free access to high quality chatbots through their apps.
+
+## 5) Industry Rivalry:
+
+Intense competition among major players (OpenAI, Google DeepMind, Anthropic, Microsoft, AWS, etc.) for market share and innovation leadership.
+
+When Open AI released GPT-4, their lead seemed unassailable, but now Claude Sonnet-3.5 is widely recognized as the best frontier model. This also limits the pricing power that both of these companies have.
+
+It is also to be noted that a lot of the talent at Open AI has left to found their own start ups which has lead to increased competition in the space.
+
+In summary, at least four of the five market forces point to AI becoming increasingly commoditized.
+
+# Social Forces
+
+The most vital resources always tend to be commodities accessible to everyone in a society. This is true for the fundamental needs of human beings like food, water, electricity and dare I say healthcare.
+
+If access to a resource confers a significant advantage to the recipient over someone who is denied that resource, this will increase inequality and concentration of wealth.
+
+As Will Durant notes in Lessons from History:
+
+> "The concentration of wealth is natural and inevitable, and is periodically alleviated by violent or peaceable partial redistribution. In this view, all economic history is the slow heartbeat of the social organism, a vast systole and diastole of concentrating wealth and compulsive redistribution. Equality is unnatural; inequality is the natural order of things. When inequality becomes too extreme, it tends to breed revolution and redistribution through either reform or violence."
+
+The public reaction to the murder of the United HealthCare CEO could signal broader societal frustrations and inequalities that may escalate if not addressed.
+
+If AI proves to be as transformative as many expect, and we achieve AGI, its commoditization will become inevitable. This shift will be essential to prevent growing social strife and potential revolution.
+
+Governments all over the world would have to intervene to ensure equitable access and the whole industry might end up being nationalized or becoming regulated monopolies much like Utility providers in most parts of the world.
+
+# Conclusion
+
+AI's trajectory toward commoditization appears inevitable given the economic and social forces at play. Market dynamics, driven by competition, open-source alternatives, and powerful buyers, will continue to erode differentiation among foundation model providers. At the same time, societal pressures for equitable access to transformative technologies like AI may force governments to intervene, ensuring AI becomes as universally accessible as other essential utilities.
+
+For foundation model providers, the challenge lies in balancing innovation and differentiation while preparing for a future where AI might be viewed as a public good rather than a proprietary advantage. Those who succeed will be the ones who can adapt to this shifting landscape while delivering sustainable value in an increasingly commoditized market.

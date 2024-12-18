@@ -1,0 +1,9 @@
+---
+title: "Blog"
+listing:
+  contents: "*/index.*"
+  sort: "date desc"
+  type: grid
+  categories: true
+  fields: [date, title, description]
+---     

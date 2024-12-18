@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Govind G Nair">
+<meta name="dcterms.date" content="2021-01-10">
+<meta name="description" content="Introduction to Singular Value Decomposition">
+
+<title>SVD is (almost) all you need</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-22381ab97ffb8a420d3841344730e94d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">SVD is (almost) all you need</h1>
+                  <div>
+        <div class="description">
+          Introduction to Singular Value Decomposition
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Article</div>
+                <div class="quarto-category">Machine Learning</div>
+                <div class="quarto-category">Statistics</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Govind G Nair </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 10, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#v" id="toc-v" class="nav-link" data-scroll-target="#v">V</a></li>
+  <li><a href="#u" id="toc-u" class="nav-link" data-scroll-target="#u">U</a></li>
+  <li><a href="#d" id="toc-d" class="nav-link" data-scroll-target="#d">D</a></li>
+  </ul></li>
+  <li><a href="#relation-to-pca" id="toc-relation-to-pca" class="nav-link" data-scroll-target="#relation-to-pca">Relation to PCA</a></li>
+  <li><a href="#relation-to-eigen-value-decomposition" id="toc-relation-to-eigen-value-decomposition" class="nav-link" data-scroll-target="#relation-to-eigen-value-decomposition">Relation to Eigen Value Decomposition</a></li>
+  <li><a href="#computing-svd-power-method" id="toc-computing-svd-power-method" class="nav-link" data-scroll-target="#computing-svd-power-method">Computing SVD :Power Method</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a>
+  <ul class="collapse">
+  <li><a href="#matrix-compression-or-approximation" id="toc-matrix-compression-or-approximation" class="nav-link" data-scroll-target="#matrix-compression-or-approximation">Matrix Compression or Approximation</a></li>
+  </ul></li>
+  <li><a href="#impute-missing-values" id="toc-impute-missing-values" class="nav-link" data-scroll-target="#impute-missing-values">Impute Missing Values</a>
+  <ul class="collapse">
+  <li><a href="#check-for-multi-collinearity" id="toc-check-for-multi-collinearity" class="nav-link" data-scroll-target="#check-for-multi-collinearity">Check for multi-collinearity</a></li>
+  <li><a href="#moore-penrose-pseudo-inverse" id="toc-moore-penrose-pseudo-inverse" class="nav-link" data-scroll-target="#moore-penrose-pseudo-inverse">Moore-Penrose Pseudo Inverse</a></li>
+  <li><a href="#rank-of-a-matrix" id="toc-rank-of-a-matrix" class="nav-link" data-scroll-target="#rank-of-a-matrix">Rank of a Matrix</a></li>
+  </ul></li>
+  <li><a href="#references-and-additional-resources" id="toc-references-and-additional-resources" class="nav-link" data-scroll-target="#references-and-additional-resources">References and Additional Resources</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>Some twitter threads deserve to be full blown blog posts. A few months back <a href="https://twitter.com/daniela_witten">Daniela Witten</a> produced a delightfully informative twitter thread on Singular Value Decomposition while curating the <a href="https://twitter.com/WomenInStat">WomeninStat</a> twitter account.</p>
+<p>See thread <a href="https://x.com/WomenInStat/status/1285610321747611653">here</a></p>
+<p>As someone who regretfully never paid much attention to my Linear Algebra lessons, this was a good opportunity to dive in and understand the practical and relevant aspects of SVD. I have taken this twitter thread, added some content and code to help bridge some gaps in my understanding.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>SVD decomposes an <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(X\)</span> into three matrices, <span class="math inline">\(U\)</span> (<span class="math inline">\(n \times p\)</span>), <span class="math inline">\(V\)</span> (<span class="math inline">\(p \times p\)</span>) and <span class="math inline">\(D\)</span> (<span class="math inline">\(p \times p\)</span>)</p>
+<p><span class="math display">\[  X = UDV^T \]</span></p>
+<p>Each of these matrices are special</p>
+<section id="v" class="level3">
+<h3 class="anchored" data-anchor-id="v">V</h3>
+<ul>
+<li><p>This is the <strong>right singular matrix</strong></p></li>
+<li><p><span class="math inline">\(V\)</span> is an <a href="https://en.wikipedia.org/wiki/Orthogonal_matrix">orthogonal matrix</a> which implies that <span class="math inline">\(V^T V = I_p\)</span> and <span class="math inline">\(VV^T = I_p\)</span></p></li>
+<li><p>Each row and column of <span class="math inline">\(V\)</span> is an orthogonal unit vector or orthonormal vector implying that the dot product of any two columns of the matrix is 0 and each column has a unit length i.e given two columns of the matrix <span class="math inline">\(v_i\)</span> and <span class="math inline">\(v_j\)</span></p></li>
+</ul>
+<p><span class="math display">\[ v_i.v_j = 0 \]</span> and</p>
+<p><span class="math display">\[ ||v_i||_2 = ||v_j||_2 = 1 \]</span></p>
+<p>Remember that given an n-dimensional vector, <span class="math inline">\(v = \begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{bmatrix}\)</span></p>
+<p><span class="math display">\[ ||v||_{2} = \sqrt{v_1^2 + v_2^2+...+v_n^2}  \]</span></p>
+<p>At the risk of jumping too far ahead, let us verify all the claims made so far</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">10</span>,<span class="dv">5</span>),<span class="at">ncol=</span><span class="dv">5</span>) </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Dimensions of X: "</span>,<span class="fu">dim</span>(X)[<span class="dv">1</span>],<span class="st">"x"</span>,<span class="fu">dim</span>(X)[<span class="dv">2</span>]))<span class="co"># 10x5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] "Dimensions of X: 10x5"</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>UDV_t <span class="ot">&lt;-</span> <span class="fu">svd</span>(X)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> UDV_t<span class="sc">$</span>u</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Dimensions of U: "</span>,<span class="fu">dim</span>(U)[<span class="dv">1</span>],<span class="st">"x"</span>,<span class="fu">dim</span>(U)[<span class="dv">2</span>])) <span class="co">#10x5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] "Dimensions of U: 10x5"</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">diag</span>(UDV_t<span class="sc">$</span>d)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Dimensions of D: "</span>,<span class="fu">dim</span>(D)[<span class="dv">1</span>],<span class="st">"x"</span>,<span class="fu">dim</span>(D)[<span class="dv">2</span>])) <span class="co">#5x5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] "Dimensions of D: 5x5"</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> UDV_t<span class="sc">$</span>v</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Dimensions of V: "</span>,<span class="fu">dim</span>(V)[<span class="dv">1</span>],<span class="st">"x"</span>,<span class="fu">dim</span>(V)[<span class="dv">2</span>])) <span class="co">#5x5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] "Dimensions of V: 5x5"</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>V</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##            [,1]       [,2]       [,3]       [,4]        [,5]
+## [1,] -0.5305928 -0.5839346  0.4900540 -0.3674478 -0.04817542
+## [2,] -0.3623817  0.2449652 -0.2651247 -0.1078315 -0.85249798
+## [3,] -0.4412964  0.3258640  0.4449880  0.7058240  0.05355521
+## [4,] -0.4608308  0.5588499 -0.1516082 -0.4858374  0.46507923
+## [5,] -0.4243149 -0.4248668 -0.6845120  0.3451506  0.22750709</code></pre>
+<p>Asserting if V is an orthogonal matrix, whether the dot product of any two columns is 0 and whether each column has a unit length</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#V.V^T = I</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>VdotVt <span class="ot">=</span> V <span class="sc">%*%</span> <span class="fu">t</span>(V)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(VdotVt,<span class="fu">diag</span>(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#V^T.V = I</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>VtdotV <span class="ot">=</span> <span class="fu">t</span>(V) <span class="sc">%*%</span> V</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(VtdotV,<span class="fu">diag</span>(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate length of the rows and columns</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(V,<span class="dv">1</span>,norm,<span class="st">"2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 1 1 1 1 1</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(V,<span class="dv">2</span>,norm,<span class="st">"2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 1 1 1 1 1</code></pre>
+</section>
+<section id="u" class="level3">
+<h3 class="anchored" data-anchor-id="u">U</h3>
+<p>This is the left singular matrix.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>U</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##             [,1]        [,2]        [,3]        [,4]         [,5]
+##  [1,] -0.4075764 -0.30451400 -0.34042098  0.10207128 -0.555209282
+##  [2,] -0.2841823 -0.04400465 -0.11911239  0.57696247  0.211675152
+##  [3,] -0.3024197 -0.19865882  0.30451706 -0.01914373  0.230178929
+##  [4,] -0.3241650 -0.07720920  0.40096627  0.17648218 -0.427589601
+##  [5,] -0.3003256  0.19558501  0.17636880 -0.38297623 -0.003307577
+##  [6,] -0.2596249  0.55588827 -0.05727637  0.11335624  0.326148076
+##  [7,] -0.2965586  0.58432033  0.15789336  0.12393566 -0.235925477
+##  [8,] -0.2715670 -0.18391382 -0.36662106  0.26229031  0.367754197
+##  [9,] -0.3405978  0.06566051 -0.51198359 -0.56492803  0.012115654
+## [10,] -0.3482504 -0.36479736  0.40070706 -0.24972577  0.337174733</code></pre>
+<p><span class="math inline">\(U\)</span> is not quite an orthogonal matrix because it is not a square matrix.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(U)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 10  5</code></pre>
+<p>However</p>
+<p><span class="math inline">\(U^T \times U = I_n\)</span></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">t</span>(U)<span class="sc">%*%</span>U,<span class="fu">diag</span>(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>But <span class="math inline">\(U \times U^T \neq I\)</span></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(U<span class="sc">%*%</span><span class="fu">t</span>(U),<span class="fu">diag</span>(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] "Mean relative difference: 1"</code></pre>
+<p>Check if rows and columns are unit vectors</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(U,<span class="dv">1</span>,norm,<span class="st">"2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##  [1] 0.8327122 0.6888946 0.5263102 0.6969914 0.5533865 0.7063424 0.7247954
+##  [8] 0.6678498 0.8376968 0.7687466</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(U,<span class="dv">2</span>,norm,<span class="st">"2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 1 1 1 1 1</code></pre>
+<p>As you can see <strong>the columns of U are orthonormal vectors</strong> but the rows are not.</p>
+</section>
+<section id="d" class="level3">
+<h3 class="anchored" data-anchor-id="d">D</h3>
+<p><span class="math inline">\(D\)</span> is a diagonal matrix with non-negative and decreasing elements</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>D</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##         [,1]     [,2]     [,3]     [,4]     [,5]
+## [1,] 72.6732  0.00000  0.00000 0.000000 0.000000
+## [2,]  0.0000 20.69451  0.00000 0.000000 0.000000
+## [3,]  0.0000  0.00000 17.38002 0.000000 0.000000
+## [4,]  0.0000  0.00000  0.00000 9.614317 0.000000
+## [5,]  0.0000  0.00000  0.00000 0.000000 6.687267</code></pre>
+<p><span class="math display">\[ D_{11} \geq  D_{22}... \geq D_{pp} \geq 0 \]</span> The diagonal elements of <span class="math inline">\(D\)</span> are the the singular values of the matrix</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span> (X, U<span class="sc">%*%</span>D<span class="sc">%*%</span><span class="fu">t</span>(V))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p><strong>The decomposition is unique up to sign flips of U &amp; V.</strong></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span> (X, <span class="sc">-</span>U<span class="sc">%*%</span>D<span class="sc">%*%-</span><span class="fu">t</span>(V))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</section>
+</section>
+<section id="relation-to-pca" class="level2">
+<h2 class="anchored" data-anchor-id="relation-to-pca">Relation to PCA</h2>
+<p><a href="https://aaronschlegel.me/principal-component-analysis-r-example.html">PCA</a> is a dimensionality reduction technique where the goal is to represent a matrix in fewer number of dimensions while preserving as much information as possible.</p>
+<p>Let us obtain the <strong>principle component loading vectors</strong> of X. Each column in the matrix below is a principle component loading vector.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(X)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>pca<span class="sc">$</span>rotation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##              PC1        PC2        PC3         PC4        PC5
+## [1,] -0.70508429 -0.4819910  0.4980523  0.03090714 -0.1467294
+## [2,]  0.09849312  0.3072747  0.5821810 -0.65632479  0.3552245
+## [3,]  0.21615712 -0.4067371 -0.2131250 -0.65194755 -0.5633677
+## [4,]  0.39984007  0.2071265  0.5686941  0.33638878 -0.6005466
+## [5,] -0.53531232  0.6818581 -0.2101761 -0.17346325 -0.4174287</code></pre>
+<p>Note each column above gives the weights to be used for multiplying each row of the original matrix X to get <strong>principle component scores</strong>.</p>
+<p>For example the , principle component scores for the first observation(row) of X when using only the first two principle components is given by</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#1x5  x  5x2</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(X[<span class="dv">1</span>,]) <span class="sc">%*%</span> pca<span class="sc">$</span>rotation[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##            PC1      PC2
+## [1,] -14.75421 7.410003</code></pre>
+<p>The above is a 2D representation of the original 5D observation.</p>
+<p>Let us obtain the above principal component loading vectors using SVD</p>
+<ol type="1">
+<li>Compute <span class="math inline">\(\bar{X}\)</span> by centering each column to have mean = 0</li>
+</ol>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(X)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>col_means <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(X)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>X_bar <span class="ot">&lt;-</span> <span class="fu">sweep</span>(X,<span class="dv">2</span>,col_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Apply SVD to <span class="math inline">\(\bar{X}\)</span></li>
+</ol>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>svd_X_bar <span class="ot">&lt;-</span> <span class="fu">svd</span>(X_bar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <strong>principle component loading vectors</strong> are given by V</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>svd_X_bar<span class="sc">$</span>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##             [,1]       [,2]       [,3]        [,4]       [,5]
+## [1,] -0.70508429 -0.4819910  0.4980523  0.03090714 -0.1467294
+## [2,]  0.09849312  0.3072747  0.5821810 -0.65632479  0.3552245
+## [3,]  0.21615712 -0.4067371 -0.2131250 -0.65194755 -0.5633677
+## [4,]  0.39984007  0.2071265  0.5686941  0.33638878 -0.6005466
+## [5,] -0.53531232  0.6818581 -0.2101761 -0.17346325 -0.4174287</code></pre>
+<p>The <strong>principle component score vectors</strong> are given by U upto a scaling factor.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(u <span class="ot">&lt;-</span> svd_X_bar<span class="sc">$</span>u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##              [,1]        [,2]        [,3]       [,4]        [,5]
+##  [1,] -0.40654628  0.34920041  0.25956018 -0.5749824 -0.20816929
+##  [2,] -0.02935843  0.10830223 -0.55805273 -0.1681078 -0.16348723
+##  [3,] -0.18548785 -0.31514365 -0.11523416  0.2170557  0.08128469
+##  [4,] -0.09518384 -0.39695879  0.01766182 -0.3793774  0.50884622
+##  [5,]  0.17275809 -0.16211678  0.29927195  0.2484149  0.35727053
+##  [6,]  0.54750382  0.07810152 -0.13824614  0.1144150 -0.34390479
+##  [7,]  0.53884857 -0.12301901  0.13267006 -0.3368109 -0.11048795
+##  [8,] -0.15454447  0.34394972 -0.49807958  0.2415545  0.30998781
+##  [9,] -0.00521322  0.52611956  0.46298986  0.3254301  0.11384933
+## [10,] -0.38277639 -0.40843521  0.13745871  0.3124084 -0.54518930</code></pre>
+<p>The true principle component score vectors are given by</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="do">##########10x5 X 5x5</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>(pc <span class="ot">&lt;-</span> (X_bar)<span class="sc">%*%</span> svd_X_bar<span class="sc">$</span>v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##             [,1]      [,2]       [,3]       [,4]       [,5]
+##  [1,] -8.7018408  6.079596  2.7817904 -4.8650796 -0.5439899
+##  [2,] -0.6283967  1.885547 -5.9808315 -1.4224054 -0.4272263
+##  [3,] -3.9702386 -5.486666 -1.2350017  1.8365659  0.2124139
+##  [4,] -2.0373440 -6.911072  0.1892875 -3.2100133  1.3297216
+##  [5,]  3.6977669 -2.822461  3.2073942  2.1019051  0.9336226
+##  [6,] 11.7189391  1.359751 -1.4816286  0.9680956 -0.8986952
+##  [7,] 11.5336795 -2.141767  1.4218680 -2.8498470 -0.2887281
+##  [8,] -3.3079171  5.988181 -5.3380799  2.0438570  0.8100630
+##  [9,] -0.1115854  9.159767  4.9620121  2.7535512  0.2975121
+## [10,] -8.1930629 -7.110877  1.4731895  2.6433706 -1.4246937</code></pre>
+<p>The scaling factor for each column is given by</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(pc<span class="sc">/</span>u)[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 21.404306 17.410048 10.717323  8.461267  2.613209</code></pre>
+<p>The scaling factors are in fact given by the singular values.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>svd_X_bar<span class="sc">$</span>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 21.404306 17.410048 10.717323  8.461267  2.613209</code></pre>
+<p>This is in fact how PCA is implemented in the <strong>prcomp</strong> function in R</p>
+</section>
+<section id="relation-to-eigen-value-decomposition" class="level2">
+<h2 class="anchored" data-anchor-id="relation-to-eigen-value-decomposition">Relation to Eigen Value Decomposition</h2>
+<p>Eigen decomposition decomposes a matrix <span class="math inline">\(X\)</span> as follows</p>
+<p><span class="math display">\[ X = P\Sigma P^{-1} \]</span> Alternately</p>
+<p><span class="math display">\[ XP = P\Sigma \]</span> where <span class="math inline">\(P\)</span> is a matrix of eigen vectors and <span class="math inline">\(\Sigma\)</span>is a diagonal matrix of eigen values.</p>
+<p>We have already defined the SVD of X (<span class="math inline">\(m \times p\)</span>) as shown below</p>
+<p><span class="math display">\[  X = UDV^T \]</span> Let the rank of X be given by <span class="math inline">\(r\)</span></p>
+<p><span class="math display">\[ rank(X) = r \leq min(m,p) \]</span></p>
+<p><span class="math inline">\(U\)</span>, <span class="math inline">\(D\)</span> and <span class="math inline">\(V\)</span> can be expressed as block matrices as shown below</p>
+<p><span class="math display">\[ U = \begin{bmatrix} U_1 &amp;&amp; U_2 \end{bmatrix} \]</span> where: <span class="math inline">\(U_1\)</span> is an <span class="math inline">\(m \times r\)</span> matrix <br> <span class="math inline">\(U_2\)</span> is an <span class="math inline">\(m \times (p-r)\)</span> matrix <br> <span class="math inline">\(U_1^TU_1 = I_r\)</span></p>
+<p><span class="math display">\[ D = \begin{bmatrix}  D_r &amp;   \textbf{0} \\\\ \textbf{0} &amp; \textbf{0}    \end{bmatrix} \]</span></p>
+<p>where: <span class="math inline">\(D_r\)</span> is an <span class="math inline">\(r \times r\)</span> matrix <br></p>
+<p><span class="math inline">\(\textbf{0}\)</span> is an <span class="math inline">\((p-r) \times (p-r)\)</span> matrix</p>
+<p><span class="math display">\[ V^T = \begin{bmatrix} V_1^T &amp;&amp; V_2^T \end{bmatrix} \]</span></p>
+<p>where: <span class="math inline">\(V_1^T\)</span> is an <span class="math inline">\(r \times p\)</span> matrix</p>
+<p><span class="math inline">\(V_2\)</span> is an <span class="math inline">\(r \times (p-r)\)</span> matrix</p>
+<p><span class="math inline">\(V_1^TV_1 = I_r\)</span></p>
+<p><span class="math display">\[ X  =  \begin{bmatrix} U_1 &amp;&amp; U_2 \end{bmatrix} \begin{bmatrix}  D_r &amp;   \textbf{0} \\\\ \textbf{0} &amp; \textbf{0}    \end{bmatrix} \begin{bmatrix} V_1^T &amp;&amp; V_2^T \end{bmatrix}   = U_1D_rV_1^T  \]</span> This means</p>
+<p><span class="math display">\[ XX^T = U_1D_rV_1^T (U_1D_rV_1^T )^T \]</span> <span class="math display">\[ = U_1D_rV_1^T V1D_rU_1^T   = U_1D_r^2U_1^T \]</span> Multiplying both sides by <span class="math inline">\(U_1\)</span> gives</p>
+<p><span class="math display">\[ (XX^T)U_1 = U_1D_r^2U_1^TU_1 = U_1D_r^2 \]</span> This is the classic definition of the eigen vectors and eigen values of a matrix. <span class="math inline">\(U_1\)</span> i.e.&nbsp;the <strong>left singular matrix</strong> gives the eigen vectors while <span class="math inline">\(D_r^2\)</span> i.e.&nbsp;the square of the singular values gives the eigen values of <span class="math inline">\(XX^T\)</span></p>
+<p>Similarly, <span class="math display">\[ X^TX =  (U_1D_rV_1^T )^T U_1D_rV_1^T = V_1D_rU_1^TU_1D_rV_1^T \]</span></p>
+<p><span class="math display">\[ = V_1D_r^2V_1^T \]</span></p>
+<p>Multiplying both sides by <span class="math inline">\(V_1\)</span> gives</p>
+<p><span class="math display">\[ (X^TX)V_1 = V_1D_r^2V_1^TV_1 = V_1D_r^2 \]</span></p>
+<p>Thus, the <strong>right singular matrix</strong> <span class="math inline">\(V_1\)</span> gives the eigen vectors for the matrix <span class="math inline">\(X^TX\)</span>,while <span class="math inline">\(D_r^2\)</span> i.e.&nbsp;the square of the singular values gives the eigen values of <span class="math inline">\(X^TX\)</span></p>
+</section>
+<section id="computing-svd-power-method" class="level2">
+<h2 class="anchored" data-anchor-id="computing-svd-power-method">Computing SVD :Power Method</h2>
+<p>Below is the power method, a simple algorithm for computing SVD of a matrix <span class="math inline">\(A \in \mathbb{R}^{m\times n}\)</span>.</p>
+<p>It first computes the first singular value <span class="math inline">\(\sigma_1\)</span> and left and right singular vectors <span class="math inline">\(u_1\)</span> and <span class="math inline">\(v_1\)</span> of A, for which:</p>
+<p><span class="math inline">\(min_{i&lt;j} log(\frac{\sigma_i}{\sigma_j}) \geq \lambda\)</span> where <span class="math inline">\(\lambda\)</span> is a tunable threshold.</p>
+<ol type="1">
+<li>Generate <span class="math inline">\(x_0\)</span> such that <span class="math inline">\(x_0(i) \sim N(0,1)\)</span></li>
+<li>Determine no of of iterations (<span class="math inline">\(s\)</span>) required to get <span class="math inline">\(\epsilon\)</span> precision with probability of at least <span class="math inline">\(1 -\delta\)</span></li>
+</ol>
+<p><span class="math inline">\(s \leftarrow \log\left(4\log\left(\frac{2n}{\delta}\right)/\epsilon\delta\right)/2\lambda\)</span></p>
+<p><strong>Note</strong>: I did not find step 2 and 3 to be useful in practice. It gave inaccurate SVD results. In practice, as explained in the video below, your estimate gets better as <span class="math inline">\(s \to \infty\)</span>. In the below implementation, I keep iterating as long as the vector stops changing by more than <span class="math inline">\(\epsilon\)</span>.</p>
+<ol start="3" type="1">
+<li>For <span class="math inline">\(i\)</span> in <span class="math inline">\([1, \ldots, s]\)</span>:
+<ul>
+<li><span class="math inline">\(x_i \leftarrow A^T A x_{i-1}\)</span></li>
+<li><span class="math inline">\(x_i \leftarrow \frac{x_i}{\|x_i\|}\)</span></li>
+</ul></li>
+<li><span class="math inline">\(v_1 \leftarrow x_i\)</span></li>
+<li><span class="math inline">\(\sigma_1 \leftarrow \|A v_1\|\)</span></li>
+<li><span class="math inline">\(u_1 \leftarrow \frac{A v_1}{\sigma_1}\)</span></li>
+<li>Return (<span class="math inline">\(\sigma_1, u_1, v_1\)</span>)</li>
+</ol>
+<p>Given we have computed (<span class="math inline">\(\sigma_1, u_1, v_1\)</span>), we can repeat the procedure for: <span class="math display">\[
+A - \sigma_1 u_1 v_1^T = \sum_{i=2}^n \sigma_i u_i v_i^T
+\]</span> The top singular values and vectors of this will be (<span class="math inline">\(\sigma_2, u_2, v_2\)</span>).</p>
+<p>THis method converges only if the below two assumptions hold.</p>
+<ol type="1">
+<li><span class="math inline">\(A^TA\)</span> has an eigen value strictly greater in magnitude than its other eigen values</li>
+<li>The starting vector <span class="math inline">\(x_0\)</span> has a non-zero component in the direction of an eigen vector associated with the dominant eigen value.</li>
+</ol>
+<p>Below is an implementation of the algorithm.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>power_svd <span class="ot">&lt;-</span> <span class="cf">function</span>(A,eps){</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Function to calculate the first singular value</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#A: Matrix to be decomposed</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#eps: if change between successive iterations is lesser than this threshold value, stop</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">dim</span>(A)[<span class="dv">2</span>])</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">dim</span>(A)[<span class="dv">2</span>]</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co">#eps &lt;- 0.01 #precision</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="co">#delta &lt;- 0.001 #1 - prob</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co">#lambda &lt;- 2</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co">#s &lt;- ceiling(log(4*log(2*n/delta)/(eps*delta))/(2*lambda))</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>A_ <span class="ot">&lt;-</span> <span class="fu">t</span>(A)<span class="sc">%*%</span>A</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> A_<span class="sc">%*%</span>x</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>x_1 <span class="ot">&lt;-</span> x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">norm</span>(x,<span class="at">type=</span><span class="st">"2"</span>)</span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (<span class="cn">TRUE</span>){</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> A_<span class="sc">%*%</span>x </span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>  x_2<span class="ot">&lt;-</span> x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">norm</span>(x,<span class="at">type=</span><span class="st">"2"</span>)</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">max</span>(<span class="fu">abs</span>(x_2<span class="sc">-</span>x_1))<span class="sc">&lt;=</span>eps){<span class="cf">break</span>}</span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>  x_1 <span class="ot">&lt;-</span> x_2</span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> x</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>sigma1 <span class="ot">&lt;-</span> <span class="fu">norm</span>(A<span class="sc">%*%</span>v1,<span class="at">type=</span><span class="st">"2"</span>)</span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>u1 <span class="ot">&lt;-</span> A<span class="sc">%*%</span>v1<span class="sc">/</span>sigma1</span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(<span class="fu">list</span>(<span class="st">'u'</span><span class="ot">=</span>u1,<span class="st">'sigma'</span><span class="ot">=</span>sigma1,<span class="st">'v'</span><span class="ot">=</span>v1))</span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>SVD_fn <span class="ot">&lt;-</span> <span class="cf">function</span>(A){</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  rank <span class="ot">&lt;-</span> <span class="fu">rankMatrix</span>(A)[<span class="dv">1</span>]</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  udv_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>rank){</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    udv <span class="ot">&lt;-</span> <span class="fu">power_svd</span>(A,<span class="at">eps=</span><span class="fl">1e-6</span>)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    udv_list[[i]] <span class="ot">&lt;-</span> udv</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>    A <span class="ot">&lt;-</span> A <span class="sc">-</span> udv<span class="sc">$</span>sigma<span class="sc">*</span>udv<span class="sc">$</span>u<span class="sc">%*%</span><span class="fu">t</span>(udv<span class="sc">$</span>v)</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span>  <span class="fu">mapply</span>(cbind,<span class="fu">lapply</span>(udv_list,<span class="cf">function</span>(x){x<span class="sc">$</span>u}))</span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span>  <span class="fu">mapply</span>(c,<span class="fu">lapply</span>(udv_list,<span class="cf">function</span>(x){x<span class="sc">$</span>sigma}))</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>  v <span class="ot">&lt;-</span>  <span class="fu">mapply</span>(cbind,<span class="fu">lapply</span>(udv_list,<span class="cf">function</span>(x){x<span class="sc">$</span>v}))</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="st">'u'</span><span class="ot">=</span>u,<span class="st">'d'</span><span class="ot">=</span>d,<span class="st">'v'</span><span class="ot">=</span>v))</span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The results of the algorithm are consistent with expectations.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SVD_fn</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## $u
+##            [,1]        [,2]        [,3]        [,4]         [,5]
+##  [1,] 0.4075764  0.30451330 -0.34042189  0.10207090  0.555209384
+##  [2,] 0.2841823  0.04400440 -0.11911259  0.57696253 -0.211674576
+##  [3,] 0.3024197  0.19865946  0.30451647 -0.01914351 -0.230178948
+##  [4,] 0.3241650  0.07721004  0.40096602  0.17648211  0.427589777
+##  [5,] 0.3003256 -0.19558464  0.17636941 -0.38297617  0.003307195
+##  [6,] 0.2596249 -0.55588839 -0.05727474  0.11335637 -0.326147963
+##  [7,] 0.2965586 -0.58431999  0.15789507  0.12393560  0.235925601
+##  [8,] 0.2715670  0.18391306 -0.36662164  0.26229036 -0.367753935
+##  [9,] 0.3405978 -0.06566158 -0.51198335 -0.56492820 -0.012116219
+## [10,] 0.3482504  0.36479820  0.40070600 -0.24972547 -0.337174982
+## 
+## $d
+## [1] 72.673196 20.694512 17.380019  9.614317  6.687267
+## 
+## $v
+##           [,1]       [,2]       [,3]       [,4]        [,5]
+## [1,] 0.5305928  0.5839358  0.4900526 -0.3674478  0.04817517
+## [2,] 0.3623817 -0.2449658 -0.2651241 -0.1078322  0.85249790
+## [3,] 0.4412964 -0.3258629  0.4449887  0.7058242 -0.05355472
+## [4,] 0.4608308 -0.5588503 -0.1516067 -0.4858371 -0.46507957
+## [5,] 0.4243149  0.4248651 -0.6845131  0.3451506 -0.22750685</code></pre>
+<p>This video provides a good theoretical explanation and intuition about how this method works.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>https://www.youtube.com/watch?v=OzeDqsVoTFc</p>
+</section>
+<section id="applications" class="level2">
+<h2 class="anchored" data-anchor-id="applications">Applications</h2>
+<section id="matrix-compression-or-approximation" class="level3">
+<h3 class="anchored" data-anchor-id="matrix-compression-or-approximation">Matrix Compression or Approximation</h3>
+<p>If we want to approximate the entire matrix X with just two vectors (a rank 1 approximation), the optimal representation in terms of residual sum of squares is given by the first columns of U and V</p>
+<p><span class="math display">\[ X \approx D_{11}U_1V_1^T \]</span></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>D[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">*</span>U[,<span class="dv">1</span>]<span class="sc">%*%</span><span class="fu">t</span>(V[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##           [,1]      [,2]      [,3]      [,4]      [,5]
+##  [1,] 15.71609 10.733703 13.071146 13.649753 12.568156
+##  [2,] 10.95803  7.484065  9.113846  9.517278  8.763136
+##  [3,] 11.66126  7.964354  9.698726 10.128049  9.325510
+##  [4,] 12.49976  8.537027 10.396107 10.856301  9.996055
+##  [5,] 11.58052  7.909206  9.631568 10.057919  9.260936
+##  [6,] 10.01110  6.837335  8.326280  8.694850  8.005877
+##  [7,] 11.43526  7.810000  9.510759  9.931762  9.144776
+##  [8,] 10.47159  7.151837  8.709269  9.094793  8.374128
+##  [9,] 13.13341  8.969794 10.923117 11.406639 10.502785
+## [10,] 13.42849  9.171327 11.168537 11.662923 10.738761</code></pre>
+<p>Similarly a representation of the matrix using any number of vectors (1,2..p) can be computed as</p>
+<p><span class="math display">\[  X \approx D_{11}U_1V_1^T + D_{22}U_2V_2^T+...+D_{pp}U_pV_p^T \]</span></p>
+<p>The below figure shows how the quality of the compressed representation improves as we use 1,2,…p vectors</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>quality <span class="ot">&lt;-</span> <span class="cf">function</span>(X,Y){<span class="fu">sqrt</span>(<span class="fu">sum</span>((X<span class="sc">-</span>Y)<span class="sc">^</span><span class="dv">2</span>))} </span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>,<span class="dv">5</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>repr <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  repr <span class="ot">&lt;-</span> repr <span class="sc">+</span>  D[i,i]<span class="sc">*</span>U[,i]<span class="sc">%*%</span><span class="fu">t</span>(V[,i])</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>  q[i] <span class="ot">&lt;-</span> <span class="fu">quality</span>(X,repr)</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(q,<span class="at">type=</span><span class="st">'b'</span>,<span class="at">xlab =</span> <span class="st">"Rank of approximation"</span>,<span class="at">ylab=</span><span class="st">"Error"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-25-1.png" width="672"></p>
+</section>
+</section>
+<section id="impute-missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="impute-missing-values">Impute Missing Values</h2>
+<p>Assume 1/5 of the values in the matrix are randomly missing.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Identify random missing elements in the matrix</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">999</span>)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>missing<span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">FALSE</span>,<span class="dv">40</span>),<span class="fu">rep</span>(<span class="cn">TRUE</span>,<span class="dv">10</span>))),<span class="at">nr=</span><span class="dv">5</span>)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>X_missing <span class="ot">&lt;-</span> X</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>X_missing[missing] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>X_missing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##            [,1]      [,2]      [,3]      [,4]      [,5]
+##  [1,] 16.314771 13.817967  8.878661  8.821467 18.789515
+##  [2,]  8.368833  6.004954        NA  7.285559        NA
+##  [3,] 16.648996        NA 10.666682        NA        NA
+##  [4,]        NA  8.552692 14.020948  6.752642  5.839784
+##  [5,] 12.073207  8.503924  9.714466        NA  4.167147
+##  [6,]  2.300250        NA        NA        NA  4.672047
+##  [7,]  5.357165 11.261117 15.428847 14.960802  2.181090
+##  [8,]  8.526398  5.540394  6.545231  7.852434 15.782685
+##  [9,]  9.971164 12.178416  3.577003 16.191521 14.160236
+## [10,] 22.023267  3.812308 10.233631  8.603269  8.863357</code></pre>
+<p>The following algorithm can be used to impute the missing values</p>
+<ol type="1">
+<li><p>Fill in the missing elements with the column mean</p></li>
+<li><p>Compute SVD to get the rank-K approximation of the filled out matrix (Say K = 3)</p></li>
+<li><p>Replace missing values with values from rank-K approximation</p></li>
+<li><p>Go to step 2) until imputed values stop changing</p></li>
+</ol>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate column means</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>X_col_means <span class="ot">&lt;-</span> <span class="fu">apply</span>(X_missing,<span class="dv">2</span>,mean,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co">#loop through each column and replace missing values with mean of the column</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>X_imputed <span class="ot">&lt;-</span> X_missing</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(X_imputed))){</span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>  v <span class="ot">&lt;-</span> X_imputed[,i]</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>  v[<span class="fu">is.na</span>(v)] <span class="ot">&lt;-</span> col_means[i]</span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>  X_imputed[,i] <span class="ot">&lt;-</span> v</span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The baseline will be the above matrix where the missing values were replaced by the mean. The quality of this imputation is given by</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>(baseline <span class="ot">&lt;-</span> <span class="fu">quality</span>(X[missing],X_imputed[missing]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 9.958537</code></pre>
+<p>Compute rank-3 approximation using SVD</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>svd_X <span class="ot">&lt;-</span> <span class="fu">svd</span>(X_imputed)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> svd_X<span class="sc">$</span>u</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">diag</span>(svd_X<span class="sc">$</span>d)</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> svd_X<span class="sc">$</span>v</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>repr <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  repr <span class="ot">&lt;-</span> repr <span class="sc">+</span>  D[i,i]<span class="sc">*</span>U[,i]<span class="sc">%*%</span><span class="fu">t</span>(V[,i])</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Compare imputed values with original values</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>X[missing]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##  [1] 16.362147  4.261715  7.942446 11.886978 12.518040  7.833448 13.633754
+##  [8] 15.759559 12.803730  7.736080</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>repr[missing]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##  [1] 12.597238  8.272711  8.969667  8.083139  9.459792  9.914919  9.686136
+##  [8] 11.014724  7.877740 10.003734</code></pre>
+<p>The quality of applying one round of SVD is given by:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quality</span>(X[missing],repr[missing])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 11.26842</code></pre>
+<p>The above algorithm have been wrapped up into a function below.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>rank_k_approx <span class="ot">&lt;-</span> <span class="cf">function</span> (X,k){</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#X: matrix to be approximate</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#k: rank of approximation</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  svd_X <span class="ot">&lt;-</span> <span class="fu">svd</span>(X)</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  U <span class="ot">&lt;-</span> svd_X<span class="sc">$</span>u</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  D <span class="ot">&lt;-</span> <span class="fu">diag</span>(svd_X<span class="sc">$</span>d)</span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  V <span class="ot">&lt;-</span> svd_X<span class="sc">$</span>v</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>  repr <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="fu">nrow</span>(X),<span class="fu">ncol</span>(X))</span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k){</span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>    repr <span class="ot">&lt;-</span> repr <span class="sc">+</span>  D[i,i]<span class="sc">*</span>U[,i]<span class="sc">%*%</span><span class="fu">t</span>(V[,i])</span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(repr)</span>
+<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a>impute_with_SVD <span class="ot">&lt;-</span> <span class="cf">function</span>(X_missing,k){</span>
+<span id="cb72-20"><a href="#cb72-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># X_missing: Matrix with missing values</span></span>
+<span id="cb72-21"><a href="#cb72-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># k: rank of approximation to be used</span></span>
+<span id="cb72-22"><a href="#cb72-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-23"><a href="#cb72-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calculate column means</span></span>
+<span id="cb72-24"><a href="#cb72-24" aria-hidden="true" tabindex="-1"></a>  X_col_means <span class="ot">&lt;-</span> <span class="fu">apply</span>(X_missing,<span class="dv">2</span>,mean,<span class="at">na.rm =</span><span class="cn">TRUE</span>)</span>
+<span id="cb72-25"><a href="#cb72-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-26"><a href="#cb72-26" aria-hidden="true" tabindex="-1"></a>  <span class="co">#identify missing elements</span></span>
+<span id="cb72-27"><a href="#cb72-27" aria-hidden="true" tabindex="-1"></a>  missing <span class="ot">&lt;-</span> <span class="fu">is.na</span>(X_missing)</span>
+<span id="cb72-28"><a href="#cb72-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-29"><a href="#cb72-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-30"><a href="#cb72-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">#loop through each column and replace missing values with mean of the column</span></span>
+<span id="cb72-31"><a href="#cb72-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-32"><a href="#cb72-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(X))){</span>
+<span id="cb72-33"><a href="#cb72-33" aria-hidden="true" tabindex="-1"></a>    v <span class="ot">&lt;-</span> X_missing[,i]</span>
+<span id="cb72-34"><a href="#cb72-34" aria-hidden="true" tabindex="-1"></a>    v[<span class="fu">is.na</span>(v)] <span class="ot">&lt;-</span> X_col_means[i]</span>
+<span id="cb72-35"><a href="#cb72-35" aria-hidden="true" tabindex="-1"></a>    X_missing[,i] <span class="ot">&lt;-</span> v</span>
+<span id="cb72-36"><a href="#cb72-36" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-37"><a href="#cb72-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-38"><a href="#cb72-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-39"><a href="#cb72-39" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Center the values on 0</span></span>
+<span id="cb72-40"><a href="#cb72-40" aria-hidden="true" tabindex="-1"></a>  <span class="co">#X_missing &lt;- sweep(X_missing,2,X_col_means)</span></span>
+<span id="cb72-41"><a href="#cb72-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-42"><a href="#cb72-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-43"><a href="#cb72-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-44"><a href="#cb72-44" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Record newly imputed values in a vector</span></span>
+<span id="cb72-45"><a href="#cb72-45" aria-hidden="true" tabindex="-1"></a>  imputed <span class="ot">&lt;-</span> X_missing[missing]</span>
+<span id="cb72-46"><a href="#cb72-46" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-47"><a href="#cb72-47" aria-hidden="true" tabindex="-1"></a>  j<span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb72-48"><a href="#cb72-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-49"><a href="#cb72-49" aria-hidden="true" tabindex="-1"></a>  <span class="co">#record imputed elements in each iteration</span></span>
+<span id="cb72-50"><a href="#cb72-50" aria-hidden="true" tabindex="-1"></a>  imputed_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb72-51"><a href="#cb72-51" aria-hidden="true" tabindex="-1"></a>  imputed_list[[j]] <span class="ot">&lt;-</span> imputed</span>
+<span id="cb72-52"><a href="#cb72-52" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-53"><a href="#cb72-53" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(<span class="cn">TRUE</span>){</span>
+<span id="cb72-54"><a href="#cb72-54" aria-hidden="true" tabindex="-1"></a>  <span class="do">##Compute rank-k SVD approximation</span></span>
+<span id="cb72-55"><a href="#cb72-55" aria-hidden="true" tabindex="-1"></a>  X_approx <span class="ot">&lt;-</span> <span class="fu">rank_k_approx</span>(X_missing,k)</span>
+<span id="cb72-56"><a href="#cb72-56" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-57"><a href="#cb72-57" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Replace missing values with new approximation</span></span>
+<span id="cb72-58"><a href="#cb72-58" aria-hidden="true" tabindex="-1"></a>  X_missing[missing] <span class="ot">&lt;-</span> X_approx[missing]</span>
+<span id="cb72-59"><a href="#cb72-59" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-60"><a href="#cb72-60" aria-hidden="true" tabindex="-1"></a>  <span class="co"># break out of loop if imputed values stop changing</span></span>
+<span id="cb72-61"><a href="#cb72-61" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">max</span>(<span class="fu">abs</span>(imputed<span class="sc">-</span>X_approx[missing])) <span class="sc">&lt;</span> <span class="fl">0.001</span> ) {<span class="cf">break</span>}</span>
+<span id="cb72-62"><a href="#cb72-62" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">&lt;-</span> j <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb72-63"><a href="#cb72-63" aria-hidden="true" tabindex="-1"></a>  imputed <span class="ot">&lt;-</span> X_approx[missing]</span>
+<span id="cb72-64"><a href="#cb72-64" aria-hidden="true" tabindex="-1"></a>  imputed_list[[j]] <span class="ot">&lt;-</span> imputed</span>
+<span id="cb72-65"><a href="#cb72-65" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-66"><a href="#cb72-66" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-67"><a href="#cb72-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(imputed_list,X_missing))</span>
+<span id="cb72-68"><a href="#cb72-68" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-69"><a href="#cb72-69" aria-hidden="true" tabindex="-1"></a>   }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The missing values are now imputed using a rank 3 approximation</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span><span class="fu">impute_with_SVD</span>(X_missing,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The below figure shows how the imputed values change every 100 steps</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>imputed_matrix <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind,ans[[<span class="dv">1</span>]])</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="fu">seq</span>(<span class="dv">10</span>,<span class="fu">nrow</span>(imputed_matrix),<span class="at">by=</span><span class="dv">100</span>),<span class="fu">nrow</span>(imputed_matrix))</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>imputed_matrix <span class="ot">&lt;-</span> imputed_matrix[index,]</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(imputed_matrix,<span class="at">type=</span><span class="st">'l'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./figure-html/unnamed-chunk-34-1.png" width="672"></p>
+<p>The final imputed values and original values are shown below.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>X[missing] <span class="co">#Original values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##  [1] 16.362147  4.261715  7.942446 11.886978 12.518040  7.833448 13.633754
+##  [8] 15.759559 12.803730  7.736080</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>ans[[<span class="dv">2</span>]][missing]<span class="co">#Imputed values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##  [1] 22.763462  8.766332  9.275372  8.354845  7.649936  9.544315  9.144079
+##  [8] 11.624984  2.671137  9.649021</code></pre>
+<p>The quality of the imputation is given by</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quality</span>(X[missing],ans[[<span class="dv">2</span>]][missing])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 15.67569</code></pre>
+<p>Rank-3 approximation was used above and the quality of the imputed values were inferior to using simple column means. Let us also evaluate the quality of imputation when using approximations of rank 1 2 and 4.</p>
+<p>First,carry out the imputations with the other rank-approximations.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>imputed_list_k <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>imputed_list_k[[<span class="dv">3</span>]] <span class="ot">&lt;-</span> ans</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)){  </span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>  imputed_list_k[[i]] <span class="ot">&lt;-</span><span class="fu">impute_with_SVD</span>(X_missing,i)</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And evaluate their quality.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>quality_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">'Method'</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">'Column Means'</span>,<span class="st">'Rank 1 Approx'</span>,<span class="st">'Rank 2 Approx'</span>,<span class="st">'Rank 3 Approx'</span>,<span class="st">'Rank 4 Approx'</span>),<span class="st">'RMSE'</span> <span class="ot">=</span> baseline)</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>  quality_df[i<span class="sc">+</span><span class="dv">1</span>,<span class="st">'RMSE'</span>] <span class="ot">&lt;-</span> <span class="fu">quality</span>(X[missing],imputed_list_k[[i]][[<span class="dv">2</span>]][missing])</span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(quality_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Method</th>
+<th style="text-align: right;">RMSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Column Means</td>
+<td style="text-align: right;">9.958537</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rank 1 Approx</td>
+<td style="text-align: right;">22.739031</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rank 2 Approx</td>
+<td style="text-align: right;">29.282360</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rank 3 Approx</td>
+<td style="text-align: right;">15.675690</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rank 4 Approx</td>
+<td style="text-align: right;">15.632698</td>
+</tr>
+</tbody>
+</table>
+<p>From the experiments for far, it does not seem SVD is a very good approach for imputing missing values. Replacing missing values with a simple column average seems to be a more effective way to impute missing values.</p>
+<p>Also note that if your original data has only positive values, SVD is probably not a good fit as it gives negative values. Non-negative matrix factorization is a better choice in this case.</p>
+<section id="check-for-multi-collinearity" class="level3">
+<h3 class="anchored" data-anchor-id="check-for-multi-collinearity">Check for multi-collinearity</h3>
+<p>To check for multi-collinearity in an <span class="math inline">\(m \times p\)</span> matrix (<span class="math inline">\(p \leq m\)</span>), check the ratio of the first singular value to the last singular value <span class="math inline">\(\frac{D_{11}}{D_{pp}}\)</span>, if this is very large then using least squares regression is a bad idea.</p>
+<p>First check this ratio for a random matrix.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>svd_X <span class="ot">&lt;-</span> <span class="fu">svd</span>(X)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>svd_X<span class="sc">$</span>d[<span class="dv">1</span>]<span class="sc">/</span>svd_X<span class="sc">$</span>d[<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 10.8674</code></pre>
+<p>Let us add some multi-collinearity to X by adding a column that is equal to the sum of the first 3 columns and find the same ratio</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>X2<span class="ot">&lt;-</span> <span class="fu">cbind</span>(X,X[,<span class="dv">1</span>]<span class="sc">+</span>X[,<span class="dv">2</span>]<span class="sc">+</span>X[,<span class="dv">3</span>])</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>svd_X2 <span class="ot">&lt;-</span> <span class="fu">svd</span>(X2)</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>svd_X2<span class="sc">$</span>d[<span class="dv">1</span>]<span class="sc">/</span>svd_X2<span class="sc">$</span>d[<span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 1.191001e+16</code></pre>
+</section>
+<section id="moore-penrose-pseudo-inverse" class="level3">
+<h3 class="anchored" data-anchor-id="moore-penrose-pseudo-inverse">Moore-Penrose Pseudo Inverse</h3>
+<p>The pseudo inverse can be computed by simply using the expression below</p>
+<p><span class="math display">\[  X^{-1} \approx D_{11}^{-1}U_1V_1^T + D_{22}^{-1}U_2V_2^T+...+D_{pp}^{-1}U_pV_p^T \]</span></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>inverse <span class="ot">&lt;-</span> <span class="cf">function</span>(X){</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># X must be a square matrix to compute the inverse</span></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(<span class="st">"Matrix must be square"</span><span class="ot">=</span><span class="fu">nrow</span>(X)<span class="sc">==</span><span class="fu">ncol</span>(X))</span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a>  svd_X <span class="ot">&lt;-</span> <span class="fu">svd</span>(X)</span>
+<span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>  U <span class="ot">&lt;-</span> svd_X<span class="sc">$</span>u</span>
+<span id="cb87-9"><a href="#cb87-9" aria-hidden="true" tabindex="-1"></a>  V <span class="ot">&lt;-</span> svd_X<span class="sc">$</span>v</span>
+<span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a>  D <span class="ot">&lt;-</span> svd_X<span class="sc">$</span>d</span>
+<span id="cb87-11"><a href="#cb87-11" aria-hidden="true" tabindex="-1"></a>  nr <span class="ot">&lt;-</span> nc <span class="ot">&lt;-</span> <span class="fu">nrow</span>(X)</span>
+<span id="cb87-12"><a href="#cb87-12" aria-hidden="true" tabindex="-1"></a>  inv <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,nr,nc)</span>
+<span id="cb87-13"><a href="#cb87-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nc){</span>
+<span id="cb87-14"><a href="#cb87-14" aria-hidden="true" tabindex="-1"></a>  inv <span class="ot">&lt;-</span> inv <span class="sc">+</span>  <span class="dv">1</span><span class="sc">/</span>D[i]<span class="sc">*</span>(U[,i]<span class="sc">%*%</span><span class="fu">t</span>(V[,i]))</span>
+<span id="cb87-15"><a href="#cb87-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb87-16"><a href="#cb87-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb87-17"><a href="#cb87-17" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(inv)</span>
+<span id="cb87-18"><a href="#cb87-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>cov_mat <span class="ot">&lt;-</span> <span class="fu">cov</span>(X)</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(cov_mat<span class="sc">%*%</span><span class="fu">inverse</span>(cov_mat),<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    0    0    0    0
+## [2,]    0    1    0    0    0
+## [3,]    0    0    1    0    0
+## [4,]    0    0    0    1    0
+## [5,]    0    0    0    0    1</code></pre>
+</section>
+<section id="rank-of-a-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="rank-of-a-matrix">Rank of a Matrix</h3>
+<p>Rank of a matrix is just the number of non-zero singular values.</p>
+<p>The rank of X (10 x 5 matrix) used in this blog is</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(D<span class="sc">&gt;</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>The rank of X2 (10 x 6) matrix used above is also:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(svd_X2<span class="sc">$</span>d<span class="sc">&gt;</span><span class="fl">0.0001</span>) <span class="co"># using a value slightly greater than 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 5</code></pre>
+</section>
+</section>
+<section id="references-and-additional-resources" class="level2">
+<h2 class="anchored" data-anchor-id="references-and-additional-resources">References and Additional Resources</h2>
+<ol type="1">
+<li>https://aaronschlegel.me/principal-component-analysis-r-example.html <br></li>
+<li>https://www.youtube.com/watch?v=3_45TkPVjpU <br></li>
+<li>https://www.cs.yale.edu/homes/el327/datamining2013aFiles/07_singular_value_decomposition.pdf <br></li>
+<li>https://www.youtube.com/playlist?list=PLtmWHNX-gukIc92m1K0P6bIOnZb-mg0hY</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

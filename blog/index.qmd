@@ -3,7 +3,7 @@ title: "Blog"
 listing:
   contents: "*/index.*"
   sort: "date desc"
-  type: default
+  type: grid
   categories: true
   fields: [date, title, description, categories]
 ---

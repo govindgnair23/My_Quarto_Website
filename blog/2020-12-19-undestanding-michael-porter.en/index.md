@@ -36,7 +36,7 @@ $$ Unit\ Profit\ Margin = Price - Cost $$
 Within a given industry, the relative strength of the fiver forces and their specific configuration determine the industry's profit potential because they directly impact the industry's prices and costs
 
 ::: figure
-<img src="/post/2020-12-19-undestanding-michael-porter.en_files/equation_of_business.png" alt="Impact of the 5 Forces"/>
+<img src="./equation_of_business.png" alt="Impact of the 5 Forces"/>
 
 <p class="caption">
 
@@ -129,7 +129,7 @@ Price competition is the most damaging for of rivalry and is most common when
 2)  High fixed costs and low marginal costs creates pressure to drop prices because new customers will "contribute to covering overhead". True for airlines and software but software is highly differentiated.
 
 ::: figure
-<img src="/post/2020-12-19-undestanding-michael-porter.en_files/impact.png" alt="Impact of the 5 Forces on Profitability"/>
+<img src="./impact.png" alt="Impact of the 5 Forces on Profitability"/>
 
 <p class="caption">
 
@@ -169,7 +169,7 @@ Competitive advantage stems from having a superior and differentiated value chai
 **Layout the major value creating activities specific to your industry. Do the same for different business models and competitors**
 
 ::: figure
-<img src="/post/2020-12-19-undestanding-michael-porter.en_files/value_chain_analysis.png" alt="Value Chain for NGOs supplying wheel chairs"/>
+<img src="./value_chain_analysis.png" alt="Value Chain for NGOs supplying wheel chairs"/>
 
 <p class="caption">
 
@@ -223,7 +223,7 @@ Figure 3: Value Chain for NGOs supplying wheel chairs
 -   Choices in the value proposition that limit what a company will do are essential to strategy because that creates the opportunity to tailor activities in a way that best delivers that kind of value
 
 ::: figure
-<img src="/post/2020-12-19-undestanding-michael-porter.en_files/choices.png" alt="Unique value propistions and unique value chains"/>
+<img src="./choices.png" alt="Unique value propistions and unique value chains"/>
 
 <p class="caption">
 
@@ -279,7 +279,7 @@ Real trade-offs are choices that make strategies sustainable because competitors
 -   Determine if there are services, features or product varieties you can offer because of the other things you already do.
 
 ::: figure
-<img src="/post/2020-12-19-undestanding-michael-porter.en_files/mapping.png" alt="Map of IKEA&apos;s Activity System"/>
+<img src="./mapping.png" alt="Map of IKEA&apos;s Activity System"/>
 
 <p class="caption">
 

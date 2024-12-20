@@ -72,3 +72,8 @@ Governments all over the world would have to intervene to ensure equitable acces
 AI's trajectory toward commoditization appears inevitable given the economic and social forces at play. Market dynamics, driven by competition, open-source alternatives, and powerful buyers, will continue to erode differentiation among foundation model providers. At the same time, societal pressures for equitable access to transformative technologies like AI may force governments to intervene, ensuring AI becomes as universally accessible as other essential utilities.
 
 For foundation model providers, the challenge lies in balancing innovation and differentiation while preparing for a future where AI might be viewed as a public good rather than a proprietary advantage. Those who succeed will be the ones who can adapt to this shifting landscape while delivering sustainable value in an increasingly commoditized market.
+
+# References
+
+-   [https://stratechery.com/2024/aws-reinvent-nova-and-model-choice-ai-as-commodity/](https://stratechery.com/2024/aws-reinvent-nova-and-model-choice-ai-as-commodity/)
+-   [https://stratechery.com/2024/microsoft-earnings-microsoft-and-openai-again-github-copilot-adds-gemini-and-claude/](https://stratechery.com/2024/microsoft-earnings-microsoft-and-openai-again-github-copilot-adds-gemini-and-claude/)

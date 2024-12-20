@@ -150,8 +150,8 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
@@ -255,17 +255,17 @@ window.Quarto = {
 <p>If we select the candidate at <span class="math inline">\(n+1\)</span> ( event <span class="math inline">\(E_1\)</span> ) it is optimal if the following two conditions are fulfilled</p>
 <ol type="1">
 <li>The candidate at <span class="math inline">\(n+1\)</span> is the best candidate overall; let this be event <span class="math inline">\(E_2\)</span> <br></li>
-<li>The best candidate in <span class="math inline">\(\[1,n\]\)</span> must also be the best candidate in <span class="math inline">\(\[1,r\]\)</span>; let this be event <span class="math inline">\(E_3\)</span>; In other words there should not be a candidate better that <span class="math inline">\(r^*\)</span> in the interval <span class="math inline">\((r,n\]\)</span>. If such a candidate exists we would select that candidate and not the candidate at <span class="math inline">\(n + 1\)</span>.</li>
+<li>The best candidate in <span class="math inline">\([1,n]\)</span> must also be the best candidate in <span class="math inline">\([1,r]\)</span>; let this be event <span class="math inline">\(E_3\)</span>; In other words there should not be a candidate better that <span class="math inline">\(r^*\)</span> in the interval <span class="math inline">\((r,n]\)</span>. If such a candidate exists we would select that candidate and not the candidate at <span class="math inline">\(n + 1\)</span>.</li>
 </ol>
 <p><span class="math display">\[ \mathbb{P}(E_1) = \mathbb{P}(E_2 \cap E_3) = \mathbb{P}(E_2) \times \mathbb{P}(E_3)    \]</span></p>
 <p>Any of the <span class="math inline">\(N\)</span> candidates could be the best candidate overall, therefore</p>
 <p><span class="math inline">\(\mathbb{P}(E_2) = \frac{1}{N}\)</span></p>
-<p>Further, Let event <span class="math inline">\(E_4\)</span> be the event that the best candidate in the interval <span class="math inline">\(\[1,n\]\)</span> lie in the internal <span class="math inline">\((r ,n\]\)</span>.</p>
+<p>Further, Let event <span class="math inline">\(E_4\)</span> be the event that the best candidate in the interval <span class="math inline">\([1,n]\)</span> lie in the internal <span class="math inline">\((r ,n]\)</span>.</p>
 <p><span class="math inline">\(\mathbb{P}(E_4) = \frac{n-r}{n}\)</span></p>
 <p>The <span class="math inline">\(\mathbb{P}(E_3)\)</span> is given by the following expression</p>
 <p><span class="math inline">\(\mathbb{P}(E_3) = 1 - \mathbb{P}(E_4) = \frac{r}{n}\)</span></p>
 <p>This gives:</p>
-<p><span class="math display">\[ \mathbb{P}(E_1) =  \frac{r}{n} \frac{1}{N} \]</span> Given <span class="math inline">\(r\)</span> is fixed, <span class="math inline">\(n\)</span> can be any value in the interval <span class="math inline">\([r,N-1]\)</span>. This is because the best candidate <span class="math inline">\(i^*\)</span> occupying position <span class="math inline">\(n + 1\)</span> lies in the interval <span class="math inline">\(\[r + 1, N \]\)</span></p>
+<p><span class="math display">\[ \mathbb{P}(E_1) =  \frac{r}{n} \frac{1}{N} \]</span> Given <span class="math inline">\(r\)</span> is fixed, <span class="math inline">\(n\)</span> can be any value in the interval <span class="math inline">\([r,N-1]\)</span>. This is because the best candidate <span class="math inline">\(i^*\)</span> occupying position <span class="math inline">\(n + 1\)</span> lies in the interval <span class="math inline">\([r + 1, N ]\)</span></p>
 <p>Summing over all these probabilities gives the function we want to maximize</p>
 <p><span class="math display">\[ \mathbb{F}(r) =  \frac{r}{r} \frac {1}{N} + \frac{r}{r+1} \frac {1}{N} +..... +\frac{r}{N-1} \frac {1}{N} \]</span></p>
 <p><span class="math display">\[  =  \frac{r}{N} ( \frac{1}{r} + \frac{1}{r+1} +.... \frac{1}{N-1}) \]</span></p>
@@ -818,6 +818,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2024, Govind G Nair</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 

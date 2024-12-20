@@ -150,8 +150,8 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
@@ -598,7 +598,7 @@ window.Quarto = {
 <div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>win_statistics <span class="op">=</span> get_win_statistics(Q_X, Q_O,sets <span class="op">=</span> <span class="dv">10</span>, games_in_set <span class="op">=</span> <span class="dv">100</span>, X_strategy <span class="op">=</span><span class="st">'eps_greedy'</span>,O_strategy<span class="op">=</span><span class="st">'eps_greedy'</span>,eps_X<span class="op">=</span><span class="fl">1.0</span>,eps_O<span class="op">=</span><span class="fl">1.0</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting eps = 1.0 ensures purely random policy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plot_results(win_statistics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="./RXvsRO.PNG" width="500" height="300"></p>
+<p><img src="./RXvsRO.PNG" width="800" height="400"></p>
 <p>It seems like X typically wins around 60% of games.</p>
 <p>As expected X wins more games than O as it gets to start first and make more moves than O. For both players, occupying the central square in the first move maximizes the chances of winning.</p>
 <p>Further, for both players, the winning sequence is most likely to be along the diagonal.</p>
@@ -613,7 +613,7 @@ window.Quarto = {
 <p>The learning curve indicates the training has converged after around 4000 games.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>win_statistics <span class="op">=</span> get_win_statistics(Q_X_trained,Q_O,sets <span class="op">=</span> <span class="dv">5</span>, games_in_set <span class="op">=</span> <span class="dv">100</span>,X_strategy <span class="op">=</span> <span class="st">'greedy'</span>,O_strategy<span class="op">=</span><span class="st">'eps_greedy'</span>,eps_X<span class="op">=</span><span class="fl">1.0</span>,eps_O<span class="op">=</span><span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plot_results(win_statistics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="./TXvsRO.PNG" width="500" height="300"></p>
+<p><img src="./TXvsRO.PNG" width="800" height="400"></p>
 <p>These results indicate that player X has learned to easily beat a random player O. Player X consistently chooses the top right hand box and seem to win the majority of games through the right most column (C3) or the off diagonal(D2).</p>
 </section>
 <section id="random-x-vs-trained-o" class="level3">
@@ -627,7 +627,7 @@ window.Quarto = {
 <div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>win_statistics <span class="op">=</span> get_win_statistics(Q_X,Q_O_trained,sets <span class="op">=</span> <span class="dv">10</span>, games_in_set <span class="op">=</span> <span class="dv">100</span>,X_strategy <span class="op">=</span> <span class="st">'eps_greedy'</span>,O_strategy<span class="op">=</span><span class="st">'greedy'</span>,eps_X<span class="op">=</span><span class="fl">1.0</span>,</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                   eps_O<span class="op">=</span><span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_results(win_statistics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="./RXvsTO.PNG" width="500" height="300"></p>
+<p><img src="./RXvsTO.PNG" width="800" height="400"></p>
 <p>The above results indicate that Player O has learned to consistently beat the random player X. What is interesting to note is that the RL approach results in Player O beating Player X more consistently (85%) of the time than when using the Minimax approach (~ 81%).</p>
 <p>We can also see the player O consistently picks boxes along the leading diagonal as its first move. Most of its wins come from occupying the leading diagonal(D1) or the middle column(C2).</p>
 </section>
@@ -637,7 +637,7 @@ window.Quarto = {
 <div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>win_statistics <span class="op">=</span> get_win_statistics(Q_X_trained,Q_O_trained,sets <span class="op">=</span> <span class="dv">10</span>, games_in_set <span class="op">=</span> <span class="dv">100</span>,X_strategy <span class="op">=</span> <span class="st">'greedy'</span>,O_strategy<span class="op">=</span><span class="st">'greedy'</span>,eps_X<span class="op">=</span><span class="fl">1.0</span>,</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                   eps_O<span class="op">=</span><span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot_results(win_statistics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="./TXvsTO.PNG" width="500" height="300"></p>
+<p><img src="./TXvsTO.PNG" width="800" height="400"></p>
 <p>When the two trained agents face off, all games end in ties.</p>
 </section>
 <section id="retrained-x-vs-trained-o" class="level3">
@@ -651,7 +651,7 @@ window.Quarto = {
 <div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>win_statistics<span class="op">=</span> get_win_statistics(Q_X_retrained,Q_O_trained,sets <span class="op">=</span> <span class="dv">10</span>, games_in_set <span class="op">=</span> <span class="dv">100</span>,X_strategy <span class="op">=</span> <span class="st">'greedy'</span>,<span class="op">\</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                                   O_strategy<span class="op">=</span><span class="st">'greedy'</span>,eps_X<span class="op">=</span><span class="fl">1.0</span>,eps_O<span class="op">=</span><span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>plot_results(win_statistics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="./RTXvsTO.PNG" width="500" height="300"></p>
+<p><img src="./RTXvsTO.PNG" width="800" height="400"></p>
 <p>The re-trained player X beats the trained Player in 100% of the games.</p>
 </section>
 </section>
@@ -1081,6 +1081,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2024, Govind G Nair</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 

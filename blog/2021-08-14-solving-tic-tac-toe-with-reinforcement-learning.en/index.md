@@ -481,8 +481,7 @@ win_statistics = get_win_statistics(Q_X, Q_O,sets = 10, games_in_set = 100, X_st
 plot_results(win_statistics)
 ```
 
-
-![](./RXvsRO.PNG){ width=500px height=300px }
+![](./RXvsRO.PNG){width="800px" height="400px"}
 
 It seems like X typically wins around 60% of games.
 
@@ -515,8 +514,7 @@ win_statistics = get_win_statistics(Q_X_trained,Q_O,sets = 5, games_in_set = 100
 plot_results(win_statistics)
 ```
 
-
-![](./TXvsRO.PNG){ width=500px height=300px }
+![](./TXvsRO.PNG){width="800px" height="400px"}
 
 These results indicate that player X has learned to easily beat a random player O. Player X consistently chooses the top right hand box and seem to win the majority of games through the right most column (C3) or the off diagonal(D2).
 
@@ -546,8 +544,7 @@ win_statistics = get_win_statistics(Q_X,Q_O_trained,sets = 10, games_in_set = 10
 plot_results(win_statistics)
 ```
 
-![](./RXvsTO.PNG){ width=500px height=300px }
-
+![](./RXvsTO.PNG){width="800px" height="400px"}
 
 The above results indicate that Player O has learned to consistently beat the random player X. What is interesting to note is that the RL approach results in Player O beating Player X more consistently (85%) of the time than when using the Minimax approach (\~ 81%).
 
@@ -566,9 +563,7 @@ win_statistics = get_win_statistics(Q_X_trained,Q_O_trained,sets = 10, games_in_
 plot_results(win_statistics)
 ```
 
-
-![](./TXvsTO.PNG){ width=500px height=300px }
-
+![](./TXvsTO.PNG){width="800px" height="400px"}
 
 When the two trained agents face off, all games end in ties.
 
@@ -598,9 +593,7 @@ win_statistics= get_win_statistics(Q_X_retrained,Q_O_trained,sets = 10, games_in
 plot_results(win_statistics)
 ```
 
-
-![](./RTXvsTO.PNG){ width=500px height=300px }
-
+![](./RTXvsTO.PNG){width="800px" height="400px"}
 
 The re-trained player X beats the trained Player in 100% of the games.
 

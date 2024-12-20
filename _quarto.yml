@@ -5,10 +5,11 @@ website:
   title: ""
   navbar:
     left:
-      - href: about.qmd
-        text: About
+      - text: Home
+        href: index.qmd
       - href: blog/index.qmd
         text: Blog
+  page-footer: "Copyright 2024, Govind G Nair" 
       
 
 format:
@@ -16,6 +17,7 @@ format:
     theme: darkly
     css: styles.css
     toc: true
+    
  
 editor: visual
 

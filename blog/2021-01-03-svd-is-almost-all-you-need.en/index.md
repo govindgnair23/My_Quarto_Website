@@ -544,9 +544,8 @@ SVD_fn(X)
 
 This video provides a good theoretical explanation and intuition about how this method works.
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+{{< video https://www.youtube.com/watch?v=OzeDqsVoTFc>}}
 
-https://www.youtube.com/watch?v=OzeDqsVoTFc
 
 ## Applications
 

@@ -1,1 +1,8 @@
 /* css styles */
+
+.footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 20px;
+}

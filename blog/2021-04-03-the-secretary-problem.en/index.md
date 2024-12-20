@@ -46,7 +46,7 @@ For a given stopping point $r$, we can estimate the total probability of selecti
 If we select the candidate at $n+1$ ( event $E_1$ ) it is optimal if the following two conditions are fulfilled
 
 1)  The candidate at $n+1$ is the best candidate overall; let this be event $E_2$ <br>
-2)  The best candidate in $\[1,n\]$ must also be the best candidate in $\[1,r\]$; let this be event $E_3$; In other words there should not be a candidate better that $r^*$ in the interval $(r,n\]$. If such a candidate exists we would select that candidate and not the candidate at $n + 1$.
+2)  The best candidate in $[1,n]$ must also be the best candidate in $[1,r]$; let this be event $E_3$; In other words there should not be a candidate better that $r^*$ in the interval $(r,n]$. If such a candidate exists we would select that candidate and not the candidate at $n + 1$.
 
 $$ \mathbb{P}(E_1) = \mathbb{P}(E_2 \cap E_3) = \mathbb{P}(E_2) \times \mathbb{P}(E_3)    $$
 
@@ -54,7 +54,7 @@ Any of the $N$ candidates could be the best candidate overall, therefore
 
 $\mathbb{P}(E_2) = \frac{1}{N}$
 
-Further, Let event $E_4$ be the event that the best candidate in the interval $\[1,n\]$ lie in the internal $(r ,n\]$.
+Further, Let event $E_4$ be the event that the best candidate in the interval $[1,n]$ lie in the internal $(r ,n]$.
 
 $\mathbb{P}(E_4) = \frac{n-r}{n}$
 
@@ -64,7 +64,7 @@ $\mathbb{P}(E_3) = 1 - \mathbb{P}(E_4) = \frac{r}{n}$
 
 This gives:
 
-$$ \mathbb{P}(E_1) =  \frac{r}{n} \frac{1}{N} $$ Given $r$ is fixed, $n$ can be any value in the interval $[r,N-1]$. This is because the best candidate $i^*$ occupying position $n + 1$ lies in the interval $\[r + 1, N \]$
+$$ \mathbb{P}(E_1) =  \frac{r}{n} \frac{1}{N} $$ Given $r$ is fixed, $n$ can be any value in the interval $[r,N-1]$. This is because the best candidate $i^*$ occupying position $n + 1$ lies in the interval $[r + 1, N ]$
 
 Summing over all these probabilities gives the function we want to maximize
 

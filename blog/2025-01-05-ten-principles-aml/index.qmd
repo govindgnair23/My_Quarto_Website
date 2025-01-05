@@ -1,0 +1,147 @@
+---
+title: "Ten Principles for a Better Transaction Monitoring System"
+author: "Govind G Nair"
+date: "2025-01-05"
+toc: true
+categories: [Article,Anti Money Laundering,Science,Probability]
+description: "Ten Principles to enhance AML Systems"
+lastmod: "2025-01-05T12:04:48-04:00"
+draft: false
+---
+
+Building an Effective and Efficient Transaction Monitoring System continues to be a challenge for most Financial Institutions. Meeting table stake requirements such as data quality and completeness, a sound tuning methodology, and robust model governance may help keep the regulators at bay. However, building a cost-effective and efficient Transaction Monitoring System demands a more principled scientific approach rooted in probabilistic reasoning and causal inference.
+
+
+
+Below, I am proposing 10 principles that are essential to building such a system.
+
+The Ten Principles of Effective AML
+
+## 1) Priors Matter 
+
+Understand and apply Bayes rule to avoid base rate neglect. For example, consider a medical test for a rare disease with a 1% prevalence rate. If the test has a 99% accuracy rate, a positive result might still be more likely to be a false positive than a true positive due to the low base rate of the disease. 
+
+Similarly, in AML, the prior probability of a customer being a money laundering risk significantly influences the posterior probability after an alert. The posterior probability of a customer being a money laundering risk given that a set of scenarios trigger an alert can vary significantly depending on the prior likelihood of the customer being a money launderer. 
+
+Segmenting customers into precise, homogenous groups ensures accurate assessment of prior probabilities, enhancing performance of the Transaction Monitoring System.
+
+
+
+
+
+## 2) Every Institution’s Transaction Monitoring System should be underpinned by a provisional “Theory of Financial Crime” in that institution’s universe
+
+Every institution should have a “Theory of Financial Crime” which identifies the major risk factors or red flags the institution is exposed to, the financial crime typologies an institution is exposed to (e.g. Human Trafficking) , and the controls (e.g. models and scenarios) that are in place to mitigate those risks. 
+
+Explicitly laying out such a theory will make an institution’s assumptions transparent to regulators while making it easy for an institution to recognize gaps and inadequacies in their program. 
+
+The theory itself can be captured by a symbolic and potentially causal model. 
+
+
+
+
+
+## 3) AML Investigations are a form of hypothesis testing
+
+Every AML investigation is a form of hypothesis testing where the null hypothesis and alternative hypothesis can be framed as:
+
+**H0: The focal entity did not carry out activity consistent with the red flag**
+
+**HA: The focal entity did carry out activity consistent with the red flag.** 
+
+The hypothesis to be tested is always an implication of the underlying theory. An institution’s “Theory of Financial Crime” or more concretely the causal model that captures it should be queried to identify and prioritize the hypotheses an AML investigator should test.
+
+The investigation itself should use the evidence collected to accept or reject the hypotheses.
+
+## 4) A case is suspicious or ‘SAR worthy’ because  the focal entity’s activity conforms  with one or more risk factors or red flags as outlined in an institution’s  “Theory of Financial Crime”
+
+The 5 W’s (Who, Where, What, When, and Why) and 1 H (How?) are critical to an AML investigation. The hardest to pin down among these is the “Why?”
+
+The answer to the question “Why is the activity suspicious?” is that the activity of the customer is consistent with one or more risk factors of interest to an institution. The institution’s “Theory of Financial Crime” will allow us to infer the  cause or “Why?” behind any alert or case. 
+
+The answer to the “How?” is the evidence that explains how the observed activity is consistent with the red flag or risk factor.
+
+## 5) Red Flags are falsifiable and all red flags are not created equal. 
+
+When regulators publish a list of red flags such as this one, they are fairly broad.
+
+Only an institution’s risk assessment can determine if they are relevant to an FI. Further some red flags may be  higher quality than others. A red flag identified as relevant may turn out to be immaterial. An institution might also realize later that it needs to consider red flags it didn’t originally consider
+
+This suggests that institutions should have a mechanism to assign different weights to red flags based on their quality and further have a feedback mechanism to  “upvote” or “downvote” a red flag. 
+
+Having an explicit theory of financial crime which is revised based on investigator feedback can do just this.
+
+
+
+
+## 6) Activity consistent with a red flag is a necessary not a sufficient cause for suspicion
+
+If an entity demonstrates activity that is consistent with some red flag or typology, it is not  necessarily suspicious. This is particularly so in the case of low quality red flags. 
+
+In the absence of evidence to confirm the illegitimacy of this activity, reporting all such activity is unlikely to be helpful. In such a case, a risk based decision has to be made. Specifically, the posterior probability of the case being effective in the light of all available evidence should be considered - including the quality of the red flags in question.
+
+If this posterior probability is greater than a threshold as determined by the risk tolerance of the institution, it may make sense to report even such cases.
+
+
+
+## 7) Financial Institutions should employ the scientific method in a principled manner to improve continuously while ensuring  defensibility 
+
+The key tenet of the scientific method is the revision of theories based on collected evidence. Financial institutions often end up doing things that don’t work just to placate regulators because they are not applying the scientific method in a principled way.
+
+If the Transaction Monitoring System is  a manifestation of the “Theory of Financial Crime”, every alert and case represents an experiment to evaluate the theory.
+
+By ensuring investigators provide the right feedback, institutions can update their “Theory Of Financial Crime” and consequently their Transaction Monitoring system in a defensible way. 
+
+If an investigator determines that a case is suspicious for a reason not accounted for in the institution’s Theory of Financial Crime, then it indicates the theory needs to be updated to account for new risk factors and red flags.
+
+
+
+##8) Use probabilities to quantify uncertainty.
+
+AML is a highly uncertain discipline.
+
+Given it is impossible to say how money launderers operate with certainty, every red flag, alert, case or label has a certain irreducible level of uncertainty.
+
+Probability is the science of uncertainty and Financial institutions need to include a probabilistic estimate with every metric.
+
+Every prediction made by a Transaction Monitoring System such as an alert or a case should have a probability that estimates the likelihood of the case being truly suspicious.
+
+When a compliance office identifies a red flag of interest to an institution, this should be accompanied by a prior probability.
+
+A way of quantifying the quality of a red flag is the Bayes Factor or Likelihood ratios.
+
+Only a probabilistic approach can help institutions take a risk based approach to AML.
+
+
+
+## 9) Synthesize signals from all available systems is essential to generate higher quality predictions
+
+Core AML systems, such as Transaction Monitoring, KYC/CDD, and Sanctions, often operate in silos.
+
+To create richer, more meaningful cases, signals from all these systems should be synthesized and consolidated.
+
+A particular red flag that might be low quality in normal circumstances could become highly relevant in the presence of negative news on the entity. A model that captures the causal logic of how all these signals interact can be used to estimate the posterior probability of a case being suspicious given all these signals.
+
+## 10)Machine Learning Models are the future but post-hoc model explanations are insufficient.
+
+Machine learning models represent the future of Transaction Monitoring. Even large regulated institutions have replaced rule based scenarios with ML models. But even when institutions have clean labels and high performing models, investigating events generated by these models can be challenging.
+
+If an institution develops an ML Model based on all available data, it is likely to integrate signals across various risk factors and red flags making it challenging for an investigator. Therefore it may be necessary for institutions to clearly state the red flags of interest for a given model up front and only consider those labels when developing a model.
+
+Although post-hoc explanation techniques such as LIME or SHAP are available, these only provide feature importances that are very hard for a non-technical investigator to make sense of.
+
+Further, ML Models by design are inductive. They only care about association and not cause. Predictions of ML Models or post-hoc explanations will not have causal logic which is essential to answer the “Why?” of AML Investigations.
+
+This suggests that ML Models also have to  fit into an institution’s “Theory of Financial Crime”. The theory can then be used to derive the hypotheses an investigator can test when a case gets generated.
+
+## Conclusion
+
+The scientific method has transformed humanity in the last 500 years. Applying the scientific method and ideas from probability is key to building an effective, efficient and compliant Transaction Monitoring System.
+
+It offers a systematic and principled approach to make risk and evidence based decisions while continually iterating towards a better solution. 
+
+I believe the principles laid out above are critical to addressing concerns of financial institutions and regulators.
+
+## Additional Reading and References
+
+- https://docs.google.com/presentation/d/1sH3GYF5wkL5ZaKMqKRjvOIPhkNFW15-s/edit?usp=sharing&ouid=103169999274243498795&rtpof=true&sd=true

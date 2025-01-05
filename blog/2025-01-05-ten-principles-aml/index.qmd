@@ -96,7 +96,7 @@ If an investigator determines that a case is suspicious for a reason not account
 
 
 
-##8) Use probabilities to quantify uncertainty.
+## 8) Use probabilities to quantify uncertainty.
 
 AML is a highly uncertain discipline.
 

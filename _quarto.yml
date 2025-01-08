@@ -7,8 +7,9 @@ website:
     left:
       - text: Home
         href: index.qmd
-      - href: blog/index.qmd
-        text: Blog
+      - text: Blog
+        href: blog/
+        
   page-footer: "Copyright 2024, Govind G Nair" 
       
 

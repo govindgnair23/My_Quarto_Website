@@ -1,7 +1,8 @@
 ---
 title: "Blog"
 listing:
-  contents: "*/index.*"
+  contents:
+    - "*/index.{qmd,md,markdown}"
   sort: "date desc"
   type: grid
   categories: true

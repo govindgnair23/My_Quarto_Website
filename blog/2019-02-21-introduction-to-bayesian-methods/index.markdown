@@ -2,7 +2,7 @@
 title: Introduction to Bayesian Methods
 date: "2019-02-21"
 categories: [Article,R,Statistics]
-description: An Introduction to Bayesian Methods for Beginners
+description: "An Introduction to Bayesian Methods for Beginners"
 ---
 
 
@@ -113,7 +113,7 @@ ggplot(data.frame(z,P),aes(x=z,y=P)) + geom_bar(stat = 'identity',fill = 'cornfl
   geom_text(aes(x = 4, y =0.04),label=paste0('P value = ',round(p_value,3)))
 ```
 
-<img src="./figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="./unnamed-chunk-2-1.png" width="672" />
 
 
 
@@ -151,7 +151,7 @@ ggplot(data.frame(N,P),aes(x= N,y=P)) + geom_bar(stat = 'identity',fill = 'cornf
    geom_text(aes(x = 30, y =0.04),label=paste0('P value = ',round(p_value,3)))
 ```
 
-<img src="./figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="./unnamed-chunk-4-1.png" width="672" />
 
 
 In both cases above the null hypothesis can  be rejected given the p-value is less than 0.05, but it can be seen that based on the intentions of the experimenter, the p-value can be different.
@@ -172,7 +172,7 @@ set.seed(0)
 plot(density(rbeta(10000,2,2)),main = "Prior 1",xlab="")
 ```
 
-<img src="./figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="./unnamed-chunk-5-1.png" width="672" />
 
 
 
@@ -185,7 +185,7 @@ set.seed(0)
 plot(density(rbeta(10000,2,20)),main = "Prior 2",xlab="")
 ```
 
-<img src="./figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="./unnamed-chunk-6-1.png" width="672" />
 
 
 
@@ -213,7 +213,7 @@ For the prior 1 considered above the posterior will be a Beta(2+7,2+17)
 plot(density(rbeta(10000,9,19)),main = "Posterior 1",xlab=expression(theta))
 ```
 
-<img src="./figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="./unnamed-chunk-7-1.png" width="672" />
 
 
 
@@ -225,7 +225,7 @@ For the prior 2 considered above the posterior will be a Beta(2+7,20+17)
 plot(density(rbeta(10000,9,37)),main = "Posterior 2",xlab=expression(theta))
 ```
 
-<img src="./figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="./unnamed-chunk-8-1.png" width="672" />
 
 
 In summary, according to the statistician Larry Wasserman:
@@ -422,7 +422,7 @@ These attributes are analyzed below.
 diagMCMC( codaSamples1 , parName="theta")
 ```
 
-<img src="./figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="./unnamed-chunk-18-1.png" width="672" />
 
 
 The plot in the top left hand corner is a trace plot. If you see an orphaned chain exploring values that are not close to values being explored by the other chains, it is a symptom of incomplete convergence.
@@ -449,7 +449,7 @@ ROPE: Region of Practical Equivalence. This is used to define a margin of error 
 plotMCMC(codaSamples1,data = data.frame(y), compVal=0.5 , rope=c(0.45,0.55))
 ```
 
-<img src="./figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="./unnamed-chunk-19-1.png" width="672" />
 
 
 
@@ -459,7 +459,7 @@ plotMCMC(codaSamples1,data = data.frame(y), compVal=0.5 , rope=c(0.45,0.55))
 plotMCMC(codaSamples2,data = data.frame(y), compVal=0.5 , rope=c(0.45,0.55))
 ```
 
-<img src="./figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="./unnamed-chunk-20-1.png" width="672" />
 
 
 # Simple Bayesian Linear Regression
@@ -475,7 +475,7 @@ ggplot(data= mtcars,aes(x=disp,y=mpg)) + geom_point(fill='cornflowerblue')+
   geom_smooth(method = 'lm')
 ```
 
-<img src="./figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="./unnamed-chunk-21-1.png" width="672" />
 
 
 The regression coefficients and fit statistics from the regression are as follows
@@ -682,7 +682,7 @@ hist(preds[,1],main = 'Prediction for disp =97',col='blue',xlab='mpg')
 hist(preds[,2],main = 'Prediction for disp =324',col='blue',xlab='mpg')
 ```
 
-<img src="./figure-html/unnamed-chunk-33-1.png" width="672" />
+<img src="./unnamed-chunk-33-1.png" width="672" />
 
 
 # References and Additional Resources

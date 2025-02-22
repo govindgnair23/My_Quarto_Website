@@ -1,0 +1,95 @@
+---
+title: "How Constraints beed Creativity"
+author: "Govind G Nair"
+date: "2025-02-22"
+toc: true
+categories: [Article,Strategy, Leadership]
+description: "Using Constraints to raise your team's performance"
+lastmod: "2025-01-05T12:04:48-04:00"
+draft: false
+---
+
+
+On Christmas day 2024, DeepSeek, China's leading AI lab released DeepSeek-v3, a frontier foundation model trained at a fraction of the cost of similar models. Barely a month later, they released R1, a reasoning model that is at par with OpenAI’s O1 model but available at a fraction of its cost. DeepSeek did this in the face of export controls imposed by the US. The models were trained on more limited H800 GPUs.
+
+This is a remarkable example of how humans exhibit creative problem-solving in the face of external constraints. There are numerous other innovations and products that have arisen from deliberately imposed constraints. By studying these examples, we can uncover some actionable insights on leveraging constraints to unlock innovation, enhance team performance, and drive impactful results.
+
+## Historical Examples of Constraints Driving Innovation
+
+### Apollo 13 Mission
+Engineers developed life-saving solutions under extreme time and resource constraints to bring the crew safely back to Earth. A key innovation was using the lunar module as a "lifeboat" to provide propulsion and life support after the main spacecraft was damaged. The lunar lander’s engine was repurposed for critical course corrections, showcasing incredible ingenuity under pressure.
+
+### Toyota's Lean Manufacturing
+The "Just-In-Time" production approach emerged from the severe constraints Japan faced in the aftermath of World War II. With limited resources, space, and capital, Toyota was forced to innovate and develop a system that minimized waste and inventory costs, revolutionizing efficiency and laying the foundation for modern manufacturing principles.
+
+### SpaceX's Reusable Rockets
+The company faced constraints to achieve rocket launches at a significantly lower cost per launch compared to traditional space programs. This drove them to develop groundbreaking cost-saving technologies like the Falcon 9's reusable boosters, which dramatically reduced the cost of space access.
+
+### AWS and API-Driven Development
+Jeff Bezos famously mandated that all teams at Amazon build their services using APIs that could be externalized. This constraint ensured that every internal service was modular, scalable, and could eventually be offered as a standalone product. This approach laid the groundwork for the creation of AWS, which turned Amazon's internal infrastructure into one of the most successful cloud computing platforms in the world.
+
+### Steve Jobs and the iPhone
+Steve Jobs imposed a significant constraint during the development of the first iPhone by insisting it should not have a physical keyboard. This decision challenged the team to create a revolutionary touchscreen interface and intuitive software, which set a new standard for smartphones and reshaped the industry.
+
+### Soviet Programmers
+The Soviet Union produced excellent programmers because computational resources were very scarce. Programmers had to write extremely efficient code to maximize the limited compute available to them. Many of these programmers later pursued lucrative careers in Wall Street trading firms.
+
+## The Role of Constraints in Team Performance
+
+Frederick P. Brooks, in his seminal book *The Mythical Man-Month*, argues that adding more people to a late software project only makes it later. This is because increased team size leads to communication overhead, coordination challenges, and inefficiencies. Constraints on team size can thus foster better collaboration and innovation, as seen in startups and high-performing teams.
+
+Slightly understaffed teams often demonstrate greater productivity and creativity compared to overstaffed ones. This is one reason startups can punch far above their weight, and why several large tech companies have gone on efficiency drives to right-size their teams.
+
+I often wonder how much more my team could accomplish with a few additional developers and QA resources. However, being understaffed often forces us to make the hard tradeoffs that maximize the marginal impact of every unit of resource invested.
+
+## Types of Constraints
+
+We can think of constraints along the following dimensions:
+
+### Input Constraints
+These are limits on resources such as time, personnel, compute, or capital. The Apollo 13 rescue mission, world-class Soviet programmers, and the innovations of the DeepSeek team were the result of tight input constraints.
+
+### Process Constraints
+These are constraints, typically rules or guidelines on how teams and systems should interact. The Toyota Production System is a process constraint (although it was born out of an input constraint) as is the API-based interaction approach that Amazon Web Services pioneered.
+
+### Output Constraints
+These are constraints on output and performance. SpaceX’s reusable rockets and the iPhone’s touchscreen are all products of output constraints.
+
+## Types of Projects
+
+How these constraints are to be used also depends on the type of project being pursued. We can classify projects into three categories:
+
+### Low Innovation
+These are typically pure engineering problems that can be solved by re-configuring existing technology. The Apollo 13 rescue mission was a project in the low innovation category. In fact, reusing existing technology and components was the only option available to the team.
+
+### Medium Innovation
+These are projects that require a novel application of existing technology. DeepSeek’s R1 and V3 models are examples of projects requiring a medium level of innovation. The DeepSeek team had to come up with micro-optimizations to overcome the memory bandwidth limitations of the H800 GPUs.
+
+### High Innovation
+These are projects that require the creation of new technology and often require deep cross-functional collaboration between different disciplines. SpaceX’s reusable rockets, iPhone’s touchscreens, and Waymo’s self-driving cars are all examples of projects that required the creation of new technology and are hence in the high innovation bucket. SpaceX had to develop novel propulsion and landing systems to enable rocket reusability, a feat never before accomplished at scale.
+
+## A Framework for Applying Constraints Effectively
+
+Combining the two yields a framework that can help inform how we choose constraints given a project. Here the degree of constraint can vary from low, allowing for a lot of latitude, to high, which indicates tight constraints.
+
+| Type of Constraints | Low Innovation | Medium Innovation | High Innovation |
+|---------------------|---------------|-----------------|---------------|
+| **Input** | High | Medium | Low |
+| **Output** | High | High | Medium |
+| **Process** | Low | Medium | High |
+
+- If you have a problem that can be solved with the straightforward application of existing technology, inputs and outputs should be clearly defined and constrained. The team can have flexibility in choosing the process, but defaulting to the company’s standard might be the most efficient option. Most teams in big companies and most established start-ups (Think most vertical Software as a Service companies) work on this type of project.
+- If the problem requires a novel application of existing technology, this would require some level of constraints on the input, tight constraints on the output, and a medium level of process constraints. Most early-stage startups and some teams in big companies operate in this space. The Venture Capital approach is typical for this type of project; additional investments are forthcoming only if you hit certain milestones in a specific time frame.
+- If the problem is so ambitious that a solution requires the creation of new technology, then input constraints have to be light, output constraints should be more directional rather than specific, and process constraints need to be high to spur collaboration and cross-pollination of ideas.
+
+## Conclusion
+
+Good product leadership is about clearly defining goals and constraints while allowing teams the flexibility to operate freely otherwise. To apply this framework effectively, start by identifying the nature of your project—whether it requires low, medium, or high innovation. Then, adjust constraints accordingly, ensuring input, process, and output constraints are aligned with the project's needs. Encourage teams to embrace constraints as creative challenges rather than obstacles, and continuously refine constraints based on feedback and evolving requirements. I hope this framework will help you do just that.
+
+## References
+
+- [Why Constraints Are Good for Innovation](https://hbr.org/2019/11/why-constraints-are-good-for-innovation)
+- [The OpenAI Critique](https://stratechery.com/2025/the-openai-critique-comparative-advantage-and-infrastructure-aggregation-theory-and-cheap-ai/)
+- [Netflix Documentary](https://www.netflix.com/title/81444292)
+
+

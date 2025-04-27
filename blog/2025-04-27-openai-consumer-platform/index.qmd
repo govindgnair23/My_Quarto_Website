@@ -1,0 +1,61 @@
+---
+title: "Open AI - The Ultimate Consumer Tech Aggregator ?"
+date: "2025-04-27"
+description: "The Potential of Open AI's platform strategy"
+categories: [Musings,Strategy,AI]
+---
+
+In a recent interview with Ben Thompson, when asked about OpenAI’s platform aspirations[^1], Sam Altman replied:
+
+[^1]: https://stratechery.com/2025/an-interview-with-openai-ceo-sam-altman-about-building-a-consumer-tech-company/
+
+> I don’t think we’ll be a platform in a way that an operating system is a platform. But I think in the same way that Google is not really a platform, but people use sign-in with Google and people take their Google stuff around the web and that’s part of the Google experience, I think we’ll be a platform in that way.
+
+This, along with the recent memory feature update in ChatGPT, points to a coherent strategy aligned with these platform aspirations. Additionally, news of a potential social network by OpenAI further reinforces this direction.
+
+ChatGPT and other chatbots are rapidly becoming the go-to personal assistants for many people. When it comes to learning something new, ChatGPT has become my default option. Consequently, it now knows more about my interests than any other platform.
+
+Recently, there has also been a surge of news stories highlighting how ChatGPT has helped users diagnose medical conditions that even doctors missed. [^2] [^3]. It seems safe to suggest that for many users, ChatGPT knows more about their medical conditions than even their closest family.
+
+[^2]: https://stratechery.com/2025/an-interview-with-openai-ceo-sam-altman-about-building-a-consumer-tech-company/
+
+[^3]: [The Sun](https://www.thesun.ie/health/15089217/mum-diagnosed-hidden-cancer-chat-gpt-concerning-symptom/?utm_source=chatgpt.com)
+
+The same depth of understanding applies to travel and shopping preferences. This level of personalized knowledge is something even Google Search and Facebook currently cannot match.
+
+This immediately suggests multiple use cases where an OpenAI login could be incredibly valuable.
+
+## Dating and Relationships
+
+In 2024, Bumble CEO Whitney Wolfe suggested that AI agents could go on dates on users' behalf. As dystopian as that might sound, it could be a far better way to recommend matches than relying on superficial user profiles. Imagine if users logged into Bumble with their OpenAI accounts.
+
+The profile ChatGPT has built up for each user could be used to create more accurate profiles and recommend better matches based on real preferences. Taking it further, agents representing users could go on virtual dates, running thousands of simulations and recommending matches where outcomes are highly successful.
+
+## Professional and Personal Social Networking
+
+An OpenAI login into social and professional networking sites like LinkedIn or Reddit could also recommend connections with similar interests or suggest relevant subreddits to follow.
+
+## Healthcare
+
+In his book *Song of the Cell*, Siddhartha Mukherjee narrates a particularly vexing case of a patient who demonstrated symptoms that could be caused either by AIDS or by a bacterium introduced through cat scratches (bartonella). The patient's reticence meant Mukherjee could never fully uncover the root cause.
+
+Instead of requiring doctors to peel through layers of shame and secrecy, imagine a scenario where a user logs into a healthcare portal using an OpenAI login, and the doctor queries the user’s chatbot history instead. This could significantly improve diagnoses, particularly in sensitive areas like mental and sexual health.
+
+## Targeted Advertising
+
+If websites supported OpenAI logins, it could allow publishers to target users with highly relevant ads based on their real interests. Higher-quality ads would benefit consumers, publishers, and advertisers alike, allowing for the expansion of ad-supported free tiers instead of only paid subscriptions. A world where high-quality Substack publications are accessible to more people while writers are compensated fairly would certainly be a desirable one.
+
+## Privacy Challenges and Solutions
+
+The major impediment to realizing this vision ultimately comes down to privacy. Whether AI runs on the cloud or on-device, realizing any of the above use cases would require exposing personal data to external services, which carries cybersecurity risks.
+
+A promising solution to this challenge could be fully homomorphic encryption (FHE). Although the current state of FHE imposes atleast a 10x latency and 5x memory overhead [^4], it may still be acceptable in certain use cases. Moreover, ongoing research is making strides in improving FHE's efficiency, such as optimizing bootstrapping and developing hybrid encryption models, suggesting that practical FHE could become viable over time.
+
+[^4]: https://medium.com/intel-tech/fully-homomorphic-encryption-addresses-security-in-a-post-quantum-era-39dacec29aa5
+
+## Conclusion
+
+With the right execution, OpenAI could very well become one of the most successful consumer tech platforms in history — a personal confidante and assistant, the ultimate aggregator, seamlessly intermediating your interactions with all other digital assistants and services.
+
+
+

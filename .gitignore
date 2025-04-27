@@ -7,3 +7,5 @@ renv/library/
 # Ignore renv cache (if it appears locally)
 renv/cache/
 /.quarto/
+# Ignore macOS system files
+.DS_Store

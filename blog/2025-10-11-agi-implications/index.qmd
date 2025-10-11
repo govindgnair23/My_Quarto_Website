@@ -1,0 +1,58 @@
+---
+title: "Will AI Eat Software?"
+date: "2025-10-11"
+categories: [AI,Musings]
+description: "Exploring how AGI could transform software development and knowledge work over the next 5-10 years"
+---
+
+In 2011, Marc Andreessen famously said "Software is eating the world." Today it looks like [software is poised to eat labor](https://open.spotify.com/episode/4QCjZlEzijkVWEQY8L4sIL?si=1014d1ab76924c8d). But just as software transformed every industry, AI is now transforming software itself. This raises a fascinating question: will AI eventually eat software?
+
+With the advent of exceptional coding models that even [the best software engineers find useful](https://lucumr.pocoo.org/2025/9/29/90-percent/), we're entering uncharted territory. Today's coding agents are incredibly powerful—powering [tiny teams that are shipping software](https://archive.ph/YrrJZ) that previously required large organizations to build. At companies like Google, [more than a quarter of new code is now AI-generated](https://research.google/blog/ai-in-software-engineering-at-google-progress-and-the-path-ahead/).
+
+Let's consider what happens if coding agents continue improving on their current trajectory. What will be the implications over the next 3-5 years?
+
+## 1) Everyone Becomes a Software Engineer
+
+Software development will be truly democratized, with every human able to create software they can imagine—much like video and image generation models have democratized visual content creation. Just as only the truly exceptional artists can make a living from their art today, software engineering may become a lucrative career only for exceptional engineers who push the boundaries of what's possible.
+
+## 2) Custom Software for Everyone
+
+Companies like Shopify and Meta already build extensive internal tooling without relying on vendors. In the future, more companies will be able to write custom software for sales, marketing, ERP, and other functions with small engineering teams.
+
+More interestingly, individual consumers may be able to create their own bespoke apps for all but the most complex applications.
+
+
+## 3) Unbundling of the Software Company
+
+Rather than centralized software companies creating products for everyone, we may see tiny teams of software engineers embedded within non-digital companies, creating tailored software solutions specific to those organizations' needs.
+
+These points raise profound questions about the SaaS software model—both enterprise and consumer. When the cost of building an entire application is merely the cost of a million or a billion tokens from a coding agent provider, will "Build" become the obvious choice and "Buy" the exception?
+
+---
+
+If we are 5 to 10 years from Artificial General Intelligence (AGI) or even Artificial Super Intelligence (ASI), these trends point toward something even more transformative when AGI or ASI arrives: the emergence of infinitely personalizable software and truly autonomous AI Knowledge Workers.
+
+## Infinitely Personalized Software
+
+The emergence of AGI will transform the way individuals interact with technology and software. Instead of standalone apps with varying user interfaces, an AGI Assistant will understand each user so well that it can deeply understand every user's request and simply deliver on it. Why open an app when AGI can play the right music or playlist for you, order the right food when you are hungry, restock groceries as supplies run out, plan your trip within a budget and order a cab based on your flight schedule?
+
+The modalities in which we interact with this AI will be voice, hand gestures (like Meta's wristband controller) and ultimately through Neuralink-like devices.
+
+## The AI Knowledge Worker
+
+AGI will also transform how enterprises and companies operate. I believe the ultimate expression of AGI in this domain will be an AI Knowledge Worker who, when embedded within a company, can learn its workflows and constraints and create custom software to solve problems. This will mark a leap from coding agents assisting humans to truly autonomous agents that don't need a human in the loop. Today's foundation model companies—OpenAI, Anthropic, Google, and others—will likely all ship versions of the AI Knowledge Worker. Everyone else will end up renting these knowledge workers from these companies.
+
+### What Could Be the Impact?
+
+**One AI to rule them all** - When AI eventually absorbs the last vestiges of what we call Apps today, value will accrue to those who solve coordination and trust problems in the real world. I anticipate the likes of Uber and Airbnb will continue to be relevant as they solve such coordination and trust problems in the real world. However I don't see a future for apps that essentialy do some form of data management. Think note taking, task management, knowledge retrieval and the like.
+
+**All knowledge work could primarily be done by these AI Knowledge Workers**—in other words, the commoditization of knowledge and white-collar work. An AGI Knowledge worker can be trained to be a customer service representative, a sales representative, a compliance officer, a lawyer, a product manager or a software engineer. All professions which are a bundle of tasks completed on a computer will be subsumed by the AI Knowledge worker.
+
+This leaves me wondering:
+
+- How do we educate the next generation for a world where knowledge work is largely automated?
+- What new forms of value creation humans will focus on?
+- Whether our economic systems can adapt to a world where traditional white-collar employment is disrupted at scale
+- What role regulation should play in managing this transition
+
+In some ways, I am not so envious of my 11 month old daughter, the world I was born into seems positively quaint and predictable compared to the one she inherits.

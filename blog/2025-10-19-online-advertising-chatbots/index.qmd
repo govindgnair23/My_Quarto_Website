@@ -1,0 +1,89 @@
+---
+title: "How chatbots can change online advertising"
+date: "2025-10-19"
+categories: [AI,Musings]
+description: "Why AI chatbots could capture hundreds of billions from the advertising industry by flipping from push to pull"
+---
+# The $300 Billion Shift: How AI Chatbots Could Replace Online Advertising
+
+How did you react differently to seeing an online advertisement versus a movie recommendation on Netflix? Were you a bit defensive and on your guard with the former while being more intrigued and curious with the latter?
+
+That gut reaction reveals something deeper: today's ad supported media platforms still feel like they're *selling to us*, not *serving us*. AI chatbots could finally flip that dynamic.
+
+## The Problem: Push vs. Pull
+
+In today's online advertising model, merchants pay platforms to find customers. Ads get pushed to prospective buyers, interrupting their experience and competing for attention.
+
+As sophisticated as advertising platforms have become, they face a fundamental misalignment—not because they don't understand users (Meta and TikTok know exactly what you want), but because the cost of showing bad ads is incredibly low.
+
+These platforms have users hooked on endless feeds of entertainment and social connection. Even if they show irrelevant ads, users keep scrolling. A chatbot faces the opposite dynamic: if it consistently makes poor recommendations or pushes products too aggressively, users simply stop using it. There's no addictive feed to fall back on.
+
+This structural misalignment isn't just theoretical—it's already showing up in how people shop and make decisions online.
+
+## The Evidence: Chatbots Are Already Winning
+
+The shift is already beginning. There's [evidence](https://www.lennysnewsletter.com/p/the-ultimate-guide-to-aeo-ethan-smith) from many companies that leads coming from ChatGPT convert at significantly higher rates than those from traditional search.
+
+Why? Because users deeply research products using these chatbots before visiting a merchant's site. Chatbots have a massive impact on consumer choice through fair, detailed analysis and recommendations it provides.
+
+With recent in-app integrations with Spotify, Walmart, Etsy, and Shopify, ChatGPT can already surface e-books, podcasts, and products tailored to individual interests and needs—more accurately than any ad platform.
+
+## The Solution: Two Paths to Replace Advertising
+
+Chatbots could disrupt the advertising industry on two fronts:
+
+### 1. Brand Building → Personalized Discovery
+
+For brand awareness and discovery, chatbots could offer an alternative through products like [ChatGPT Pulse](https://openai.com/index/introducing-chatgpt-pulse/)—delivering personalized discovery at scale. Rather than pushing generic brand messages to broad audiences, chatbots could introduce relevant products organically when they align with a user's demonstrated interests.
+
+This is closer to existing online brand advertising but fundamentally more personalized and contextual. Discovery truly matters here, and chatbots are uniquely positioned to make it relevant rather than interruptive.
+
+### 2. Search Advertising → Direct Recommendations
+
+When buying intent is clear, search ads offer very little value to users; they're simply a tax that bigger players impose to stay ahead of less-resourced competitors.
+
+Chatbot recommendations could eliminate this entirely. Instead of bidding on keywords, merchants would pay a commission on completed purchases—similar to a payment processor taking a small percentage of each purchase.
+
+If these recommendations result in higher conversion rates, advertisers might decide that an incremental advertising dollar is better spent paying commissions to a chatbot provider than paying Google or Amazon for clicks.
+
+## How It Works: The Commission Model
+
+The key to maintaining alignment is a **flat commission rate in each product category**.
+
+Unlike affiliate programs where commission rates vary by product (creating incentives to recommend higher-commission items over better ones), chatbots would charge the same percentage within a category.
+
+The only way to make more money? Recommend products and services users purchase.
+
+This is fundamentally different from traditional affiliate marketing and closer to how payment processors operate: a fixed infrastructure fee, not a variable payment for influence.
+
+## Solving the New Product Problem
+
+A common objection: how would brand-new products without reviews or purchase history get recommended?
+
+Chatbots can evaluate new products by analyzing product specifications, manufacturer information, video demonstrations, expert analyses, and third-party testing—creating an objective assessment without relying on user reviews. When a new product aligns with a user's specific preferences, the chatbot can explicitly flag it: "This is a new option you might want to consider given your interest in [relevant category]."
+
+## Privacy: The Trusted Confidante Advantage
+
+On privacy, the trust dynamic fundamentally differs from traditional advertising.
+
+When a chatbot acts as your trusted confidante rather than an advertising platform, users may willingly share preferences knowing the AI works for them, not against them. You're not being tracked and profiled to be sold to—you're sharing information with an assistant helping you make better decisions.
+
+The key difference: users can explicitly opt out of product recommendations entirely.The chatbot can still function perfectly well as an assistant without ever mentioning products—giving users real control over the commercial relationship.
+
+## The Opportunity: A Trillion-Dollar Business
+
+Online advertising represents roughly $300 billion in annual spending in the United States alone. Globally, it's over $700 billion.
+
+If chatbots can demonstrate higher conversion rates and better user satisfaction, a significant portion of this spending could shift from paying for ad placement to paying commissions on recommendations. Even capturing 20-30% of this market while taking 2-3% commissions on transactions would represent tens of billions in annual revenue.
+
+For OpenAI to reach its ambitious valuation targets, taking a substantial bite out of the online advertising market might not just be an option—it might be necessary.
+
+Perhaps this commission-based recommendation model is the alternative to traditional advertising that OpenAI should pursue. It preserves user alignment, leverages the chatbot's natural strengths, and taps into an enormous existing market.
+
+The question isn't whether AI will disrupt advertising. It's whether chatbot providers will be bold enough to pursue it.
+
+---
+
+### References
+
+- [Stratechery: OpenAI Instant Checkout, AI and Long Tail E-Commerce](https://stratechery.com/2025/openai-instant-checkout-ai-and-long-tail-e-commerce-is-ai-different/)

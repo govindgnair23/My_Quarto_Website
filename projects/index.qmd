@@ -1,0 +1,43 @@
+---
+title: "Projects"
+---
+
+::: project-card
+### [Regbrief](/projects/regbrief/)
+
+An AI-powered regulatory intelligence newsletter that monitors consent orders from financial regulators, analyzes enforcement actions, and delivers actionable insights to help institutions avoid compliance pitfalls.
+
+[Learn More & Subscribe →](/projects/regbrief/)
+:::
+
+::: project-card
+### [SARs to Trxns](/projects/sars-to-trxns/)
+
+An agentic workflow to extract transaction-level details from SAR narratives, unlocking enhanced ML training data, robust regression testing, and foundational knowledge graphs for AML operations.
+
+[Learn More →](/projects/sars-to-trxns/)
+:::
+
+```{=html}
+<style>
+.project-card {
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.project-card h3 {
+  margin-top: 0;
+}
+
+.project-card h3 a {
+  text-decoration: none;
+}
+
+.project-card h3 a:hover {
+  text-decoration: underline;
+}
+</style>
+```

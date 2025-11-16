@@ -2532,5 +2532,124 @@
     "title": "How chatbots can change online advertising",
     "section": "",
     "text": "Online advertising represents roughly $300 billion in annual spending in the United States alone. Globally, it’s over $700 billion.\nIf chatbots can demonstrate higher conversion rates and better user satisfaction, a significant portion of this spending could shift from paying for ad placement to paying commissions on recommendations. Even capturing 20-30% of this market while taking 2-3% commissions on transactions would represent tens of billions in annual revenue.\nFor OpenAI to reach its ambitious valuation targets, taking a substantial bite out of the online advertising market might not just be an option—it might be necessary.\nPerhaps this commission-based recommendation model is the alternative to traditional advertising that OpenAI should pursue. It preserves user alignment, leverages the chatbot’s natural strengths, and taps into an enormous existing market.\nThe question isn’t whether AI will disrupt advertising. It’s whether chatbot providers will be bold enough to pursue it.\n\n\n\n\nStratechery: OpenAI Instant Checkout, AI and Long Tail E-Commerce"
+  },
+  {
+    "objectID": "CLAUDE.html",
+    "href": "CLAUDE.html",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.\n\n\nThis is a personal website and blog built with Quarto, a scientific and technical publishing system. The site features a personal profile page and a collection of blog posts primarily focused on AI, machine learning, anti-money laundering, and product management topics.\n\n\n\n\nQuarto: Version 1.6.39 - Static site generator for technical content\nPython: 3.13.5 managed via uv in .venv/\nR: 4.4.2 with renv for package management (see renv.lock)\nRStudio: Project configuration in My_Quarto_Website.Rproj\n\n\n\n\nThe website has a simple two-page structure:\n\nHome page (index.qmd): Personal profile using Quarto’s “trestles” about template\nBlog listing (blog/index.qmd): Automatically generated grid view of all blog posts, sorted by date descending\n\n\n\nEach blog post lives in its own dated directory under blog/ following the convention:\nblog/YYYY-MM-DD-slug-name/index.qmd\nBlog posts are standard Quarto markdown files (.qmd) with YAML frontmatter:\n---\ntitle: \"Post Title\"\ndate: \"YYYY-MM-DD\"\ncategories: [Category1, Category2]\ndescription: \"Brief description\"\n---\nCommon categories include: AI, Musings, Article, Anti Money Laundering, Science, Probability\n\n\n\n\n_quarto.yml: Main site configuration (theme: darkly, navigation structure)\nblog/_metadata.yml: Blog-specific options (freeze: false, title-block-banner: true)\nstyles.css: Custom CSS for site styling\n\n\n\n\n\n\n\n# Preview site locally with live reload\nquarto preview\n\n# Render/build the entire site\nquarto render\n\n# Render a specific file\nquarto render path/to/file.qmd\n\n\n\n\nCreate a new directory: blog/YYYY-MM-DD-post-slug/\nAdd an index.qmd file with proper YAML frontmatter\nThe post will automatically appear in the blog listing page\n\n\n\n\n# Python environment (using uv as specified in user preferences)\nuv sync  # Install/sync Python dependencies\n\n# R environment (if working with R code in posts)\n# Open in RStudio, renv will auto-restore packages from renv.lock\n\n\n\n\nThe site generates static files in the _site/ directory when rendered. The .gitignore excludes: - R temporary files (.Rproj.user, .Rhistory, .RData) - renv/library/ and renv/cache/ - .quarto/ cache directory - .DS_Store macOS system files\nNote: _site/ and _freeze/ directories are currently tracked in git (not in .gitignore).\n\n\n\n\nPosts use freeze: false by default, meaning computational content will re-execute on each render\nThe site uses the “darkly” Bootstrap theme with custom CSS overrides\nBlog posts are primarily prose-focused; some posts include Python code blocks\nAll dates in blog post filenames and frontmatter should use YYYY-MM-DD format"
+  },
+  {
+    "objectID": "CLAUDE.html#project-overview",
+    "href": "CLAUDE.html#project-overview",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "This is a personal website and blog built with Quarto, a scientific and technical publishing system. The site features a personal profile page and a collection of blog posts primarily focused on AI, machine learning, anti-money laundering, and product management topics."
+  },
+  {
+    "objectID": "CLAUDE.html#technology-stack",
+    "href": "CLAUDE.html#technology-stack",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "Quarto: Version 1.6.39 - Static site generator for technical content\nPython: 3.13.5 managed via uv in .venv/\nR: 4.4.2 with renv for package management (see renv.lock)\nRStudio: Project configuration in My_Quarto_Website.Rproj"
+  },
+  {
+    "objectID": "CLAUDE.html#site-architecture",
+    "href": "CLAUDE.html#site-architecture",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "The website has a simple two-page structure:\n\nHome page (index.qmd): Personal profile using Quarto’s “trestles” about template\nBlog listing (blog/index.qmd): Automatically generated grid view of all blog posts, sorted by date descending\n\n\n\nEach blog post lives in its own dated directory under blog/ following the convention:\nblog/YYYY-MM-DD-slug-name/index.qmd\nBlog posts are standard Quarto markdown files (.qmd) with YAML frontmatter:\n---\ntitle: \"Post Title\"\ndate: \"YYYY-MM-DD\"\ncategories: [Category1, Category2]\ndescription: \"Brief description\"\n---\nCommon categories include: AI, Musings, Article, Anti Money Laundering, Science, Probability\n\n\n\n\n_quarto.yml: Main site configuration (theme: darkly, navigation structure)\nblog/_metadata.yml: Blog-specific options (freeze: false, title-block-banner: true)\nstyles.css: Custom CSS for site styling"
+  },
+  {
+    "objectID": "CLAUDE.html#common-development-commands",
+    "href": "CLAUDE.html#common-development-commands",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "# Preview site locally with live reload\nquarto preview\n\n# Render/build the entire site\nquarto render\n\n# Render a specific file\nquarto render path/to/file.qmd\n\n\n\n\nCreate a new directory: blog/YYYY-MM-DD-post-slug/\nAdd an index.qmd file with proper YAML frontmatter\nThe post will automatically appear in the blog listing page\n\n\n\n\n# Python environment (using uv as specified in user preferences)\nuv sync  # Install/sync Python dependencies\n\n# R environment (if working with R code in posts)\n# Open in RStudio, renv will auto-restore packages from renv.lock"
+  },
+  {
+    "objectID": "CLAUDE.html#site-deployment",
+    "href": "CLAUDE.html#site-deployment",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "The site generates static files in the _site/ directory when rendered. The .gitignore excludes: - R temporary files (.Rproj.user, .Rhistory, .RData) - renv/library/ and renv/cache/ - .quarto/ cache directory - .DS_Store macOS system files\nNote: _site/ and _freeze/ directories are currently tracked in git (not in .gitignore)."
+  },
+  {
+    "objectID": "CLAUDE.html#important-notes",
+    "href": "CLAUDE.html#important-notes",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "Posts use freeze: false by default, meaning computational content will re-execute on each render\nThe site uses the “darkly” Bootstrap theme with custom CSS overrides\nBlog posts are primarily prose-focused; some posts include Python code blocks\nAll dates in blog post filenames and frontmatter should use YYYY-MM-DD format"
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Regbrief\nAn AI-powered regulatory intelligence newsletter that monitors consent orders from financial regulators, analyzes enforcement actions, and delivers actionable insights to help institutions avoid compliance pitfalls.\nLearn More & Subscribe →\n\n\nSARs to Trxns\nAn agentic workflow to extract transaction-level details from SAR narratives, unlocking enhanced ML training data, robust regression testing, and foundational knowledge graphs for AML operations.\nLearn More →"
+  },
+  {
+    "objectID": "projects/index.html#my-projects",
+    "href": "projects/index.html#my-projects",
+    "title": "Projects",
+    "section": "",
+    "text": "Here are some of the projects I’m working on to make financial systems safer and knowledge more accessible.\n\n\nAn AI-powered regulatory intelligence newsletter that monitors consent orders from financial regulators, analyzes enforcement actions, and delivers actionable insights to help institutions avoid compliance pitfalls.\nCoverage: US (OFAC, OCC, FINRA, FDIC, NYDFS) and Canada (FINTRAC)\nLearn More & Subscribe →"
+  },
+  {
+    "objectID": "projects/regbrief/index.html",
+    "href": "projects/regbrief/index.html",
+    "title": "Regbrief",
+    "section": "",
+    "text": "Regbrief is an automated AI newsletter service that helps financial institutions stay ahead of regulatory risks. We monitor consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.\n\n\n\nTimely Alerts: Automatic monitoring of new consent orders and enforcement actions\nAI-Powered Analysis: Deep insights into what went wrong and why institutions were sanctioned\nActionable Recommendations: Concrete steps your institution can take to avoid similar compliance failures\nRegulatory Intelligence: Stay informed about enforcement trends and regulatory priorities"
+  },
+  {
+    "objectID": "projects/regbrief/index.html#about-regbrief",
+    "href": "projects/regbrief/index.html#about-regbrief",
+    "title": "Regbrief",
+    "section": "",
+    "text": "Regbrief is an automated AI newsletter service that helps financial institutions stay ahead of regulatory risks. We monitor consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.\n\n\n\nTimely Alerts: Automatic monitoring of new consent orders and enforcement actions\nAI-Powered Analysis: Deep insights into what went wrong and why institutions were sanctioned\nActionable Recommendations: Concrete steps your institution can take to avoid similar compliance failures\nRegulatory Intelligence: Stay informed about enforcement trends and regulatory priorities"
+  },
+  {
+    "objectID": "projects/regbrief/index.html#regulator-coverage",
+    "href": "projects/regbrief/index.html#regulator-coverage",
+    "title": "Regbrief",
+    "section": "Regulator Coverage",
+    "text": "Regulator Coverage\nWe currently monitor enforcement actions from the following regulators:\nUnited States:\n\nOFAC (Office of Foreign Assets Control)\nOCC (Office of the Comptroller of the Currency)\nFINRA (Financial Industry Regulatory Authority)\nFDIC (Federal Deposit Insurance Corporation)\nNYDFS (New York Department of Financial Services)\n\nCanada:\n\nFINTRAC (Financial Transactions and Reports Analysis Centre of Canada)"
+  },
+  {
+    "objectID": "projects/regbrief/index.html#subscribe-to-regbrief",
+    "href": "projects/regbrief/index.html#subscribe-to-regbrief",
+    "title": "Regbrief",
+    "section": "Subscribe to Regbrief",
+    "text": "Subscribe to Regbrief\nStay informed about regulatory enforcement actions and protect your institution from compliance risks.\n\n\n\nEmail Address * \n\n\nSelect Countries of Interest *\n\n\n United States\n\n\n Canada\n\n\n\nPlease select at least one country\n\n\n\nSubscribe\n\n\n\n\n\n\n\n\n\n\n\n\nSubscription Status\n\n\n\n\n\n\n\n\n\nClose"
+  },
+  {
+    "objectID": "projects/regbrief/index.html#roadmap",
+    "href": "projects/regbrief/index.html#roadmap",
+    "title": "Regbrief",
+    "section": "Roadmap",
+    "text": "Roadmap\n\n\n\n\n\n\n\n\nNow\nNext\nLater\n\n\n\n\nSupport for FINCEN Enforcement Orders\nSupport for AUSTRAC and FCA (UK)\nAnalysis of Trends and Themes Over time and across geographies"
+  },
+  {
+    "objectID": "projects/sars-to-trxns/index.html",
+    "href": "projects/sars-to-trxns/index.html",
+    "title": "SARs to Trxns",
+    "section": "",
+    "text": "Financial institutions file hundreds of thousands of suspicious activity reports (SARs) every year. Each one is packed with investigative insights—the richest source of contextual information we have on financial crime. The question is: how do we mine this unstructured data for value?\nThis project represents one step towards tackling this challenge. Although there have been successful efforts to extract entity and relationship data from SARs, extracting transaction data from SARs hasn’t yet been fully solved. Utilizing transaction data is essential to gaining a high-fidelity picture of the suspicious activity being reported.\nThis project proposes an agentic workflow to extract and utilize the transaction-level details embedded in SAR narratives. Here’s what this unlocks:\n1️⃣ Enhanced ML Training Data: One of the challenges FIs face in using ML in AML is the lack of labelled data. By extracting the actual transactions tied to suspicious activity from historical SARs, we can build high-quality datasets that can be used to train ML models.\n2️⃣ Robust Regression Testing: These extracted transactions act as a gold standard for validating changes to transaction monitoring systems—either by running them through the actual system or, ideally, a simulator. This ensures no critical activity slips through when making changes to your system.\n3️⃣ Foundational Knowledge Graphs: By turning transaction flows into a graph structure, we lay the groundwork for a comprehensive, linked knowledge graph. This can be scaled up to create a global knowledge graph across an institution or even a regulator’s full SAR archive. Combining this with Graph-based Retrieval-Augmented Generation (Graph RAG) techniques could significantly enhance investigation workflows.\nBelow is a short video of how the application works."
+  },
+  {
+    "objectID": "projects/sars-to-trxns/index.html#unlocking-the-power-of-sar-narratives-in-the-fight-against-financial-crime",
+    "href": "projects/sars-to-trxns/index.html#unlocking-the-power-of-sar-narratives-in-the-fight-against-financial-crime",
+    "title": "SARs to Trxns",
+    "section": "",
+    "text": "Financial institutions file hundreds of thousands of suspicious activity reports (SARs) every year. Each one is packed with investigative insights—the richest source of contextual information we have on financial crime. The question is: how do we mine this unstructured data for value?\nThis project represents one step towards tackling this challenge. Although there have been successful efforts to extract entity and relationship data from SARs, extracting transaction data from SARs hasn’t yet been fully solved. Utilizing transaction data is essential to gaining a high-fidelity picture of the suspicious activity being reported.\nThis project proposes an agentic workflow to extract and utilize the transaction-level details embedded in SAR narratives. Here’s what this unlocks:\n1️⃣ Enhanced ML Training Data: One of the challenges FIs face in using ML in AML is the lack of labelled data. By extracting the actual transactions tied to suspicious activity from historical SARs, we can build high-quality datasets that can be used to train ML models.\n2️⃣ Robust Regression Testing: These extracted transactions act as a gold standard for validating changes to transaction monitoring systems—either by running them through the actual system or, ideally, a simulator. This ensures no critical activity slips through when making changes to your system.\n3️⃣ Foundational Knowledge Graphs: By turning transaction flows into a graph structure, we lay the groundwork for a comprehensive, linked knowledge graph. This can be scaled up to create a global knowledge graph across an institution or even a regulator’s full SAR archive. Combining this with Graph-based Retrieval-Augmented Generation (Graph RAG) techniques could significantly enhance investigation workflows.\nBelow is a short video of how the application works."
+  },
+  {
+    "objectID": "projects/sars-to-trxns/index.html#github-repository",
+    "href": "projects/sars-to-trxns/index.html#github-repository",
+    "title": "SARs to Trxns",
+    "section": "GitHub Repository",
+    "text": "GitHub Repository\nYou can find the full repository with code and setup instructions here:\nView on GitHub →"
   }
 ]

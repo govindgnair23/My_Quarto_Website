@@ -6,3 +6,22 @@
   color: #555;
   margin-top: 20px;
 }
+
+/* Project cards */
+.project-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Form elements - global styling */
+input[type="email"]:focus,
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #375a7f !important;
+  box-shadow: 0 0 0 0.2rem rgba(55, 90, 127, 0.25) !important;
+}

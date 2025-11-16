@@ -1,0 +1,26 @@
+---
+title: "SARs to Trxns"
+subtitle: "Extracting transactions from SAR and CASE Narratives"
+---
+
+## Unlocking the Power of SAR Narratives in the Fight Against Financial Crime
+
+Financial institutions file hundreds of thousands of suspicious activity reports (SARs) every year. Each one is packed with investigative insights—the richest source of contextual information we have on financial crime. The question is: how do we mine this unstructured data for value?
+
+This project represents one step towards tackling this challenge. Although there have been successful efforts to extract entity and relationship data from SARs, extracting transaction data from SARs hasn't yet been fully solved. Utilizing transaction data is essential to gaining a high-fidelity picture of the suspicious activity being reported.
+
+This project proposes an agentic workflow to extract and utilize the transaction-level details embedded in SAR narratives. Here's what this unlocks:
+
+**1️⃣ Enhanced ML Training Data:** One of the challenges FIs face in using ML in AML is the lack of labelled data. By extracting the actual transactions tied to suspicious activity from historical SARs, we can build high-quality datasets that can be used to train ML models.
+
+**2️⃣ Robust Regression Testing:** These extracted transactions act as a gold standard for validating changes to transaction monitoring systems—either by running them through the actual system or, ideally, a simulator. This ensures no critical activity slips through when making changes to your system.
+
+**3️⃣ Foundational Knowledge Graphs:** By turning transaction flows into a graph structure, we lay the groundwork for a comprehensive, linked knowledge graph. This can be scaled up to create a global knowledge graph across an institution or even a regulator's full SAR archive. Combining this with Graph-based Retrieval-Augmented Generation (Graph RAG) techniques could significantly enhance investigation workflows.
+
+Below is a short video of how the application works.
+
+## GitHub Repository
+
+You can find the full repository with code and setup instructions here:
+
+[**View on GitHub →**](https://github.com/govindgnair23/SAR_to_Trxns)

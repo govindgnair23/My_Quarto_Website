@@ -1,6 +1,9 @@
 project:
   type: website
 
+execute:
+  freeze: auto
+
 website:
   title: ""
   navbar:
@@ -9,6 +12,8 @@ website:
         href: index.qmd
       - text: Blog
         href: blog/
+      - text: Projects
+        href: projects/
         
   page-footer: "Copyright 2024, Govind G Nair" 
       

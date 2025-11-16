@@ -1,0 +1,285 @@
+---
+title: "Regbrief"
+subtitle: "AI-Powered Regulatory Intelligence Newsletter"
+---
+
+## About Regbrief
+
+Regbrief is an automated AI newsletter service that helps financial institutions stay ahead of regulatory risks. We monitor consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.
+
+### What You'll Get
+
+-   **Timely Alerts**: Automatic monitoring of new consent orders and enforcement actions
+-   **AI-Powered Analysis**: Deep insights into what went wrong and why institutions were sanctioned
+-   **Actionable Recommendations**: Concrete steps your institution can take to avoid similar compliance failures
+-   **Regulatory Intelligence**: Stay informed about enforcement trends and regulatory priorities
+
+## Regulator Coverage
+
+We currently monitor enforcement actions from the following regulators:
+
+**United States:**
+
+-   **OFAC** (Office of Foreign Assets Control)
+-   **OCC** (Office of the Comptroller of the Currency)
+-   **FINRA** (Financial Industry Regulatory Authority)
+-   **FDIC** (Federal Deposit Insurance Corporation)
+-   **NYDFS** (New York Department of Financial Services)
+
+**Canada:**
+
+-   **FINTRAC** (Financial Transactions and Reports Analysis Centre of Canada)
+
+## Subscribe to Regbrief
+
+Stay informed about regulatory enforcement actions and protect your institution from compliance risks.
+
+:::::::::: {#subscription-container}
+<form id="regbrief-form" class="subscription-form">
+
+::: form-group
+<label for="email">Email Address \*</label> <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required aria-label="Email address">
+:::
+
+::::::: form-group
+<label>Select Countries of Interest \*</label>
+
+::::: checkbox-group
+::: form-check
+<input type="checkbox" id="country-us" name="country" value="US" class="form-check-input"> <label for="country-us" class="form-check-label">United States</label>
+:::
+
+::: form-check
+<input type="checkbox" id="country-canada" name="country" value="Canada" class="form-check-input"> <label for="country-canada" class="form-check-label">Canada</label>
+:::
+:::::
+
+::: {#country-error .error-message style="display: none;"}
+Please select at least one country
+:::
+:::::::
+
+<button type="submit" class="btn btn-primary" id="submit-btn">
+
+Subscribe
+
+</button>
+
+::: {#form-error .error-message style="display: none; margin-top: 10px;"}
+:::
+
+</form>
+::::::::::
+
+<!-- Bootstrap Modal for confirmation -->
+
+:::::::: {#confirmationModal .modal .fade tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true"}
+::::::: modal-dialog
+:::::: modal-content
+::: modal-header
+<h5 class="modal-title" id="confirmationModalLabel">
+
+Subscription Status
+
+</h5>
+
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+</button>
+:::
+
+::: {#modal-body-content .modal-body}
+<!-- Response HTML will be inserted here -->
+:::
+
+::: modal-footer
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+
+Close
+
+</button>
+:::
+::::::
+:::::::
+::::::::
+
+## Roadmap
+
+| Now | Next | Later |
+|-----|------|-------|
+| Support for FINCEN Enforcement Orders | Support for AUSTRAC and FCA (UK) | Analysis of Trends and Themes Over time and across geographies |
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('regbrief-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const formError = document.getElementById('form-error');
+  const countryError = document.getElementById('country-error');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Reset error messages
+    formError.style.display = 'none';
+    countryError.style.display = 'none';
+
+    // Get form data
+    const email = document.getElementById('email').value.trim();
+    const countryCheckboxes = document.querySelectorAll('input[name="country"]:checked');
+    const countries = Array.from(countryCheckboxes).map(cb => cb.value);
+
+    // Validate countries selection
+    if (countries.length === 0) {
+      countryError.style.display = 'block';
+      return;
+    }
+
+    // Disable submit button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Subscribing...';
+
+    try {
+      // Send POST request
+      const response = await fetch('https://govindgnair23.app.n8n.cloud/webhook-test/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          segments_str: countries
+        })
+      });
+
+      // Get response HTML
+      const responseText = await response.text();
+
+      // Show modal with response
+      const modalBody = document.getElementById('modal-body-content');
+      modalBody.innerHTML = responseText;
+
+      // Initialize and show Bootstrap modal
+      const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+      modal.show();
+
+      // Reset form on success
+      if (response.ok) {
+        form.reset();
+      }
+
+    } catch (error) {
+      console.error('Subscription error:', error);
+      formError.textContent = 'An error occurred while processing your subscription. Please try again later.';
+      formError.style.display = 'block';
+    } finally {
+      // Re-enable submit button
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Subscribe';
+    }
+  });
+});
+</script>
+```
+
+```{=html}
+<style>
+.subscription-form {
+  max-width: 500px;
+  margin: 30px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: inherit;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #375a7f;
+  box-shadow: 0 0 0 0.2rem rgba(55, 90, 127, 0.25);
+}
+
+.checkbox-group {
+  margin-top: 10px;
+}
+
+.form-check {
+  margin-bottom: 10px;
+}
+
+.form-check-input {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.form-check-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-primary {
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.15em;
+}
+
+/* Modal styling adjustments for dark theme */
+.modal-content {
+  background-color: #2b3e50;
+  color: #fff;
+}
+
+.modal-header {
+  border-bottom: 1px solid #444;
+}
+
+.modal-footer {
+  border-top: 1px solid #444;
+}
+
+.btn-close {
+  filter: invert(1);
+}
+</style>
+```

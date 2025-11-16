@@ -9,3 +9,4 @@ renv/cache/
 /.quarto/
 # Ignore macOS system files
 .DS_Store
+CLAUDE.md

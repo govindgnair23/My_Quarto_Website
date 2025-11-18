@@ -19,6 +19,8 @@ This project proposes an agentic workflow to extract and utilize the transaction
 
 Below is a short video of how the application works.
 
+{{< video https://youtu.be/g6F6u9s9oGw >}}
+
 ## GitHub Repository
 
 You can find the full repository with code and setup instructions here:

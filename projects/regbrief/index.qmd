@@ -14,9 +14,13 @@ Regbrief is an automated AI newsletter service that helps financial institutions
 -   **Actionable Recommendations**: Concrete steps your institution can take to avoid similar compliance failures
 -   **Regulatory Intelligence**: Stay informed about enforcement trends and regulatory priorities
 
+### Sample Report
+
+See [here](sample_report.html) for the kind of report you can expect. This is an analysis of the enforcement order issued by FinCEN on December 9, 2025 against Paxful, Inc.
+
 ## Regulator Coverage
 
-We currently monitor enforcement actions from the following regulators:
+Regbrief currently monitors enforcement actions from the following regulators:
 
 **United States:**
 
@@ -29,6 +33,10 @@ We currently monitor enforcement actions from the following regulators:
 **Canada:**
 
 -   **FINTRAC** (Financial Transactions and Reports Analysis Centre of Canada)
+
+**United Kingdom:**
+
+-   **FCA** (Financial Conduct Authority)
 
 ## Subscribe to Regbrief
 
@@ -51,6 +59,10 @@ Stay informed about regulatory enforcement actions and protect your institution 
 
 ::: form-check
 <input type="checkbox" id="country-canada" name="country" value="Canada" class="form-check-input"> <label for="country-canada" class="form-check-label">Canada</label>
+:::
+
+::: form-check
+<input type="checkbox" id="country-uk" name="country" value="UK" class="form-check-input"> <label for="country-uk" class="form-check-label">United Kingdom</label>
 :::
 :::::
 
@@ -107,7 +119,7 @@ Close
 
 | Now | Next | Later |
 |-----|------|-------|
-| Support for FINCEN Enforcement Orders | Support for AUSTRAC and FCA (UK) | Analysis of Trends and Themes Over time and across geographies |
+| - Support for AUSTRAC<br> - Analysis of Trends and Themes Over time and across geographies | MAS (Singapore) | |
 
 ```{=html}
 <script>

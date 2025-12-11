@@ -2601,35 +2601,35 @@
     "href": "projects/regbrief/index.html",
     "title": "Regbrief",
     "section": "",
-    "text": "Regbrief is an automated AI newsletter service that helps financial institutions stay ahead of regulatory risks. We monitor consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.\n\n\n\nTimely Alerts: Automatic monitoring of new consent orders and enforcement actions\nAI-Powered Analysis: Deep insights into what went wrong and why institutions were sanctioned\nActionable Recommendations: Concrete steps your institution can take to avoid similar compliance failures\nRegulatory Intelligence: Stay informed about enforcement trends and regulatory priorities"
+    "text": "Regbrief is an automated AI newsletter service that helps financial institutions stay ahead of regulatory risks. We monitor consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.\n\n\n\nTimely Alerts: Automatic monitoring of new consent orders and enforcement actions\nAI-Powered Analysis: Deep insights into what went wrong and why institutions were sanctioned\nActionable Recommendations: Concrete steps your institution can take to avoid similar compliance failures\nRegulatory Intelligence: Stay informed about enforcement trends and regulatory priorities\n\n\n\n\nSee here for the kind of report you can expect. This is an analysis of the enforcement order issued by FinCEN on December 9, 2025 against Paxful, Inc."
   },
   {
     "objectID": "projects/regbrief/index.html#about-regbrief",
     "href": "projects/regbrief/index.html#about-regbrief",
     "title": "Regbrief",
     "section": "",
-    "text": "Regbrief is an automated AI newsletter service that helps financial institutions stay ahead of regulatory risks. We monitor consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.\n\n\n\nTimely Alerts: Automatic monitoring of new consent orders and enforcement actions\nAI-Powered Analysis: Deep insights into what went wrong and why institutions were sanctioned\nActionable Recommendations: Concrete steps your institution can take to avoid similar compliance failures\nRegulatory Intelligence: Stay informed about enforcement trends and regulatory priorities"
+    "text": "Regbrief is an automated AI newsletter service that helps financial institutions stay ahead of regulatory risks. We monitor consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.\n\n\n\nTimely Alerts: Automatic monitoring of new consent orders and enforcement actions\nAI-Powered Analysis: Deep insights into what went wrong and why institutions were sanctioned\nActionable Recommendations: Concrete steps your institution can take to avoid similar compliance failures\nRegulatory Intelligence: Stay informed about enforcement trends and regulatory priorities\n\n\n\n\nSee here for the kind of report you can expect. This is an analysis of the enforcement order issued by FinCEN on December 9, 2025 against Paxful, Inc."
   },
   {
     "objectID": "projects/regbrief/index.html#regulator-coverage",
     "href": "projects/regbrief/index.html#regulator-coverage",
     "title": "Regbrief",
     "section": "Regulator Coverage",
-    "text": "Regulator Coverage\nWe currently monitor enforcement actions from the following regulators:\nUnited States:\n\nOFAC (Office of Foreign Assets Control)\nOCC (Office of the Comptroller of the Currency)\nFINRA (Financial Industry Regulatory Authority)\nFDIC (Federal Deposit Insurance Corporation)\nNYDFS (New York Department of Financial Services)\n\nCanada:\n\nFINTRAC (Financial Transactions and Reports Analysis Centre of Canada)"
+    "text": "Regulator Coverage\nRegbrief currently monitors enforcement actions from the following regulators:\nUnited States:\n\nOFAC (Office of Foreign Assets Control)\nOCC (Office of the Comptroller of the Currency)\nFINRA (Financial Industry Regulatory Authority)\nFDIC (Federal Deposit Insurance Corporation)\nNYDFS (New York Department of Financial Services)\n\nCanada:\n\nFINTRAC (Financial Transactions and Reports Analysis Centre of Canada)\n\nUnited Kingdom:\n\nFCA (Financial Conduct Authority)"
   },
   {
     "objectID": "projects/regbrief/index.html#subscribe-to-regbrief",
     "href": "projects/regbrief/index.html#subscribe-to-regbrief",
     "title": "Regbrief",
     "section": "Subscribe to Regbrief",
-    "text": "Subscribe to Regbrief\nStay informed about regulatory enforcement actions and protect your institution from compliance risks.\n\n\n\nEmail Address * \n\n\nSelect Countries of Interest *\n\n\n United States\n\n\n Canada\n\n\n\nPlease select at least one country\n\n\n\nSubscribe\n\n\n\n\n\n\n\n\n\n\n\n\nSubscription Status\n\n\n\n\n\n\n\n\n\nClose"
+    "text": "Subscribe to Regbrief\nStay informed about regulatory enforcement actions and protect your institution from compliance risks.\n\n\n\nEmail Address * \n\n\nSelect Countries of Interest *\n\n\n United States\n\n\n Canada\n\n\n United Kingdom\n\n\n\nPlease select at least one country\n\n\n\nSubscribe\n\n\n\n\n\n\n\n\n\n\n\n\nSubscription Status\n\n\n\n\n\n\n\n\n\nClose"
   },
   {
     "objectID": "projects/regbrief/index.html#roadmap",
     "href": "projects/regbrief/index.html#roadmap",
     "title": "Regbrief",
     "section": "Roadmap",
-    "text": "Roadmap\n\n\n\n\n\n\n\n\nNow\nNext\nLater\n\n\n\n\nSupport for FINCEN Enforcement Orders\nSupport for AUSTRAC and FCA (UK)\nAnalysis of Trends and Themes Over time and across geographies"
+    "text": "Roadmap\n\n\n\n\n\n\n\n\nNow\nNext\nLater\n\n\n\n\n- Support for AUSTRAC - Analysis of Trends and Themes Over time and across geographies\nMAS (Singapore)"
   },
   {
     "objectID": "projects/sars-to-trxns/index.html",

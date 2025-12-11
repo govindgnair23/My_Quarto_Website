@@ -10,3 +10,4 @@ renv/cache/
 # Ignore macOS system files
 .DS_Store
 CLAUDE.md
+CLAUDE.html

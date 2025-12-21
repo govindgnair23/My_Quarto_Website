@@ -38,6 +38,22 @@ Regbrief currently monitors enforcement actions from the following regulators:
 
 -   **FCA** (Financial Conduct Authority)
 
+**Singapore:**
+
+-   **MAS** (Monetary Authority of Singapore)
+
+**France:**
+
+-   **ACPR** (Autorité de Contrôle Prudentiel et de Résolution)
+
+**Netherlands:**
+
+-   **DNB** (De Nederlandsche Bank)
+
+**Germany:**
+
+-   **BaFIN** (Bundesanstalt für Finanzdienstleistungsaufsicht)
+
 ## Subscribe to Regbrief
 
 Stay informed about regulatory enforcement actions and protect your institution from compliance risks.
@@ -63,6 +79,22 @@ Stay informed about regulatory enforcement actions and protect your institution 
 
 ::: form-check
 <input type="checkbox" id="country-uk" name="country" value="UK" class="form-check-input"> <label for="country-uk" class="form-check-label">United Kingdom</label>
+:::
+
+::: form-check
+<input type="checkbox" id="country-singapore" name="country" value="SGP" class="form-check-input"> <label for="country-singapore" class="form-check-label">Singapore</label>
+:::
+
+::: form-check
+<input type="checkbox" id="country-france" name="country" value="FR" class="form-check-input"> <label for="country-france" class="form-check-label">France</label>
+:::
+
+::: form-check
+<input type="checkbox" id="country-netherlands" name="country" value="NL" class="form-check-input"> <label for="country-netherlands" class="form-check-label">Netherlands</label>
+:::
+
+::: form-check
+<input type="checkbox" id="country-germany" name="country" value="DE" class="form-check-input"> <label for="country-germany" class="form-check-label">Germany</label>
 :::
 :::::
 
@@ -119,7 +151,7 @@ Close
 
 | Now | Next | Later |
 |-----|------|-------|
-| - Support for AUSTRAC<br> - Analysis of Trends and Themes Over time and across geographies | MAS (Singapore) | |
+| - Support for AUSTRAC<br> - Analysis of Trends and Themes Over time and across geographies |  | |
 
 ```{=html}
 <script>

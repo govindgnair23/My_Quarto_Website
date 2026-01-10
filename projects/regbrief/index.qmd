@@ -54,6 +54,14 @@ Regbrief currently monitors enforcement actions from the following regulators:
 
 -   **BaFIN** (Bundesanstalt für Finanzdienstleistungsaufsicht)
 
+**Australia:**
+
+-   **AUSTRAC** (Australian Transaction Reports and Analysis Centre)
+
+**Hong Kong:**
+
+-   **HKMA** (Hong Kong Monetary Authority)
+
 ## Subscribe to Regbrief
 
 Stay informed about regulatory enforcement actions and protect your institution from compliance risks.
@@ -95,6 +103,14 @@ Stay informed about regulatory enforcement actions and protect your institution 
 
 ::: form-check
 <input type="checkbox" id="country-germany" name="country" value="DE" class="form-check-input"> <label for="country-germany" class="form-check-label">Germany</label>
+:::
+
+::: form-check
+<input type="checkbox" id="country-australia" name="country" value="AU" class="form-check-input"> <label for="country-australia" class="form-check-label">Australia</label>
+:::
+
+::: form-check
+<input type="checkbox" id="country-hongkong" name="country" value="HK" class="form-check-input"> <label for="country-hongkong" class="form-check-label">Hong Kong</label>
 :::
 ::::::::::
 
@@ -151,7 +167,7 @@ Close
 
 | Now | Next | Later |
 |--------------------|------------------------|----------------------------|
-| \- Support for AUSTRAC<br> - Analysis of Trends and Themes Over time and across geographies |  |  |
+| \- Analysis of Trends and Themes Over time and across geographies |  |  |
 
 ```{=html}
 <script>

@@ -29,6 +29,7 @@ Regbrief currently monitors enforcement actions from the following regulators:
 -   **FINRA** (Financial Industry Regulatory Authority)
 -   **FDIC** (Federal Deposit Insurance Corporation)
 -   **NYDFS** (New York Department of Financial Services)
+-   **SEC** (Securities and Exchange Commission)
 
 **Canada:**
 

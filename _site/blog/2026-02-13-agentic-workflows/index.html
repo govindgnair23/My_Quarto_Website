@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Govind G Nair">
+<meta name="dcterms.date" content="2026-02-13">
+<meta name="description" content="A guide to building agentic workflows in regulated industries">
+
+<title>Agentic Workflows in Regulated Industries</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-22381ab97ffb8a420d3841344730e94d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Agentic Workflows in Regulated Industries</h1>
+                  <div>
+        <div class="description">
+          A guide to building agentic workflows in regulated industries
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Article</div>
+                <div class="quarto-category">Anti Money Laundering</div>
+                <div class="quarto-category">AI</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Govind G Nair </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 13, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#agents-vs-agentic-workflows" id="toc-agents-vs-agentic-workflows" class="nav-link active" data-scroll-target="#agents-vs-agentic-workflows">Agents vs Agentic Workflows</a></li>
+  <li><a href="#case-study-transaction-extraction-from-suspicious-activity-reports" id="toc-case-study-transaction-extraction-from-suspicious-activity-reports" class="nav-link" data-scroll-target="#case-study-transaction-extraction-from-suspicious-activity-reports">Case Study: Transaction Extraction from Suspicious Activity Reports</a></li>
+  <li><a href="#design-patterns-for-agentic-workflows" id="toc-design-patterns-for-agentic-workflows" class="nav-link" data-scroll-target="#design-patterns-for-agentic-workflows">Design Patterns for Agentic Workflows</a>
+  <ul class="collapse">
+  <li><a href="#prompt-chaining-sequential-decomposition" id="toc-prompt-chaining-sequential-decomposition" class="nav-link" data-scroll-target="#prompt-chaining-sequential-decomposition">1) Prompt Chaining : Sequential Decomposition</a></li>
+  <li><a href="#routing-dynamic-method-selection" id="toc-routing-dynamic-method-selection" class="nav-link" data-scroll-target="#routing-dynamic-method-selection">2) Routing : Dynamic Method Selection</a></li>
+  <li><a href="#parallelization-computational-efficiency" id="toc-parallelization-computational-efficiency" class="nav-link" data-scroll-target="#parallelization-computational-efficiency">3) Parallelization : Computational Efficiency</a></li>
+  <li><a href="#evaluator-optimizer-quality-control" id="toc-evaluator-optimizer-quality-control" class="nav-link" data-scroll-target="#evaluator-optimizer-quality-control">4) Evaluator-Optimizer : Quality Control</a></li>
+  </ul></li>
+  <li><a href="#evaluation-framework" id="toc-evaluation-framework" class="nav-link" data-scroll-target="#evaluation-framework">Evaluation Framework</a>
+  <ul class="collapse">
+  <li><a href="#golden-datasets" id="toc-golden-datasets" class="nav-link" data-scroll-target="#golden-datasets">Golden Datasets</a></li>
+  <li><a href="#metrics-design" id="toc-metrics-design" class="nav-link" data-scroll-target="#metrics-design">Metrics Design</a></li>
+  <li><a href="#validation-protocol" id="toc-validation-protocol" class="nav-link" data-scroll-target="#validation-protocol">Validation Protocol</a></li>
+  <li><a href="#implementation-considerations" id="toc-implementation-considerations" class="nav-link" data-scroll-target="#implementation-considerations"><strong>Implementation Considerations</strong></a></li>
+  <li><a href="#identifying-high-value-applications" id="toc-identifying-high-value-applications" class="nav-link" data-scroll-target="#identifying-high-value-applications"><strong>Identifying High-Value Applications</strong></a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>Large Language Models (LLMs) are transforming how analytics professionals solve complex business problems. Agents and agentic workflows represent two distinct approaches to leveraging LLMs.</p>
+<p><strong>Agentic workflows</strong> are systems where LLMs and tools are orchestrated through predefined code paths. <strong>Agents</strong>, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.</p>
+<p>This article focuses on agentic workflows—a systematic, controllable approach suited to analytics applications in highly regulated industries.</p>
+<section id="agents-vs-agentic-workflows" class="level2">
+<h2 class="anchored" data-anchor-id="agents-vs-agentic-workflows">Agents vs Agentic Workflows</h2>
+<p>Consider automated report generation for Enhanced Due Diligence in financial services. An <strong>agentic workflow</strong> predefines the sequence:</p>
+<ol type="1">
+<li>query specific data sources</li>
+<li>Synthesize &amp; analyze data to verify departure from expected behavior.</li>
+<li>Prepare a report in line with a specific template.</li>
+</ol>
+<p>The key distinction: the sequence of tasks—which data sources to query, what analysis to perform, and the report format—are all prespecified.</p>
+<p>An agent is an LLM equipped with tools and memory to accomplish goals. Agents are open-ended—a Customer Report Agent could create Enhanced Due Diligence, fraud, credit, or marketing reports, dynamically planning and executing different workflows based on the goal.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dimension</th>
+<th style="text-align: left;">Agents</th>
+<th style="text-align: left;">Agentic Workflows</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Autonomy</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Low</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Complexity</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Low</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Motivation</td>
+<td style="text-align: left;">Goal Driven</td>
+<td style="text-align: left;">Task Driven</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Risk</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Low</td>
+</tr>
+</tbody>
+</table>
+<p>For the remainder of this post, I will focus on agentic workflows as they are the best starting point for analytics professionals looking to use AI to solve business problems in regulated domains.</p>
+</section>
+<section id="case-study-transaction-extraction-from-suspicious-activity-reports" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-transaction-extraction-from-suspicious-activity-reports">Case Study: Transaction Extraction from Suspicious Activity Reports</h2>
+<p>Financial institutions file Suspicious Activity Reports (SARs) describing potential money laundering. These narratives are unstructured text, making systematic analysis difficult.</p>
+<p>Financial Institutions can use an agentic workflow to extract structured transaction records from SAR narratives, enabling:</p>
+<ol type="1">
+<li><strong>Historical model training</strong>: Using actual suspicious activity patterns to improve transaction monitoring models<br>
+</li>
+<li><strong>Model validation</strong>: Ensuring system updates don’t miss previously-flagged patterns<br>
+</li>
+<li><strong>Network analysis</strong>: Building transaction graphs across entities mentioned in SARs</li>
+</ol>
+<p>This represents a previously impossible application—extracting structured data from complex, varied narratives at scale.</p>
+<p>Video demonstration: <a href="https://youtu.be/g6F6u9s9oGw">https://youtu.be/g6F6u9s9oGw</a></p>
+</section>
+<section id="design-patterns-for-agentic-workflows" class="level2">
+<h2 class="anchored" data-anchor-id="design-patterns-for-agentic-workflows">Design Patterns for Agentic Workflows</h2>
+<p>This application consists of two workflows</p>
+<ol type="1">
+<li>Entity and Narrative Extraction<br>
+</li>
+<li>Transaction Synthesis</li>
+</ol>
+<p>Both these workflows were built using well defined design patterns discussed below.</p>
+<section id="prompt-chaining-sequential-decomposition" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-chaining-sequential-decomposition">1) Prompt Chaining : Sequential Decomposition</h3>
+<p>This pattern is suitable if you can decompose a problem into sub-problems that can be solved sequentially.</p>
+<p>In this specific case, LLMs are involved sequentially so solve the following sub-problems in sequence.</p>
+<ul>
+<li><strong>Entity Extraction</strong>: Named entity recognition for accounts, individuals, organizations, financial institutions</li>
+<li><strong>Entity Resolution</strong>: Mapping extracted entities to canonical identifiers</li>
+<li><strong>Context Extraction</strong>: Isolating relevant narrative segments per entity</li>
+</ul>
+<p><em>Figure 1: Entity and Narrative Extraction Workflow</em> <img src="images/image1.png" class="img-fluid"></p>
+<p>This decomposition allows independent optimization and testing of each component. Each stage can be improved without affecting others, enabling modular development.</p>
+</section>
+<section id="routing-dynamic-method-selection" class="level3">
+<h3 class="anchored" data-anchor-id="routing-dynamic-method-selection">2) Routing : Dynamic Method Selection</h3>
+<p>This pattern is suitable when you have to choose between different approaches based on the specific instance of the problem being solved.</p>
+<p>A routing LLM selects the optimal approach based on input characteristics:</p>
+<ul>
+<li><strong>Direct synthesis</strong>: For small, diverse transaction sets where the LLM generates records directly</li>
+<li><strong>Simulation-based</strong>: For summarized high-volume activity using statistical methods via Python functions/tools</li>
+</ul>
+<p><em>Figure 2: Trxn Synthesis Workflow</em> <img src="images/image2.png" class="img-fluid"></p>
+</section>
+<section id="parallelization-computational-efficiency" class="level3">
+<h3 class="anchored" data-anchor-id="parallelization-computational-efficiency">3) Parallelization : Computational Efficiency</h3>
+<p>This pattern is suitable for problems that are “embarrassingly parallel”—where sub-problems have no dependencies and can be solved independently. LLMs can independently work on multiple sub-problems in parallel.</p>
+<p><em>Figure 3: Parallelized Trxn Synthesis Workflow</em></p>
+<p><img src="images/image3.png" class="img-fluid"></p>
+<p>Narratives are decomposed into independent sub-problems (e.g., activity for different accounts) processed simultaneously, then aggregated. This reduces latency from O(n) to O(1) for n independent sub-narratives and enables horizontal scaling.</p>
+</section>
+<section id="evaluator-optimizer-quality-control" class="level3">
+<h3 class="anchored" data-anchor-id="evaluator-optimizer-quality-control">4) Evaluator-Optimizer : Quality Control</h3>
+<p>This pattern is suitable for high stakes use cases where additional controls need to be in place to reduce or catch errors.</p>
+<p>In this pattern, one LLM validates another’s output—for example, verifying all entities were extracted or checking for hallucinated entities not present in the source text. Note: Newer reasoning models internalize this pattern through chain-of-thought processing, reducing the need for explicit implementation.</p>
+<p><em>Figure 4: Evaluator-Optimizer Workflow for Entity Extraction</em> <img src="images/image4.png" class="img-fluid"></p>
+<p>These four patterns can be composed together. The SAR trxn extraction application uses prompt chaining for entity extraction, routing for transaction synthesis method selection, and parallelization to process multiple sub-narratives simultaneously.</p>
+<p>Combining these patterns addresses most analytics workflow requirements across domains.</p>
+</section>
+</section>
+<section id="evaluation-framework" class="level1">
+<h1>Evaluation Framework</h1>
+<section id="golden-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="golden-datasets">Golden Datasets</h3>
+<p>To evaluate your workflows, you should invest in creating a golden dataset with inputs and expected outputs. This will require some manual effort and inputs from Subject Matter Experts depending on the domain.</p>
+<p>In this particular example:</p>
+<p><strong>Dataset</strong>: Four sample narratives from FinCEN guidance documents provided initial test cases <strong>Annotation</strong>: Subject matter experts manually extracted entities and transactions, creating ground truth<br>
+<strong>Expansion strategy</strong>: Continuously add edge cases as they emerge in production or testing</p>
+<p>The important thing is to ensure you start small and build out this golden dataset over time.</p>
+</section>
+<section id="metrics-design" class="level3">
+<h3 class="anchored" data-anchor-id="metrics-design">Metrics Design</h3>
+<p>For this use case, multiple performance dimensions are tracked to ensure comprehensive evaluation:</p>
+<p><strong>Entity Extraction:</strong></p>
+<ul>
+<li>Precision: What percentage of extracted entities are correct?<br>
+</li>
+<li>Recall: What percentage of actual entities were found?<br>
+</li>
+<li>F1 score for entity type classification (person, organization, account, financial institution)</li>
+</ul>
+<p><strong>Transaction Synthesis:</strong></p>
+<ul>
+<li>Mean Absolute Percentage Error (MAPE) for transaction amounts<br>
+</li>
+<li>Count accuracy: predicted vs.&nbsp;actual transaction count<br>
+</li>
+<li>Attribute accuracy: correctness of originator, beneficiary, channel, branch location</li>
+</ul>
+<p>Tracking and visualizing these metrics will also allow you to quickly iterate and improve.</p>
+<p>For your use case, identify the metrics that make the most sense. Track and visualize them to ensure you are improving as you iterate on your application.</p>
+</section>
+<section id="validation-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="validation-protocol">Validation Protocol</h3>
+<p><strong>Unit Testing</strong>: Each LLM call can be tested on 10-20 examples covering simple cases and known edge cases. For example, testing entity extraction on sentences with varying complexity: simple cases (“John deposited $1,000”) to complex cases with multiple entities and ambiguous references.</p>
+<p><strong>Integration Testing</strong>: End-to-end workflow tested on complete narratives to ensure components work together correctly.</p>
+<p><strong>Regression Testing</strong>: Maintain comprehensive test suite; re-run on all prompt or model changes to catch degradation.</p>
+<p><strong>Production Monitoring</strong>: Capture implicit and explicit user feedback where possible and use this to create metrics. Getting human feedback on a sample of outputs and using LLM as a judge on your full set of instances to generate metrics is also acceptable. Track metric drift over time, establish statistical control limits, and define re-validation triggers (e.g., 5% degradation in F1 score).</p>
+<p>Using an observability tool to log every interaction of your AI system is also recommended. Traces produced by these tools can be embedded, clustered and sampled to help identify failure modes you can engineer your application to address.</p>
+<p>This structured approach enables confident deployment and provides the data necessary for continuous improvement.</p>
+</section>
+<section id="implementation-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-considerations"><strong>Implementation Considerations</strong></h2>
+<p><strong>Model Selection</strong>: Start with frontier models (GPT-5, Claude 4.5, Gemini 3) to establish performance ceiling. Only after meeting quality targets should you explore cost optimization with smaller models.</p>
+<p><strong>Framework Selection</strong>: Balance abstraction with debuggability. Higher-level frameworks (Autogen, LangChain, LlamaIndex) accelerate development but may obscure failure modes. We encountered issues with automatic context window management where tool outputs exceeded limits and were silently truncated, requiring framework-level debugging.</p>
+<p><strong>Computational Cost</strong>: Track token usage and latency. The routing pattern reduced token consumption significantly by directing complex cases to a simulator rather than direct LLM synthesis. The parallelization pattern reduced latency of processing an input by more than half.</p>
+<p><strong>Prompt Engineering</strong>: Treat your prompts as code, YAML files are a good option. Version control all prompts using Git or similar systems.</p>
+</section>
+<section id="identifying-high-value-applications" class="level2">
+<h2 class="anchored" data-anchor-id="identifying-high-value-applications"><strong>Identifying High-Value Applications</strong></h2>
+<p>Target problems with these characteristics:</p>
+<ol type="1">
+<li><strong>High manual effort</strong> in data extraction, synthesis, or analysis requiring hours of human time per instance<br>
+</li>
+<li><strong>Unstructured inputs</strong> previously requiring human interpretation—text, documents, images<br>
+</li>
+<li><strong>Well-defined outputs</strong> enabling objective evaluation with clear success criteria</li>
+</ol>
+<p>The sweet spot: problems where the alternative is either prohibitively expensive human labor or simply not attempting the task at all.</p>
+<p>Examples across domains:</p>
+<p><strong>Healthcare</strong>: Medical record synthesis for clinical trials, extracting structured data from physician notes</p>
+<p><strong>Legal</strong>: Contract analysis and risk extraction from complex agreements</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The promise of AI is immense, and AI systems continue improving at a remarkable pace. However, realizing this promise in regulated environments requires thoughtful, systematic implementation.</p>
+<p><strong>Key Takeaways</strong>:</p>
+<ul>
+<li>Start with agentic workflows, not autonomous agents—predefined paths mean manageable risk<br>
+</li>
+<li>Invest in evaluation frameworks before building complex systems<br>
+</li>
+<li>Carry out systematic testing at unit, integration, and system levels following software engineering best practices<br>
+</li>
+<li>Continuously monitor for system drift and performance degradation with automated alerts<br>
+</li>
+<li>Iteratively refine prompts, workflows, and golden datasets based on production data and emerging failure modes</li>
+</ul>
+<p>The patterns and frameworks outlined in this article will help you start realizing the benefits of this transformative technology in a safe and compliant manner.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p><a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a><br>
+<a href="https://www.fincen.gov/system/files/shared/sarnarrcompletguidfinal_112003.pdf">https://www.fincen.gov/system/files/shared/sarnarrcompletguidfinal_112003.pdf</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2024, Govind G Nair</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

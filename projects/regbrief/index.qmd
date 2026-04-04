@@ -14,9 +14,25 @@ Regbrief is an automated AI newsletter service that helps builders and operators
 -   **Actionable Recommendations**: Concrete steps your institution can take to avoid similar compliance failures
 -   **Regulatory Intelligence**: Stay informed about enforcement trends and regulatory priorities
 
+## Research & Analysis
+
+### Methodology
+
+Read the [Regbrief methodology](Methodology.html) to understand the analytical framework behind each report, including how enforcement actions are reviewed, categorized, and translated into practical compliance insights.
+
 ### Sample Report
 
 See [here](sample_report.html) for the kind of report you can expect. This is an analysis of the enforcement order issued by FinCEN on December 9, 2025 against Paxful, Inc.
+
+### Latest Quarterly Analysis
+
+Regbrief also publishes periodic trend and thematic analyses across enforcement actions. The latest edition is the [Q1 2026 Enforcement Analysis](archive/enforcement_analysis_Q12026.html), which summarizes emerging themes and patterns across the quarter's enforcement activity.
+
+### Quarterly Analysis Archive
+
+This archive will expand over time as additional quarterly analyses are published.
+
+-   [Q1 2026 Enforcement Analysis](archive/enforcement_analysis_Q12026.html)
 
 ## Regulator Coverage
 

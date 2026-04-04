@@ -2601,14 +2601,14 @@
     "href": "projects/regbrief/index.html",
     "title": "Regbrief",
     "section": "",
-    "text": "Regbrief is an automated AI newsletter service that helps builders and operators in the AML and reg tech domains stay abreast of enforcement actions and penalties from regulators across the world. Regbrief monitors consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.\n\n\n\nTimely Alerts: Automatic monitoring of new consent orders and enforcement actions\nAI-Powered Analysis: Deep insights into what went wrong and why institutions were sanctioned\nActionable Recommendations: Concrete steps your institution can take to avoid similar compliance failures\nRegulatory Intelligence: Stay informed about enforcement trends and regulatory priorities\n\n\n\n\nSee here for the kind of report you can expect. This is an analysis of the enforcement order issued by FinCEN on December 9, 2025 against Paxful, Inc."
+    "text": "Regbrief is an automated AI newsletter service that helps builders and operators in the AML and reg tech domains stay abreast of enforcement actions and penalties from regulators across the world. Regbrief monitors consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.\n\n\n\nTimely Alerts: Automatic monitoring of new consent orders and enforcement actions\nAI-Powered Analysis: Deep insights into what went wrong and why institutions were sanctioned\nActionable Recommendations: Concrete steps your institution can take to avoid similar compliance failures\nRegulatory Intelligence: Stay informed about enforcement trends and regulatory priorities"
   },
   {
     "objectID": "projects/regbrief/index.html#about-regbrief",
     "href": "projects/regbrief/index.html#about-regbrief",
     "title": "Regbrief",
     "section": "",
-    "text": "Regbrief is an automated AI newsletter service that helps builders and operators in the AML and reg tech domains stay abreast of enforcement actions and penalties from regulators across the world. Regbrief monitors consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.\n\n\n\nTimely Alerts: Automatic monitoring of new consent orders and enforcement actions\nAI-Powered Analysis: Deep insights into what went wrong and why institutions were sanctioned\nActionable Recommendations: Concrete steps your institution can take to avoid similar compliance failures\nRegulatory Intelligence: Stay informed about enforcement trends and regulatory priorities\n\n\n\n\nSee here for the kind of report you can expect. This is an analysis of the enforcement order issued by FinCEN on December 9, 2025 against Paxful, Inc."
+    "text": "Regbrief is an automated AI newsletter service that helps builders and operators in the AML and reg tech domains stay abreast of enforcement actions and penalties from regulators across the world. Regbrief monitors consent orders issued by key financial regulators, analyze enforcement actions using advanced AI, and deliver actionable insights directly to your inbox.\n\n\n\nTimely Alerts: Automatic monitoring of new consent orders and enforcement actions\nAI-Powered Analysis: Deep insights into what went wrong and why institutions were sanctioned\nActionable Recommendations: Concrete steps your institution can take to avoid similar compliance failures\nRegulatory Intelligence: Stay informed about enforcement trends and regulatory priorities"
   },
   {
     "objectID": "projects/regbrief/index.html#regulator-coverage",
@@ -2735,5 +2735,54 @@
     "title": "Agentic Workflows in Regulated Industries",
     "section": "References",
     "text": "References\nhttps://www.anthropic.com/engineering/building-effective-agents\nhttps://www.fincen.gov/system/files/shared/sarnarrcompletguidfinal_112003.pdf"
+  },
+  {
+    "objectID": "projects/regbrief/index.html#research-analysis",
+    "href": "projects/regbrief/index.html#research-analysis",
+    "title": "Regbrief",
+    "section": "Research & Analysis",
+    "text": "Research & Analysis\n\nMethodology\nRead the Regbrief methodology to understand the analytical framework behind each report, including how enforcement actions are reviewed, categorized, and translated into practical compliance insights.\n\n\nSample Report\nSee here for the kind of report you can expect. This is an analysis of the enforcement order issued by FinCEN on December 9, 2025 against Paxful, Inc.\n\n\nLatest Quarterly Analysis\nRegbrief also publishes periodic trend and thematic analyses across enforcement actions. The latest edition is the Q1 2026 Enforcement Analysis, which summarizes emerging themes and patterns across the quarter’s enforcement activity.\n\n\nQuarterly Analysis Archive\nThis archive will expand over time as additional quarterly analyses are published.\n\nQ1 2026 Enforcement Analysis"
+  },
+  {
+    "objectID": "AGENTS.html",
+    "href": "AGENTS.html",
+    "title": "Repository Guidelines",
+    "section": "",
+    "text": "This repository is a Quarto website. Core site configuration lives in _quarto.yml, the homepage is index.qmd, and shared styling is in styles.css. Blog content lives under blog/ in dated folders such as blog/2026-02-13-agentic-workflows/, each with an index.qmd, index.md, or index.markdown plus local images. Project pages live under projects/. Generated output is written to _site/; execution artifacts and frozen assets may appear in _freeze/. R package state is tracked in renv.lock and bootstrapped from renv/.\n\n\n\n\nquarto preview runs the site locally with live reload.\nquarto render rebuilds the full website into _site/.\nquarto render blog/2026-02-13-agentic-workflows/index.qmd renders a single page while editing.\nR -q -e \"renv::restore()\" restores the R environment from renv.lock.\nquarto check is useful before publishing to confirm the local Quarto setup is healthy.\n\n\n\n\nUse Quarto Markdown with short sections, clear YAML front matter, and repository-relative asset paths. New posts should follow blog/YYYY-MM-DD-slug/index.qmd. Keep dates in filenames and front matter aligned. Prefer lowercase, hyphen-separated directory names and keep images beside the post that uses them. Use 2-space indentation in YAML and avoid unnecessary custom HTML when standard Quarto syntax is sufficient.\n\n\n\nThere is no dedicated automated test suite in this repository. Treat rendering as the primary validation step: run quarto render or render the edited page directly, then inspect the generated page in _site/. For posts with executable code, confirm figures, citations, and links render cleanly. Do not hand-edit _site/ unless you intentionally want generated artifacts committed.\n\n\n\nRecent commits use short, descriptive messages such as Added support for SGP, NL, FR and DE or Updated README for regbrief. Follow that pattern: lead with the content area or feature changed, keep the subject concise, and use the imperative or simple past consistently. Pull requests should include a brief summary, affected paths, screenshots for visible site changes, and notes on whether _site/ or _freeze/ were intentionally updated."
+  },
+  {
+    "objectID": "AGENTS.html#project-structure-module-organization",
+    "href": "AGENTS.html#project-structure-module-organization",
+    "title": "Repository Guidelines",
+    "section": "",
+    "text": "This repository is a Quarto website. Core site configuration lives in _quarto.yml, the homepage is index.qmd, and shared styling is in styles.css. Blog content lives under blog/ in dated folders such as blog/2026-02-13-agentic-workflows/, each with an index.qmd, index.md, or index.markdown plus local images. Project pages live under projects/. Generated output is written to _site/; execution artifacts and frozen assets may appear in _freeze/. R package state is tracked in renv.lock and bootstrapped from renv/."
+  },
+  {
+    "objectID": "AGENTS.html#build-test-and-development-commands",
+    "href": "AGENTS.html#build-test-and-development-commands",
+    "title": "Repository Guidelines",
+    "section": "",
+    "text": "quarto preview runs the site locally with live reload.\nquarto render rebuilds the full website into _site/.\nquarto render blog/2026-02-13-agentic-workflows/index.qmd renders a single page while editing.\nR -q -e \"renv::restore()\" restores the R environment from renv.lock.\nquarto check is useful before publishing to confirm the local Quarto setup is healthy."
+  },
+  {
+    "objectID": "AGENTS.html#coding-style-naming-conventions",
+    "href": "AGENTS.html#coding-style-naming-conventions",
+    "title": "Repository Guidelines",
+    "section": "",
+    "text": "Use Quarto Markdown with short sections, clear YAML front matter, and repository-relative asset paths. New posts should follow blog/YYYY-MM-DD-slug/index.qmd. Keep dates in filenames and front matter aligned. Prefer lowercase, hyphen-separated directory names and keep images beside the post that uses them. Use 2-space indentation in YAML and avoid unnecessary custom HTML when standard Quarto syntax is sufficient."
+  },
+  {
+    "objectID": "AGENTS.html#testing-guidelines",
+    "href": "AGENTS.html#testing-guidelines",
+    "title": "Repository Guidelines",
+    "section": "",
+    "text": "There is no dedicated automated test suite in this repository. Treat rendering as the primary validation step: run quarto render or render the edited page directly, then inspect the generated page in _site/. For posts with executable code, confirm figures, citations, and links render cleanly. Do not hand-edit _site/ unless you intentionally want generated artifacts committed."
+  },
+  {
+    "objectID": "AGENTS.html#commit-pull-request-guidelines",
+    "href": "AGENTS.html#commit-pull-request-guidelines",
+    "title": "Repository Guidelines",
+    "section": "",
+    "text": "Recent commits use short, descriptive messages such as Added support for SGP, NL, FR and DE or Updated README for regbrief. Follow that pattern: lead with the content area or feature changed, keep the subject concise, and use the imperative or simple past consistently. Pull requests should include a brief summary, affected paths, screenshots for visible site changes, and notes on whether _site/ or _freeze/ were intentionally updated."
   }
 ]

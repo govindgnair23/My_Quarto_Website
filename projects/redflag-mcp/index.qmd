@@ -1,0 +1,106 @@
+---
+title: "Redflag MCP"
+subtitle: "AML Red Flag Knowledge as an MCP Tool"
+---
+
+## About Redflag MCP
+
+Redflag MCP is an [MCP](https://modelcontextprotocol.io/) server that turns a curated, sourced corpus of AML red flags from regulators around the world into a queryable tool you can use directly inside Claude and ChatGPT. Ask plain-language questions about suspicious activity indicators, and the server returns ranked, citation-backed red flags drawn from public regulator guidance.
+
+It is designed for AML analysts, financial-crime investigators, model-risk reviewers, fintech compliance leads, and reg-tech builders who want fast, sourced access to the global body of AML red flag guidance without leaving their chat client.
+
+### What You Get
+
+-   **Ranked relevance search** over a vector-indexed corpus of AML red flags
+-   **Exact metadata filters** — regulator, jurisdiction, product type, customer profile, geography, typology family, transaction pattern, risk level, issued date
+-   **Citations on every result** — each red flag links back to the originating regulator document
+-   **Source browsing** — list and inspect the underlying regulator documents the corpus is built from
+-   **Zero setup** — no API keys, no installation, just a connector URL
+
+## Hosted Connector URL
+
+```text
+https://redflag-mcp.up.railway.app/mcp
+```
+
+This is the URL you will paste into Claude or ChatGPT when adding the connector.
+
+## Connecting from Claude
+
+Claude supports adding custom MCP connectors on both [claude.ai](https://claude.ai) and the Claude Desktop app.
+
+1.  Open **Settings → Connectors** (on claude.ai) or **Settings → Connectors** (in Claude Desktop).
+2.  Click **Add custom connector**.
+3.  Name it `Redflag MCP` and paste the URL above as the server URL.
+4.  Save and enable the connector.
+5.  In a new chat, make sure the connector is toggled on, then ask a question — for example, *"What AML red flags apply to TBML invoice mismatch?"*
+
+Claude will discover the available tools (`search_red_flags`, `filter_red_flags`, `list_filters`, `list_sources`, `get_red_flag`, and a routing helper) and call them as needed to answer.
+
+## Connecting from ChatGPT (Developer Mode)
+
+ChatGPT supports custom MCP connectors through Developer Mode.
+
+1.  In ChatGPT, open **Settings → Connectors** and enable **Developer mode**.
+2.  Under **Developer mode**, choose **Add custom connector**.
+3.  Name it `Redflag MCP`, paste the URL above, and save.
+4.  Start a new chat, enable the Redflag MCP connector for that conversation, and ask an AML red flag question.
+
+ChatGPT will negotiate the MCP handshake, list the available tools, and invoke them to answer your question with sourced results.
+
+## Example Questions to Try
+
+Once connected from either client, try questions such as:
+
+-   *What red flags apply to TBML invoice mismatch?*
+-   *Which red flags cover bulk cash movement to Mexico?*
+-   *Show medium-risk fraud-nexus red flags for depository products.*
+-   *List the red flag sources covering virtual assets.*
+-   *Give me FINTRAC red flags related to human trafficking.*
+-   *What red flags has FinCEN issued since 2024?*
+-   *Red flags for charities or nonprofits operating across the southwest border.*
+
+For broad or ambiguous questions, the server includes a classifier tool that helps the chat client decide whether to ask a quick follow-up (product/channel, industry, geography, customer profile) before searching, so the answer stays grounded in your actual scenario.
+
+## Regulator Coverage
+
+The corpus is built from public guidance, advisories, alerts, and examination manuals issued by AML and financial-crime regulators, including:
+
+**United States**
+
+-   **FinCEN** (Financial Crimes Enforcement Network)
+-   **OFAC** (Office of Foreign Assets Control)
+-   **OCC** (Office of the Comptroller of the Currency)
+-   **FFIEC** (Federal Financial Institutions Examination Council)
+-   **FDIC** (Federal Deposit Insurance Corporation)
+-   **FINRA** (Financial Industry Regulatory Authority)
+-   **NYDFS** (New York Department of Financial Services)
+
+**International**
+
+-   **FATF** (Financial Action Task Force)
+-   **Wolfsberg Group**
+
+**Canada**
+
+-   **FINTRAC** (Financial Transactions and Reports Analysis Centre of Canada)
+
+**United Kingdom**
+
+-   **FCA** (Financial Conduct Authority)
+-   **HM Treasury / OFSI**
+
+**Europe**
+
+-   **EBA** (European Banking Authority)
+-   **ACPR** (France)
+-   **DNB** (Netherlands)
+-   **BaFIN** (Germany)
+
+**Asia–Pacific**
+
+-   **MAS** (Monetary Authority of Singapore)
+-   **HKMA** (Hong Kong Monetary Authority)
+-   **AUSTRAC** (Australia)
+
+Coverage expands as new advisories and guidance are published and ingested.

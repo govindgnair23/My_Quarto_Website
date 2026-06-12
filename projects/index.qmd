@@ -18,6 +18,14 @@ An agentic workflow to extract transaction-level details from SAR narratives, un
 [Learn More →](/projects/sars-to-trxns/)
 :::
 
+::: project-card
+### [Redflag MCP](/projects/redflag-mcp/)
+
+An MCP server that puts a curated, sourced corpus of AML red flags from global regulators at your fingertips inside Claude and ChatGPT — ranked search, exact metadata filters, and citations on every result.
+
+[Learn More →](/projects/redflag-mcp/)
+:::
+
 ```{=html}
 <style>
 .project-card {

@@ -48,6 +48,56 @@ ChatGPT supports custom MCP connectors through Developer Mode.
 
 ChatGPT will negotiate the MCP handshake, list the available tools, and invoke them to answer your question with sourced results.
 
+## Connecting from Claude Code
+
+[Claude Code](https://docs.claude.com/en/docs/claude-code) is Anthropic's terminal-based coding agent and supports remote MCP servers natively.
+
+Add the hosted connector with a single command:
+
+```bash
+claude mcp add --transport http redflag-mcp https://redflag-mcp.up.railway.app/mcp
+```
+
+Verify the registration:
+
+```bash
+claude mcp list
+claude mcp get redflag-mcp
+```
+
+Then start a Claude Code session and reference the server by name, for example:
+
+```text
+Use the redflag-mcp MCP server to list available AML red flag filters,
+then find red flags for TBML invoice mismatch.
+```
+
+To remove the connector later: `claude mcp remove redflag-mcp`.
+
+## Connecting from Codex
+
+[Codex](https://developers.openai.com/codex/cli) (the OpenAI CLI coding agent) also supports remote MCP servers.
+
+Register the hosted connector:
+
+```bash
+codex mcp add redflag-mcp --url https://redflag-mcp.up.railway.app/mcp
+```
+
+Verify:
+
+```bash
+codex mcp list
+codex mcp get redflag-mcp
+```
+
+Then in a new Codex thread, invoke it by name:
+
+```text
+Use the redflag-mcp MCP server. List the available AML red flag filters,
+then search for red flags related to bulk cash movement to Mexico.
+```
+
 ## Example Questions to Try
 
 Once connected from either client, try questions such as:

@@ -2833,5 +2833,19 @@
     "title": "Redflag MCP",
     "section": "Regulator Coverage",
     "text": "Regulator Coverage\nThe corpus is built from public guidance, advisories, alerts, and examination manuals issued by AML and financial-crime regulators, including:\nUnited States\n\nFinCEN (Financial Crimes Enforcement Network)\nOFAC (Office of Foreign Assets Control)\nOCC (Office of the Comptroller of the Currency)\nFFIEC (Federal Financial Institutions Examination Council)\nFDIC (Federal Deposit Insurance Corporation)\nFINRA (Financial Industry Regulatory Authority)\nNYDFS (New York Department of Financial Services)\n\nInternational\n\nFATF (Financial Action Task Force)\nWolfsberg Group\n\nCanada\n\nFINTRAC (Financial Transactions and Reports Analysis Centre of Canada)\n\nUnited Kingdom\n\nFCA (Financial Conduct Authority)\nHM Treasury / OFSI\n\nEurope\n\nEBA (European Banking Authority)\nACPR (France)\nDNB (Netherlands)\nBaFIN (Germany)\n\nAsia–Pacific\n\nMAS (Monetary Authority of Singapore)\nHKMA (Hong Kong Monetary Authority)\nAUSTRAC (Australia)\n\nCoverage expands as new advisories and guidance are published and ingested."
+  },
+  {
+    "objectID": "projects/redflag-mcp/index.html#connecting-from-claude-code",
+    "href": "projects/redflag-mcp/index.html#connecting-from-claude-code",
+    "title": "Redflag MCP",
+    "section": "Connecting from Claude Code",
+    "text": "Connecting from Claude Code\nClaude Code is Anthropic’s terminal-based coding agent and supports remote MCP servers natively.\nAdd the hosted connector with a single command:\nclaude mcp add --transport http redflag-mcp https://redflag-mcp.up.railway.app/mcp\nVerify the registration:\nclaude mcp list\nclaude mcp get redflag-mcp\nThen start a Claude Code session and reference the server by name, for example:\nUse the redflag-mcp MCP server to list available AML red flag filters,\nthen find red flags for TBML invoice mismatch.\nTo remove the connector later: claude mcp remove redflag-mcp."
+  },
+  {
+    "objectID": "projects/redflag-mcp/index.html#connecting-from-codex",
+    "href": "projects/redflag-mcp/index.html#connecting-from-codex",
+    "title": "Redflag MCP",
+    "section": "Connecting from Codex",
+    "text": "Connecting from Codex\nCodex (the OpenAI CLI coding agent) also supports remote MCP servers.\nRegister the hosted connector:\ncodex mcp add redflag-mcp --url https://redflag-mcp.up.railway.app/mcp\nVerify:\ncodex mcp list\ncodex mcp get redflag-mcp\nThen in a new Codex thread, invoke it by name:\nUse the redflag-mcp MCP server. List the available AML red flag filters,\nthen search for red flags related to bulk cash movement to Mexico."
   }
 ]

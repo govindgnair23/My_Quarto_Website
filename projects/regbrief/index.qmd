@@ -9,10 +9,10 @@ Regbrief is an automated AI newsletter service that helps builders and operators
 
 ### What You'll Get
 
--   **Timely Alerts**: Automatic monitoring of new consent orders and enforcement actions
--   **AI-Powered Analysis**: Deep insights into what went wrong and why institutions were sanctioned
--   **Actionable Recommendations**: Concrete steps your institution can take to avoid similar compliance failures
--   **Regulatory Intelligence**: Stay informed about enforcement trends and regulatory priorities
+- **Timely Alerts**: Automatic monitoring of new consent orders and enforcement actions
+- **AI-Powered Analysis**: Deep insights into what went wrong and why institutions were sanctioned
+- **Actionable Recommendations**: Concrete steps your institution can take to avoid similar compliance failures
+- **Regulatory Intelligence**: Stay informed about enforcement trends and regulatory priorities
 
 ## Research & Analysis
 
@@ -32,7 +32,7 @@ Regbrief also publishes periodic trend and thematic analyses across enforcement 
 
 This archive will expand over time as additional quarterly analyses are published.
 
--   [Q1 2026 Enforcement Analysis](archive/enforcement_analysis_Q12026.html)
+- [Q1 2026 Enforcement Analysis](archive/enforcement_analysis_Q12026.html)
 
 ## Regulator Coverage
 
@@ -40,60 +40,61 @@ Regbrief currently monitors enforcement actions from the following regulators:
 
 **United States:**
 
--   **OFAC** (Office of Foreign Assets Control)
--   **OCC** (Office of the Comptroller of the Currency)
--   **FINRA** (Financial Industry Regulatory Authority)
--   **FDIC** (Federal Deposit Insurance Corporation)
--   **NYDFS** (New York Department of Financial Services)
--   **SEC** (Securities and Exchange Commission)
+- **OFAC** (Office of Foreign Assets Control)
+- **OCC** (Office of the Comptroller of the Currency)
+- **FINRA** (Financial Industry Regulatory Authority)
+- **FDIC** (Federal Deposit Insurance Corporation)
+- **NYDFS** (New York Department of Financial Services)
+- **SEC** (Securities and Exchange Commission)
 
 **Canada:**
 
--   **FINTRAC** (Financial Transactions and Reports Analysis Centre of Canada)
+- **FINTRAC** (Financial Transactions and Reports Analysis Centre of Canada)
 
 **United Kingdom:**
 
--   **FCA** (Financial Conduct Authority)
+- **FCA** (Financial Conduct Authority)
+- OFSI (Office of Financial Sanctions Implementation)
 
 **Singapore:**
 
--   **MAS** (Monetary Authority of Singapore)
+- **MAS** (Monetary Authority of Singapore)
 
 **France:**
 
--   **ACPR** (Autorité de Contrôle Prudentiel et de Résolution)
+- **ACPR** (Autorité de Contrôle Prudentiel et de Résolution)
 
 **Netherlands:**
 
--   **DNB** (De Nederlandsche Bank)
+- **DNB** (De Nederlandsche Bank)
 
 **Germany:**
 
--   **BaFIN** (Bundesanstalt für Finanzdienstleistungsaufsicht)
+- **BaFIN** (Bundesanstalt für Finanzdienstleistungsaufsicht)
 
 **Australia:**
 
--   **AUSTRAC** (Australian Transaction Reports and Analysis Centre)
+- **AUSTRAC** (Australian Transaction Reports and Analysis Centre)
 
 **Hong Kong:**
 
--   **HKMA** (Hong Kong Monetary Authority)
+- **HKMA** (Hong Kong Monetary Authority)
 
 ## Subscribe to Regbrief
 
 Stay informed about regulatory enforcement actions and protect your institution from compliance risks.
 
-::::::::::::::: {#subscription-container}
+::::::::::::::::: {#subscription-container}
 <form id="regbrief-form" class="subscription-form">
 
 ::: form-group
 <label for="email">Email Address \*</label> <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required aria-label="Email address">
 :::
 
-:::::::::::: form-group
+:::::::::::::: form-group
 <label>Select Countries of Interest \*</label>
 
-:::::::::: checkbox-group
+:::::::::::: checkbox-group
 ::: form-check
 <input type="checkbox" id="country-us" name="country" value="US" class="form-check-input"> <label for="country-us" class="form-check-label">United States</label>
 :::
@@ -129,12 +130,12 @@ Stay informed about regulatory enforcement actions and protect your institution 
 ::: form-check
 <input type="checkbox" id="country-hongkong" name="country" value="HK" class="form-check-input"> <label for="country-hongkong" class="form-check-label">Hong Kong</label>
 :::
-::::::::::
+::::::::::::
 
 ::: {#country-error .error-message style="display: none;"}
 Please select at least one country
 :::
-::::::::::::
+::::::::::::::
 
 <button type="submit" class="btn btn-primary" id="submit-btn">
 
@@ -146,7 +147,7 @@ Subscribe
 :::
 
 </form>
-:::::::::::::::
+:::::::::::::::::
 
 <!-- Bootstrap Modal for confirmation -->
 

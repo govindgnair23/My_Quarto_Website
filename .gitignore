@@ -12,3 +12,4 @@ renv/cache/
 CLAUDE.md
 CLAUDE.html
 AGENTS.md
+**/*.quarto_ipynb

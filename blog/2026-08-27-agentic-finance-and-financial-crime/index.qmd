@@ -1,0 +1,32 @@
+---
+title: "Agentic Finance and Financial Crime"
+date: "2026-08-27"
+categories: [AI, Anti Money Laundering]
+description: "As AI agents gain autonomy over financial transactions, the financial crime attack surface expands dramatically — and so must our defenses."
+---
+
+The "Hugging Face" incident has been a wake-up call for many to the cybersecurity risks created by AI agents operating and collaborating at machine speed.
+
+Today, 118 companies signed an [open letter](https://openai.com/collective-cyberdefense/) to call for collective action on cyberdefense.
+
+Like cybersecurity, fraud and financial crime is a constant tug of war between attackers and defenders.
+
+As agents become more capable and climb the levels of autonomy — eventually operating businesses, negotiating with and paying suppliers, making and accepting payments, and balancing their own books — the financial crime attack surface also expands dramatically.
+
+The canary in the coal mine might have been an incident from November 2025.
+
+On November 17, 2025, payments using the [x402 protocol](https://www.coindesk.com/markets/2026/03/11/coinbase-backed-ai-payments-protocol-wants-to-fix-micropayment-but-demand-is-just-not-there-yet) — which lets agents pay for an API call in stablecoins over HTTP — suddenly peaked at 19% of all transactions on the Base network. Subsequent analysis suggested that a significant share of the activity was wash trading by participants seeking to earn promotional crypto rewards and to inflate metrics.
+
+Even though none of it was money laundering, it is not hard to see how it rhymes.
+
+A bad actor sets up a fake, agent-enabled storefront. Multiple buyer agents, funded by wallets controlled by the same actor, purchase ostensibly legitimate API services from the seller agent. Dirty money gets laundered into business revenue.
+
+What makes this concerning is that an agent can rapidly orchestrate payments across crypto and fiat rails while easily adapting to changes in reporting limits and thresholds.
+
+One might think the solution here is to discard traditional rules in favor of models. However, the real problem may be that the entire anti-financial crime apparatus — with humans in every loop — has been designed to detect activity orchestrated by humans operating at human speed.
+
+The cybersecurity industry's response to risks in this new era seems to be agentic red teaming and fully automated vulnerability detection and patching without humans in the loop.
+
+To mitigate financial crime risks in this new era, something similar might be required: agents continuously looking for vulnerabilities which other agents then remediate, and even collaboration between agents across institutions.
+
+As [Ben Thompson notes](https://stratechery.com/2026/autonomy-and-innovation/), greater autonomy unlocks new kinds of innovation — but also new kinds of risk. In a world where financial crime becomes agentic, anti-financial crime may not have another choice.

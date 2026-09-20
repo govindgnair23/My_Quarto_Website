@@ -1,0 +1,1001 @@
+case_number,model,order,label,difficulty,probability_match,probability_correct,predicted_label,correct,extraction_method
+case-001,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-001,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-001,GLM 5.3 Flash,published,match,easy,0.99919591418058518,0.99919591418058518,match,true,token_logprob
+case-001,GLM 5.3 Flash,swapped,match,easy,0.99986017794509119,0.99986017794509119,match,true,token_logprob
+case-001,Kimi K3,published,match,easy,0.99996879808798189,0.99996879808798189,match,true,token_logprob
+case-001,Kimi K3,swapped,match,easy,0.99994855779963199,0.99994855779963199,match,true,token_logprob
+case-001,Grok 4.3,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-001,Grok 4.3,swapped,match,easy,0.97068777571438514,0.97068777571438514,match,true,token_logprob
+case-001,TypeSafe Jev 1.13,published,match,easy,0.90000000000000002,0.90000000000000002,match,true,native_binary_probability
+case-001,TypeSafe Jev 1.13,swapped,match,easy,0.92000000000000004,0.92000000000000004,match,true,native_binary_probability
+case-002,GPT-5.6 Luna,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-002,GPT-5.6 Luna,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-002,GLM 5.3 Flash,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-002,GLM 5.3 Flash,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-002,Kimi K3,published,match,hard,0.00012339453033588087,0.00012339453033588087,non_match,false,token_logprob
+case-002,Kimi K3,swapped,match,hard,0.014063626211295015,0.014063626211295015,non_match,false,token_logprob
+case-002,Grok 4.3,published,match,hard,0.022977370202732616,0.022977370202732616,non_match,false,token_logprob
+case-002,Grok 4.3,swapped,match,hard,0.01590638471421078,0.01590638471421078,non_match,false,token_logprob
+case-002,TypeSafe Jev 1.13,published,match,hard,0.26000000000000001,0.26000000000000001,non_match,false,native_binary_probability
+case-002,TypeSafe Jev 1.13,swapped,match,hard,0.34000000000000002,0.34000000000000002,non_match,false,native_binary_probability
+case-003,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-003,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-003,GLM 5.3 Flash,published,match,easy,0.99937366585773968,0.99937366585773968,match,true,token_logprob
+case-003,GLM 5.3 Flash,swapped,match,easy,0.99929032975726406,0.99929032975726406,match,true,token_logprob
+case-003,Kimi K3,published,match,easy,0.99992515379793523,0.99992515379793523,match,true,token_logprob
+case-003,Kimi K3,swapped,match,easy,0.99993394785448497,0.99993394785448497,match,true,token_logprob
+case-003,Grok 4.3,published,match,easy,0.99807326535592533,0.99807326535592533,match,true,token_logprob
+case-003,Grok 4.3,swapped,match,easy,0.99539042798300781,0.99539042798300781,match,true,token_logprob
+case-003,TypeSafe Jev 1.13,published,match,easy,0.91000000000000003,0.91000000000000003,match,true,native_binary_probability
+case-003,TypeSafe Jev 1.13,swapped,match,easy,0.93999999999999995,0.93999999999999995,match,true,native_binary_probability
+case-004,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-004,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-004,GLM 5.3 Flash,published,non_match,easy,0.0003353501520287862,0.99966464984797121,non_match,true,token_logprob
+case-004,GLM 5.3 Flash,swapped,non_match,easy,0.0075772412398472707,0.99242275876015273,non_match,true,token_logprob
+case-004,Kimi K3,published,non_match,easy,0.0001795279837064371,0.99982047201629354,non_match,true,token_logprob
+case-004,Kimi K3,swapped,non_match,easy,0.00023050671738406795,0.99976949328261588,non_match,true,token_logprob
+case-004,Grok 4.3,published,non_match,easy,0.0031726828785665425,0.99682731712143346,non_match,true,token_logprob
+case-004,Grok 4.3,swapped,non_match,easy,0.0024726231106924584,0.99752737688930759,non_match,true,token_logprob
+case-004,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-004,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-005,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-005,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-005,GLM 5.3 Flash,published,non_match,easy,0.0021827169635953219,0.99781728303640471,non_match,true,token_logprob
+case-005,GLM 5.3 Flash,swapped,non_match,easy,0.0040701374799472076,0.99592986252005278,non_match,true,token_logprob
+case-005,Kimi K3,published,non_match,easy,6.6052170613287967e-05,0.99993394782938672,non_match,true,token_logprob
+case-005,Kimi K3,swapped,non_match,easy,2.4300235154360669e-05,0.99997569976484568,non_match,true,token_logprob
+case-005,Grok 4.3,published,non_match,easy,0.0031726828196582115,0.99682731718034179,non_match,true,token_logprob
+case-005,Grok 4.3,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-005,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-005,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-006,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-006,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-006,GLM 5.3 Flash,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-006,GLM 5.3 Flash,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-006,Kimi K3,published,non_match,medium,0.00029595705729787278,0.9997040429427021,non_match,true,token_logprob
+case-006,Kimi K3,swapped,non_match,medium,0.025957356186453957,0.97404264381354599,non_match,true,token_logprob
+case-006,Grok 4.3,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-006,Grok 4.3,swapped,non_match,medium,0.0059110685990329771,0.99408893140096699,non_match,true,token_logprob
+case-006,TypeSafe Jev 1.13,published,non_match,medium,0.39000000000000001,0.60999999999999999,non_match,true,native_binary_probability
+case-006,TypeSafe Jev 1.13,swapped,non_match,medium,0.32000000000000001,0.67999999999999994,non_match,true,native_binary_probability
+case-007,GPT-5.6 Luna,published,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-007,GPT-5.6 Luna,swapped,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-007,GLM 5.3 Flash,published,match,medium,0.53120935853065143,0.53120935853065143,match,true,token_logprob
+case-007,GLM 5.3 Flash,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-007,Kimi K3,published,match,medium,0.99999550481738764,0.99999550481738764,match,true,token_logprob
+case-007,Kimi K3,swapped,match,medium,0.99999627336161023,0.99999627336161023,match,true,token_logprob
+case-007,Grok 4.3,published,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-007,Grok 4.3,swapped,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-007,TypeSafe Jev 1.13,published,match,medium,0.34000000000000002,0.34000000000000002,non_match,false,native_binary_probability
+case-007,TypeSafe Jev 1.13,swapped,match,medium,0.75,0.75,match,true,native_binary_probability
+case-008,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-008,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-008,GLM 5.3 Flash,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-008,GLM 5.3 Flash,swapped,non_match,hard,0.99899999999999989,0.0010000000000001119,match,false,single_label_default_0.999
+case-008,Kimi K3,published,non_match,hard,0.001926734682557699,0.99807326531744234,non_match,true,token_logprob
+case-008,Kimi K3,swapped,non_match,hard,0.0024726230086442218,0.99752737699135574,non_match,true,token_logprob
+case-008,Grok 4.3,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-008,Grok 4.3,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-008,TypeSafe Jev 1.13,published,non_match,hard,0.23999999999999999,0.76000000000000001,non_match,true,native_binary_probability
+case-008,TypeSafe Jev 1.13,swapped,non_match,hard,0.28999999999999998,0.70999999999999996,non_match,true,native_binary_probability
+case-009,GPT-5.6 Luna,published,match,hard,0.30491819842436069,0.30491819842436069,non_match,false,token_logprob
+case-009,GPT-5.6 Luna,swapped,match,hard,0.063751871227057444,0.063751871227057444,non_match,false,token_logprob
+case-009,GLM 5.3 Flash,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-009,GLM 5.3 Flash,swapped,match,hard,0.62245931719454162,0.62245931719454162,match,true,token_logprob
+case-009,Kimi K3,published,match,hard,0.99994855778625791,0.99994855778625791,match,true,token_logprob
+case-009,Kimi K3,swapped,match,hard,0.9999646437450157,0.9999646437450157,match,true,token_logprob
+case-009,Grok 4.3,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-009,Grok 4.3,swapped,match,hard,0.025957358233871998,0.025957358233871998,non_match,false,token_logprob
+case-009,TypeSafe Jev 1.13,published,match,hard,0.48999999999999999,0.48999999999999999,non_match,false,native_binary_probability
+case-009,TypeSafe Jev 1.13,swapped,match,hard,0.75,0.75,match,true,native_binary_probability
+case-010,GPT-5.6 Luna,published,match,hard,0.090594548156270049,0.090594548156270049,non_match,false,token_logprob
+case-010,GPT-5.6 Luna,swapped,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-010,GLM 5.3 Flash,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-010,GLM 5.3 Flash,swapped,match,hard,0.017986209040909661,0.017986209040909661,non_match,false,token_logprob
+case-010,Kimi K3,published,match,hard,4.0063687421757056e-05,4.0063687421757056e-05,non_match,false,token_logprob
+case-010,Kimi K3,swapped,match,hard,0.99989110303879747,0.99989110303879747,match,true,token_logprob
+case-010,Grok 4.3,published,match,hard,0.029312230433368995,0.029312230433368995,non_match,false,token_logprob
+case-010,Grok 4.3,swapped,match,hard,0.020332354344410976,0.020332354344410976,non_match,false,token_logprob
+case-010,TypeSafe Jev 1.13,published,match,hard,0.47999999999999998,0.47999999999999998,non_match,false,native_binary_probability
+case-010,TypeSafe Jev 1.13,swapped,match,hard,0.63,0.63,match,true,native_binary_probability
+case-011,GPT-5.6 Luna,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-011,GPT-5.6 Luna,swapped,match,hard,0.9767674208047693,0.9767674208047693,match,true,token_logprob
+case-011,GLM 5.3 Flash,published,match,hard,0.43782348444346741,0.43782348444346741,non_match,false,token_logprob
+case-011,GLM 5.3 Flash,swapped,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-011,Kimi K3,published,match,hard,6.1441775514011107e-06,6.1441775514011107e-06,non_match,false,token_logprob
+case-011,Kimi K3,swapped,match,hard,0.99682731646173894,0.99682731646173894,match,true,token_logprob
+case-011,Grok 4.3,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-011,Grok 4.3,swapped,match,hard,0.16451647108926923,0.16451647108926923,non_match,false,token_logprob
+case-011,TypeSafe Jev 1.13,published,match,hard,0.48999999999999999,0.48999999999999999,non_match,false,native_binary_probability
+case-011,TypeSafe Jev 1.13,swapped,match,hard,0.68000000000000005,0.68000000000000005,match,true,native_binary_probability
+case-012,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-012,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-012,GLM 5.3 Flash,published,non_match,hard,0.20181322466072713,0.79818677533927285,non_match,true,token_logprob
+case-012,GLM 5.3 Flash,swapped,non_match,hard,0.16451646494473968,0.8354835350552603,non_match,true,token_logprob
+case-012,Kimi K3,published,non_match,hard,1.3007130027311251e-05,0.99998699286997272,non_match,true,token_logprob
+case-012,Kimi K3,swapped,non_match,hard,0.0052201249665558063,0.99477987503344423,non_match,true,token_logprob
+case-012,Grok 4.3,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-012,Grok 4.3,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-012,TypeSafe Jev 1.13,published,non_match,hard,0.29999999999999999,0.69999999999999996,non_match,true,native_binary_probability
+case-012,TypeSafe Jev 1.13,swapped,non_match,hard,0.39000000000000001,0.60999999999999999,non_match,true,native_binary_probability
+case-013,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-013,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-013,GLM 5.3 Flash,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-013,GLM 5.3 Flash,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-013,Kimi K3,published,non_match,hard,0.00026119026164886383,0.99973880973835116,non_match,true,token_logprob
+case-013,Kimi K3,swapped,non_match,hard,0.0017007224963267872,0.9982992775036732,non_match,true,token_logprob
+case-013,Grok 4.3,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-013,Grok 4.3,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-013,TypeSafe Jev 1.13,published,non_match,hard,0.17000000000000001,0.82999999999999996,non_match,true,native_binary_probability
+case-013,TypeSafe Jev 1.13,swapped,non_match,hard,0.17999999999999999,0.82000000000000006,non_match,true,native_binary_probability
+case-014,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-014,GPT-5.6 Luna,swapped,non_match,hard,0.99899999999999989,0.0010000000000001119,match,false,single_label_default_0.999
+case-014,GLM 5.3 Flash,published,non_match,hard,0.20181321025863774,0.79818678974136226,non_match,true,token_logprob
+case-014,GLM 5.3 Flash,swapped,non_match,hard,0.77729985601576645,0.22270014398423355,match,false,token_logprob
+case-014,Kimi K3,published,non_match,hard,1.8925155058963014e-05,0.99998107484494103,non_match,true,token_logprob
+case-014,Kimi K3,swapped,non_match,hard,0.99995993631738578,4.0063682614221996e-05,match,false,token_logprob
+case-014,Grok 4.3,published,non_match,hard,0.01243165625000899,0.98756834374999103,non_match,true,token_logprob
+case-014,Grok 4.3,swapped,non_match,hard,0.89330940179376195,0.10669059820623805,match,false,token_logprob
+case-014,TypeSafe Jev 1.13,published,non_match,hard,0.29999999999999999,0.69999999999999996,non_match,true,native_binary_probability
+case-014,TypeSafe Jev 1.13,swapped,non_match,hard,0.93999999999999995,0.060000000000000053,match,false,native_binary_probability
+case-015,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-015,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-015,GLM 5.3 Flash,published,non_match,medium,0.037326890155253763,0.96267310984474619,non_match,true,token_logprob
+case-015,GLM 5.3 Flash,swapped,non_match,medium,0.060086653540254199,0.93991334645974578,non_match,true,token_logprob
+case-015,Kimi K3,published,non_match,medium,8.9396984503073648e-06,0.99999106030154972,non_match,true,token_logprob
+case-015,Kimi K3,swapped,non_match,medium,2.144495592648627e-05,0.99997855504407351,non_match,true,token_logprob
+case-015,Grok 4.3,published,non_match,medium,0.0035936010024039395,0.99640639899759609,non_match,true,token_logprob
+case-015,Grok 4.3,swapped,non_match,medium,0.0046095723011606885,0.99539042769883934,non_match,true,token_logprob
+case-015,TypeSafe Jev 1.13,published,non_match,medium,0.059999999999999998,0.93999999999999995,non_match,true,native_binary_probability
+case-015,TypeSafe Jev 1.13,swapped,non_match,medium,0.10000000000000001,0.90000000000000002,non_match,true,native_binary_probability
+case-016,GPT-5.6 Luna,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-016,GPT-5.6 Luna,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-016,GLM 5.3 Flash,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-016,GLM 5.3 Flash,swapped,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-016,Kimi K3,published,match,hard,7.8892616395410502e-06,7.8892616395410502e-06,non_match,false,token_logprob
+case-016,Kimi K3,swapped,match,hard,0.99962001542827206,0.99962001542827206,match,true,token_logprob
+case-016,Grok 4.3,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-016,Grok 4.3,swapped,match,hard,0.017986210159487686,0.017986210159487686,non_match,false,token_logprob
+case-016,TypeSafe Jev 1.13,published,match,hard,0.14000000000000001,0.14000000000000001,non_match,false,native_binary_probability
+case-016,TypeSafe Jev 1.13,swapped,match,hard,0.20000000000000001,0.20000000000000001,non_match,false,native_binary_probability
+case-017,GPT-5.6 Luna,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-017,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-017,GLM 5.3 Flash,published,match,medium,0.98409360831734194,0.98409360831734194,match,true,token_logprob
+case-017,GLM 5.3 Flash,swapped,match,medium,0.96267310770293701,0.96267310770293701,match,true,token_logprob
+case-017,Kimi K3,published,match,medium,0.99999823965657542,0.99999823965657542,match,true,token_logprob
+case-017,Kimi K3,swapped,match,medium,0.99999800526979976,0.99999800526979976,match,true,token_logprob
+case-017,Grok 4.3,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-017,Grok 4.3,swapped,match,medium,0.98409360881300567,0.98409360881300567,match,true,token_logprob
+case-017,TypeSafe Jev 1.13,published,match,medium,0.93000000000000005,0.93000000000000005,match,true,native_binary_probability
+case-017,TypeSafe Jev 1.13,swapped,match,medium,0.93000000000000005,0.93000000000000005,match,true,native_binary_probability
+case-018,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-018,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-018,GLM 5.3 Flash,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-018,GLM 5.3 Flash,swapped,non_match,hard,0.014063629664700657,0.98593637033529935,non_match,true,token_logprob
+case-018,Kimi K3,published,non_match,hard,1.892514370408824e-05,0.99998107485629595,non_match,true,token_logprob
+case-018,Kimi K3,swapped,non_match,hard,1.8925154869715013e-05,0.99998107484513032,non_match,true,token_logprob
+case-018,Grok 4.3,published,non_match,hard,0.0046095742476081857,0.99539042575239178,non_match,true,token_logprob
+case-018,Grok 4.3,swapped,non_match,hard,0.001926734719294793,0.99807326528070517,non_match,true,token_logprob
+case-018,TypeSafe Jev 1.13,published,non_match,hard,0.11,0.89000000000000001,non_match,true,native_binary_probability
+case-018,TypeSafe Jev 1.13,swapped,non_match,hard,0.11,0.89000000000000001,non_match,true,native_binary_probability
+case-019,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-019,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-019,GLM 5.3 Flash,published,match,easy,0.99951214283461465,0.99951214283461465,match,true,token_logprob
+case-019,GLM 5.3 Flash,swapped,match,easy,0.99951214283461465,0.99951214283461465,match,true,token_logprob
+case-019,Kimi K3,published,match,easy,0.99999812612461625,0.99999812612461625,match,true,token_logprob
+case-019,Kimi K3,swapped,match,easy,0.9999978766220684,0.9999978766220684,match,true,token_logprob
+case-019,Grok 4.3,published,match,easy,0.98901305749084645,0.98901305749084645,match,true,token_logprob
+case-019,Grok 4.3,swapped,match,easy,0.99682731722820472,0.99682731722820472,match,true,token_logprob
+case-019,TypeSafe Jev 1.13,published,match,easy,0.96999999999999997,0.96999999999999997,match,true,native_binary_probability
+case-019,TypeSafe Jev 1.13,swapped,match,easy,0.96999999999999997,0.96999999999999997,match,true,native_binary_probability
+case-020,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-020,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-020,GLM 5.3 Flash,published,non_match,easy,0.0017007224778468383,0.99829927752215319,non_match,true,token_logprob
+case-020,GLM 5.3 Flash,swapped,non_match,easy,0.001325022103108261,0.99867497789689175,non_match,true,token_logprob
+case-020,Kimi K3,published,non_match,easy,0.00012339453897243242,0.99987660546102752,non_match,true,token_logprob
+case-020,Kimi K3,swapped,non_match,easy,9.6102456819550025e-05,0.99990389754318043,non_match,true,token_logprob
+case-020,Grok 4.3,published,non_match,easy,0.0015011823267107986,0.99849881767328919,non_match,true,token_logprob
+case-020,Grok 4.3,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-020,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-020,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-021,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-021,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-021,GLM 5.3 Flash,published,non_match,easy,0.0040701382953867334,0.99592986170461328,non_match,true,token_logprob
+case-021,GLM 5.3 Flash,swapped,non_match,easy,0.00080408578452724662,0.99919591421547271,non_match,true,token_logprob
+case-021,Kimi K3,published,non_match,easy,0.00010889687191679297,0.99989110312808316,non_match,true,token_logprob
+case-021,Kimi K3,swapped,non_match,easy,0.00023050676117025308,0.9997694932388298,non_match,true,token_logprob
+case-021,Grok 4.3,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-021,Grok 4.3,swapped,non_match,easy,0.0021827165721186883,0.99781728342788134,non_match,true,token_logprob
+case-021,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-021,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-022,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-022,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-022,GLM 5.3 Flash,published,match,easy,0.8933094067644467,0.8933094067644467,match,true,token_logprob
+case-022,GLM 5.3 Flash,swapped,match,easy,0.91490095093241042,0.91490095093241042,match,true,token_logprob
+case-022,Kimi K3,published,match,easy,0.99998852123543125,0.99998852123543125,match,true,token_logprob
+case-022,Kimi K3,swapped,match,easy,0.99987660547459944,0.99987660547459944,match,true,token_logprob
+case-022,Grok 4.3,published,match,easy,0.9706877699376163,0.9706877699376163,match,true,token_logprob
+case-022,Grok 4.3,swapped,match,easy,0.98201379826274515,0.98201379826274515,match,true,token_logprob
+case-022,TypeSafe Jev 1.13,published,match,easy,0.88,0.88,match,true,native_binary_probability
+case-022,TypeSafe Jev 1.13,swapped,match,easy,0.89000000000000001,0.89000000000000001,match,true,native_binary_probability
+case-023,GPT-5.6 Luna,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-023,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-023,GLM 5.3 Flash,published,match,medium,0.59266659995406967,0.59266659995406967,match,true,token_logprob
+case-023,GLM 5.3 Flash,swapped,match,medium,0.75491498686762826,0.75491498686762826,match,true,token_logprob
+case-023,Kimi K3,published,match,medium,0.99908894883290589,0.99908894883290589,match,true,token_logprob
+case-023,Kimi K3,swapped,match,medium,0.99951214291135115,0.99951214291135115,match,true,token_logprob
+case-023,Grok 4.3,published,match,medium,0.79818677773962121,0.79818677773962121,match,true,token_logprob
+case-023,Grok 4.3,swapped,match,medium,0.93245330886037092,0.93245330886037092,match,true,token_logprob
+case-023,TypeSafe Jev 1.13,published,match,medium,0.83999999999999997,0.83999999999999997,match,true,native_binary_probability
+case-023,TypeSafe Jev 1.13,swapped,match,medium,0.85999999999999999,0.85999999999999999,match,true,native_binary_probability
+case-024,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-024,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-024,GLM 5.3 Flash,published,non_match,hard,0.00026119020985072643,0.99973880979014929,non_match,true,token_logprob
+case-024,GLM 5.3 Flash,swapped,non_match,hard,0.22270013882530884,0.77729986117469119,non_match,true,token_logprob
+case-024,Kimi K3,published,non_match,hard,0.97068776640334109,0.02931223359665891,match,false,token_logprob
+case-024,Kimi K3,swapped,non_match,hard,0.99330714847738999,0.0066928515226100105,match,false,token_logprob
+case-024,Grok 4.3,published,non_match,hard,0.029312229479407065,0.97068777052059296,non_match,true,token_logprob
+case-024,Grok 4.3,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-024,TypeSafe Jev 1.13,published,non_match,hard,0.25,0.75,non_match,true,native_binary_probability
+case-024,TypeSafe Jev 1.13,swapped,non_match,hard,0.29999999999999999,0.69999999999999996,non_match,true,native_binary_probability
+case-025,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-025,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-025,GLM 5.3 Flash,published,non_match,easy,0.0028009271849765149,0.99719907281502351,non_match,true,token_logprob
+case-025,GLM 5.3 Flash,swapped,non_match,easy,0.00080408592767895976,0.999195914072321,non_match,true,token_logprob
+case-025,Kimi K3,published,non_match,easy,2.7535685607597398e-05,0.99997246431439235,non_match,true,token_logprob
+case-025,Kimi K3,swapped,non_match,easy,7.4846259692087192e-05,0.99992515374030788,non_match,true,token_logprob
+case-025,Grok 4.3,published,non_match,easy,0.0013250224355449355,0.99867497756445511,non_match,true,token_logprob
+case-025,Grok 4.3,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-025,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-025,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-026,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-026,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-026,GLM 5.3 Flash,published,non_match,medium,0.0040701384690451725,0.99592986153095486,non_match,true,token_logprob
+case-026,GLM 5.3 Flash,swapped,non_match,medium,0.0059110681694362057,0.99408893183056379,non_match,true,token_logprob
+case-026,Kimi K3,published,non_match,medium,0.00010889686973909273,0.99989110313026086,non_match,true,token_logprob
+case-026,Kimi K3,swapped,non_match,medium,0.00023050667129335573,0.99976949332870668,non_match,true,token_logprob
+case-026,Grok 4.3,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-026,Grok 4.3,swapped,non_match,medium,0.0031726814139584878,0.99682731858604157,non_match,true,token_logprob
+case-026,TypeSafe Jev 1.13,published,non_match,medium,0.089999999999999997,0.91000000000000003,non_match,true,native_binary_probability
+case-026,TypeSafe Jev 1.13,swapped,non_match,medium,0.17999999999999999,0.82000000000000006,non_match,true,native_binary_probability
+case-027,GPT-5.6 Luna,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-027,GPT-5.6 Luna,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-027,GLM 5.3 Flash,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-027,GLM 5.3 Flash,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-027,Kimi K3,published,match,hard,1.0129990980873923e-05,1.0129990980873923e-05,non_match,false,token_logprob
+case-027,Kimi K3,swapped,match,hard,0.0046095731888056045,0.0046095731888056045,non_match,false,token_logprob
+case-027,Grok 4.3,published,match,hard,0.0052201257878651281,0.0052201257878651281,non_match,false,token_logprob
+case-027,Grok 4.3,swapped,match,hard,0.008577485675068202,0.008577485675068202,non_match,false,token_logprob
+case-027,TypeSafe Jev 1.13,published,match,hard,0.33000000000000002,0.33000000000000002,non_match,false,native_binary_probability
+case-027,TypeSafe Jev 1.13,swapped,match,hard,0.26000000000000001,0.26000000000000001,non_match,false,native_binary_probability
+case-028,GPT-5.6 Luna,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-028,GPT-5.6 Luna,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-028,GLM 5.3 Flash,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-028,GLM 5.3 Flash,swapped,match,hard,0.2689414565269499,0.2689414565269499,non_match,false,token_logprob
+case-028,Kimi K3,published,match,hard,2.7535687810391717e-05,2.7535687810391717e-05,non_match,false,token_logprob
+case-028,Kimi K3,swapped,match,hard,1.1478765372207963e-05,1.1478765372207963e-05,non_match,false,token_logprob
+case-028,Grok 4.3,published,match,hard,0.022977368781012936,0.022977368781012936,non_match,false,token_logprob
+case-028,Grok 4.3,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-028,TypeSafe Jev 1.13,published,match,hard,0.37,0.37,non_match,false,native_binary_probability
+case-028,TypeSafe Jev 1.13,swapped,match,hard,0.56000000000000005,0.56000000000000005,match,true,native_binary_probability
+case-029,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-029,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-029,GLM 5.3 Flash,published,match,easy,0.99539042656002874,0.99539042656002874,match,true,token_logprob
+case-029,GLM 5.3 Flash,swapped,match,easy,0.99956944300124329,0.99956944300124329,match,true,token_logprob
+case-029,Kimi K3,published,match,easy,0.99993394782608436,0.99993394782608436,match,true,token_logprob
+case-029,Kimi K3,swapped,match,easy,0.9999977396762445,0.9999977396762445,match,true,token_logprob
+case-029,Grok 4.3,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-029,Grok 4.3,swapped,match,easy,0.9933071487320877,0.9933071487320877,match,true,token_logprob
+case-029,TypeSafe Jev 1.13,published,match,easy,0.95999999999999996,0.95999999999999996,match,true,native_binary_probability
+case-029,TypeSafe Jev 1.13,swapped,match,easy,0.95999999999999996,0.95999999999999996,match,true,native_binary_probability
+case-030,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-030,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-030,GLM 5.3 Flash,published,match,easy,0.99142251387349833,0.99142251387349833,match,true,token_logprob
+case-030,GLM 5.3 Flash,swapped,match,easy,0.99883048949002717,0.99883048949002717,match,true,token_logprob
+case-030,Kimi K3,published,match,easy,0.999972464311639,0.999972464311639,match,true,token_logprob
+case-030,Kimi K3,swapped,match,easy,0.99996464373405569,0.99996464373405569,match,true,token_logprob
+case-030,Grok 4.3,published,match,easy,0.99242275902628141,0.99242275902628141,match,true,token_logprob
+case-030,Grok 4.3,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-030,TypeSafe Jev 1.13,published,match,easy,0.96999999999999997,0.96999999999999997,match,true,native_binary_probability
+case-030,TypeSafe Jev 1.13,swapped,match,easy,0.96999999999999997,0.96999999999999997,match,true,native_binary_probability
+case-031,GPT-5.6 Luna,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-031,GPT-5.6 Luna,swapped,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-031,GLM 5.3 Flash,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-031,GLM 5.3 Flash,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-031,Kimi K3,published,match,hard,0.99867497780774217,0.99867497780774217,match,true,token_logprob
+case-031,Kimi K3,swapped,match,hard,5.1442219914957433e-05,5.1442219914957433e-05,non_match,false,token_logprob
+case-031,Grok 4.3,published,match,hard,0.029312231016345759,0.029312231016345759,non_match,false,token_logprob
+case-031,Grok 4.3,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-031,TypeSafe Jev 1.13,published,match,hard,0.63,0.63,match,true,native_binary_probability
+case-031,TypeSafe Jev 1.13,swapped,match,hard,0.60999999999999999,0.60999999999999999,match,true,native_binary_probability
+case-032,GPT-5.6 Luna,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-032,GPT-5.6 Luna,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-032,GLM 5.3 Flash,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-032,GLM 5.3 Flash,swapped,match,hard,0.015906392090851679,0.015906392090851679,non_match,false,token_logprob
+case-032,Kimi K3,published,match,hard,0.99999160192401804,0.99999160192401804,match,true,token_logprob
+case-032,Kimi K3,swapped,match,hard,0.99999773967570205,0.99999773967570205,match,true,token_logprob
+case-032,Grok 4.3,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-032,Grok 4.3,swapped,match,hard,0.022977370202732616,0.022977370202732616,non_match,false,token_logprob
+case-032,TypeSafe Jev 1.13,published,match,hard,0.45000000000000001,0.45000000000000001,non_match,false,native_binary_probability
+case-032,TypeSafe Jev 1.13,swapped,match,hard,0.29999999999999999,0.29999999999999999,non_match,false,native_binary_probability
+case-033,GPT-5.6 Luna,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-033,GPT-5.6 Luna,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-033,GLM 5.3 Flash,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-033,GLM 5.3 Flash,swapped,match,hard,0.40733340004593022,0.40733340004593022,non_match,false,token_logprob
+case-033,Kimi K3,published,match,hard,0.99987660539687029,0.99987660539687029,match,true,token_logprob
+case-033,Kimi K3,swapped,match,hard,0.99997569974759293,0.99997569974759293,match,true,token_logprob
+case-033,Grok 4.3,published,match,hard,0.047425874187343835,0.047425874187343835,non_match,false,token_logprob
+case-033,Grok 4.3,swapped,match,hard,0.025957356821042259,0.025957356821042259,non_match,false,token_logprob
+case-033,TypeSafe Jev 1.13,published,match,hard,0.14000000000000001,0.14000000000000001,non_match,false,native_binary_probability
+case-033,TypeSafe Jev 1.13,swapped,match,hard,0.38,0.38,non_match,false,native_binary_probability
+case-034,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-034,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-034,GLM 5.3 Flash,published,non_match,medium,0.0019267343951321124,0.99807326560486787,non_match,true,token_logprob
+case-034,GLM 5.3 Flash,swapped,non_match,medium,0.0059110695047434689,0.99408893049525648,non_match,true,token_logprob
+case-034,Kimi K3,published,non_match,medium,4.4508499853097132e-07,0.99999955491500148,non_match,true,token_logprob
+case-034,Kimi K3,swapped,non_match,medium,0.00043055699955399948,0.99956944300044603,non_match,true,token_logprob
+case-034,Grok 4.3,published,non_match,medium,0.0040701379084304556,0.99592986209156953,non_match,true,token_logprob
+case-034,Grok 4.3,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-034,TypeSafe Jev 1.13,published,non_match,medium,0.080000000000000002,0.92000000000000004,non_match,true,native_binary_probability
+case-034,TypeSafe Jev 1.13,swapped,non_match,medium,0.11,0.89000000000000001,non_match,true,native_binary_probability
+case-035,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-035,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-035,GLM 5.3 Flash,published,non_match,medium,0.003172682369745872,0.99682731763025412,non_match,true,token_logprob
+case-035,GLM 5.3 Flash,swapped,non_match,medium,0.0011695104852228377,0.99883048951477715,non_match,true,token_logprob
+case-035,Kimi K3,published,non_match,medium,0.00013982207844337959,0.99986017792155657,non_match,true,token_logprob
+case-035,Kimi K3,swapped,non_match,medium,0.00029595723186091004,0.99970404276813907,non_match,true,token_logprob
+case-035,Grok 4.3,published,non_match,medium,0.004070137825376431,0.99592986217462354,non_match,true,token_logprob
+case-035,Grok 4.3,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-035,TypeSafe Jev 1.13,published,non_match,medium,0.11,0.89000000000000001,non_match,true,native_binary_probability
+case-035,TypeSafe Jev 1.13,swapped,non_match,medium,0.16,0.83999999999999997,non_match,true,native_binary_probability
+case-036,GPT-5.6 Luna,published,non_match,hard,0.11775433515215188,0.88224566484784817,non_match,true,token_logprob
+case-036,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-036,GLM 5.3 Flash,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-036,GLM 5.3 Flash,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-036,Kimi K3,published,non_match,hard,2.1444940700899467e-05,0.99997855505929911,non_match,true,token_logprob
+case-036,Kimi K3,swapped,non_match,hard,0.0059110687387212328,0.99408893126127873,non_match,true,token_logprob
+case-036,Grok 4.3,published,non_match,hard,0.025957357103608206,0.97404264289639175,non_match,true,token_logprob
+case-036,Grok 4.3,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-036,TypeSafe Jev 1.13,published,non_match,hard,0.26000000000000001,0.73999999999999999,non_match,true,native_binary_probability
+case-036,TypeSafe Jev 1.13,swapped,non_match,hard,0.32000000000000001,0.67999999999999994,non_match,true,native_binary_probability
+case-037,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-037,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-037,GLM 5.3 Flash,published,match,easy,0.99867497752856182,0.99867497752856182,match,true,token_logprob
+case-037,GLM 5.3 Flash,swapped,match,easy,0.9988304898248338,0.9988304898248338,match,true,token_logprob
+case-037,Kimi K3,published,match,easy,0.99990389759891463,0.99990389759891463,match,true,token_logprob
+case-037,Kimi K3,swapped,match,easy,0.99999844650243186,0.99999844650243186,match,true,token_logprob
+case-037,Grok 4.3,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-037,Grok 4.3,swapped,match,easy,0.9933071490788109,0.9933071490788109,match,true,token_logprob
+case-037,TypeSafe Jev 1.13,published,match,easy,0.96999999999999997,0.96999999999999997,match,true,native_binary_probability
+case-037,TypeSafe Jev 1.13,swapped,match,easy,0.96999999999999997,0.96999999999999997,match,true,native_binary_probability
+case-038,GPT-5.6 Luna,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-038,GPT-5.6 Luna,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-038,GLM 5.3 Flash,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-038,GLM 5.3 Flash,swapped,match,hard,0.37754068280545838,0.37754068280545838,non_match,false,token_logprob
+case-038,Kimi K3,published,match,hard,0.99966464973208613,0.99966464973208613,match,true,token_logprob
+case-038,Kimi K3,swapped,match,hard,0.99995460214764009,0.99995460214764009,match,true,token_logprob
+case-038,Grok 4.3,published,match,hard,0.014063626539616202,0.014063626539616202,non_match,false,token_logprob
+case-038,Grok 4.3,swapped,match,hard,0.033085979461295947,0.033085979461295947,non_match,false,token_logprob
+case-038,TypeSafe Jev 1.13,published,match,hard,0.55000000000000004,0.55000000000000004,match,true,native_binary_probability
+case-038,TypeSafe Jev 1.13,swapped,match,hard,0.58999999999999997,0.58999999999999997,match,true,native_binary_probability
+case-039,GPT-5.6 Luna,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-039,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-039,GLM 5.3 Flash,published,match,medium,0.92414182415726343,0.92414182415726343,match,true,token_logprob
+case-039,GLM 5.3 Flash,swapped,match,medium,0.95257413136642966,0.95257413136642966,match,true,token_logprob
+case-039,Kimi K3,published,match,medium,0.99944722124705709,0.99944722124705709,match,true,token_logprob
+case-039,Kimi K3,swapped,match,medium,0.99956944286272709,0.99956944286272709,match,true,token_logprob
+case-039,Grok 4.3,published,match,medium,0.40733340004593022,0.40733340004593022,non_match,false,token_logprob
+case-039,Grok 4.3,swapped,match,medium,0.20181322226037884,0.20181322226037884,non_match,false,token_logprob
+case-039,TypeSafe Jev 1.13,published,match,medium,0.81000000000000005,0.81000000000000005,match,true,native_binary_probability
+case-039,TypeSafe Jev 1.13,swapped,match,medium,0.82999999999999996,0.82999999999999996,match,true,native_binary_probability
+case-040,GPT-5.6 Luna,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-040,GPT-5.6 Luna,swapped,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-040,GLM 5.3 Flash,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-040,GLM 5.3 Flash,swapped,match,hard,0.97068777258751038,0.97068777258751038,match,true,token_logprob
+case-040,Kimi K3,published,match,hard,0.9999938558224486,0.9999938558224486,match,true,token_logprob
+case-040,Kimi K3,swapped,match,hard,0.9999970976883632,0.9999970976883632,match,true,token_logprob
+case-040,Grok 4.3,published,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-040,Grok 4.3,swapped,match,hard,0.060086648280494009,0.060086648280494009,non_match,false,token_logprob
+case-040,TypeSafe Jev 1.13,published,match,hard,0.64000000000000001,0.64000000000000001,match,true,native_binary_probability
+case-040,TypeSafe Jev 1.13,swapped,match,hard,0.81000000000000005,0.81000000000000005,match,true,native_binary_probability
+case-041,GPT-5.6 Luna,published,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-041,GPT-5.6 Luna,swapped,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-041,GLM 5.3 Flash,published,match,medium,0.56217648621506344,0.56217648621506344,match,true,token_logprob
+case-041,GLM 5.3 Flash,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-041,Kimi K3,published,match,medium,0.99970404275926295,0.99970404275926295,match,true,token_logprob
+case-041,Kimi K3,swapped,match,medium,0.99592986163553221,0.99592986163553221,match,true,token_logprob
+case-041,Grok 4.3,published,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-041,Grok 4.3,swapped,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-041,TypeSafe Jev 1.13,published,match,medium,0.42999999999999999,0.42999999999999999,non_match,false,native_binary_probability
+case-041,TypeSafe Jev 1.13,swapped,match,medium,0.28000000000000003,0.28000000000000003,non_match,false,native_binary_probability
+case-042,GPT-5.6 Luna,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-042,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-042,GLM 5.3 Flash,published,match,medium,0.90465053895692105,0.90465053895692105,match,true,token_logprob
+case-042,GLM 5.3 Flash,swapped,match,medium,0.86703576323792397,0.86703576323792397,match,true,token_logprob
+case-042,Kimi K3,published,match,medium,0.99956944300044592,0.99956944300044592,match,true,token_logprob
+case-042,Kimi K3,swapped,match,medium,0.99999844650168623,0.99999844650168623,match,true,token_logprob
+case-042,Grok 4.3,published,match,medium,0.96691402041952723,0.96691402041952723,match,true,token_logprob
+case-042,Grok 4.3,swapped,match,medium,0.7057850464025931,0.7057850464025931,match,true,token_logprob
+case-042,TypeSafe Jev 1.13,published,match,medium,0.88,0.88,match,true,native_binary_probability
+case-042,TypeSafe Jev 1.13,swapped,match,medium,0.89000000000000001,0.89000000000000001,match,true,native_binary_probability
+case-043,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-043,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-043,GLM 5.3 Flash,published,non_match,easy,0.0021827158611729576,0.99781728413882709,non_match,true,token_logprob
+case-043,GLM 5.3 Flash,swapped,non_match,easy,0.0021827160766878652,0.99781728392331215,non_match,true,token_logprob
+case-043,Kimi K3,published,non_match,easy,0.0001795279047283229,0.9998204720952717,non_match,true,token_logprob
+case-043,Kimi K3,swapped,non_match,easy,1.892514086537065e-05,0.99998107485913468,non_match,true,token_logprob
+case-043,Grok 4.3,published,non_match,easy,0.0024726231618032849,0.9975273768381967,non_match,true,token_logprob
+case-043,Grok 4.3,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-043,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-043,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-044,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-044,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-044,GLM 5.3 Flash,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-044,GLM 5.3 Flash,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-044,Kimi K3,published,non_match,hard,1.1478769504516787e-05,0.99998852123049553,non_match,true,token_logprob
+case-044,Kimi K3,swapped,non_match,hard,1.4738983743146827e-05,0.99998526101625684,non_match,true,token_logprob
+case-044,Grok 4.3,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-044,Grok 4.3,swapped,non_match,hard,0.012431651047562883,0.98756834895243717,non_match,true,token_logprob
+case-044,TypeSafe Jev 1.13,published,non_match,hard,0.13,0.87,non_match,true,native_binary_probability
+case-044,TypeSafe Jev 1.13,swapped,non_match,hard,0.28000000000000003,0.71999999999999997,non_match,true,native_binary_probability
+case-045,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-045,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-045,GLM 5.3 Flash,published,non_match,hard,0.20181321745968231,0.79818678254031772,non_match,true,token_logprob
+case-045,GLM 5.3 Flash,swapped,non_match,hard,0.99899999999999989,0.0010000000000001119,match,false,single_label_default_0.999
+case-045,Kimi K3,published,non_match,hard,1.4738989049103693e-05,0.99998526101095087,non_match,true,token_logprob
+case-045,Kimi K3,swapped,non_match,hard,6.6052144854647859e-05,0.99993394785514533,non_match,true,token_logprob
+case-045,Grok 4.3,published,non_match,hard,0.014063627378998331,0.98593637262100164,non_match,true,token_logprob
+case-045,Grok 4.3,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-045,TypeSafe Jev 1.13,published,non_match,hard,0.14000000000000001,0.85999999999999999,non_match,true,native_binary_probability
+case-045,TypeSafe Jev 1.13,swapped,non_match,hard,0.13,0.87,non_match,true,native_binary_probability
+case-046,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-046,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-046,GLM 5.3 Flash,published,non_match,medium,0.0059110684813727093,0.99408893151862732,non_match,true,token_logprob
+case-046,GLM 5.3 Flash,swapped,non_match,medium,0.004070137502598303,0.99592986249740167,non_match,true,token_logprob
+case-046,Kimi K3,published,non_match,medium,0.015906394685956879,0.98409360531404311,non_match,true,token_logprob
+case-046,Kimi K3,swapped,non_match,medium,0.00012339460559727914,0.99987660539440271,non_match,true,token_logprob
+case-046,Grok 4.3,published,non_match,medium,0.0097084769202172311,0.99029152307978274,non_match,true,token_logprob
+case-046,Grok 4.3,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-046,TypeSafe Jev 1.13,published,non_match,medium,0.23000000000000001,0.77000000000000002,non_match,true,native_binary_probability
+case-046,TypeSafe Jev 1.13,swapped,non_match,medium,0.14999999999999999,0.84999999999999998,non_match,true,native_binary_probability
+case-047,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-047,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-047,GLM 5.3 Flash,published,match,easy,0.99951214274481026,0.99951214274481026,match,true,token_logprob
+case-047,GLM 5.3 Flash,swapped,match,easy,0.99994170871617372,0.99994170871617372,match,true,token_logprob
+case-047,Kimi K3,published,match,easy,0.99999823965699797,0.99999823965699797,match,true,token_logprob
+case-047,Kimi K3,swapped,match,easy,0.99993394787429912,0.99993394787429912,match,true,token_logprob
+case-047,Grok 4.3,published,match,easy,0.99029152338421678,0.99029152338421678,match,true,token_logprob
+case-047,Grok 4.3,swapped,match,easy,0.99719907296134447,0.99719907296134447,match,true,token_logprob
+case-047,TypeSafe Jev 1.13,published,match,easy,0.96999999999999997,0.96999999999999997,match,true,native_binary_probability
+case-047,TypeSafe Jev 1.13,swapped,match,easy,0.96999999999999997,0.96999999999999997,match,true,native_binary_probability
+case-048,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-048,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-048,GLM 5.3 Flash,published,non_match,hard,0.0097084791228872983,0.9902915208771127,non_match,true,token_logprob
+case-048,GLM 5.3 Flash,swapped,non_match,hard,0.0075772423954057764,0.9924227576045942,non_match,true,token_logprob
+case-048,Kimi K3,published,non_match,hard,0.015906389050740603,0.9840936109492594,non_match,true,token_logprob
+case-048,Kimi K3,swapped,non_match,hard,3.1201907649854183e-05,0.99996879809235018,non_match,true,token_logprob
+case-048,Grok 4.3,published,non_match,hard,0.0075772409877254438,0.9924227590122745,non_match,true,token_logprob
+case-048,Grok 4.3,swapped,non_match,hard,0.0075772410997795902,0.99242275890022036,non_match,true,token_logprob
+case-048,TypeSafe Jev 1.13,published,non_match,hard,0.27000000000000002,0.72999999999999998,non_match,true,native_binary_probability
+case-048,TypeSafe Jev 1.13,swapped,non_match,hard,0.28000000000000003,0.71999999999999997,non_match,true,native_binary_probability
+case-049,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-049,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-049,GLM 5.3 Flash,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-049,GLM 5.3 Flash,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-049,Kimi K3,published,non_match,medium,1.4738985511798896e-05,0.99998526101448815,non_match,true,token_logprob
+case-049,Kimi K3,swapped,non_match,medium,0.00055277853747845538,0.99944722146252152,non_match,true,token_logprob
+case-049,Grok 4.3,published,non_match,medium,0.017986210192387039,0.982013789807613,non_match,true,token_logprob
+case-049,Grok 4.3,swapped,non_match,medium,0.014063627766405474,0.98593637223359454,non_match,true,token_logprob
+case-049,TypeSafe Jev 1.13,published,non_match,medium,0.14999999999999999,0.84999999999999998,non_match,true,native_binary_probability
+case-049,TypeSafe Jev 1.13,swapped,non_match,medium,0.17000000000000001,0.82999999999999996,non_match,true,native_binary_probability
+case-050,GPT-5.6 Luna,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-050,GPT-5.6 Luna,swapped,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-050,GLM 5.3 Flash,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-050,GLM 5.3 Flash,swapped,match,hard,0.7310585786300049,0.7310585786300049,match,true,token_logprob
+case-050,Kimi K3,published,match,hard,0.99996879807362959,0.99996879807362959,match,true,token_logprob
+case-050,Kimi K3,swapped,match,hard,0.99997569976217271,0.99997569976217271,match,true,token_logprob
+case-050,Grok 4.3,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-050,Grok 4.3,swapped,match,hard,0.97068776967262671,0.97068776967262671,match,true,token_logprob
+case-050,TypeSafe Jev 1.13,published,match,hard,0.63,0.63,match,true,native_binary_probability
+case-050,TypeSafe Jev 1.13,swapped,match,hard,0.58999999999999997,0.58999999999999997,match,true,native_binary_probability
+case-051,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-051,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-051,GLM 5.3 Flash,published,non_match,medium,0.0028009274132371176,0.99719907258676288,non_match,true,token_logprob
+case-051,GLM 5.3 Flash,swapped,non_match,medium,0.0031726822224750675,0.99682731777752498,non_match,true,token_logprob
+case-051,Kimi K3,published,non_match,medium,6.6052126361271555e-05,0.99993394787363876,non_match,true,token_logprob
+case-051,Kimi K3,swapped,non_match,medium,0.00010889689913804982,0.99989110310086193,non_match,true,token_logprob
+case-051,Grok 4.3,published,non_match,medium,0.0024726231399806852,0.99752737686001935,non_match,true,token_logprob
+case-051,Grok 4.3,swapped,non_match,medium,0.0085774856117091236,0.99142251438829088,non_match,true,token_logprob
+case-051,TypeSafe Jev 1.13,published,non_match,medium,0.02,0.97999999999999998,non_match,true,native_binary_probability
+case-051,TypeSafe Jev 1.13,swapped,non_match,medium,0.02,0.97999999999999998,non_match,true,native_binary_probability
+case-052,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-052,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-052,GLM 5.3 Flash,published,non_match,hard,0.99899999999999989,0.0010000000000001119,match,false,single_label_default_0.999
+case-052,GLM 5.3 Flash,swapped,non_match,hard,0.99899999999999989,0.0010000000000001119,match,false,single_label_default_0.999
+case-052,Kimi K3,published,non_match,hard,0.025957357956304047,0.97404264204369595,non_match,true,token_logprob
+case-052,Kimi K3,swapped,non_match,hard,0.99976949336788368,0.00023050663211632294,match,false,token_logprob
+case-052,Grok 4.3,published,non_match,hard,0.033085980414710912,0.96691401958528911,non_match,true,token_logprob
+case-052,Grok 4.3,swapped,non_match,hard,0.053403332436285977,0.94659666756371408,non_match,true,token_logprob
+case-052,TypeSafe Jev 1.13,published,non_match,hard,0.27000000000000002,0.72999999999999998,non_match,true,native_binary_probability
+case-052,TypeSafe Jev 1.13,swapped,non_match,hard,0.31,0.68999999999999995,non_match,true,native_binary_probability
+case-053,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-053,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-053,GLM 5.3 Flash,published,non_match,easy,0.00062633411056225367,0.99937366588943777,non_match,true,token_logprob
+case-053,GLM 5.3 Flash,swapped,non_match,easy,0.0015011821319707345,0.9984988178680293,non_match,true,token_logprob
+case-053,Kimi K3,published,non_match,easy,0.0001398221119959902,0.99986017788800396,non_match,true,token_logprob
+case-053,Kimi K3,swapped,non_match,easy,6.6052155422293928e-05,0.99993394784457768,non_match,true,token_logprob
+case-053,Grok 4.3,published,non_match,easy,0.0021827164701927878,0.99781728352980725,non_match,true,token_logprob
+case-053,Grok 4.3,swapped,non_match,easy,0.0031726830479279996,0.99682731695207205,non_match,true,token_logprob
+case-053,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-053,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-054,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-054,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-054,GLM 5.3 Flash,published,non_match,easy,0.00048785707708536697,0.99951214292291468,non_match,true,token_logprob
+case-054,GLM 5.3 Flash,swapped,non_match,easy,0.0059110672664621977,0.99408893273353782,non_match,true,token_logprob
+case-054,Kimi K3,published,non_match,easy,1.4738980648006181e-05,0.99998526101935203,non_match,true,token_logprob
+case-054,Kimi K3,swapped,non_match,easy,5.8291238265847205e-05,0.99994170876173416,non_match,true,token_logprob
+case-054,Grok 4.3,published,non_match,easy,0.001700722467173554,0.99829927753282643,non_match,true,token_logprob
+case-054,Grok 4.3,swapped,non_match,easy,0.0017007223568829442,0.9982992776431171,non_match,true,token_logprob
+case-054,TypeSafe Jev 1.13,published,non_match,easy,0.02,0.97999999999999998,non_match,true,native_binary_probability
+case-054,TypeSafe Jev 1.13,swapped,non_match,easy,0.029999999999999999,0.96999999999999997,non_match,true,native_binary_probability
+case-055,GPT-5.6 Luna,published,match,medium,0.96875090200005876,0.96875090200005876,match,true,token_logprob
+case-055,GPT-5.6 Luna,swapped,match,medium,0.97982508361568676,0.97982508361568676,match,true,token_logprob
+case-055,GLM 5.3 Flash,published,match,medium,0.96267311238814446,0.96267311238814446,match,true,token_logprob
+case-055,GLM 5.3 Flash,swapped,match,medium,0.65135484436247337,0.65135484436247337,match,true,token_logprob
+case-055,Kimi K3,published,match,medium,0.99999577716756893,0.99999577716756893,match,true,token_logprob
+case-055,Kimi K3,swapped,match,medium,0.99999457777907785,0.99999457777907785,match,true,token_logprob
+case-055,Grok 4.3,published,match,medium,0.060086639233707419,0.060086639233707419,non_match,false,token_logprob
+case-055,Grok 4.3,swapped,match,medium,0.11920292515117029,0.11920292515117029,non_match,false,token_logprob
+case-055,TypeSafe Jev 1.13,published,match,medium,0.73999999999999999,0.73999999999999999,match,true,native_binary_probability
+case-055,TypeSafe Jev 1.13,swapped,match,medium,0.70999999999999996,0.70999999999999996,match,true,native_binary_probability
+case-056,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-056,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-056,GLM 5.3 Flash,published,non_match,easy,0.00048785715891404069,0.99951214284108592,non_match,true,token_logprob
+case-056,GLM 5.3 Flash,swapped,non_match,easy,0.0015011825786863302,0.99849881742131363,non_match,true,token_logprob
+case-056,Kimi K3,published,non_match,easy,1.3007128336406453e-05,0.99998699287166359,non_match,true,token_logprob
+case-056,Kimi K3,swapped,non_match,easy,7.4846196825961069e-05,0.99992515380317404,non_match,true,token_logprob
+case-056,Grok 4.3,published,non_match,easy,0.0021827164174550097,0.99781728358254496,non_match,true,token_logprob
+case-056,Grok 4.3,swapped,non_match,easy,0.0021827164945333005,0.99781728350546672,non_match,true,token_logprob
+case-056,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-056,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-057,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-057,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-057,GLM 5.3 Flash,published,non_match,medium,0.00062633410713740017,0.99937366589286258,non_match,true,token_logprob
+case-057,GLM 5.3 Flash,swapped,non_match,medium,0.0017007220890625895,0.99829927791093742,non_match,true,token_logprob
+case-057,Kimi K3,published,non_match,medium,2.1444940057565031e-05,0.99997855505994249,non_match,true,token_logprob
+case-057,Kimi K3,swapped,non_match,medium,2.1444951208697654e-05,0.9999785550487913,non_match,true,token_logprob
+case-057,Grok 4.3,published,non_match,medium,0.0052201255460529979,0.994779874453947,non_match,true,token_logprob
+case-057,Grok 4.3,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-057,TypeSafe Jev 1.13,published,non_match,medium,0.070000000000000007,0.92999999999999994,non_match,true,native_binary_probability
+case-057,TypeSafe Jev 1.13,swapped,non_match,medium,0.070000000000000007,0.92999999999999994,non_match,true,native_binary_probability
+case-058,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-058,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-058,GLM 5.3 Flash,published,match,easy,0.99990389754344522,0.99990389754344522,match,true,token_logprob
+case-058,GLM 5.3 Flash,swapped,match,easy,0.99995460214223186,0.99995460214223186,match,true,token_logprob
+case-058,Kimi K3,published,match,easy,0.99999879013402626,0.99999879013402626,match,true,token_logprob
+case-058,Kimi K3,swapped,match,easy,0.99999899698568107,0.99999899698568107,match,true,token_logprob
+case-058,Grok 4.3,published,match,easy,0.99242275889321696,0.99242275889321696,match,true,token_logprob
+case-058,Grok 4.3,swapped,match,easy,0.99719907308295341,0.99719907308295341,match,true,token_logprob
+case-058,TypeSafe Jev 1.13,published,match,easy,0.97999999999999998,0.97999999999999998,match,true,native_binary_probability
+case-058,TypeSafe Jev 1.13,swapped,match,easy,0.97999999999999998,0.97999999999999998,match,true,native_binary_probability
+case-059,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-059,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-059,GLM 5.3 Flash,published,non_match,easy,0.0021827161492022989,0.99781728385079771,non_match,true,token_logprob
+case-059,GLM 5.3 Flash,swapped,non_match,easy,0.001700722745469601,0.99829927725453038,non_match,true,token_logprob
+case-059,Kimi K3,published,non_match,easy,7.4846232001048941e-05,0.99992515376799895,non_match,true,token_logprob
+case-059,Kimi K3,swapped,non_match,easy,0.00029595724961308867,0.99970404275038693,non_match,true,token_logprob
+case-059,Grok 4.3,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-059,Grok 4.3,swapped,non_match,easy,0.0019267346001963438,0.99807326539980368,non_match,true,token_logprob
+case-059,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-059,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-060,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-060,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-060,GLM 5.3 Flash,published,non_match,hard,0.10669059181535784,0.89330940818464222,non_match,true,token_logprob
+case-060,GLM 5.3 Flash,swapped,non_match,hard,0.033085981368125919,0.96691401863187409,non_match,true,token_logprob
+case-060,Kimi K3,published,non_match,hard,0.0011695101716041175,0.99883048982839584,non_match,true,token_logprob
+case-060,Kimi K3,swapped,non_match,hard,2.4300249491155269e-05,0.99997569975050882,non_match,true,token_logprob
+case-060,Grok 4.3,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-060,Grok 4.3,swapped,non_match,hard,0.0035936026614547178,0.9964063973385453,non_match,true,token_logprob
+case-060,TypeSafe Jev 1.13,published,non_match,hard,0.14999999999999999,0.84999999999999998,non_match,true,native_binary_probability
+case-060,TypeSafe Jev 1.13,swapped,non_match,hard,0.17999999999999999,0.82000000000000006,non_match,true,native_binary_probability
+case-061,GPT-5.6 Luna,published,match,medium,0.29134864931157273,0.29134864931157273,non_match,false,token_logprob
+case-061,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-061,GLM 5.3 Flash,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-061,GLM 5.3 Flash,swapped,match,medium,0.46879061178313897,0.46879061178313897,non_match,false,token_logprob
+case-061,Kimi K3,published,match,medium,0.99997569974759293,0.99997569974759293,match,true,token_logprob
+case-061,Kimi K3,swapped,match,medium,0.99999521490435672,0.99999521490435672,match,true,token_logprob
+case-061,Grok 4.3,published,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-061,Grok 4.3,swapped,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-061,TypeSafe Jev 1.13,published,match,medium,0.42999999999999999,0.42999999999999999,non_match,false,native_binary_probability
+case-061,TypeSafe Jev 1.13,swapped,match,medium,0.39000000000000001,0.39000000000000001,non_match,false,native_binary_probability
+case-062,GPT-5.6 Luna,published,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-062,GPT-5.6 Luna,swapped,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-062,GLM 5.3 Flash,published,match,medium,0.0017007223614289729,0.0017007223614289729,non_match,false,token_logprob
+case-062,GLM 5.3 Flash,swapped,match,medium,0.20181322226037884,0.20181322226037884,non_match,false,token_logprob
+case-062,Kimi K3,published,match,medium,0.00062633407047756507,0.00062633407047756507,non_match,false,token_logprob
+case-062,Kimi K3,swapped,match,medium,5.4222215726678019e-06,5.4222215726678019e-06,non_match,false,token_logprob
+case-062,Grok 4.3,published,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-062,Grok 4.3,swapped,match,medium,0.042087728516379291,0.042087728516379291,non_match,false,token_logprob
+case-062,TypeSafe Jev 1.13,published,match,medium,0.27000000000000002,0.27000000000000002,non_match,false,native_binary_probability
+case-062,TypeSafe Jev 1.13,swapped,match,medium,0.5,0.5,match,true,native_binary_probability
+case-063,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-063,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-063,GLM 5.3 Flash,published,match,easy,0.99986017785626558,0.99986017785626558,match,true,token_logprob
+case-063,GLM 5.3 Flash,swapped,match,easy,0.99986017785626558,0.99986017785626558,match,true,token_logprob
+case-063,Kimi K3,published,match,easy,0.9999974387171745,0.9999974387171745,match,true,token_logprob
+case-063,Kimi K3,swapped,match,easy,0.99999862904262871,0.99999862904262871,match,true,token_logprob
+case-063,Grok 4.3,published,match,easy,0.99477987454341754,0.99477987454341754,match,true,token_logprob
+case-063,Grok 4.3,swapped,match,easy,0.99682731696385363,0.99682731696385363,match,true,token_logprob
+case-063,TypeSafe Jev 1.13,published,match,easy,0.97999999999999998,0.97999999999999998,match,true,native_binary_probability
+case-063,TypeSafe Jev 1.13,swapped,match,easy,0.97999999999999998,0.97999999999999998,match,true,native_binary_probability
+case-064,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-064,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-064,GLM 5.3 Flash,published,non_match,easy,0.001032231157038381,0.99896776884296157,non_match,true,token_logprob
+case-064,GLM 5.3 Flash,swapped,non_match,easy,0.00080408588802111602,0.99919591411197883,non_match,true,token_logprob
+case-064,Kimi K3,published,non_match,easy,8.4811056140236392e-05,0.99991518894385978,non_match,true,token_logprob
+case-064,Kimi K3,swapped,non_match,easy,0.00012339457351864466,0.99987660542648138,non_match,true,token_logprob
+case-064,Grok 4.3,published,non_match,easy,0.0017007223813919688,0.99829927761860804,non_match,true,token_logprob
+case-064,Grok 4.3,swapped,non_match,easy,0.0017007223873215706,0.99829927761267845,non_match,true,token_logprob
+case-064,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-064,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-065,GPT-5.6 Luna,published,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-065,GPT-5.6 Luna,swapped,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-065,GLM 5.3 Flash,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-065,GLM 5.3 Flash,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-065,Kimi K3,published,match,medium,1.670142184809516e-05,1.670142184809516e-05,non_match,false,token_logprob
+case-065,Kimi K3,swapped,match,medium,0.0046095716746585927,0.0046095716746585927,non_match,false,token_logprob
+case-065,Grok 4.3,published,match,medium,0.014063627172381184,0.014063627172381184,non_match,false,token_logprob
+case-065,Grok 4.3,swapped,match,medium,0.012431650887487659,0.012431650887487659,non_match,false,token_logprob
+case-065,TypeSafe Jev 1.13,published,match,medium,0.19,0.19,non_match,false,native_binary_probability
+case-065,TypeSafe Jev 1.13,swapped,match,medium,0.20000000000000001,0.20000000000000001,non_match,false,native_binary_probability
+case-066,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-066,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-066,GLM 5.3 Flash,published,non_match,easy,0.0010322312501921272,0.99896776874980786,non_match,true,token_logprob
+case-066,GLM 5.3 Flash,swapped,non_match,easy,0.0021827165487923613,0.99781728345120768,non_match,true,token_logprob
+case-066,Kimi K3,published,non_match,easy,0.00010889690893770402,0.99989110309106233,non_match,true,token_logprob
+case-066,Kimi K3,swapped,non_match,easy,3.1201907649854183e-05,0.99996879809235018,non_match,true,token_logprob
+case-066,Grok 4.3,published,non_match,easy,0.0024726232307167597,0.99752737676928327,non_match,true,token_logprob
+case-066,Grok 4.3,swapped,non_match,easy,0.0021827164458522751,0.99781728355414767,non_match,true,token_logprob
+case-066,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-066,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-067,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-067,GPT-5.6 Luna,swapped,non_match,hard,0.13355456668038621,0.86644543331961377,non_match,true,token_logprob
+case-067,GLM 5.3 Flash,published,non_match,hard,0.62245933120185448,0.37754066879814552,match,false,token_logprob
+case-067,GLM 5.3 Flash,swapped,non_match,hard,0.24508501864634827,0.75491498135365176,non_match,true,token_logprob
+case-067,Kimi K3,published,non_match,hard,1.6701427860507733e-05,0.99998329857213952,non_match,true,token_logprob
+case-067,Kimi K3,swapped,non_match,hard,5.1442201396714254e-05,0.99994855779860325,non_match,true,token_logprob
+case-067,Grok 4.3,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-067,Grok 4.3,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-067,TypeSafe Jev 1.13,published,non_match,hard,0.17000000000000001,0.82999999999999996,non_match,true,native_binary_probability
+case-067,TypeSafe Jev 1.13,swapped,non_match,hard,0.19,0.81000000000000005,non_match,true,native_binary_probability
+case-068,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-068,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-068,GLM 5.3 Flash,published,non_match,medium,0.02931223255328453,0.97068776744671548,non_match,true,token_logprob
+case-068,GLM 5.3 Flash,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-068,Kimi K3,published,non_match,medium,0.00037998459451829927,0.99962001540548173,non_match,true,token_logprob
+case-068,Kimi K3,swapped,non_match,medium,0.0007096705054756117,0.99929032949452434,non_match,true,token_logprob
+case-068,Grok 4.3,published,non_match,medium,0.0059110688097269454,0.99408893119027308,non_match,true,token_logprob
+case-068,Grok 4.3,swapped,non_match,medium,0.0028009269944342056,0.99719907300556576,non_match,true,token_logprob
+case-068,TypeSafe Jev 1.13,published,non_match,medium,0.10000000000000001,0.90000000000000002,non_match,true,native_binary_probability
+case-068,TypeSafe Jev 1.13,swapped,non_match,medium,0.14000000000000001,0.85999999999999999,non_match,true,native_binary_probability
+case-069,GPT-5.6 Luna,published,match,hard,0.023731068412005396,0.023731068412005396,non_match,false,token_logprob
+case-069,GPT-5.6 Luna,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-069,GLM 5.3 Flash,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-069,GLM 5.3 Flash,swapped,match,hard,0.18242552380635635,0.18242552380635635,non_match,false,token_logprob
+case-069,Kimi K3,published,match,hard,0.99991518897523712,0.99991518897523712,match,true,token_logprob
+case-069,Kimi K3,swapped,match,hard,0.99995460210996145,0.99995460210996145,match,true,token_logprob
+case-069,Grok 4.3,published,match,hard,0.029312230804354199,0.029312230804354199,non_match,false,token_logprob
+case-069,Grok 4.3,swapped,match,hard,0.012431651619260159,0.012431651619260159,non_match,false,token_logprob
+case-069,TypeSafe Jev 1.13,published,match,hard,0.39000000000000001,0.39000000000000001,non_match,false,native_binary_probability
+case-069,TypeSafe Jev 1.13,swapped,match,hard,0.46999999999999997,0.46999999999999997,non_match,false,native_binary_probability
+case-070,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-070,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-070,GLM 5.3 Flash,published,non_match,medium,0.00091105118920842471,0.99908894881079158,non_match,true,token_logprob
+case-070,GLM 5.3 Flash,swapped,non_match,medium,0.00015843626943855691,0.99984156373056143,non_match,true,token_logprob
+case-070,Kimi K3,published,non_match,medium,4.5397857807441825e-05,0.99995460214219256,non_match,true,token_logprob
+case-070,Kimi K3,swapped,non_match,medium,1.4738988901715991e-05,0.9999852610110983,non_match,true,token_logprob
+case-070,Grok 4.3,published,non_match,medium,0.0035936027948457673,0.99640639720515423,non_match,true,token_logprob
+case-070,Grok 4.3,swapped,non_match,medium,0.0085774851761154305,0.99142251482388455,non_match,true,token_logprob
+case-070,TypeSafe Jev 1.13,published,non_match,medium,0.10000000000000001,0.90000000000000002,non_match,true,native_binary_probability
+case-070,TypeSafe Jev 1.13,swapped,non_match,medium,0.13,0.87,non_match,true,native_binary_probability
+case-071,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-071,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-071,GLM 5.3 Flash,published,non_match,easy,0.0028009265860363926,0.99719907341396363,non_match,true,token_logprob
+case-071,GLM 5.3 Flash,swapped,non_match,easy,0.0011695100069471186,0.99883048999305291,non_match,true,token_logprob
+case-071,Kimi K3,published,non_match,easy,1.4738988459552839e-05,0.99998526101154039,non_match,true,token_logprob
+case-071,Kimi K3,swapped,non_match,easy,0.00013982202811447863,0.99986017797188553,non_match,true,token_logprob
+case-071,Grok 4.3,published,non_match,easy,0.0024726230802556756,0.99752737691974436,non_match,true,token_logprob
+case-071,Grok 4.3,swapped,non_match,easy,0.0031726828336489411,0.99682731716635109,non_match,true,token_logprob
+case-071,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-071,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-072,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-072,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-072,GLM 5.3 Flash,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-072,GLM 5.3 Flash,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-072,Kimi K3,published,non_match,hard,0.99539042708649395,0.0046095729135060548,match,false,token_logprob
+case-072,Kimi K3,swapped,non_match,hard,0.00013982213995650559,0.99986017786004344,non_match,true,token_logprob
+case-072,Grok 4.3,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-072,Grok 4.3,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-072,TypeSafe Jev 1.13,published,non_match,hard,0.20000000000000001,0.80000000000000004,non_match,true,native_binary_probability
+case-072,TypeSafe Jev 1.13,swapped,non_match,hard,0.19,0.81000000000000005,non_match,true,native_binary_probability
+case-073,GPT-5.6 Luna,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-073,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-073,GLM 5.3 Flash,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-073,GLM 5.3 Flash,swapped,match,medium,0.93991334772208823,0.93991334772208823,match,true,token_logprob
+case-073,Kimi K3,published,match,medium,0.99999671125211853,0.99999671125211853,match,true,token_logprob
+case-073,Kimi K3,swapped,match,medium,0.999569442910068,0.999569442910068,match,true,token_logprob
+case-073,Grok 4.3,published,match,medium,0.26894140965101088,0.26894140965101088,non_match,false,token_logprob
+case-073,Grok 4.3,swapped,match,medium,0.46879062662624371,0.46879062662624371,non_match,false,token_logprob
+case-073,TypeSafe Jev 1.13,published,match,medium,0.81000000000000005,0.81000000000000005,match,true,native_binary_probability
+case-073,TypeSafe Jev 1.13,swapped,match,medium,0.78000000000000003,0.78000000000000003,match,true,native_binary_probability
+case-074,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-074,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-074,GLM 5.3 Flash,published,match,easy,0.99682731737179386,0.99682731737179386,match,true,token_logprob
+case-074,GLM 5.3 Flash,swapped,match,easy,0.99896776886853078,0.99896776886853078,match,true,token_logprob
+case-074,Kimi K3,published,match,easy,0.9999485577625955,0.9999485577625955,match,true,token_logprob
+case-074,Kimi K3,swapped,match,easy,0.99991518896506082,0.99991518896506082,match,true,token_logprob
+case-074,Grok 4.3,published,match,easy,0.99640639758198379,0.99640639758198379,match,true,token_logprob
+case-074,Grok 4.3,swapped,match,easy,0.92414182311263671,0.92414182311263671,match,true,token_logprob
+case-074,TypeSafe Jev 1.13,published,match,easy,0.89000000000000001,0.89000000000000001,match,true,native_binary_probability
+case-074,TypeSafe Jev 1.13,swapped,match,easy,0.92000000000000004,0.92000000000000004,match,true,native_binary_probability
+case-075,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-075,GPT-5.6 Luna,swapped,non_match,hard,0.43566609344350443,0.56433390655649562,non_match,true,token_logprob
+case-075,GLM 5.3 Flash,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-075,GLM 5.3 Flash,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-075,Kimi K3,published,non_match,hard,0.00023050679804283673,0.99976949320195718,non_match,true,token_logprob
+case-075,Kimi K3,swapped,non_match,hard,0.99919591395992369,0.00080408604007631279,match,false,token_logprob
+case-075,Grok 4.3,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-075,Grok 4.3,swapped,non_match,hard,0.01590639045807711,0.98409360954192293,non_match,true,token_logprob
+case-075,TypeSafe Jev 1.13,published,non_match,hard,0.20000000000000001,0.80000000000000004,non_match,true,native_binary_probability
+case-075,TypeSafe Jev 1.13,swapped,non_match,hard,0.33000000000000002,0.66999999999999993,non_match,true,native_binary_probability
+case-076,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-076,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-076,GLM 5.3 Flash,published,non_match,easy,0.0015011818672569081,0.9984988181327431,non_match,true,token_logprob
+case-076,GLM 5.3 Flash,swapped,non_match,easy,0.0011695100892208639,0.99883048991077916,non_match,true,token_logprob
+case-076,Kimi K3,published,non_match,easy,1.8925139162140283e-05,0.99998107486083787,non_match,true,token_logprob
+case-076,Kimi K3,swapped,non_match,easy,7.4846240981925056e-05,0.99992515375901803,non_match,true,token_logprob
+case-076,Grok 4.3,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-076,Grok 4.3,swapped,non_match,easy,0.0011695102825981843,0.99883048971740185,non_match,true,token_logprob
+case-076,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-076,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-077,GPT-5.6 Luna,published,match,medium,0.027389605636954546,0.027389605636954546,non_match,false,token_logprob
+case-077,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-077,GLM 5.3 Flash,published,match,medium,0.83548354734431896,0.83548354734431896,match,true,token_logprob
+case-077,GLM 5.3 Flash,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-077,Kimi K3,published,match,medium,0.99997855504986355,0.99997855504986355,match,true,token_logprob
+case-077,Kimi K3,swapped,match,medium,0.99996879809484618,0.99996879809484618,match,true,token_logprob
+case-077,Grok 4.3,published,match,medium,0.012431650796016096,0.012431650796016096,non_match,false,token_logprob
+case-077,Grok 4.3,swapped,match,medium,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-077,TypeSafe Jev 1.13,published,match,medium,0.67000000000000004,0.67000000000000004,match,true,native_binary_probability
+case-077,TypeSafe Jev 1.13,swapped,match,medium,0.82999999999999996,0.82999999999999996,match,true,native_binary_probability
+case-078,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-078,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-078,GLM 5.3 Flash,published,match,easy,0.99408893141464838,0.99408893141464838,match,true,token_logprob
+case-078,GLM 5.3 Flash,swapped,match,easy,0.99929032971326071,0.99929032971326071,match,true,token_logprob
+case-078,Kimi K3,published,match,easy,0.99994855776979719,0.99994855776979719,match,true,token_logprob
+case-078,Kimi K3,swapped,match,easy,0.99987660547336554,0.99987660547336554,match,true,token_logprob
+case-078,Grok 4.3,published,match,easy,0.96691402304141816,0.96691402304141816,match,true,token_logprob
+case-078,Grok 4.3,swapped,match,easy,0.97404264204869395,0.97404264204869395,match,true,token_logprob
+case-078,TypeSafe Jev 1.13,published,match,easy,0.93999999999999995,0.93999999999999995,match,true,native_binary_probability
+case-078,TypeSafe Jev 1.13,swapped,match,easy,0.95999999999999996,0.95999999999999996,match,true,native_binary_probability
+case-079,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-079,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-079,GLM 5.3 Flash,published,non_match,easy,0.00091105120754014313,0.99908894879245991,non_match,true,token_logprob
+case-079,GLM 5.3 Flash,swapped,non_match,easy,0.002182716288653136,0.99781728371134681,non_match,true,token_logprob
+case-079,Kimi K3,published,non_match,easy,0.00010889690676000283,0.99989110309324003,non_match,true,token_logprob
+case-079,Kimi K3,swapped,non_match,easy,0.00013982208123943023,0.99986017791876058,non_match,true,token_logprob
+case-079,Grok 4.3,published,non_match,easy,0.0031726829330567491,0.99682731706694327,non_match,true,token_logprob
+case-079,Grok 4.3,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-079,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-079,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-080,GPT-5.6 Luna,published,match,hard,0.056818808574456807,0.056818808574456807,non_match,false,token_logprob
+case-080,GPT-5.6 Luna,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-080,GLM 5.3 Flash,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-080,GLM 5.3 Flash,swapped,match,hard,0.0010000000000000011,0.0010000000000000011,non_match,false,single_label_default_0.999
+case-080,Kimi K3,published,match,hard,0.047425872725800192,0.047425872725800192,non_match,false,token_logprob
+case-080,Kimi K3,swapped,match,hard,0.99999106030709217,0.99999106030709217,match,true,token_logprob
+case-080,Grok 4.3,published,match,hard,0.053403341098946941,0.053403341098946941,non_match,false,token_logprob
+case-080,Grok 4.3,swapped,match,hard,0.015906391391091134,0.015906391391091134,non_match,false,token_logprob
+case-080,TypeSafe Jev 1.13,published,match,hard,0.34000000000000002,0.34000000000000002,non_match,false,native_binary_probability
+case-080,TypeSafe Jev 1.13,swapped,match,hard,0.28000000000000003,0.28000000000000003,non_match,false,native_binary_probability
+case-081,GPT-5.6 Luna,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-081,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-081,GLM 5.3 Flash,published,match,medium,0.83548355758520054,0.83548355758520054,match,true,token_logprob
+case-081,GLM 5.3 Flash,swapped,match,medium,0.89330941315532642,0.89330941315532642,match,true,token_logprob
+case-081,Kimi K3,published,match,medium,0.99781728307550543,0.99781728307550543,match,true,token_logprob
+case-081,Kimi K3,swapped,match,medium,0.99998987001145023,0.99998987001145023,match,true,token_logprob
+case-081,Grok 4.3,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-081,Grok 4.3,swapped,match,medium,0.89330940179376195,0.89330940179376195,match,true,token_logprob
+case-081,TypeSafe Jev 1.13,published,match,medium,0.89000000000000001,0.89000000000000001,match,true,native_binary_probability
+case-081,TypeSafe Jev 1.13,swapped,match,medium,0.89000000000000001,0.89000000000000001,match,true,native_binary_probability
+case-082,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-082,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-082,GLM 5.3 Flash,published,match,easy,0.99908894899389666,0.99908894899389666,match,true,token_logprob
+case-082,GLM 5.3 Flash,swapped,match,easy,0.99987660538389367,0.99987660538389367,match,true,token_logprob
+case-082,Kimi K3,published,match,easy,0.99996464375986471,0.99996464375986471,match,true,token_logprob
+case-082,Kimi K3,swapped,match,easy,0.99991518891926678,0.99991518891926678,match,true,token_logprob
+case-082,Grok 4.3,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-082,Grok 4.3,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-082,TypeSafe Jev 1.13,published,match,easy,0.97999999999999998,0.97999999999999998,match,true,native_binary_probability
+case-082,TypeSafe Jev 1.13,swapped,match,easy,0.97999999999999998,0.97999999999999998,match,true,native_binary_probability
+case-083,GPT-5.6 Luna,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-083,GPT-5.6 Luna,swapped,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-083,GLM 5.3 Flash,published,match,hard,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-083,GLM 5.3 Flash,swapped,match,hard,0.75491500340955742,0.75491500340955742,match,true,token_logprob
+case-083,Kimi K3,published,match,hard,3.1201926058410723e-05,3.1201926058410723e-05,non_match,false,token_logprob
+case-083,Kimi K3,swapped,match,hard,2.1444950994252734e-05,2.1444950994252734e-05,non_match,false,token_logprob
+case-083,Grok 4.3,published,match,hard,0.095349462328422452,0.095349462328422452,non_match,false,token_logprob
+case-083,Grok 4.3,swapped,match,hard,0.2689414213699951,0.2689414213699951,non_match,false,token_logprob
+case-083,TypeSafe Jev 1.13,published,match,hard,0.53000000000000003,0.53000000000000003,match,true,native_binary_probability
+case-083,TypeSafe Jev 1.13,swapped,match,hard,0.76000000000000001,0.76000000000000001,match,true,native_binary_probability
+case-084,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-084,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-084,GLM 5.3 Flash,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-084,GLM 5.3 Flash,swapped,non_match,medium,0.042087733172273052,0.9579122668277269,non_match,true,token_logprob
+case-084,Kimi K3,published,non_match,medium,0.99995993629815583,4.0063701844172961e-05,match,false,token_logprob
+case-084,Kimi K3,swapped,non_match,medium,0.99752737644872369,0.0024726235512763095,match,false,token_logprob
+case-084,Grok 4.3,published,non_match,medium,0.025957356679759288,0.97404264332024071,non_match,true,token_logprob
+case-084,Grok 4.3,swapped,non_match,medium,0.042087736476456028,0.95791226352354397,non_match,true,token_logprob
+case-084,TypeSafe Jev 1.13,published,non_match,medium,0.44,0.56000000000000005,non_match,true,native_binary_probability
+case-084,TypeSafe Jev 1.13,swapped,non_match,medium,0.40999999999999998,0.59000000000000008,non_match,true,native_binary_probability
+case-085,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-085,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-085,GLM 5.3 Flash,published,match,easy,0.99991518895341425,0.99991518895341425,match,true,token_logprob
+case-085,GLM 5.3 Flash,swapped,match,easy,0.99986017793132653,0.99986017793132653,match,true,token_logprob
+case-085,Kimi K3,published,match,easy,0.99999385582324729,0.99999385582324729,match,true,token_logprob
+case-085,Kimi K3,swapped,match,easy,0.99999577716461285,0.99999577716461285,match,true,token_logprob
+case-085,Grok 4.3,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-085,Grok 4.3,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-085,TypeSafe Jev 1.13,published,match,easy,0.97999999999999998,0.97999999999999998,match,true,native_binary_probability
+case-085,TypeSafe Jev 1.13,swapped,match,easy,0.97999999999999998,0.97999999999999998,match,true,native_binary_probability
+case-086,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-086,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-086,GLM 5.3 Flash,published,non_match,medium,0.00026119020420418623,0.99973880979579577,non_match,true,token_logprob
+case-086,GLM 5.3 Flash,swapped,non_match,medium,0.017986214239008085,0.98201378576099196,non_match,true,token_logprob
+case-086,Kimi K3,published,non_match,medium,6.1441760768077438e-06,0.99999385582392319,non_match,true,token_logprob
+case-086,Kimi K3,swapped,non_match,medium,3.7266397313816348e-06,0.99999627336026864,non_match,true,token_logprob
+case-086,Grok 4.3,published,non_match,medium,0.0024726230974840427,0.99752737690251592,non_match,true,token_logprob
+case-086,Grok 4.3,swapped,non_match,medium,0.0075772415409928054,0.99242275845900718,non_match,true,token_logprob
+case-086,TypeSafe Jev 1.13,published,non_match,medium,0.10000000000000001,0.90000000000000002,non_match,true,native_binary_probability
+case-086,TypeSafe Jev 1.13,swapped,non_match,medium,0.070000000000000007,0.92999999999999994,non_match,true,native_binary_probability
+case-087,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-087,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-087,GLM 5.3 Flash,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-087,GLM 5.3 Flash,swapped,non_match,medium,0.010986941264397983,0.98901305873560197,non_match,true,token_logprob
+case-087,Kimi K3,published,non_match,medium,0.0024726236006064862,0.99752737639939348,non_match,true,token_logprob
+case-087,Kimi K3,swapped,non_match,medium,1.4738978437191819e-05,0.99998526102156282,non_match,true,token_logprob
+case-087,Grok 4.3,published,non_match,medium,0.0075772415269860383,0.99242275847301398,non_match,true,token_logprob
+case-087,Grok 4.3,swapped,non_match,medium,0.0097084770366184826,0.99029152296338152,non_match,true,token_logprob
+case-087,TypeSafe Jev 1.13,published,non_match,medium,0.17000000000000001,0.82999999999999996,non_match,true,native_binary_probability
+case-087,TypeSafe Jev 1.13,swapped,non_match,medium,0.12,0.88,non_match,true,native_binary_probability
+case-088,GPT-5.6 Luna,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-088,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-088,GLM 5.3 Flash,published,match,medium,0.91490095731330501,0.91490095731330501,match,true,token_logprob
+case-088,GLM 5.3 Flash,swapped,match,medium,0.99807326506758165,0.99807326506758165,match,true,token_logprob
+case-088,Kimi K3,published,match,medium,0.99990389758642229,0.99990389758642229,match,true,token_logprob
+case-088,Kimi K3,swapped,match,medium,0.99987660545732615,0.99987660545732615,match,true,token_logprob
+case-088,Grok 4.3,published,match,medium,0.98901305732892697,0.98901305732892697,match,true,token_logprob
+case-088,Grok 4.3,swapped,match,medium,0.98593637309880378,0.98593637309880378,match,true,token_logprob
+case-088,TypeSafe Jev 1.13,published,match,medium,0.94999999999999996,0.94999999999999996,match,true,native_binary_probability
+case-088,TypeSafe Jev 1.13,swapped,match,medium,0.92000000000000004,0.92000000000000004,match,true,native_binary_probability
+case-089,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-089,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-089,GLM 5.3 Flash,published,match,easy,0.99929032974161924,0.99929032974161924,match,true,token_logprob
+case-089,GLM 5.3 Flash,swapped,match,easy,0.99719907284818954,0.99719907284818954,match,true,token_logprob
+case-089,Kimi K3,published,match,easy,0.99982047206834734,0.99982047206834734,match,true,token_logprob
+case-089,Kimi K3,swapped,match,easy,0.99989110305295259,0.99989110305295259,match,true,token_logprob
+case-089,Grok 4.3,published,match,easy,0.98201378645187865,0.98201378645187865,match,true,token_logprob
+case-089,Grok 4.3,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-089,TypeSafe Jev 1.13,published,match,easy,0.78000000000000003,0.78000000000000003,match,true,native_binary_probability
+case-089,TypeSafe Jev 1.13,swapped,match,easy,0.89000000000000001,0.89000000000000001,match,true,native_binary_probability
+case-090,GPT-5.6 Luna,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-090,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-090,GLM 5.3 Flash,published,match,medium,0.6791786796940622,0.6791786796940622,match,true,token_logprob
+case-090,GLM 5.3 Flash,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-090,Kimi K3,published,match,medium,0.99937366586692811,0.99937366586692811,match,true,token_logprob
+case-090,Kimi K3,swapped,match,medium,0.9998415638030751,0.9998415638030751,match,true,token_logprob
+case-090,Grok 4.3,published,match,medium,0.16451645675203383,0.16451645675203383,non_match,false,token_logprob
+case-090,Grok 4.3,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-090,TypeSafe Jev 1.13,published,match,medium,0.79000000000000004,0.79000000000000004,match,true,native_binary_probability
+case-090,TypeSafe Jev 1.13,swapped,match,medium,0.68999999999999995,0.68999999999999995,match,true,native_binary_probability
+case-091,GPT-5.6 Luna,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-091,GPT-5.6 Luna,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-091,GLM 5.3 Flash,published,match,medium,0.9770226294627451,0.9770226294627451,match,true,token_logprob
+case-091,GLM 5.3 Flash,swapped,match,medium,0.97404264186031675,0.97404264186031675,match,true,token_logprob
+case-091,Kimi K3,published,match,medium,0.99984156383158906,0.99984156383158906,match,true,token_logprob
+case-091,Kimi K3,swapped,match,medium,0.99986017786563575,0.99986017786563575,match,true,token_logprob
+case-091,Grok 4.3,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-091,Grok 4.3,swapped,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-091,TypeSafe Jev 1.13,published,match,medium,0.93000000000000005,0.93000000000000005,match,true,native_binary_probability
+case-091,TypeSafe Jev 1.13,swapped,match,medium,0.95999999999999996,0.95999999999999996,match,true,native_binary_probability
+case-092,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-092,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-092,GLM 5.3 Flash,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-092,GLM 5.3 Flash,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-092,Kimi K3,published,non_match,medium,0.00026119042354458001,0.99973880957645544,non_match,true,token_logprob
+case-092,Kimi K3,swapped,non_match,medium,0.0040701377564318448,0.99592986224356816,non_match,true,token_logprob
+case-092,Grok 4.3,published,non_match,medium,0.0075772408616645269,0.99242275913833544,non_match,true,token_logprob
+case-092,Grok 4.3,swapped,non_match,medium,0.0040701377687486886,0.99592986223125135,non_match,true,token_logprob
+case-092,TypeSafe Jev 1.13,published,non_match,medium,0.13,0.87,non_match,true,native_binary_probability
+case-092,TypeSafe Jev 1.13,swapped,non_match,medium,0.17000000000000001,0.82999999999999996,non_match,true,native_binary_probability
+case-093,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-093,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-093,GLM 5.3 Flash,published,non_match,easy,0.0013250221269857758,0.99867497787301418,non_match,true,token_logprob
+case-093,GLM 5.3 Flash,swapped,non_match,easy,0.0024726234879937485,0.99752737651200629,non_match,true,token_logprob
+case-093,Kimi K3,published,non_match,easy,7.4846243227144325e-05,0.99992515375677282,non_match,true,token_logprob
+case-093,Kimi K3,swapped,non_match,easy,2.430024973415183e-05,0.9999756997502659,non_match,true,token_logprob
+case-093,Grok 4.3,published,non_match,easy,0.0028009269541146731,0.99719907304588529,non_match,true,token_logprob
+case-093,Grok 4.3,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-093,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-093,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-094,GPT-5.6 Luna,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-094,GPT-5.6 Luna,swapped,match,medium,0.68916425129505265,0.68916425129505265,match,true,token_logprob
+case-094,GLM 5.3 Flash,published,match,medium,0.62245933820551091,0.62245933820551091,match,true,token_logprob
+case-094,GLM 5.3 Flash,swapped,match,medium,0.43782349911420188,0.43782349911420188,non_match,false,token_logprob
+case-094,Kimi K3,published,match,medium,0.99999773967515959,0.99999773967515959,match,true,token_logprob
+case-094,Kimi K3,swapped,match,medium,0.99929032961508268,0.99929032961508268,match,true,token_logprob
+case-094,Grok 4.3,published,match,medium,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-094,Grok 4.3,swapped,match,medium,0.2689414213699951,0.2689414213699951,non_match,false,token_logprob
+case-094,TypeSafe Jev 1.13,published,match,medium,0.82999999999999996,0.82999999999999996,match,true,native_binary_probability
+case-094,TypeSafe Jev 1.13,swapped,match,medium,0.72999999999999998,0.72999999999999998,match,true,native_binary_probability
+case-095,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-095,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-095,GLM 5.3 Flash,published,match,easy,0.9999038976109571,0.9999038976109571,match,true,token_logprob
+case-095,GLM 5.3 Flash,swapped,match,easy,0.9999038976109571,0.9999038976109571,match,true,token_logprob
+case-095,Kimi K3,published,match,easy,0.99999627336164754,0.99999627336164754,match,true,token_logprob
+case-095,Kimi K3,swapped,match,easy,0.9999646437386519,0.9999646437386519,match,true,token_logprob
+case-095,Grok 4.3,published,match,easy,0.9986749775847894,0.9986749775847894,match,true,token_logprob
+case-095,Grok 4.3,swapped,match,easy,0.9986749775847894,0.9986749775847894,match,true,token_logprob
+case-095,TypeSafe Jev 1.13,published,match,easy,0.96999999999999997,0.96999999999999997,match,true,native_binary_probability
+case-095,TypeSafe Jev 1.13,swapped,match,easy,0.96999999999999997,0.96999999999999997,match,true,native_binary_probability
+case-096,GPT-5.6 Luna,published,non_match,hard,0.99899999999999989,0.0010000000000001119,match,false,single_label_default_0.999
+case-096,GPT-5.6 Luna,swapped,non_match,hard,0.99899999999999989,0.0010000000000001119,match,false,single_label_default_0.999
+case-096,GLM 5.3 Flash,published,non_match,hard,0.85195280572725429,0.14804719427274571,match,false,token_logprob
+case-096,GLM 5.3 Flash,swapped,non_match,hard,0.93991335277145793,0.060086647228542067,match,false,token_logprob
+case-096,Kimi K3,published,non_match,hard,0.99999303774625636,6.9622537436364595e-06,match,false,token_logprob
+case-096,Kimi K3,swapped,non_match,hard,0.99973880962606865,0.00026119037393135258,match,false,token_logprob
+case-096,Grok 4.3,published,non_match,hard,0.16451647313744577,0.83548352686255423,non_match,true,token_logprob
+case-096,Grok 4.3,swapped,non_match,hard,0.99899999999999989,0.0010000000000001119,match,false,single_label_default_0.999
+case-096,TypeSafe Jev 1.13,published,non_match,hard,0.77000000000000002,0.22999999999999998,match,false,native_binary_probability
+case-096,TypeSafe Jev 1.13,swapped,non_match,hard,0.75,0.25,match,false,native_binary_probability
+case-097,GPT-5.6 Luna,published,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-097,GPT-5.6 Luna,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-097,GLM 5.3 Flash,published,non_match,medium,0.0015011825320952838,0.9984988174679047,non_match,true,token_logprob
+case-097,GLM 5.3 Flash,swapped,non_match,medium,0.0035936019761582737,0.99640639802384168,non_match,true,token_logprob
+case-097,Kimi K3,published,non_match,medium,0.00023050671968860386,0.99976949328031139,non_match,true,token_logprob
+case-097,Kimi K3,swapped,non_match,medium,0.00033534998631431075,0.99966465001368565,non_match,true,token_logprob
+case-097,Grok 4.3,published,non_match,medium,0.0075772409457051338,0.99242275905429489,non_match,true,token_logprob
+case-097,Grok 4.3,swapped,non_match,medium,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-097,TypeSafe Jev 1.13,published,non_match,medium,0.040000000000000001,0.95999999999999996,non_match,true,native_binary_probability
+case-097,TypeSafe Jev 1.13,swapped,non_match,medium,0.070000000000000007,0.92999999999999994,non_match,true,native_binary_probability
+case-098,GPT-5.6 Luna,published,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-098,GPT-5.6 Luna,swapped,match,easy,0.99899999999999989,0.99899999999999989,match,true,single_label_default_0.999
+case-098,GLM 5.3 Flash,published,match,easy,0.99994170874357236,0.99994170874357236,match,true,token_logprob
+case-098,GLM 5.3 Flash,swapped,match,easy,0.9999151889416128,0.9999151889416128,match,true,token_logprob
+case-098,Kimi K3,published,match,easy,0.99999812612486005,0.99999812612486005,match,true,token_logprob
+case-098,Kimi K3,swapped,match,easy,0.99995460214083065,0.99995460214083065,match,true,token_logprob
+case-098,Grok 4.3,published,match,easy,0.9902915235185259,0.9902915235185259,match,true,token_logprob
+case-098,Grok 4.3,swapped,match,easy,0.9902915235185259,0.9902915235185259,match,true,token_logprob
+case-098,TypeSafe Jev 1.13,published,match,easy,0.97999999999999998,0.97999999999999998,match,true,native_binary_probability
+case-098,TypeSafe Jev 1.13,swapped,match,easy,0.97999999999999998,0.97999999999999998,match,true,native_binary_probability
+case-099,GPT-5.6 Luna,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-099,GPT-5.6 Luna,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-099,GLM 5.3 Flash,published,non_match,hard,0.060086649122055601,0.93991335087794436,non_match,true,token_logprob
+case-099,GLM 5.3 Flash,swapped,non_match,hard,0.2689414565269499,0.7310585434730501,non_match,true,token_logprob
+case-099,Kimi K3,published,non_match,hard,3.5356263469546817e-05,0.99996464373653049,non_match,true,token_logprob
+case-099,Kimi K3,swapped,non_match,hard,1.6701421848095187e-05,0.99998329857815194,non_match,true,token_logprob
+case-099,Grok 4.3,published,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-099,Grok 4.3,swapped,non_match,hard,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-099,TypeSafe Jev 1.13,published,non_match,hard,0.11,0.89000000000000001,non_match,true,native_binary_probability
+case-099,TypeSafe Jev 1.13,swapped,non_match,hard,0.11,0.89000000000000001,non_match,true,native_binary_probability
+case-100,GPT-5.6 Luna,published,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-100,GPT-5.6 Luna,swapped,non_match,easy,0.0010000000000000011,0.999,non_match,true,single_label_default_0.999
+case-100,GLM 5.3 Flash,published,non_match,easy,0.007577240679576552,0.99242275932042345,non_match,true,token_logprob
+case-100,GLM 5.3 Flash,swapped,non_match,easy,0.0035936020378516224,0.99640639796214836,non_match,true,token_logprob
+case-100,Kimi K3,published,non_match,easy,1.147876296169514e-05,0.9999885212370383,non_match,true,token_logprob
+case-100,Kimi K3,swapped,non_match,easy,2.1444957213156039e-05,0.99997855504278688,non_match,true,token_logprob
+case-100,Grok 4.3,published,non_match,easy,0.0028009268793284456,0.99719907312067158,non_match,true,token_logprob
+case-100,Grok 4.3,swapped,non_match,easy,0.0028009269352555371,0.99719907306474442,non_match,true,token_logprob
+case-100,TypeSafe Jev 1.13,published,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability
+case-100,TypeSafe Jev 1.13,swapped,non_match,easy,0.01,0.98999999999999999,non_match,true,native_binary_probability

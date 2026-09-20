@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Govind G Nair">
+<meta name="dcterms.date" content="2026-09-19">
+<meta name="description" content="A controlled restaurant-matching benchmark shows why accurate language models can still be dangerously overconfident.">
+
+<title>Are LLMs Calibrated?</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ddcb5eff6fc49271f9eba22f59fcc071.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Are LLMs Calibrated?</h1>
+            <p class="subtitle lead">Asses the calibration of Jev vs LLMs using a 100-pair restaurant-matching benchmark</p>
+                  <div>
+        <div class="description">
+          A controlled restaurant-matching benchmark shows why accurate language models can still be dangerously overconfident.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Article</div>
+                <div class="quarto-category">AI</div>
+                <div class="quarto-category">Machine Learning</div>
+                <div class="quarto-category">Probability</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Govind G Nair </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 19, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#benchmark-design" id="toc-benchmark-design" class="nav-link active" data-scroll-target="#benchmark-design">Benchmark design</a></li>
+  <li><a href="#study-assumptions" id="toc-study-assumptions" class="nav-link" data-scroll-target="#study-assumptions">Study assumptions</a></li>
+  <li><a href="#the-finding-in-one-sentence" id="toc-the-finding-in-one-sentence" class="nav-link" data-scroll-target="#the-finding-in-one-sentence">The finding in one sentence</a></li>
+  <li><a href="#overall-results" id="toc-overall-results" class="nav-link" data-scroll-target="#overall-results">Overall results</a></li>
+  <li><a href="#confidence-changes-with-difficulty" id="toc-confidence-changes-with-difficulty" class="nav-link" data-scroll-target="#confidence-changes-with-difficulty">Confidence changes with difficulty</a></li>
+  <li><a href="#hard-cases-expose-brittle-confidence" id="toc-hard-cases-expose-brittle-confidence" class="nav-link" data-scroll-target="#hard-cases-expose-brittle-confidence">Hard cases expose brittle confidence</a></li>
+  <li><a href="#raw-match-probabilities-and-class-behavior" id="toc-raw-match-probabilities-and-class-behavior" class="nav-link" data-scroll-target="#raw-match-probabilities-and-class-behavior">Raw match probabilities and class behavior</a></li>
+  <li><a href="#reliability" id="toc-reliability" class="nav-link" data-scroll-target="#reliability">Reliability</a></li>
+  <li><a href="#scope-of-the-conclusion" id="toc-scope-of-the-conclusion" class="nav-link" data-scroll-target="#scope-of-the-conclusion">Scope of the conclusion</a></li>
+  <li><a href="#reproduction" id="toc-reproduction" class="nav-link" data-scroll-target="#reproduction">Reproduction</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Disclosure
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>OpenAI Codex was used to carry out the analysis and generate this report. I reviewed the analysis, interpretation, and final text before publication.</p>
+</div>
+</div>
+<section id="benchmark-design" class="level2">
+<h2 class="anchored" data-anchor-id="benchmark-design">Benchmark design</h2>
+<p>The task is deterministic binary entity resolution: do two records describe the same physical restaurant outlet? The reviewed benchmark contains 100 pairs, balanced 50/50 between matches and non-matches. Each pair is also assigned a reviewed difficulty level.</p>
+<div id="d9156475" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">label</th>
+<th data-quarto-table-cell-role="th">Non-match</th>
+<th data-quarto-table-cell-role="th">Match</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Difficulty</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">easy</th>
+<td>17</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">medium</th>
+<td>16</td>
+<td>17</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">hard</th>
+<td>17</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Total</th>
+<td>50</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/01_dataset_composition.png" class="img-fluid figure-img" alt="Grouped bars show 17 matches and 17 non-matches for easy cases, 17 matches and 16 non-matches for medium cases, and 16 matches and 17 non-matches for hard cases."></p>
+<figcaption>The label-by-difficulty design is balanced to within one example per cell.</figcaption>
+</figure>
+</div>
+<p>The constructed 50/50 prevalence makes model comparisons straightforward, but it is not an estimate of how often records match in production.</p>
+</section>
+<section id="study-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="study-assumptions">Study assumptions</h2>
+<p>These choices materially affect how the comparison should be interpreted:</p>
+<ul>
+<li><strong>Probability interface:</strong> Jev returns a native binary probability. Luna, GLM, Kimi, and Grok are evaluated through answer-token log probabilities.</li>
+<li><strong>Single-label fallback:</strong> When Luna, GLM, or Grok returned only one of the two requested answer labels, the predeclared rule assigned <code>0.999</code> to the returned label and <code>0.001</code> to the missing alternative. Kimi’s extreme probabilities came from returned log probabilities, not this fallback.</li>
+<li><strong>Reasoning setting:</strong> Luna and Grok used <code>none</code>; GLM and Kimi used <code>low</code> because those routes generated or required reasoning before the visible answer.</li>
+<li><strong>Comparison unit:</strong> The results compare the exact endpoint configurations and probability interfaces used here—not abstract model families under identical settings.</li>
+</ul>
+</section>
+<section id="the-finding-in-one-sentence" class="level2">
+<h2 class="anchored" data-anchor-id="the-finding-in-one-sentence">The finding in one sentence</h2>
+<p>TypeSafe Jev produced the least brittle confidence on difficult cases and the best overall log loss, while GLM 5.3 Flash still led overall accuracy, Brier score, and expected calibration error.</p>
+<p>The key takeaway is that a model can make more correct decisions while assigning damaging levels of confidence to the mistakes it does make. Conversely, a cautious model can limit the cost of its errors without winning every aggregate metric.</p>
+<p>Does Jev 1.13 represent a new class of models that can curb the tendency of LLMs to be overconfident? This limited experiment suggests that possibility, but broader replication is needed.</p>
+</section>
+<section id="overall-results" class="level2">
+<h2 class="anchored" data-anchor-id="overall-results">Overall results</h2>
+<p>Accuracy measures decisions. Brier score and natural-log loss measure probabilistic quality. ECE summarizes the gap between predicted probabilities and observed frequencies using five fixed probability bands; identical probabilities always remain together. Higher accuracy is better; lower Brier, log loss, and ECE are better.</p>
+<div id="5da7321b" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<style type="text/css">
+</style>
+
+<table id="T_df591" class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th id="T_df591_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Model</th>
+<th id="T_df591_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">N</th>
+<th id="T_df591_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Accuracy</th>
+<th id="T_df591_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Brier</th>
+<th id="T_df591_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">Log loss</th>
+<th id="T_df591_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">ECE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_df591_row0_col0" class="data row0 col0">GPT-5.6 Luna</td>
+<td id="T_df591_row0_col1" class="data row0 col1">100</td>
+<td id="T_df591_row0_col2" class="data row0 col2">0.820</td>
+<td id="T_df591_row0_col3" class="data row0 col3">0.166</td>
+<td id="T_df591_row0_col4" class="data row0 col4">0.982</td>
+<td id="T_df591_row0_col5" class="data row0 col5">0.170</td>
+</tr>
+<tr class="even">
+<td id="T_df591_row1_col0" class="data row1 col0">GLM 5.3 Flash</td>
+<td id="T_df591_row1_col1" class="data row1 col1">100</td>
+<td id="T_df591_row1_col2" class="data row1 col2">0.900</td>
+<td id="T_df591_row1_col3" class="data row1 col3">0.095</td>
+<td id="T_df591_row1_col4" class="data row1 col4">0.560</td>
+<td id="T_df591_row1_col5" class="data row1 col5">0.093</td>
+</tr>
+<tr class="odd">
+<td id="T_df591_row2_col0" class="data row2 col0">Kimi K3</td>
+<td id="T_df591_row2_col1" class="data row2 col1">100</td>
+<td id="T_df591_row2_col2" class="data row2 col2">0.860</td>
+<td id="T_df591_row2_col3" class="data row2 col3">0.138</td>
+<td id="T_df591_row2_col4" class="data row2 col4">1.277</td>
+<td id="T_df591_row2_col5" class="data row2 col5">0.138</td>
+</tr>
+<tr class="even">
+<td id="T_df591_row3_col0" class="data row3 col0">Grok 4.3</td>
+<td id="T_df591_row3_col1" class="data row3 col1">100</td>
+<td id="T_df591_row3_col2" class="data row3 col2">0.750</td>
+<td id="T_df591_row3_col3" class="data row3 col3">0.228</td>
+<td id="T_df591_row3_col4" class="data row3 col4">1.145</td>
+<td id="T_df591_row3_col5" class="data row3 col5">0.237</td>
+</tr>
+<tr class="odd">
+<td id="T_df591_row4_col0" class="data row4 col0">TypeSafe Jev 1.13</td>
+<td id="T_df591_row4_col1" class="data row4 col1">100</td>
+<td id="T_df591_row4_col2" class="data row4 col2">0.830</td>
+<td id="T_df591_row4_col3" class="data row4 col3">0.102</td>
+<td id="T_df591_row4_col4" class="data row4 col4">0.319</td>
+<td id="T_df591_row4_col5" class="data row4 col5">0.094</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/02_overall_metrics.png" class="img-fluid figure-img" alt="Four dot plots compare accuracy, Brier score, log loss, and ECE for Luna, GLM, Kimi, Grok, and Jev. Jev has the lowest log loss while GLM leads the other three metrics."></p>
+<figcaption>Overall results show that no endpoint wins every metric.</figcaption>
+</figure>
+</div>
+<p>Jev’s <code>0.319</code> log loss is substantially lower than GLM’s <code>0.560</code>, but GLM has higher accuracy (<code>0.900</code> versus <code>0.830</code>), a lower Brier score (<code>0.095</code> versus <code>0.102</code>), and slightly lower ECE (<code>0.093</code> versus <code>0.094</code>). There is no metric-independent winner.</p>
+</section>
+<section id="confidence-changes-with-difficulty" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-changes-with-difficulty">Confidence changes with difficulty</h2>
+<p>For the next view, each probability is converted to the probability assigned to the correct label: <code>p(match)</code> for a true match and <code>1 − p(match)</code> for a true non-match. This makes confident correct and confident incorrect predictions visible on a shared axis.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/03_probability_distributions_by_difficulty.png" class="img-fluid figure-img" alt="Three strip plots show correct-label probability for each model on easy, medium, and hard cases. Token-derived probabilities become polarized near zero and one on harder cases, while Jev remains more spread through the middle."></p>
+<figcaption>Each dot is one case; the thick line is the interquartile range and the white tick is the median.</figcaption>
+</figure>
+</div>
+<p>All five endpoints are effectively certain and correct on the easy stratum. The separation begins on medium cases and becomes stark on hard cases. Kimi, Luna, and Grok are especially polarized: their medians can remain high even while a sizable minority of cases receive almost zero probability on the correct answer. Note that the median for Jev decreases as the difficulty level increases.</p>
+</section>
+<section id="hard-cases-expose-brittle-confidence" class="level2">
+<h2 class="anchored" data-anchor-id="hard-cases-expose-brittle-confidence">Hard cases expose brittle confidence</h2>
+<p>The hard stratum contains 33 pairs: 16 matches and 17 non-matches.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/04_hard_case_focus.png" class="img-fluid figure-img" alt="A square strip plot compares probability assigned to the correct label on 33 hard cases. Jev values range from 14 to 89 percent, while the token-derived endpoints contain many values below 10 percent and at or above 90 percent."></p>
+<figcaption>Jev avoids both near-zero and near-one probabilities on hard cases.</figcaption>
+</figure>
+</div>
+<div id="cc9d75ec" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<style type="text/css">
+</style>
+
+<table id="T_49444" class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th id="T_49444_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Model</th>
+<th id="T_49444_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">&lt;10%</th>
+<th id="T_49444_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">10–25%</th>
+<th id="T_49444_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">25–50%</th>
+<th id="T_49444_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">50–75%</th>
+<th id="T_49444_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">75–90%</th>
+<th id="T_49444_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">≥90%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_49444_row0_col0" class="data row0 col0">GPT-5.6 Luna</td>
+<td id="T_49444_row0_col1" class="data row0 col1">11</td>
+<td id="T_49444_row0_col2" class="data row0 col2">0</td>
+<td id="T_49444_row0_col3" class="data row0 col3">1</td>
+<td id="T_49444_row0_col4" class="data row0 col4">0</td>
+<td id="T_49444_row0_col5" class="data row0 col5">1</td>
+<td id="T_49444_row0_col6" class="data row0 col6">20</td>
+</tr>
+<tr class="even">
+<td id="T_49444_row1_col0" class="data row1 col0">GLM 5.3 Flash</td>
+<td id="T_49444_row1_col1" class="data row1 col1">6</td>
+<td id="T_49444_row1_col2" class="data row1 col2">1</td>
+<td id="T_49444_row1_col3" class="data row1 col3">2</td>
+<td id="T_49444_row1_col4" class="data row1 col4">0</td>
+<td id="T_49444_row1_col5" class="data row1 col5">4</td>
+<td id="T_49444_row1_col6" class="data row1 col6">20</td>
+</tr>
+<tr class="odd">
+<td id="T_49444_row2_col0" class="data row2 col0">Kimi K3</td>
+<td id="T_49444_row2_col1" class="data row2 col1">11</td>
+<td id="T_49444_row2_col2" class="data row2 col2">0</td>
+<td id="T_49444_row2_col3" class="data row2 col3">0</td>
+<td id="T_49444_row2_col4" class="data row2 col4">0</td>
+<td id="T_49444_row2_col5" class="data row2 col5">0</td>
+<td id="T_49444_row2_col6" class="data row2 col6">22</td>
+</tr>
+<tr class="even">
+<td id="T_49444_row3_col0" class="data row3 col0">Grok 4.3</td>
+<td id="T_49444_row3_col1" class="data row3 col1">15</td>
+<td id="T_49444_row3_col2" class="data row3 col2">0</td>
+<td id="T_49444_row3_col3" class="data row3 col3">0</td>
+<td id="T_49444_row3_col4" class="data row3 col4">0</td>
+<td id="T_49444_row3_col5" class="data row3 col5">1</td>
+<td id="T_49444_row3_col6" class="data row3 col6">17</td>
+</tr>
+<tr class="odd">
+<td id="T_49444_row4_col0" class="data row4 col0">TypeSafe Jev 1.13</td>
+<td id="T_49444_row4_col1" class="data row4 col1">0</td>
+<td id="T_49444_row4_col2" class="data row4 col2">3</td>
+<td id="T_49444_row4_col3" class="data row4 col3">9</td>
+<td id="T_49444_row4_col4" class="data row4 col4">10</td>
+<td id="T_49444_row4_col5" class="data row4 col5">11</td>
+<td id="T_49444_row4_col6" class="data row4 col6">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Jev assigns the correct label between 14% and 89% probability on every hard case. It has no predictions below 10% or at least 90%. By contrast, Kimi has 22 hard cases at or above 90% and 11 below 10%; Grok has 17 and 15 respectively. This endpoint mass explains why a few confidently wrong predictions can dominate natural-log loss.</p>
+<p>The difficulty-level metrics show the trade-off directly:</p>
+<div id="1d35db50" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<style type="text/css">
+</style>
+
+<table id="T_031d9" class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th id="T_031d9_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Difficulty</th>
+<th id="T_031d9_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Model</th>
+<th id="T_031d9_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">N</th>
+<th id="T_031d9_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Accuracy</th>
+<th id="T_031d9_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">Brier</th>
+<th id="T_031d9_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">Log loss</th>
+<th id="T_031d9_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">ECE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_031d9_row0_col0" class="data row0 col0">easy</td>
+<td id="T_031d9_row0_col1" class="data row0 col1">GPT-5.6 Luna</td>
+<td id="T_031d9_row0_col2" class="data row0 col2">34</td>
+<td id="T_031d9_row0_col3" class="data row0 col3">1.000</td>
+<td id="T_031d9_row0_col4" class="data row0 col4">0.000</td>
+<td id="T_031d9_row0_col5" class="data row0 col5">0.001</td>
+<td id="T_031d9_row0_col6" class="data row0 col6">0.001</td>
+</tr>
+<tr class="even">
+<td id="T_031d9_row1_col0" class="data row1 col0">easy</td>
+<td id="T_031d9_row1_col1" class="data row1 col1">GLM 5.3 Flash</td>
+<td id="T_031d9_row1_col2" class="data row1 col2">34</td>
+<td id="T_031d9_row1_col3" class="data row1 col3">1.000</td>
+<td id="T_031d9_row1_col4" class="data row1 col4">0.000</td>
+<td id="T_031d9_row1_col5" class="data row1 col5">0.005</td>
+<td id="T_031d9_row1_col6" class="data row1 col6">0.005</td>
+</tr>
+<tr class="odd">
+<td id="T_031d9_row2_col0" class="data row2 col0">easy</td>
+<td id="T_031d9_row2_col1" class="data row2 col1">Kimi K3</td>
+<td id="T_031d9_row2_col2" class="data row2 col2">34</td>
+<td id="T_031d9_row2_col3" class="data row2 col3">1.000</td>
+<td id="T_031d9_row2_col4" class="data row2 col4">0.000</td>
+<td id="T_031d9_row2_col5" class="data row2 col5">0.000</td>
+<td id="T_031d9_row2_col6" class="data row2 col6">0.000</td>
+</tr>
+<tr class="even">
+<td id="T_031d9_row3_col0" class="data row3 col0">easy</td>
+<td id="T_031d9_row3_col1" class="data row3 col1">Grok 4.3</td>
+<td id="T_031d9_row3_col2" class="data row3 col2">34</td>
+<td id="T_031d9_row3_col3" class="data row3 col3">1.000</td>
+<td id="T_031d9_row3_col4" class="data row3 col4">0.000</td>
+<td id="T_031d9_row3_col5" class="data row3 col5">0.005</td>
+<td id="T_031d9_row3_col6" class="data row3 col6">0.005</td>
+</tr>
+<tr class="odd">
+<td id="T_031d9_row4_col0" class="data row4 col0">easy</td>
+<td id="T_031d9_row4_col1" class="data row4 col1">TypeSafe Jev 1.13</td>
+<td id="T_031d9_row4_col2" class="data row4 col2">34</td>
+<td id="T_031d9_row4_col3" class="data row4 col3">1.000</td>
+<td id="T_031d9_row4_col4" class="data row4 col4">0.003</td>
+<td id="T_031d9_row4_col5" class="data row4 col5">0.036</td>
+<td id="T_031d9_row4_col6" class="data row4 col6">0.034</td>
+</tr>
+<tr class="even">
+<td id="T_031d9_row5_col0" class="data row5 col0">medium</td>
+<td id="T_031d9_row5_col1" class="data row5 col1">GPT-5.6 Luna</td>
+<td id="T_031d9_row5_col2" class="data row5 col2">33</td>
+<td id="T_031d9_row5_col3" class="data row5 col3">0.818</td>
+<td id="T_031d9_row5_col4" class="data row5 col4">0.165</td>
+<td id="T_031d9_row5_col5" class="data row5 col5">0.985</td>
+<td id="T_031d9_row5_col6" class="data row5 col6">0.173</td>
+</tr>
+<tr class="odd">
+<td id="T_031d9_row6_col0" class="data row6 col0">medium</td>
+<td id="T_031d9_row6_col1" class="data row6 col1">GLM 5.3 Flash</td>
+<td id="T_031d9_row6_col2" class="data row6 col2">33</td>
+<td id="T_031d9_row6_col3" class="data row6 col3">0.970</td>
+<td id="T_031d9_row6_col4" class="data row6 col4">0.058</td>
+<td id="T_031d9_row6_col5" class="data row6 col5">0.296</td>
+<td id="T_031d9_row6_col6" class="data row6 col6">0.109</td>
+</tr>
+<tr class="even">
+<td id="T_031d9_row7_col0" class="data row7 col0">medium</td>
+<td id="T_031d9_row7_col1" class="data row7 col1">Kimi K3</td>
+<td id="T_031d9_row7_col2" class="data row7 col2">33</td>
+<td id="T_031d9_row7_col3" class="data row7 col3">0.909</td>
+<td id="T_031d9_row7_col4" class="data row7 col4">0.091</td>
+<td id="T_031d9_row7_col5" class="data row7 col5">0.864</td>
+<td id="T_031d9_row7_col6" class="data row7 col6">0.090</td>
+</tr>
+<tr class="odd">
+<td id="T_031d9_row8_col0" class="data row8 col0">medium</td>
+<td id="T_031d9_row8_col1" class="data row8 col1">Grok 4.3</td>
+<td id="T_031d9_row8_col2" class="data row8 col2">33</td>
+<td id="T_031d9_row8_col3" class="data row8 col3">0.697</td>
+<td id="T_031d9_row8_col4" class="data row8 col4">0.256</td>
+<td id="T_031d9_row8_col5" class="data row8 col5">1.318</td>
+<td id="T_031d9_row8_col6" class="data row8 col6">0.279</td>
+</tr>
+<tr class="even">
+<td id="T_031d9_row9_col0" class="data row9 col0">medium</td>
+<td id="T_031d9_row9_col1" class="data row9 col1">TypeSafe Jev 1.13</td>
+<td id="T_031d9_row9_col2" class="data row9 col2">33</td>
+<td id="T_031d9_row9_col3" class="data row9 col3">0.848</td>
+<td id="T_031d9_row9_col4" class="data row9 col4">0.097</td>
+<td id="T_031d9_row9_col5" class="data row9 col5">0.319</td>
+<td id="T_031d9_row9_col6" class="data row9 col6">0.115</td>
+</tr>
+<tr class="odd">
+<td id="T_031d9_row10_col0" class="data row10 col0">hard</td>
+<td id="T_031d9_row10_col1" class="data row10 col1">GPT-5.6 Luna</td>
+<td id="T_031d9_row10_col2" class="data row10 col2">33</td>
+<td id="T_031d9_row10_col3" class="data row10 col3">0.636</td>
+<td id="T_031d9_row10_col4" class="data row10 col4">0.338</td>
+<td id="T_031d9_row10_col5" class="data row10 col5">1.988</td>
+<td id="T_031d9_row10_col6" class="data row10 col6">0.345</td>
+</tr>
+<tr class="even">
+<td id="T_031d9_row11_col0" class="data row11 col0">hard</td>
+<td id="T_031d9_row11_col1" class="data row11 col1">GLM 5.3 Flash</td>
+<td id="T_031d9_row11_col2" class="data row11 col2">33</td>
+<td id="T_031d9_row11_col3" class="data row11 col3">0.727</td>
+<td id="T_031d9_row11_col4" class="data row11 col4">0.229</td>
+<td id="T_031d9_row11_col5" class="data row11 col5">1.395</td>
+<td id="T_031d9_row11_col6" class="data row11 col6">0.256</td>
+</tr>
+<tr class="odd">
+<td id="T_031d9_row12_col0" class="data row12 col0">hard</td>
+<td id="T_031d9_row12_col1" class="data row12 col1">Kimi K3</td>
+<td id="T_031d9_row12_col2" class="data row12 col2">33</td>
+<td id="T_031d9_row12_col3" class="data row12 col3">0.667</td>
+<td id="T_031d9_row12_col4" class="data row12 col4">0.329</td>
+<td id="T_031d9_row12_col5" class="data row12 col5">3.004</td>
+<td id="T_031d9_row12_col6" class="data row12 col6">0.329</td>
+</tr>
+<tr class="even">
+<td id="T_031d9_row13_col0" class="data row13 col0">hard</td>
+<td id="T_031d9_row13_col1" class="data row13 col1">Grok 4.3</td>
+<td id="T_031d9_row13_col2" class="data row13 col2">33</td>
+<td id="T_031d9_row13_col3" class="data row13 col3">0.545</td>
+<td id="T_031d9_row13_col4" class="data row13 col4">0.435</td>
+<td id="T_031d9_row13_col5" class="data row13 col5">2.147</td>
+<td id="T_031d9_row13_col6" class="data row13 col6">0.435</td>
+</tr>
+<tr class="odd">
+<td id="T_031d9_row14_col0" class="data row14 col0">hard</td>
+<td id="T_031d9_row14_col1" class="data row14 col1">TypeSafe Jev 1.13</td>
+<td id="T_031d9_row14_col2" class="data row14 col2">33</td>
+<td id="T_031d9_row14_col3" class="data row14 col3">0.636</td>
+<td id="T_031d9_row14_col4" class="data row14 col4">0.210</td>
+<td id="T_031d9_row14_col5" class="data row14 col5">0.610</td>
+<td id="T_031d9_row14_col6" class="data row14 col6">0.155</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>On hard cases, Jev improves on GLM’s Brier score (<code>0.210</code> versus <code>0.229</code>) and log loss (<code>0.610</code> versus <code>1.395</code>) and has lower five-band ECE (<code>0.155</code> versus <code>0.256</code>). GLM remains more accurate (<code>72.7%</code> versus <code>63.6%</code>), so Jev’s stronger probabilistic scores do not translate into better hard-case classification accuracy.</p>
+</section>
+<section id="raw-match-probabilities-and-class-behavior" class="level2">
+<h2 class="anchored" data-anchor-id="raw-match-probabilities-and-class-behavior">Raw match probabilities and class behavior</h2>
+<p>Correct-label probability is communicatively useful, but it can hide class-specific tendencies. The raw <code>p(match)</code> distributions below separate true matches from true non-matches.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/05_raw_match_probability_by_label.png" class="img-fluid figure-img" alt="Six panels split predicted match probabilities by difficulty and true label. Luna and Grok show a strong non-match tendency on difficult true matches, while Jev uses a narrower range for both classes."></p>
+<figcaption>Raw match probabilities reveal which class drives each endpoint’s errors.</figcaption>
+</figure>
+</div>
+<p>For a true match, values should be high; for a true non-match, values should be low. Luna and Grok’s hard-case failures are concentrated among true matches, revealing a strong tendency toward the non-match answer rather than symmetric uncertainty.</p>
+</section>
+<section id="reliability" class="level2">
+<h2 class="anchored" data-anchor-id="reliability">Reliability</h2>
+<p>Reliability plots compare mean predicted match probability with the observed match rate. Perfect calibration follows the diagonal. The plot below uses five fixed probability bands, keeps ties together, omits empty bands, does not connect the markers, and shows both case counts and 95% binomial intervals. These intervals describe uncertainty within the reviewed benchmark under a binomial model; they are not guarantees about calibration in a different production population.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/06_reliability_by_model.png" class="img-fluid figure-img" alt="Five small reliability diagrams compare predicted match probabilities with observed match rates using occupied fixed-width bands. Markers are not connected, marker labels give bin counts, and vertical bars show 95 percent Wilson intervals."></p>
+<figcaption>Reliability diagrams for all five endpoints use fixed probability bands.</figcaption>
+</figure>
+</div>
+<p>Visually Jev 1.13 appears most well calibrated of the available models.</p>
+</section>
+<section id="scope-of-the-conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="scope-of-the-conclusion">Scope of the conclusion</h2>
+<p>This is a fixed, reviewed suite of 100 restaurant pairs with balanced prevalence. The results describe these endpoint configurations on this benchmark. They should motivate broader replication, not a universal claim about production entity resolution.</p>
+</section>
+<section id="reproduction" class="level2">
+<h2 class="anchored" data-anchor-id="reproduction">Reproduction</h2>
+<p>The post source and accompanying Python analysis module recompute every table and figure from the anonymous prediction-level CSV included with this post. The public data contains sequential case numbers, labels, difficulty, record order, model name, probabilities, correctness, and extraction method. It excludes restaurant records, pair identifiers, source provenance, provider responses, local paths, and evidence hashes.</p>
+<p>The complete benchmark implementation, analysis workflow, and reproducibility materials are available in the <a href="https://github.com/govindgnair23/evaluating-calibration-llm">evaluating-calibration-llm repository</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2024, Govind G Nair</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

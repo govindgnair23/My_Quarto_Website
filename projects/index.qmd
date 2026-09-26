@@ -3,6 +3,14 @@ title: "Projects"
 ---
 
 ::: project-card
+### [StatQuest](/projects/statquest/)
+
+A growing collection of interactive applets for exploring interesting ideas in probability and statistics, beginning with Benford's law.
+
+[Explore the Applets →](/projects/statquest/)
+:::
+
+::: project-card
 ### [Regbrief](/projects/regbrief/)
 
 An AI-powered regulatory intelligence newsletter that monitors consent orders from financial regulators, analyzes enforcement actions, and delivers actionable insights to help institutions avoid compliance pitfalls.

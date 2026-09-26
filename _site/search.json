@@ -1278,7 +1278,7 @@
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Regbrief\nAn AI-powered regulatory intelligence newsletter that monitors consent orders from financial regulators, analyzes enforcement actions, and delivers actionable insights to help institutions avoid compliance pitfalls.\nLearn More & Subscribe →\n\n\nSARs to Trxns\nAn agentic workflow to extract transaction-level details from SAR narratives, unlocking enhanced ML training data, robust regression testing, and foundational knowledge graphs for AML operations.\nLearn More →\n\n\nRedflag MCP\nAn MCP server that puts a curated, sourced corpus of AML red flags from global regulators at your fingertips inside Claude and ChatGPT — ranked search, exact metadata filters, and citations on every result.\nLearn More →"
+    "text": "StatQuest\nA growing collection of interactive applets for exploring interesting ideas in probability and statistics, beginning with Benford’s law.\nExplore the Applets →\n\n\nRegbrief\nAn AI-powered regulatory intelligence newsletter that monitors consent orders from financial regulators, analyzes enforcement actions, and delivers actionable insights to help institutions avoid compliance pitfalls.\nLearn More & Subscribe →\n\n\nSARs to Trxns\nAn agentic workflow to extract transaction-level details from SAR narratives, unlocking enhanced ML training data, robust regression testing, and foundational knowledge graphs for AML operations.\nLearn More →\n\n\nRedflag MCP\nAn MCP server that puts a curated, sourced corpus of AML red flags from global regulators at your fingertips inside Claude and ChatGPT — ranked search, exact metadata filters, and citations on every result.\nLearn More →"
   },
   {
     "objectID": "projects/sars-to-trxns/index.html",
@@ -2819,5 +2819,26 @@
     "title": "Importance of Vision - Or is it Mission ?",
     "section": "",
     "text": "When I stumbled into my first product role, like many others in the same boat, I turned to the product management classics—Marty Cagan’s books, Lenny Rachitsky’s posts, Lean Product Playbook, and the rest. One thing I’ve always found confusing in this literature is the difference between “vision” and “mission.” It feels like people go to great lengths to create a distinction that’s not always necessary.\nEven a thinker like Shreyas comes up with definitions where I still struggle to understand the clear difference between the two.\n\nFrom my perspective, if you can clearly articulate the future you’re trying to create, you don’t really need to explain why it’s worthwhile. Your mission is to create that future. To put it simply: what matters most is having an ambitious, long-term goal that can challenge and inspire people. And like any good goal, you should be able to measure whether you’re making progress.\nWhether you call this your “mission” or your “vision” doesn’t seem all that important.\nHere are a few examples of great mission/vision statements:\n\nMicrosoft’s original mission to put a computer on every desk and in every home is probably the best example. It was bold and ambitious, and incredibly, they achieved it within 20 to 30 years.\nSpaceX’s mission is “to make life multiplanetary.” Wow. When that’s your mission, it’s no wonder they’ve accomplished so much in the last decade.\nMeta’s mission is to “give people the power to build community and bring the world closer together.” You know you can only fulfill this mission if billions of people are using your platform to make meaningful connections—a goal that’s both ambitious and measurable.\n\nIn contrast, I find that many B2B companies have less compelling mission statements.\n\nSalesforce: “We bring companies and customers together.”\nOracle: “We help people see data in new ways, discover insights, and unlock endless possibilities.”\n\nIf you review the mission statements of companies like IBM and Honeywell, you might feel a little underwhelmed.\nWhy is that?  I think the challenge for most B2B companies is that after their initial product success, they grow through acquisitions and eventually become a collection of smaller businesses. Their range of products and services becomes so broad that it’s hard to have one concise, coherent mission.\nSo how do you combat this?  I believe each business unit needs its own mission statement, one that aligns with the company’s overall mission but is specific to what that team is trying to achieve. This is what I’ve aimed to create within the small business unit I’m part of at Oracle.\nFinally, nothing illustrates the importance of mission better than the famous anecdote about John F. Kennedy and NASA. During a visit in the 1960s, President Kennedy asked a janitor at the space center what he was doing. The janitor replied, “Mr. President, I’m helping put a man on the moon.”\nThat’s the power of a mission. Failing to tap into that is a missed opportunity for any company."
+  },
+  {
+    "objectID": "projects/statquest/index.html",
+    "href": "projects/statquest/index.html",
+    "title": "StatQuest",
+    "section": "",
+    "text": "StatQuest is a collection of interactive applets that make ideas in probability and statistics easier to explore. Each applet focuses on a topic I find interesting and lets you experiment with its key concepts, build intuition, and see the underlying mathematics in action."
+  },
+  {
+    "objectID": "projects/statquest/index.html#about-statquest",
+    "href": "projects/statquest/index.html#about-statquest",
+    "title": "StatQuest",
+    "section": "",
+    "text": "StatQuest is a collection of interactive applets that make ideas in probability and statistics easier to explore. Each applet focuses on a topic I find interesting and lets you experiment with its key concepts, build intuition, and see the underlying mathematics in action."
+  },
+  {
+    "objectID": "projects/statquest/index.html#applets",
+    "href": "projects/statquest/index.html#applets",
+    "title": "StatQuest",
+    "section": "Applets",
+    "text": "Applets\n\nBenford Distribution\nExplore Benford’s law and see why the leading digits in many real-world datasets follow a surprising, non-uniform distribution.\nExplore the Benford Distribution applet →"
   }
 ]

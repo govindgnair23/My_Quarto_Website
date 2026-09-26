@@ -1,0 +1,16 @@
+---
+title: "StatQuest"
+subtitle: "Interactive explorations of probability and statistics"
+---
+
+## About StatQuest
+
+StatQuest is a collection of interactive applets that make ideas in probability and statistics easier to explore. Each applet focuses on a topic I find interesting and lets you experiment with its key concepts, build intuition, and see the underlying mathematics in action.
+
+## Applets
+
+### Benford Distribution
+
+Explore Benford's law and see why the leading digits in many real-world datasets follow a surprising, non-uniform distribution.
+
+[**Explore the Benford Distribution applet →**](https://benford-distribution.vercel.app/)

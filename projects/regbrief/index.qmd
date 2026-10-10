@@ -32,8 +32,10 @@ Regbrief also publishes periodic trend and thematic analyses across enforcement 
 
 This archive will expand over time as additional quarterly analyses are published.
 
+- [Q3 2026 Enforcement Analysis](archive/enforcement_analysis_Q32026.html)
 - [Q2 2026 Enforcement Analysis](archive/enforcement_analysis_Q22026.html)
 - [Q1 2026 Enforcement Analysis](archive/enforcement_analysis_Q12026.html)
+
 
 ## Regulator Coverage
 
